@@ -544,14 +544,12 @@
 %===================================NEXT SLIDE===================================
 
 \begin{slide}{Modelos HPD, Residual e HRNN}
-  \vspace{0.5em}
-  \textbf{HPD:} Entrada expandida: $X' = [X, Y_{\mathrm{PHY}}]$; rede explora complementaridades das fontes
-  \vspace{0.8em}
-  \textbf{Residual:} Rede aprende correção residual: $Y_{\mathrm{res}} = Y - Y_{\mathrm{PHY}}$
-  \vspace{0.8em}
-  \textbf{HRNN:} Combina entrada expandida e correção residual em uma arquitetura unificada
-  \vfill\hfill{\scriptsize ZHOU et al., 2025}
-  \note{Detalho agora o funcionamento de cada modelo. No HPD, a entrada da rede é expandida com a predição física. No Residual, a rede aprende diretamente o erro da predição. O HRNN unifica as duas abordagens.}
+  \begin{Item}
+    \item \textbf{HPD (ZohanHPD):} Entrada expandida $X' = [X, Y_{\mathrm{PHY}}]$; a rede explora complementaridades entre dados e física.
+    \item \textbf{Residual (ZohanResidual):} Rede aprende correção residual $Y_{\mathrm{res}} = Y - Y_{\mathrm{PHY}}$, somada à predição física.
+    \item \textbf{HRNN:} Combina entrada expandida e correção residual em arquitetura unificada.
+  \end{Item}
+  \note{HPD usa física como entrada adicional. Residual aprende o desvio. HRNN combina ambas.}
 \end{slide}
 %========================================================================
 %===================================NEXT SLIDE===================================
