@@ -1,0 +1,266 @@
+﻿%% -----------------------------------------------------------------------------------------------------
+% Packages
+%% -----------------------------------------------------------------------------------------------------
+\usepackage{geometry}
+\usepackage[all]{xy}
+
+\usepackage[brazil]{babel} 
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{hyperref}
+
+\usepackage{graphicx, color}
+\usepackage{amsmath, amssymb, amsthm, amsfonts}
+
+\usepackage{algorithm, algorithmic}
+\usepackage{setspace}
+
+\usepackage{epsfig}
+\usepackage{array}
+\usepackage{float}
+\usepackage{enumerate}
+% \usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{moreverb}
+\usepackage{ragged2e}
+\usepackage{lmodern}
+\usepackage{verbatim}
+\usepackage{smartdiagram}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage{mathtools}
+
+% Animações
+\usepackage{multimedia}
+\usepackage{textcomp}
+
+% Modificação de margens
+\usepackage{calc}
+\usepackage{environ}
+
+% Para uso do ambiente tcolorbox: ver customizacao em generalFormat/commandAndEnvironment.tex
+\usepackage{courier}
+\usepackage{tcolorbox}
+% \tcbuselibrary{all}
+% \tcbuselibrary{listings,breakable}
+
+% Para o uso do abntcite
+\usepackage[alf]{abntex2cite}
+
+%% ---------------------------------------------------------------------
+% Temas e cores
+%% ---------------------------------------------------------------------
+\definecolor{vermelho}{rgb}{0.3,0.0,0.0}
+\definecolor{verde}{rgb}{0.0,0.2,0.0}
+\definecolor{azul}{rgb}{0.0,0.0,0.3}
+\definecolor{azulescuro}{rgb}{0.0,0.0,0.5}
+\definecolor{vermelhoescuro}{RGB}{138,157,153}
+\definecolor{verdeescuro}{rgb}{0,0.5,0}
+\definecolor{kugreen1}{RGB}{0,29,0}
+\definecolor{kugreen}{RGB}{0,33,0}
+\definecolor{kugreen2}{RGB}{0,60,0}
+\definecolor{kugreen3}{RGB}{0,90,0}
+\definecolor{kugreenlyslyslys}{RGB}{244,253,246}
+
+\definecolor{poliBlue}{rgb}{40.0,37.0,90.0}
+
+\definecolor{poliBlue}{HTML}{28255a}
+
+\definecolor{poliRed}{HTML}{e30613}
+
+\definecolor{poliGray}{HTML}{b2b2b2}
+
+\definecolor{violet}{HTML}{8A40A4}
+\definecolor{orange}{HTML}{FF5B2B}
+\definecolor{verde}{RGB}{5,150,0}
+\definecolor{verde-escuro}{RGB}{5,90,0}
+\definecolor{verde-claro}{RGB}{167,255,162}
+\definecolor{cinza}{gray}{0.45}
+\definecolor{cinzaclaro}{gray}{0.8}
+
+% Temas
+\usetheme{CambridgeUS}
+%\usetheme{Frankfurt}
+\usefonttheme{professionalfonts}
+\usefonttheme[onlymath]{serif}
+\usecolortheme[named=poliBlue]{structure}
+
+
+\setbeamercolor{palette primary}{bg=white,fg=white}
+\setbeamercolor{palette secondary}{bg=white,fg=white}
+\setbeamercolor{palette tertiary}{bg=white,fg=white}
+\setbeamercolor{palette quaternary}{fg=poliBlue}
+
+% For CambridgeUS
+\setbeamercolor{title}{bg=white,fg=poliBlue}
+
+\setbeamertemplate{footline}
+{
+    \leavevmode
+    \hbox{
+    \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.6ex,dp=1ex,center]{palette quaternary}
+    \usebeamerfont{author in head/foot}\insertshortauthor\hspace*{1ex}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.6ex,dp=1ex,center]{palette quaternary}
+    \usebeamerfont{institute in head/foot}\insertshortinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.6ex,dp=1ex,center]{palette quaternary}
+    \insertframenumber{} / \inserttotalframenumber
+    \end{beamercolorbox}}
+    \vskip0pt
+}
+
+\usebackgroundtemplate
+{
+    \tikz\node[opacity=0.5]{\includegraphics[height=\paperheight, width=\paperwidth]{figures/logo/bg.png}};
+}
+
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip%
+  \begin{beamercolorbox}[%
+      wd=\paperwidth,%
+      sep=0pt,
+      leftskip=5ex,
+    ]{frametitle}%
+  \insertframetitle%
+  \hfill
+  \raisebox{-0.5ex}{\includegraphics[height=5ex,keepaspectratio]{figures/logo/poliUFRJ.png}}%
+  \end{beamercolorbox}%
+}
+\setbeamercolor{frametitle}{fg=poliBlue,bg=}
+
+\setbeamercolor{section in toc}{fg=black}
+\setbeamercolor{subsection in toc}{fg=black}
+\setbeamercolor{section in head/foot}{fg=white}
+
+\setbeamercolor{section number projected}{bg=poliRed,fg=white}
+
+\newcommand*\seccolor[1]{\tikz[baseline=(char.base)]{
+            \fill[poliRed] (0,0) circle (0.2cm);
+            \node[color=white] (char) {#1};}}     
+            
+\setbeamertemplate{section in toc}[square]{%
+    \usebeamercolor[black]{enumerate item}%
+    %\makebox[4em][l]{\small\seccolor{\inserttocsectionnumber}}%
+    %\parbox[t]{\dimexpr\linewidth-2em}{\rule{0pt}{0.75cm}\inserttocsection}%
+    }
+    
+    
+\setbeamertemplate{subsection in toc}{%
+    \usebeamercolor[black]{enumerate item}%
+    \hspace{.5cm}
+    \makebox[4em][l]{\footnotesize \seccolor{ \scriptsize \inserttocsectionnumber .\inserttocsubsectionnumber} }%
+    \parbox[t]{\dimexpr\linewidth-2em}{\rule{0pt}{0.75cm}\inserttocsubsection}%
+    }
+
+\setbeamertemplate{enumerate items}[square]
+\setbeamercolor{item projected}{bg=poliRed!90!black,fg=white}
+
+\setbeamertemplate{enumerate subitems}[square]
+\setbeamercolor{enumerate subitem}{bg=poliRed!90!black,fg=white}
+
+\setbeamertemplate{itemize items}[square]
+\setbeamercolor{itemize item}{fg=poliRed!90!black}
+
+\setbeamertemplate{title page}
+{
+  \vbox{}
+  \vspace{-1.0cm}
+   {\usebeamercolor[fg]{titlegraphic}\includegraphics[height=5ex,keepaspectratio]{figures/logo/Logo_EPUFRJ_2020.png}\hfill\includegraphics[height=5ex,keepaspectratio]{figures/logo/UFRJ_Horizontal_Cor_RGB_Completa.png}\par}
+  \vspace{1.0cm}
+  \begin{centering}
+    \begin{beamercolorbox}[sep=8pt,center]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%     
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}%\vskip0.5em
+    \begin{beamercolorbox}[sep=8pt,center]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+  \end{centering}
+  %\vfill
+}
+%% ------------------------------------------------------------------------------------------
+% Definição de cores dos blocos
+%% --------------------------------------------------------------------------------------------
+\definecolor{grayblock}{gray}{.75}
+\definecolor{redblock}{cmyk}{0, 0.89, 0.76, 0.07}
+\definecolor{greenblock}{HTML}{32CD32}
+
+\setbeamercolor{block title}{fg=white,bg=grayblock}             % Título bloco normal
+\setbeamercolor{block body} {fg=black,bg=grayblock!20}          % Corpo bloco normal
+\setbeamercolor{block title alerted}{fg=white,bg=redblock}      % Título bloco de alerta
+\setbeamercolor{block body alerted} {fg=black,bg=redblock!20}   % Corpo bloco de alerta    
+\setbeamercolor{block title example}{fg=white,bg=greenblock}    % Título bloco de exemplo
+\setbeamercolor{block body example} {fg=black,bg=greenblock!20} % Corpo bloco de exemplo
+
+
+%%---------------------------------------------------------------------------------------
+% Macros
+%% ------------------------------------------------------------------------------------- 
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{poliRed}{#1}}
+\newcommand{\green}[1]{\textcolor{green}{#1}}
+\newcommand{\orange}[1]{\textcolor{orange}{#1}}
+\newcommand{\violet}[1]{\textcolor{violet}{#1}}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\bm}[1]{\boldmath{#1}}
+\newcommand{\nologo}{\setbeamertemplate{logo}{}}
+
+\newcommand{\itsep}[1]
+{
+    \addtolength{\itemsep}{#1\baselineskip}
+}
+\newcommand{\mbf}[1]{\mathbf{#1}}
+%% ------------------------------------------------------------------------------------- 
+
+%%---------------------------------------------------------------------------------------
+% Modificação das margens
+%% ------------------------------------------------------------------------------------- 
+\newcommand{\MARGIN}{0.1\paperwidth}
+\newcommand{\margin}{0.05\linewidth}
+
+\beamersetrightmargin{\margin}
+\beamersetleftmargin{\margin}
+%% -------------------------------------------------------------------------------------
+
+%%---------------------------------------------------------------------------------------
+% Tikz Template
+%% ------------------------------------------------------------------------------------- 
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{shapes,shapes,backgrounds}
+\usetikzlibrary{mindmap, trees}
+\usetikzlibrary{calc, intersections,through,backgrounds}
+\usetikzlibrary{tikzmark}
+\usetikzlibrary{positioning}
+\usepackage{xparse}
+\usetikzlibrary{decorations.pathreplacing,  decorations.markings}
+
+\tikzstyle{arrow} = [thick,->,>=stealth, above]
+\tikzstyle{arrow-dashed} = [dashed,->,>=stealth]
+\tikzstyle{arrow-dotted} = [dotted,->,>=stealth]
+
+\newcommand{\highlightRed}[1]{%
+  \colorbox{poliRed!50}{$\displaystyle#1$}}
+  
+\newcommand{\highlightGreen}[1]{%
+  \colorbox{green!50}{$\displaystyle#1$}}
+  
+\newcommand{\highlightBlue}[1]{%
+  \colorbox{poliBlue!50}{$\displaystyle#1$}}
+  
+\newcommand{\highlightYellow}[1]{%
+  \colorbox{yellow!50}{$\displaystyle#1$}}
