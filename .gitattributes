@@ -1,0 +1,6 @@
+*.tex text diff
+*.sty text
+*.bib text
+*.cls text
+*.png binary
+*.jpg binary
