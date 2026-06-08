@@ -480,11 +480,18 @@
       Árvore decisão & $\mathtt{max\_depth} \in \{2,3,4,5,6,\texttt{None}\}$; $\mathtt{min\_samples\_leaf} \in \{1,2,5,8,10\}$; $\mathtt{min\_samples\_split} \in \{2,5,10,15\}$; $\mathtt{ccp\_alpha} \in \{0,10^{-4},10^{-3},10^{-2}\}$ \\[2pt]
       Random Forest & $\mathtt{n\_estimators} \in \{200,400,600\}$; $\mathtt{max\_depth} \in \{2,3,4,5,\texttt{None}\}$; $\mathtt{min\_samples\_leaf} \in \{1,2,5,8,10\}$; $\mathtt{max\_features} \in \{0{,}5,0{,}8,1{,}0\}$ \\[2pt]
       Gradient Boosting & $\mathtt{n\_estimators} \in \{50,100,200,400\}$; $\mathtt{learning\_rate} \in \{0{,}01,0{,}03,0{,}05,0{,}1\}$; $\mathtt{max\_depth} \in \{1,2,3\}$; $\mathtt{min\_samples\_leaf} \in \{1,2,5,10\}$ \\[2pt]
+      MLP sklearn & $\mathtt{hidden\_layer\_sizes} \in \{(32,),(64,),(64,32),(128,64)\}$; $\alpha \in \{0,10^{-6},10^{-5},10^{-4}\}$; $\mathtt{learning\_rate\_init} \in \{3\times10^{-3},10^{-3},3\times10^{-4},10^{-4}\}$ \\[2pt]
+      KerasMLP baseline & $\mathtt{hidden\_layer\_sizes} \in \{(32,),(64,),(128,),(256,),(64,32),(128,64),(256,128),(128,64,32),(256,128,64)\}$; $\mathtt{learning\_rate} \in \{10^{-3},3\times10^{-4}\}$; $\mathtt{l2} \in \{0,10^{-6},10^{-5}\}$. ReLU, Adam, Huber ($\delta=1$), 200 épocas. \\[2pt]
+      KerasMLP FrozenBaseline & Configuração baseline fixa. Referência neural n\~ao h\'{\i}brida. \\[2pt]
+      KerasMLP Luc Restricted & $\mathtt{physics\_norm} \in \{\mathtt{mse},\mathtt{mae}\}$; $\omega \in \{0{,}0,0{,}1,0{,}3,0{,}5,0{,}7\}$ \\[2pt]
+      KerasMLP ZohanHPD Restricted & $\mathtt{l2} \in \{\mathtt{l2}_{base},0,10^{-6},10^{-5},10^{-4}\}$ (entrada $+$ pred. f\'{\i}sica) \\[2pt]
+      KerasMLP ZohanResidual Restricted & $\mathtt{l2} \in \{\mathtt{l2}_{base},0,10^{-6},10^{-5},10^{-4}\}$ (arquitetura residual) \\[2pt]
+      KerasMLP ZohanHRNN Restricted & $\mathtt{l2} \in \{\mathtt{l2}_{base},0,10^{-6},10^{-5},10^{-4}\}$ (HRNN: entrada expandida $+$ residual) \\[2pt]
         \bottomrule
       \end{tabular}
     }
   \end{table}
-  \note{Espaços de busca para cada família. Para modelos lineares, variou-se a regularização. Para árvores e ensembles, ajustou-se profundidade, estimadores e complexidade.}
+  \note{Espaços de busca para cada família. Para modelos lineares, variou-se a regularização. Para árvores e ensembles, ajustou-se profundidade, estimadores e complexidade. Modelos neurais e híbridos tiveram busca restrita a hiperparâmetros específicos, mantendo a configuração baseline como referência.}
 \end{slide}
 %========================================================================
 %===================================NEXT SLIDE===================================
