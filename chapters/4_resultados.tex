@@ -305,7 +305,15 @@
   \begin{figure}[H]
     \includegraphics[width=0.7\textwidth]{tcc_images/chap06/rmse_by_target_grouped.png}
   \end{figure}
-  \note{Gráfico comparativo do RMSE por variável-alvo para todas as famílias de modelos. O ZohanResidual destaca-se com o menor erro consistente nas três saídas.}
+  \note{Gráfico comparativo do RMSE por variável-alvo para todas as famílias. O ZohanResidual lidera no fluxo, mas modelos lineares (OLS) têm melhor desempenho nas temperaturas.}
+\end{slide}
+%========================================================================
+%===================================NEXT SLIDE===================================
+
+\begin{slide}{Trade-off entre Modelos}
+  \centering
+  \includegraphics[width=0.85\textwidth]{tcc_images/chap06/best_per_family_rmse.png}
+  \note{Comparação entre os melhores modelos de cada família. A OLS tem o melhor desempenho para temperaturas, enquanto o ZohanResidual é superior para o fluxo. Isso mostra que o modelo recomendado depende da variável de interesse.}
 \end{slide}
 %========================================================================
 %===================================NEXT SLIDE===================================
