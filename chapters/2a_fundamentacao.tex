@@ -275,11 +275,13 @@
   \begin{Item}
     \item Integram conhecimento físico (modelo 0D) com aprendizado a partir de dados
     \item Abordagem: usar saída do modelo físico como informação auxiliar (feature)
-    \item Arquiteturas avaliadas: HRNN, ResNN, HPD-NN, NN-Frozen, Luc-NN
-    \item Regularização baseada em física: penaliza predições fisicamente inconsistentes
+    \item \textbf{HPD}: entrada expandida $X' = [X, Y_{phy}]$, concatena predição física aos dados
+    \item \textbf{Residual}: rede aprende correção $Y_{res} = Y - Y_{phy}$, somada à predição física
+    \item \textbf{HRNN}: combina entrada expandida e correção residual em arquitetura unificada
+    \item \textbf{Luc}: regularização física na função de perda, penalizando predições inconsistentes com a fenomenologia
     \item Vantagem: melhor extrapolação e menor dependência de grandes volumes de dados
   \end{Item}
-  \note{Modelos híbridos combinam o melhor dos dois mundos: a base física do modelo 0D com a flexibilidade dos dados. As arquiteturas HRNN, ResNN e HPD-NN foram avaliadas. A regularização física garante que as predições respeitem limites fenomenológicos.}
+  \note{Quatro arquiteturas híbridas avaliadas: HPD usa a física como entrada adicional; Residual aprende o desvio; HRNN combina ambas; Luc regulariza a perda com física.}
 \end{slide}
 %========================================================================
 %===================================NEXT SLIDE===================================
