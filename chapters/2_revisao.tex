@@ -83,14 +83,14 @@
 
 \begin{slide}{Síntese e Lacunas}
   \begin{Item}
-    \item Quatro estratégias de modelagem: físicos, empíricos, data-driven e híbridos
+    \item Quatro estratégias de modelagem: físicos (primeiros princípios), empíricos (planejamento experimental), data-driven (redes neurais) e híbridos (física + dados)
     \item Limitação: divisão aleatória simples dos dados (70/15/15 ou 80/20) predomina na literatura
     \item Validação cruzada raramente empregada; seleção de hiperparâmetros geralmente heurística
     \item Maioria dos estudos avalia apenas interpolação, sem análise de extrapolação
-    \item Este trabalho adota GroupKFold, busca sistemática e análise de generalização
+    \item Este trabalho adota GroupKFold por regimes e busca sistemática de hiperparâmetros
   \end{Item}
   \vfill\hfill{\scriptsize MITTAL et al., s.d.; YANG, s.d.; ANDRÉS-MAÑAS et al., s.d.; IBNOUF et al., s.d.; ZHOU et al., s.d.}
-  \note{Aqui faço uma síntese das abordagens e identifico as lacunas. A principal crítica é que a maioria dos estudos usa validação simples e seleção heurística. Este trabalho contribui justamente com uma estratégia mais robusta.}
+  \note{Aqui faço uma síntese das abordagens (físicos, empíricos, data-driven e híbridos) e identifico as lacunas: validação simples, seleção heurística e falta de avaliação cruzada por grupos experimentais. O trabalho adota GroupKFold por regimes e busca sistemática.}
 \end{slide}
 %========================================================================
 %===================================NEXT SLIDE===================================
