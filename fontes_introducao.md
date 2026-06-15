@@ -9,16 +9,17 @@
 | Demanda global > oferta em 40% até 2030 | IDRA (International Desalination and Reuse Association) | https://idrawater.org/about-us/ |
 | Até 2050: 3/4 da população afetados por seca | UNU-INWEH, *Water Scarcity* (2024) | https://www.unwater.org/water-facts/water-scarcity |
 
-## Slide 2: Dessalinização: Solução Global e Brasileira
+## Slide 2: O Problema no Brasil
 
 | Afirmação | Fonte | Link |
 |---|---|---|
-| 97,5% da água da Terra é salgada | Dado geral (USGS / NOAA) | https://www.usgs.gov/special-topics/water-science-school/science/how-much-water-there-earth |
-| ODS 6, Target 6.A: dessalinização como tecnologia-chave | UN SDG 6 | https://www.un.org/sustainabledevelopment/water-and-sanitation/ |
-| Mercado global: US$ 7,1B → US$ 11,2B (CAGR 9,5%) | MarketsandMarkets, *Water Desalination Equipment Market* (2021) | https://www.marketsandmarkets.com/Market-Reports/desalination-361.html |
-| Pior seca da história do Brasil (2010-2019) | World Bank, *Brazil Drought Resilience* (2024) | https://www.worldbank.org/en/news/immersive-story/2024/12/10/resilient-lands-thriving-futures |
-| Sistema Cantareira em faixa de atenção | ANA, *Monitor de Secas* (2026) | https://www.gov.br/ana/pt-br/assuntos/gestao-das-aguas/panorama-das-aguas |
-| 8.500 km de costa brasileira | IBGE | https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/15761-area-territorial-brasileira.html |
+| 2026 desafiador: chuvas abaixo da média | CNN Brasil / ANA (06/03/2026) | https://www.cnnbrasil.com.br/economia/2026-sera-ano-desafiador-para-gestao-da-agua-no-brasil-diz-diretora-da-ana/ |
+| Cantareira ~30%; pior crise hidroenergética em 91 anos (2021) | CNN Brasil / ANA | mesmo link |
+| Nordeste: 4 meses chuva / 8 meses seca extrema | CNN Brasil / ANA | mesmo link |
+| Dessalinização reduz custo da água em até 10x (R$ 2,63 a R$ 4,21/m³) | CNI — Agência de Notícias da Indústria (16/03/2026) | https://noticias.portaldaindustria.com.br/noticias/sustentabilidade/voce-sabia-que-a-dessalinizacao-tem-potencial-para-reduzir-o-custo-da-agua-em-ate-10x/ |
+| Maior planta do Brasil (ES): atende 80 mil pessoas | CNI | mesmo link |
+| Fernando de Noronha: RO aumentou oferta de água em 122% | CNI | mesmo link |
+| 8.500 km de costa | IBGE | https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/15761-area-territorial-brasileira.html |
 
 ## Slide 3: Tecnologias e o Diferencial da MD
 
@@ -59,18 +60,11 @@
 
 | Slide | Imagem | Fonte | Path |
 |---|---|---|---|
-| 1 — Crise Global | Foto de escassez hídrica (UN Photo/Patricia Esteve) | UN-Water | `tcc_images/escassez_global.jpg` |
-| 2 — Problema Brasil | Placeholder: diagrama de dessalinização | Tese | `tcc_images/chap01/membrane.png` |
+| 1 — Crise Global | Foto enviada pela autora (criseH.png) | — | `tcc_images/criseH.png` |
+| 2 — Problema Brasil | (sem imagem — slide denso de dados) | — | — |
+| 2b — Arte Brasil | Infográfico "Arte: Juliana Bezerra/CNI" | CNI (2026) | `tcc_images/artebrasillet.jpg` |
 | 3 — IPS COPPE | Esquema da instalação (Schéma de l'installation) | Relatório Luc Seixo (2024) | `tcc_images/instalacao_ips.png` |
 | 4 — V-AGMD | Esquema do destilador (Schéma du distillateur) | Relatório Luc Seixo (2024) | `tcc_images/distillateur_vagmd.png` |
-
-## Sugestões de Imagens Futuras
-
-| Slide | Sugestão | Fonte | Link |
-|---|---|---|---|
-| 2 — Brasil | Mapa do Monitor de Secas da ANA | ANA | https://www.gov.br/ana/pt-br/assuntos/gestao-das-aguas/panorama-das-aguas |
-| 2 — Brasil | Foto da Ilha de Policogeração (artigo COPPE) | COPPE/UFRJ | https://coppe.ufrj.br/planeta-coppe/coppe-inaugura-ilha-de-policogeracao-sustentavel/ |
-| 3 — IPS COPPE | Foto experimental real do WhatsApp | Projeto | `C:\Users\frota\OneDrive\Documentos\TCC\WhatsApp Image 2026-05-24 at 11.00.34.jpeg` |
 
 ## Slides 5 e 6: Objetivos e Organização
 
