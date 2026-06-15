@@ -22,18 +22,18 @@
 | Fernando de Noronha: RO aumentou oferta de água em 122% | CNI | mesmo link |
 | 8.500 km de costa | IBGE | https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/15761-area-territorial-brasileira.html |
 
-## Slide 3: Tecnologias e o Diferencial da MD
+## Slide 3: Dessalinização — Realidade Global
 
 | Afirmação | Fonte | Link |
 |---|---|---|
-| Classificação das tecnologias de dessalinização | Abid et al., *Desalination* (2020) | https://doi.org/10.1016/j.desal.2020.114526 |
-| RO domina mercado, exige alta pressão e pré-tratamento | Abid et al. (2020); Elimelech & Phillip, *Science* (2011) | https://doi.org/10.1126/science.1200488 |
-| MD: processo híbrido térmico-membrana | Cath, *J. Membrane Science* (2010) | https://doi.org/10.1016/j.memsci.2010.06.027 |
-| Vantagens da MD: baixa T/P, >99,9% rejeição | Yadav et al., *J. Environ. Chem. Eng.* (2021); Cath (2010) | https://doi.org/10.1016/j.jece.2021.105818 |
-| V-AGMD: vácuo na lacuna de ar | Warsinger, *Desalination* (2017); Lisboa et al., *Sep. Purif. Technol.* (2024) | https://doi.org/10.1016/j.seppur.2024.127891 |
-| MD com calor residual/energia solar | Yadav et al. (2021); Andrés-Mañas et al., *Desalination* (2022) | https://doi.org/10.1016/j.desal.2022.115731 |
+| Arábia Saudita: 86% do abastecimento (12,5M m³/d) | CNI (2026) / Banco Mundial | https://noticias.portaldaindustria.com.br/noticias/sustentabilidade/voce-sabia-que-a-dessalinizacao-tem-potencial-para-reduzir-o-custo-da-agua-em-ate-10x/ |
+| Israel: 80% da água produzida é dessalinizada | CNI (2026) | mesmo link |
+| 150+ países usam, 300M pessoas atendidas | Banco Mundial (citado pela CNI) | mesmo link |
+| Fernando de Noronha: oferta +122%, racionamento eliminado | CNI (2026) | mesmo link |
+| Indústria ganha autonomia hídrica | CNI (2026) — Davi Bomtempo | mesmo link |
+| Imagem: esquema da instalação IPS | Relatório Luc Seixo (2024) | — |
 
-## Slide 3: Ilha de Policogeração Sustentável (LabMEMS/COPPE)
+## Slide 4: Ilha de Policogeração Sustentável (LabMEMS/COPPE)
 
 | Afirmação | Fonte | Link |
 |---|---|---|
@@ -63,9 +63,9 @@
 |---|---|---|---|---|
 | 1 — Crise Global | "World enters new era of water crisis, UN says" | Health Policy Watch (2024) | https://healthpolicy-watch.news/world-enters-new-era-of-water-crisis-un-says/ | `tcc_images/criseH.png` |
 | 2 — Brasil | Infográfico "Arte: Juliana Bezerra/CNI" | CNI — Agência de Notícias da Indústria (2026) | https://noticias.portaldaindustria.com.br/noticias/sustentabilidade/voce-sabia-que-a-dessalinizacao-tem-potencial-para-reduzir-o-custo-da-agua-em-ate-10x/ | `tcc_images/artebrasillet.jpg` |
-| 3 — IPS COPPE | Esquema da instalação (Schéma de l'installation) | Relatório Luc Seixo (2024) | — | `tcc_images/instalacao_ips.png` |
-| 4 — V-AGMD | Esquema do destilador (Schéma du distillateur) | Relatório Luc Seixo (2024) | — | `tcc_images/distillateur_vagmd.png` |
+| 3 — Realidade Global | Esquema da instalação IPS | Relatório Luc Seixo (2024) | — | `tcc_images/instalacao_ips.png` |
+| 5 — V-AGMD | Esquema do destilador (Schéma du distillateur) | Relatório Luc Seixo (2024) | — | `tcc_images/distillateur_vagmd.png` |
 
-## Slides 5 e 6: Objetivos e Organização
+## Slides 6 e 7: Objetivos e Organização
 
 Slides baseados no próprio trabalho — sem afirmações externas que exijam fonte.
