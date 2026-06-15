@@ -31,25 +31,35 @@
 | V-AGMD: vácuo na lacuna de ar | Warsinger, *Desalination* (2017); Lisboa et al., *Sep. Purif. Technol.* (2024) | https://doi.org/10.1016/j.seppur.2024.127891 |
 | MD com calor residual/energia solar | Yadav et al. (2021); Andrés-Mañas et al., *Desalination* (2022) | https://doi.org/10.1016/j.desal.2022.115731 |
 
-## Slide 4: Motivação e Contexto do Projeto
+## Slide 3: Ilha de Policogeração Sustentável (LabMEMS/COPPE)
 
 | Afirmação | Fonte | Link |
 |---|---|---|
-| Projeto LabMEMS/UFRJ — cogeração solar | Lisboa et al. (2024) + site LabMEMS | https://www.pee.ufrj.br/index.php/pt/laboratorios |
-| Alinhamento com ODS 6 (água) e ODS 7 (energia limpa) | UN SDG 6 e 7 | https://sdgs.un.org/goals |
-| Modelo físico reduzido 0D | Lisboa et al. (2024) | https://doi.org/10.1016/j.seppur.2024.127891 |
-| Três regimes de salinidade (10, 40, 70 g/L) | Dados experimentais do projeto | — |
+| Protótipo pioneiro COPPE/UFRJ (2022) | COPPE/UFRJ — Planeta COPPE | https://coppe.ufrj.br/planeta-coppe/coppe-inaugura-ilha-de-policogeracao-sustentavel/ |
+| 5 kWₑ nominais + 8 kWₜ térmicos | COPPE/UFRJ (2022) | mesmo link |
+| Dessalinizador V-AGMD: 1.000 L/dia | Lisboa et al. (2024) | https://doi.org/10.1016/j.seppur.2024.127891 |
+| Foco em comunidades remotas/off-grid | COPPE/UFRJ (2022) | mesmo link |
+| Alinhamento ODS 6, 7 e 13 | UN SDG | https://sdgs.un.org/goals |
+| Financiamento: Petrogal/ANP, Embrapii, Faperj, Capes, CNPq, Marinha | COPPE/UFRJ (2022) | mesmo link |
+
+## Slide 4: V-AGMD — Inovação Tecnológica
+
+| Afirmação | Fonte | Link |
+|---|---|---|
+| MD: processo híbrido térmico-membrana | Cath, *J. Membrane Science* (2010) | https://doi.org/10.1016/j.memsci.2010.06.027 |
+| V-AGMD: vácuo na lacuna de ar | Warsinger, *Desalination* (2017); Lisboa et al. (2024) | https://doi.org/10.1016/j.seppur.2024.127891 |
+| Vantagens: baixa T/P, >99,9% rejeição | Yadav et al. (2021); Cath (2010) | https://doi.org/10.1016/j.jece.2021.105818 |
 
 ## Sugestões de Imagens para os Slides
 
 | Slide | Sugestão | Fonte | Link |
 |---|---|---|---|
 | 1 — Crise Global | Foto de escassez hídrica (UN Photo/Patricia Esteve) | UN-Water | https://www.unwater.org/sites/default/files/styles/d12/public/2022-08/uni121521.jpg |
-| 2 — Dessalinização | Ícone do ODS 6 (gota d'água) + ODS 7 (energia) | UN SDG | https://www.un.org/sustainabledevelopment/wp-content/uploads/2018/05/E_SDG_goals_icons-rgb-18.jpg |
-| 2 — Dessalinização | Infográfico do mercado de dessalinização | IDRA | https://idrawater.org/ |
-| 3 — MD | Diagrama esquemático da MD (já existe: `membrane.png`) | — | `tcc_images/chap01/membrane.png` |
-| 4 — Projeto | Foto da planta piloto (se disponível no LabMEMS) | LabMEMS/UFRJ | https://www.pee.ufrj.br/index.php/pt/laboratorios |
-| 4 — Projeto | Infográfico de cogeração solar + dessalinização | Lisboa et al. (2024) | https://doi.org/10.1016/j.seppur.2024.127891 |
+| 2 — Problema Brasil | Mapa do Monitor de Secas da ANA | ANA | https://www.gov.br/ana/pt-br/assuntos/gestao-das-aguas/panorama-das-aguas |
+| 2 — Problema Brasil | Ilustração do semiárido nordestino | IBGE | — |
+| 3 — IPS COPPE | Foto da ilha de policogeração (artigo COPPE) | COPPE/UFRJ | https://coppe.ufrj.br/planeta-coppe/coppe-inaugura-ilha-de-policogeracao-sustentavel/ |
+| 3 — IPS COPPE | Foto experimental do WhatsApp (piloto) | Projeto | `C:\Users\frota\OneDrive\Documentos\TCC\WhatsApp Image 2026-05-24 at 11.00.34.jpeg` |
+| 4 — V-AGMD | Diagrama de transferência de calor e massa (já existe) | Tese | `tcc_images/chap03/Model-of-heat-and-mass-transfer-in-the-AGMD.png` |
 
 ## Slides 5 e 6: Objetivos e Organização
 
