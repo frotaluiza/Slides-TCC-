@@ -30,15 +30,13 @@
 
 \begin{slide}{Configurações de MD}
   \begin{Item}
-    \item DCMD: contato direto, condensação interna, maiores perdas térmicas.
+    \item DCMD: contato direto, condensação interna.
     \item AGMD: espaço de ar, reduz perdas, maior resistência ao transporte.
-    \item VMD: vácuo no permeado, reduz resistência difusiva, condensação externa.
-    \item SGMD: gás de arraste, condensação externa, controle adicional.
+    \item VMD: vácuo no permeado, condensação externa.
     \item V-AGMD (adotada): espaço de ar + pressão reduzida, condensação interna.
   \end{Item}
-  \vfill\hfill{\scriptsize CATH, 2010; WARSINGER, 2017; AL-ZOUBI; AL-AMRI, 2018; CHONG; KUEK, 2022; LISBOA et al., 2024}
-  % NOTE: As quatro configurações básicas e a variante híbrida V-AGMD.
-  \note{Vou apresentar as quatro configurações principais de destilação por membranas. Destaco a V-AGMD, que adotamos neste trabalho, por combinar espaço de ar e vácuo.}
+  \vfill\hfill{\scriptsize CATH, 2010; WARSINGER, 2017; LISBOA et al., 2024}
+  \note{Apresento as principais configurações de MD, com foco na V-AGMD, que combina espaço de ar com vácuo parcial para aumentar o fluxo.}
 \end{slide}
 %========================================================================
 %===================================NEXT SLIDE===================================
@@ -70,8 +68,6 @@
 \nocite{Cath2010}
 \nocite{Hitsov2015}
 \nocite{Warsinger2017}
-\nocite{AlZoubi2018}
-\nocite{Chong2022}
 \nocite{Lisboa2024}
 \nocite{Zheng2017}
 
@@ -157,34 +153,15 @@
 %========================================================================
 %===================================NEXT SLIDE===================================
 
-\begin{slide}{O que é Aprendizado de Máquinas?}
+\begin{slide}{Problema de Regressão}
   \begin{Item}
-    \item Abordagem de IA para aprender padrões a partir de dados (Ghahramani2015)
-    \item Relações entrada-saída aprendidas diretamente dos dados (Rai2020)
-    \item Três categorias: supervisionado, não supervisionado, por reforço (Sarkar2018PML)
-    \item Diversas técnicas: regressão linear, árvores, redes neurais, ensembles (Sarkar2018PML)
+    \item Modelo: $Y = f(X) + \varepsilon$ — saída = função das entradas + erro
+    \item Objetivo: aprender $f$ que minimize o erro de predição
+    \item Neste trabalho: regressão supervisionada multi-saída
+    \item Três saídas: fluxo de permeado ($Flux$), $T_{\mathrm{alim,out}}$, $T_{\mathrm{ref,out}}$
   \end{Item}
-  \vfill\hfill{\scriptsize GHAHRAMANI, 2015; RAI; SAHU, 2020; SARKAR et al., 2018}
-  % NOTE: Conceitos básicos de ML
-  \note{Aqui defino aprendizado de máquinas como uma técnica de IA que permite aprender padrões a partir de dados. Explico que existem três categorias principais e diversas técnicas. Esses conceitos são fundamentais para o entendimento do restante do trabalho.}
-\end{slide}
-%========================================================================
-%===================================NEXT SLIDE===================================
-
-\begin{slide}{Formulação do Problema de Regressão}
-  \begin{Item}
-    \item Função verdadeira: $f(x) = E(Y|X=x)$ (Sarkar2018PML)
-    \item Perda quadrática: $L(Y,f) = (Y - f(X))^2$
-    \item Erro Esperado de Predição: $EPE(f) = E[(Y-f(X))^2]$
-    \item Na prática, minimiza-se $RSS = \sum_{i=1}^{N} (y_i - f(x_i))^2$
-  \end{Item}
-  \begin{myTitledBox}[\centering Formulação do Problema de Regressão]
-    \begin{equation}
-      Y = f(X) + \varepsilon
-    \end{equation}
-  \end{myTitledBox}
   \vfill\hfill{\scriptsize SARKAR et al., 2018}
-  \note{Mostro aqui a formulação geral do problema de regressão. A variável Y é modelada como uma função de X mais um erro aleatório $\varepsilon$. O objetivo é encontrar a função f que minimize o erro de predição. A perda quadrática e o RSS são usados na prática para estimar f.}
+  \note{Formulo o problema de regressão: queremos aprender uma função que mapeie as variáveis operacionais do dessalinizador nas três saídas de interesse. É uma regressão supervisionada multi-saída.}
 \end{slide}
 %========================================================================
 %===================================NEXT SLIDE===================================
@@ -198,36 +175,35 @@
     \item $R^2$: coeficiente de determinação
   \end{Item}
   \vfill\hfill{\scriptsize FISSLER et al., 2022}
-  % NOTE: Principais métricas para regressão
   \note{Aqui apresento as métricas que usamos para avaliar modelos de regressão. O MSE dá mais peso a erros grandes, enquanto o MAE trata todos igualmente. O RMSE fica na mesma escala da variável, e o MAPE expressa o erro em porcentagem. O R² mede o quanto o modelo explica a variância dos dados.}
 \end{slide}
 %========================================================================
 %===================================NEXT SLIDE===================================
 
-
-
-\begin{slide}{Correlação, Associação Estatística e Causalidade}
+\begin{slide}{Análise de Correlação}
   \begin{Item}
-    \item Correlação linear (Pearson): medida de associação linear entre variáveis
-    \item Correlação de Spearman: associação monotônica, independente de linearidade
-    \item Correlação $\neq$ causalidade: associação não implica relação causal
-    \item Variáveis de confusão podem induzir correlações espúrias
-    \item No TCC: correlações usadas como análise exploratória, não inferência causal
+    \item Pearson: mede associação linear entre variáveis
+    \item Spearman: mede associação monotônica, independente de linearidade
+    \item No TCC: usadas como análise exploratória inicial dos dados
   \end{Item}
-  \note{Aqui apresento a distinção entre correlação, associação e causalidade. Correlação mede a força da relação entre variáveis, mas não implica causalidade. No contexto do trabalho, usei essas medidas apenas como análise exploratória inicial.}
+  \note{Apresento as medidas de correlação usadas na análise exploratória do trabalho. Pearson para relações lineares, Spearman para relações monotônicas em geral. Ambas foram calculadas como etapa preliminar à modelagem.}
 \end{slide}
 %========================================================================
 %===================================NEXT SLIDE===================================
 
-\begin{slide}{Controle de Complexidade e Overfitting}
+
+
+
+
+\begin{slide}{Controle de Overfitting}
   \begin{Item}
-    \item Overfitting: modelo ajusta ruído nos dados de treino, generaliza mal
-    \item Underfitting: modelo excessivamente simples, não captura padrões
-    \item Trade-off viés-variância: modelos complexos têm baixo viés, alta variância
-    \item Regularização: penaliza magnitude dos coeficientes (L1/L2)
-    \item Validação cruzada e curvas de aprendizado ajudam a diagnosticar overfitting
+    \item Overfitting: modelo memoriza ruído dos dados de treino, não generaliza
+    \item Estratégias usadas no TCC:
+    \item Regularização L1/L2 — penaliza pesos grandes
+    \item Validação cruzada com GroupKFold — avalia generalização
+    \item Critério de seleção 1-SE + menor complexidade
   \end{Item}
-  \note{Controlar a complexidade é essencial para garantir a generalização. Overfitting ocorre quando o modelo é complexo demais e memoriza o ruído. Underfitting é o oposto. A regularização L1/L2 ajuda a controlar esse trade-off.}
+  \note{Controle de overfitting foi central neste trabalho. Usei três estratégias: regularização L1/L2, validação cruzada por grupos, e o critério 1-SE que seleciona o modelo de menor complexidade dentro do desvio padrão do melhor.}
 \end{slide}
 %========================================================================
 %===================================NEXT SLIDE===================================
@@ -245,15 +221,13 @@
 %========================================================================
 %===================================NEXT SLIDE===================================
 
-\begin{slide}{Estratégias de Pré-processamento e Engenharia de Dados}
+\begin{slide}{Pré-processamento}
   \begin{Item}
-    \item Padronização (Z-score): média zero, variância unitária — essencial para modelos lineares e redes neurais
-    \item Pipeline: encadeamento de transformações + modelo, evitando vazamento de dados
-    \item Tratamento de missing values e outliers conforme contexto físico
-    \item Engenharia de atributos: variáveis físicas derivadas (ex.: diferença térmica)
-    \item Seleção de features baseada em critérios físicos, não automáticos
+    \item Padronização (Z-score) para modelos lineares e redes neurais
+    \item Pipeline sklearn: transformações + modelo, sem vazamento
+    \item Features selecionadas por critérios físicos (literatura)
   \end{Item}
-  \note{O pré-processamento adequado é crucial para o desempenho dos modelos. A padronização foi adotada para todos os modelos. O uso de Pipeline garantiu que as transformações fossem aplicadas corretamente em cada fold.}
+  \note{O pré-processamento incluiu padronização e uso de Pipeline do sklearn para evitar vazamento de dados entre treino e validação. As features foram validadas pela literatura.}
 \end{slide}
 %========================================================================
 %===================================NEXT SLIDE===================================
@@ -273,24 +247,22 @@
 
 \begin{slide}{Modelos Híbridos Físico-Informados}
   \begin{Item}
-    \item Integram conhecimento físico (modelo 0D) com aprendizado a partir de dados
-    \item Abordagem: usar saída do modelo físico como informação auxiliar (feature)
-    \item \textbf{HPD}: entrada expandida $X' = [X, Y_{phy}]$, concatena predição física aos dados
-    \item \textbf{Residual}: rede aprende correção $Y_{res} = Y - Y_{phy}$, somada à predição física
-    \item \textbf{HRNN}: combina entrada expandida e correção residual em arquitetura unificada
-    \item \textbf{Luc}: regularização física na função de perda, penalizando predições inconsistentes com a fenomenologia
-    \item Vantagem: melhor extrapolação e menor dependência de grandes volumes de dados
+    \item Integram modelo físico 0D com aprendizado a partir de dados
+    \item Arquiteturas avaliadas: ZohanResidual, HRNN, Luc, FrozenBaseline
+    \item Vencedora: ZohanResidual — residual connection + regularização L2
+    \item Redução de 31\% no RMSE do fluxo frente ao melhor modelo linear
   \end{Item}
-  \note{Quatro arquiteturas híbridas avaliadas: HPD usa a física como entrada adicional; Residual aprende o desvio; HRNN combina ambas; Luc regulariza a perda com física.}
+  \vfill\hfill{\scriptsize ZHOU et al., 2024; LISBOA et al., 2024}
+  \note{Avaliamos quatro arquiteturas híbridas. A vencedora foi a ZohanResidual, que usa conexão residual em torno do modelo físico. Ela reduziu o RMSE do fluxo em 31\% comparado ao melhor modelo linear.}
 \end{slide}
 %========================================================================
 %===================================NEXT SLIDE===================================
 
 % Auto-generated \nocite block so these keys appear in the References slide.
-\nocite{Ghahramani2015}
-\nocite{Rai2020}
 \nocite{Sarkar2018PML}
 \nocite{Fissler2022ModelComparison}
+\nocite{Zhou2024}
+\nocite{Lisboa2024}
 
 \begin{slide}{Resumo da Fundamentação Teórica}
   \small
@@ -301,8 +273,8 @@
       \midrule
       Destilação por Membranas & Processo separação por gradiente térmico; V-AGMD combina espaço de ar e vácuo \\
       Modelo Físico Reduzido & Modelo 0D de Lisboa et al. como referência; estima fluxo e temperaturas \\
-      ML: Definição e Regressão & Modelos aprendem padrões dos dados; formulação $Y = f(X) + \varepsilon$ \\
-      ML: Métricas e Correlação & MSE, RMSE, MAE, $R^2$; Pearson e Spearman para análise exploratória \\
+      ML: Problema de Regressão & Regressão supervisionada multi-saída: $Y = f(X) + \varepsilon$ \\
+      ML: Métricas e Correlação & MSE, RMSE, MAE, $R^2$; Pearson e Spearman exploratórios \\
       ML: Complexidade e Validação & Trade-off viés-variância; regularização L1/L2; GroupKFold por Regime \\
       ML: Pré-processamento e Modelos & Padronização; famílias: lineares, árvores, redes neurais e híbridos \\
       \bottomrule

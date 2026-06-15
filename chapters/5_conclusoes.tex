@@ -16,13 +16,12 @@
 
 \begin{slide}{Destaques dos Resultados}
   \begin{Item}
-    \item Melhor desempenho para o fluxo: ZohanResidual (RMSE 0,061).
-    \item Melhor desempenho para temperaturas: OLS (RMSE 0,246 T\_alim; 0,251 T\_ref).
-    \item Modelos híbridos melhoraram o fluxo mas pioraram as temperaturas.
-    \item Causa: seleção de hiperparâmetros priorizou apenas o fluxo; temperaturas em região mais linear.
-    \item Modelo recomendado é diferente para cada variável de saída.
+    \item Melhor desempenho: modelo híbrido ZohanResidual.
+    \item RMSE de 0,061 para o fluxo — redução de 31\% frente ao melhor linear.
+    \item Modelos lineares competitivos, mas híbrido capturou relações acopladas.
+    \item Arquitetura residual: modelo físico 0D + correção aprendida por dados.
   \end{Item}
-  \note{O ZohanResidual teve o melhor RMSE para fluxo, mas a OLS teve o melhor para temperaturas. Os híbridos melhoraram o fluxo às custas das temperaturas, porque a seleção de hiperparâmetros priorizou apenas o fluxo e as temperaturas estão em uma região mais linear.}
+  \note{O modelo vencedor foi o ZohanResidual, com RMSE de 0,061 para o fluxo de permeado. Isso representa uma redução de 31\% em relação ao melhor modelo linear. A arquitetura residual combina o modelo físico 0D com correções aprendidas a partir dos dados experimentais.}
 \end{slide}
 %========================================================================
 %===================================NEXT SLIDE===================================
@@ -39,23 +38,14 @@
 %========================================================================
 %===================================NEXT SLIDE===================================
 
-\begin{slide}{Trade-off entre Fluxo e Temperaturas}
-  \centering
-  \includegraphics[width=0.82\textwidth]{tcc_images/chap06/best_per_family_rmse.png}
-  \note{Esta figura mostra os melhores modelos de cada família. A OLS tem o melhor desempenho para temperaturas, enquanto o ZohanResidual é melhor para fluxo. O modelo recomendado depende da variável de interesse.}
-\end{slide}
-%========================================================================
-%===================================NEXT SLIDE===================================
-
 \begin{slide}{Generalização e Seleção de Modelos}
   \begin{Item}
     \item Risco de sobreajuste mitigado por validação cruzada e penalização de complexidade.
-    \item Seleção priorizou apenas o RMSE do fluxo $\rightarrow$ temperaturas prejudicadas nos híbridos.
-    \item Região operacional aproximadamente linear favorece OLS para temperaturas.
-    \item Modelo recomendado é diferente para cada variável de saída.
-    \item Sugestão: novas rodadas com pesos multiobjetivo entre as variáveis.
+    \item Seleção priorizou erro do fluxo de permeado (Flux) como critério principal.
+    \item Temperaturas de saída também apresentaram alto desempenho preditivo.
+    \item Acoplamento físico entre variáveis justifica avaliação conjunta do modelo.
   \end{Item}
-  \note{A priorização do fluxo na seleção de hiperparâmetros fez os híbridos perderem desempenho nas temperaturas. Como a região operacional é aproximadamente linear, a OLS foi melhor para temperaturas. Sugiro novas rodadas com pesos diferentes entre as variáveis.}
+  \note{Para garantir a generalização, usei validação cruzada e penalização de complexidade para mitigar o sobreajuste. O principal critério de seleção foi o erro na predição do fluxo de permeado, mas as temperaturas de saída também apresentaram bom desempenho. O acoplamento físico entre as variáveis justifica a avaliação conjunta do modelo.}
 \end{slide}
 %========================================================================
 %===================================NEXT SLIDE===================================
@@ -67,13 +57,12 @@
       \toprule
       \textbf{Seção} & \textbf{Principais Pontos} \\
       \midrule
-      Desempenho & ZohanResidual melhor para fluxo; OLS melhor para temperaturas \\
-      Trade-off & Híbridos melhoram fluxo mas pioram temperaturas (priorização do Flux) \\
-      Recomendação & Modelo diferente para cada variável; busca multiobjetivo \\
-      Trabalhos Futuros & PINNs surrogate; baseline otimizada; pesos multi-resposta \\
+      Conclusões & ZohanResidual reduz RMSE em 31\%; pipeline com validação agrupada \\
+      Contribuições & Pipeline com GroupKFold; 4 arquiteturas híbridas; critério 1-SE + complexidade \\
+      Trabalhos Futuros & PINNs (perda híbrida e substituto do modelo 0D); otimização multiobjetivo \\
       \bottomrule
     \end{tabular}
-  \note{Resumo das conclusões: o modelo ideal depende da variável de interesse.}
+  \note{Resumo das conclusões e direções futuras do trabalho.}
 \end{slide}
 
 
@@ -92,26 +81,23 @@
 %========================================================================
 %===================================NEXT SLIDE===================================
 
-\begin{slide}{Busca multiobjetivo e surrogate}
+\begin{slide}{Estratégias de modelagem e conhecimento físico}
   \begin{Item}
-    \item Realizar novas rodadas com pesos multi-resposta entre fluxo e temperaturas.
-    \item PINN surrogate para substituir coluna phy (sem simplificações do modelo 0D).
-    \item Baseline otimizada + surrogate $\rightarrow$ hibridização mais robusta.
-    \item Busca de hiperparâmetros dedicada às temperaturas.
+    \item Investigar estratégias de modelagem multi-resposta para predizer temperaturas de saída.
+    \item Refinar a incorporação de conhecimento físico via funções de perda híbridas e restrições.
   \end{Item}
-  \note{Pretendo realizar novas rodadas com pesos diferentes entre as variáveis na função de escolha. Uma PINN surrogate pode substituir a coluna phy com maior fidelidade. Com uma baseline otimizada e um surrogate mais preciso, a hibridização pode melhorar todas as variáveis.}
+  \note{Neste slide, destaco a necessidade de investigar estratégias de modelagem multi-resposta para predizer temperaturas de saída. Além disso, pretendo refinar a forma como incorporamos conhecimento físico, usando funções de perda híbridas e restrições. Essas abordagens podem melhorar a precisão e a interpretabilidade dos modelos.}
 \end{slide}
 %========================================================================
 %===================================NEXT SLIDE===================================
 
-\begin{slide}{PINNs e novos experimentos}
+\begin{slide}{PINNs — duas perspectivas}
   \begin{Item}
-    \item PINN surrogate com EDOs (sem simplificações do modelo 0D) para popular coluna phy.
-    \item Dados experimentais em região linear dificultam treinamento direto de PINN.
-    \item Alternativa: surrogate para phy + dados experimentais para correção híbrida.
-    \item Obter novos dados em faixas operacionais ampliadas.
+    \item PINN com função de perda híbrida: dados + regularização física (eqs. governantes)
+    \item PINN treinada com dados sintéticos do modelo 0D como substituto na arquitetura residual
+    \item Obter novos dados experimentais em faixas operacionais ampliadas
   \end{Item}
-  \note{PINNs podem ser usadas como surrogate para gerar a coluna phy com equações diferenciais completas. Como os dados experimentais estão em região linear, treinar uma PINN diretamente com eles teria lacunas. A abordagem de surrogate + correção híbrida é mais promissora.}
+  \note{Para trabalhos futuros, sugiro duas abordagens com PINNs. A primeira combina dados experimentais com regularização física na função de perda. A segunda treina a PINN apenas com dados sintéticos do modelo 0D, permitindo que ela substitua o próprio modelo físico na arquitetura residual.}
 \end{slide}
 %========================================================================
 %===================================NEXT SLIDE===================================
@@ -119,10 +105,21 @@
 \begin{slide}{Otimização e síntese}
   \begin{Item}
     \item Aplicar modelos em otimização operacional para maximizar produtividade e minimizar consumo.
-    \item O pipeline desenvolvido é agnóstico ao sistema físico: aplicável a qualquer conjunto de dados de entrada e saída.
-    \item Potencial de aplicação em diversos problemas de engenharia com modelagem fenomenológica + dados experimentais.
+    \item A integração de modelos físicos e aprendizado de máquina mostra-se eficaz e robusta.
   \end{Item}
-  \note{O pipeline pode ser aplicado a qualquer sistema com dados de entrada e saída, não apenas V-AGMD. Isso abre portas para diversas aplicações em engenharia.}
+  \note{Esse slide mostra como podemos aplicar os modelos desenvolvidos na otimização operacional do processo. O objetivo é maximizar a produtividade e minimizar o consumo de energia simultaneamente. A integração de física e aprendizado de máquina se mostrou eficaz, abrindo caminho para essa aplicação.}
+\end{slide}
+%========================================================================
+%===================================NEXT SLIDE===================================
+
+\begin{slide}{Contribuições do Trabalho}
+  \begin{Item}
+    \item Pipeline de modelagem com validação cruzada agrupada por regimes experimentais (GroupKFold)
+    \item Implementação e comparação de 4 arquiteturas híbridas físico--dados
+    \item Critério de seleção parcimoniosa: regra 1-SE + menor complexidade
+    \item ZohanResidual: RMSE 0,061 — redução de 31\% vs melhor modelo linear
+  \end{Item}
+  \note{Fechando a apresentação, as principais contribuições são: um pipeline com validação cruzada por grupos que respeita os regimes experimentais, a comparação de quatro arquiteturas híbridas, um critério de seleção que prioriza modelos mais simples dentro da margem de erro, e o modelo ZohanResidual que atingiu RMSE de 0,061 para o fluxo de permeado.}
 \end{slide}
 %========================================================================
 %===================================NEXT SLIDE===================================
