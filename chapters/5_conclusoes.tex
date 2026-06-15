@@ -57,8 +57,8 @@
       \toprule
       \textbf{Seção} & \textbf{Principais Pontos} \\
       \midrule
-      Conclusões & ZohanResidual reduz RMSE em 31\%; pipeline parcimonioso com validação agrupada \\
-      Contribuições & Pipeline 1-SE + complexidade, 4 arquiteturas híbridas; impacto direto na dessalinização (eficiência, acessibilidade, economia) \\
+      Conclusões & ZohanResidual reduz RMSE em 31\%; pipeline com validação agrupada \\
+      Contribuições & Pipeline com GroupKFold; 4 arquiteturas híbridas; critério 1-SE + complexidade \\
       Trabalhos Futuros & PINNs (perda híbrida e substituto do modelo 0D); otimização multiobjetivo \\
       \bottomrule
     \end{tabular}
@@ -113,12 +113,17 @@
 %===================================NEXT SLIDE===================================
 
 \begin{slide}{Contribuições do Trabalho}
-  \small
   \begin{Item}
-    \item \textbf{Pipeline parcimonioso:} GroupKFold por regimes experimentais, critério 1-SE + complexidade, 4 arquiteturas híbridas (HPD, Residual, HRNN, Luc). ZohanResidual atinge RMSE 0,061 (fluxo) — redução de 31\% vs. melhor modelo linear.
-    \item \textbf{Impacto na dessalinização:} modelo preditivo $\rightarrow$ otimização do V-AGMD $\rightarrow$ maior produção de água com mesma energia; operação autônoma viabiliza dessalinização solar em comunidades remotas; redução de ensaios laboratoriais caros acelera o desenvolvimento de novos sistemas.
+    \item[\checkmark] \textbf{Metodologia:} pipeline com GroupKFold, 4 arquiteturas híbridas físico--dados, critério 1-SE + complexidade
+    \item[\checkmark] \textbf{Desempenho:} ZohanResidual — RMSE 0,061 (fluxo), redução de 31\% vs. melhor modelo linear
   \end{Item}
-  \note{Fechando a apresentação, as principais contribuições combinam avanço metodológico — pipeline parcimonioso com validação por grupos e quatro arquiteturas híbridas, com destaque para o ZohanResidual (RMSE 0,061) — e impacto direto na dessalinização: otimização operacional, acessibilidade para comunidades remotas e redução de custos experimentais.}
+  \vspace{0.2cm}
+  \textbf{Impacto na dessalinização:}
+  \begin{Item}
+    \item Eficiência: modelo preditivo $\rightarrow$ otimização operacional $\rightarrow$ maior produção de água com mesma energia
+    \item Acessibilidade: operação autônoma viabiliza dessalinização solar em comunidades remotas e off-grid
+  \end{Item}
+  \note{Fechando a apresentação, as contribuições combinam avanço metodológico — pipeline com GroupKFold, quatro arquiteturas híbridas, critério 1-SE + complexidade, com o modelo ZohanResidual atingindo RMSE 0,061 — com impacto direto na dessalinização: eficiência operacional e acessibilidade para comunidades remotas.}
 \end{slide}
 %========================================================================
 %===================================NEXT SLIDE===================================
