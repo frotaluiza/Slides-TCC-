@@ -114,12 +114,17 @@
 
 \begin{slide}{Contribuições do Trabalho}
   \begin{Item}
-    \item Pipeline de modelagem com validação cruzada agrupada por regimes experimentais (GroupKFold)
-    \item Implementação e comparação de 4 arquiteturas híbridas físico--dados
-    \item Critério de seleção parcimoniosa: regra 1-SE + menor complexidade
-    \item ZohanResidual: RMSE 0,061 — redução de 31\% vs melhor modelo linear
+    \item[\checkmark] \textbf{Metodologia:} pipeline com GroupKFold, 4 arquiteturas híbridas físico--dados, critério 1-SE + complexidade
+    \item[\checkmark] \textbf{Desempenho:} ZohanResidual — RMSE 0,061 (fluxo), redução de 31\% vs. melhor modelo linear
   \end{Item}
-  \note{Fechando a apresentação, as principais contribuições são: um pipeline com validação cruzada por grupos que respeita os regimes experimentais, a comparação de quatro arquiteturas híbridas, um critério de seleção que prioriza modelos mais simples dentro da margem de erro, e o modelo ZohanResidual que atingiu RMSE de 0,061 para o fluxo de permeado.}
+  \vspace{0.2cm}
+  \textbf{Impacto na dessalinização:}
+  \begin{Item}
+    \item Eficiência: modelo preditivo $\rightarrow$ otimização operacional $\rightarrow$ maior produção de água com mesma energia
+    \item Acessibilidade: operação autônoma viabiliza dessalinização solar em comunidades remotas e off-grid
+    \item Sustentabilidade: menos experimentos físicos, aceleração do desenvolvimento de sistemas V-AGMD
+  \end{Item}
+  \note{Fechando a apresentação, as contribuições combinam avanço metodológico — pipeline com GroupKFold, quatro arquiteturas híbridas, critério 1-SE + complexidade, com o modelo ZohanResidual atingindo RMSE 0,061 — com impacto direto na dessalinização: eficiência operacional, acessibilidade para comunidades remotas e sustentabilidade dos processos de pesquisa.}
 \end{slide}
 %========================================================================
 %===================================NEXT SLIDE===================================
