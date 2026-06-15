@@ -1,12 +1,19 @@
 ﻿\section{Introdução}
 
 \begin{slide}{A Crise Global da Água}
-  \begin{Item}
-    \item 4 bilhões de pessoas enfrentam escassez severa $\ge$1 mês/ano
-    \item 2,2 bilhões sem água potável segura; 1,7 bilhão usam fonte contaminada
-    \item Água contaminada causa $\approx$ 505 mil mortes por diarreia ao ano (WHO)
-    \item Demanda global deve superar oferta em 40\% até 2030 (IDRA)
-  \end{Item}
+  \begin{columns}
+    \begin{column}{.55\linewidth}
+      \begin{Item}
+        \item 4 bilhões de pessoas enfrentam escassez severa $\ge$1 mês/ano
+        \item 2,2 bilhões sem água potável segura; 1,7 bi usam fonte contaminada
+        \item $\approx$ 505 mil mortes/ano por diarreia por água contaminada (WHO)
+        \item Demanda global deve superar oferta em 40\% até 2030 (IDRA)
+      \end{Item}
+    \end{column}
+    \begin{column}{.45\linewidth}
+      \includegraphics[width=\linewidth]{tcc_images/escassez_global.jpg}
+    \end{column}
+  \end{columns}
   \note{A crise global da água é tanto de quantidade quanto de qualidade. 4 bilhões sofrem com escassez, 1,7 bilhão bebem água contaminada, causando mais de 500 mil mortes por ano. É um problema que demanda soluções urgentes e inovadoras. [~1 min]}
 \end{slide}
 %========================================================================
@@ -33,7 +40,7 @@
 
 \begin{slide}{Ilha de Policogeração Sustentável (LabMEMS/COPPE)}
   \begin{columns}
-    \begin{column}{.6\linewidth}
+    \begin{column}{.55\linewidth}
       \begin{Item}
         \item Protótipo pioneiro: água potável + energia elétrica via solar térmica
         \item 5 kW$_e$ nominais ($\approx$ 25 residências) + 8 kW$_t$ recuperáveis
@@ -42,35 +49,31 @@
         \item Alinhado aos ODS 6 (água), ODS 7 (energia limpa) e ODS 13 (clima)
       \end{Item}
     \end{column}
-    \begin{column}{.4\linewidth}
-      \begin{figure}[H]
-        \includegraphics[width=\linewidth]{tcc_images/chap01/membrane.png}
-      \end{figure}
+    \begin{column}{.45\linewidth}
+      \includegraphics[width=\linewidth]{tcc_images/instalacao_ips.png}
     \end{column}
   \end{columns}
-  \vfill\hfill{\scriptsize COPPE/UFRJ, 2022; LISBOA et al., 2024}
+  \vfill\hfill{\scriptsize COPPE/UFRJ, 2022; LISBOA et al., 2024; SEIXO, 2024}
   \note{O projeto está inserido na Ilha de Policogeração Sustentável da COPPE, inaugurada em 2022. É um sistema pioneiro que integra painéis solares de alta concentração com um dessalinizador V-AGMD, produzindo água para mais de 100 pessoas por dia. O foco são comunidades remotas sem acesso à rede elétrica. [~1 min]}
 \end{slide}
 %========================================================================
 
 \begin{slide}{V-AGMD: Inovação Tecnológica}
   \begin{columns}
-    \begin{column}{.6\linewidth}
+    \begin{column}{.55\linewidth}
       \begin{Item}
         \item \textbf{MD:} processo híbrido térmico-membrana — vapor por gradiente térmico
         \item \textbf{Diferenciais:} baixa T/P, $>$99,9\% rejeição, trata salmouras
         \item \textbf{V-AGMD (adotada):} lacuna de ar + vácuo parcial $\rightarrow$ maior fluxo
-        \item \textbf{Inovação:} opera com calor solar/residual, sem demanda de alta pressão
+        \item \textbf{Inovação:} opera com calor solar/residual, sem alta pressão
         \item \textbf{Desafio:} modelagem preditiva com dados experimentais limitados
       \end{Item}
     \end{column}
-    \begin{column}{.4\linewidth}
-      \begin{figure}[H]
-        \includegraphics[width=\linewidth]{tcc_images/chap03/Model-of-heat-and-mass-transfer-in-the-AGMD.png}
-      \end{figure}
+    \begin{column}{.45\linewidth}
+      \includegraphics[width=\linewidth]{tcc_images/distillateur_vagmd.png}
     \end{column}
   \end{columns}
-  \vfill\hfill{\scriptsize CATH, 2010; WARSINGER, 2017; LISBOA et al., 2024}
+  \vfill\hfill{\scriptsize CATH, 2010; WARSINGER, 2017; LISBOA et al., 2024; SEIXO, 2024}
   \note{A destilação por membrana é a tecnologia central. Ela combina princípios térmicos com membrana: o vapor passa por uma membrana hidrofóbica impulsionado por calor. A configuração V-AGMD adiciona vácuo na lacuna de ar para aumentar o fluxo. A grande inovação é poder operar com calor solar ou residual, sem precisar de altas pressões como a osmose reversa. O desafio é modelar esse sistema com dados limitados. [~1 min]}
 \end{slide}
 %========================================================================

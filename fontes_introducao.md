@@ -42,6 +42,11 @@
 | Alinhamento ODS 6, 7 e 13 | UN SDG | https://sdgs.un.org/goals |
 | Financiamento: Petrogal/ANP, Embrapii, Faperj, Capes, CNPq, Marinha | COPPE/UFRJ (2022) | mesmo link |
 
+## Fontes das Imagens (Luc Seixo, 2024)
+- **Relatório de estágio:** Luc Seixo, "The Use of a Neural Network to Predict the Behavior of an Air Gap Membrane Distillation", ENSEIRB-MATMECA/UFRJ, 2024
+- **Instalação (pg 21):** Esquema da ilha de policogeração — painéis solares + destilador + trocadores
+- **Destilador (pg 21):** Corte esquemático do módulo V-AGMD com fluxos de calor e massa
+
 ## Slide 4: V-AGMD — Inovação Tecnológica
 
 | Afirmação | Fonte | Link |
@@ -50,16 +55,22 @@
 | V-AGMD: vácuo na lacuna de ar | Warsinger, *Desalination* (2017); Lisboa et al. (2024) | https://doi.org/10.1016/j.seppur.2024.127891 |
 | Vantagens: baixa T/P, >99,9% rejeição | Yadav et al. (2021); Cath (2010) | https://doi.org/10.1016/j.jece.2021.105818 |
 
-## Sugestões de Imagens para os Slides
+## Imagens Utilizadas nos Slides
+
+| Slide | Imagem | Fonte | Path |
+|---|---|---|---|
+| 1 — Crise Global | Foto de escassez hídrica (UN Photo/Patricia Esteve) | UN-Water | `tcc_images/escassez_global.jpg` |
+| 2 — Problema Brasil | Placeholder: diagrama de dessalinização | Tese | `tcc_images/chap01/membrane.png` |
+| 3 — IPS COPPE | Esquema da instalação (Schéma de l'installation) | Relatório Luc Seixo (2024) | `tcc_images/instalacao_ips.png` |
+| 4 — V-AGMD | Esquema do destilador (Schéma du distillateur) | Relatório Luc Seixo (2024) | `tcc_images/distillateur_vagmd.png` |
+
+## Sugestões de Imagens Futuras
 
 | Slide | Sugestão | Fonte | Link |
 |---|---|---|---|
-| 1 — Crise Global | Foto de escassez hídrica (UN Photo/Patricia Esteve) | UN-Water | https://www.unwater.org/sites/default/files/styles/d12/public/2022-08/uni121521.jpg |
-| 2 — Problema Brasil | Mapa do Monitor de Secas da ANA | ANA | https://www.gov.br/ana/pt-br/assuntos/gestao-das-aguas/panorama-das-aguas |
-| 2 — Problema Brasil | Ilustração do semiárido nordestino | IBGE | — |
-| 3 — IPS COPPE | Foto da ilha de policogeração (artigo COPPE) | COPPE/UFRJ | https://coppe.ufrj.br/planeta-coppe/coppe-inaugura-ilha-de-policogeracao-sustentavel/ |
-| 3 — IPS COPPE | Foto experimental do WhatsApp (piloto) | Projeto | `C:\Users\frota\OneDrive\Documentos\TCC\WhatsApp Image 2026-05-24 at 11.00.34.jpeg` |
-| 4 — V-AGMD | Diagrama de transferência de calor e massa (já existe) | Tese | `tcc_images/chap03/Model-of-heat-and-mass-transfer-in-the-AGMD.png` |
+| 2 — Brasil | Mapa do Monitor de Secas da ANA | ANA | https://www.gov.br/ana/pt-br/assuntos/gestao-das-aguas/panorama-das-aguas |
+| 2 — Brasil | Foto da Ilha de Policogeração (artigo COPPE) | COPPE/UFRJ | https://coppe.ufrj.br/planeta-coppe/coppe-inaugura-ilha-de-policogeracao-sustentavel/ |
+| 3 — IPS COPPE | Foto experimental real do WhatsApp | Projeto | `C:\Users\frota\OneDrive\Documentos\TCC\WhatsApp Image 2026-05-24 at 11.00.34.jpeg` |
 
 ## Slides 5 e 6: Objetivos e Organização
 
