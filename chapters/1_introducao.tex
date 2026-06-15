@@ -94,18 +94,24 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{Objetivos}
+\begin{slide}{Motivação e Objetivos}
   \begin{Item}
-    \item \textbf{Geral:} avaliar modelagem baseada em dados e híbrida para predição do desempenho V-AGMD
+    \item \textbf{Motivação:} modelo preditivo confiável permite:
+    \begin{Item}
+      \item Otimizar operação: maximizar fluxo de permeado e minimizar consumo energético
+      \item Reduzir campanhas experimentais caras e expandir para outras condições
+      \item Operar comunidades remotas com supervisão mínima (semiárido, ilhas)
+    \end{Item}
+    \item \textbf{Objetivo geral:} avaliar modelagem baseada em dados e híbrida para predizer desempenho V-AGMD
     \item \textbf{Específicos:}
     \begin{Item}
-      \item Estruturar dados experimentais com separação por regimes
+      \item Estruturar dados com separação por regimes experimentais
       \item Comparar 4 famílias: lineares, árvores, redes neurais e híbridas
       \item Aplicar validação cruzada por grupos (GroupKFold)
       \item Selecionar modelo por desempenho, generalização e complexidade
     \end{Item}
   \end{Item}
-  \note{O objetivo geral é avaliar diferentes estratégias de modelagem — desde regressões lineares até arquiteturas híbridas — para prever o desempenho do dessalinizador V-AGMD. Os objetivos específicos guiam o pipeline metodológico. [~1 min]}
+  \note{A motivação para este trabalho é que um modelo preditivo confiável permite otimizar a operação do dessalinizador, reduzir a necessidade de experimentos caros, e viabilizar a operação autônoma em comunidades remotas. O objetivo geral é avaliar estratégias de modelagem — de regressões lineares a arquiteturas híbridas — para prever o desempenho do V-AGMD. [~1,5 min]}
 \end{slide}
 %========================================================================
 
