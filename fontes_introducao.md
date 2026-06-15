@@ -8,6 +8,7 @@
 | 2,2 bilhões sem água potável segura; 505 mil mortes/ano por diarreia | WHO, *Drinking-water Fact Sheet* (2023) | https://www.who.int/news-room/fact-sheets/detail/drinking-water |
 | Demanda global > oferta em 40% até 2030 | IDRA (International Desalination and Reuse Association) | https://idrawater.org/about-us/ |
 | Até 2050: 3/4 da população afetados por seca | UNU-INWEH, *Water Scarcity* (2024) | https://www.unwater.org/water-facts/water-scarcity |
+| Imagem do slide: crise hídrica global | Health Policy Watch (2024) | https://healthpolicy-watch.news/world-enters-new-era-of-water-crisis-un-says/ |
 
 ## Slide 2: O Problema no Brasil
 
@@ -60,7 +61,7 @@
 
 | Slide | Imagem | Fonte | Path |
 |---|---|---|---|
-| 1 — Crise Global | Foto enviada pela autora (criseH.png) | — | `tcc_images/criseH.png` |
+| 1 — Crise Global | Foto: "World enters new era of water crisis, UN says" | Health Policy Watch (2024) | `tcc_images/criseH.png` |
 | 2 — Problema Brasil | (sem imagem — slide denso de dados) | — | — |
 | 2b — Arte Brasil | Infográfico "Arte: Juliana Bezerra/CNI" | CNI (2026) | `tcc_images/artebrasillet.jpg` |
 | 3 — IPS COPPE | Esquema da instalação (Schéma de l'installation) | Relatório Luc Seixo (2024) | `tcc_images/instalacao_ips.png` |
