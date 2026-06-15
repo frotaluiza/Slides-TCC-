@@ -5,7 +5,7 @@
 | Afirmação | Fonte | Link |
 |---|---|---|
 | 4 bilhões enfrentam escassez severa ≥1 mês/ano | Mekonnen & Hoekstra, *Science Advances* (2016) | https://www.science.org/doi/10.1126/sciadv.1500323 |
-| 2,2 bilhões sem água potável segura | WHO, *Drinking-water Fact Sheet* (2023) | https://www.who.int/news-room/fact-sheets/detail/drinking-water |
+| 2,2 bilhões sem água potável segura; 505 mil mortes/ano por diarreia | WHO, *Drinking-water Fact Sheet* (2023) | https://www.who.int/news-room/fact-sheets/detail/drinking-water |
 | Demanda global > oferta em 40% até 2030 | IDRA (International Desalination and Reuse Association) | https://idrawater.org/about-us/ |
 | Até 2050: 3/4 da população afetados por seca | UNU-INWEH, *Water Scarcity* (2024) | https://www.unwater.org/water-facts/water-scarcity |
 
@@ -39,6 +39,17 @@
 | Alinhamento com ODS 6 (água) e ODS 7 (energia limpa) | UN SDG 6 e 7 | https://sdgs.un.org/goals |
 | Modelo físico reduzido 0D | Lisboa et al. (2024) | https://doi.org/10.1016/j.seppur.2024.127891 |
 | Três regimes de salinidade (10, 40, 70 g/L) | Dados experimentais do projeto | — |
+
+## Sugestões de Imagens para os Slides
+
+| Slide | Sugestão | Fonte | Link |
+|---|---|---|---|
+| 1 — Crise Global | Foto de escassez hídrica (UN Photo/Patricia Esteve) | UN-Water | https://www.unwater.org/sites/default/files/styles/d12/public/2022-08/uni121521.jpg |
+| 2 — Dessalinização | Ícone do ODS 6 (gota d'água) + ODS 7 (energia) | UN SDG | https://www.un.org/sustainabledevelopment/wp-content/uploads/2018/05/E_SDG_goals_icons-rgb-18.jpg |
+| 2 — Dessalinização | Infográfico do mercado de dessalinização | IDRA | https://idrawater.org/ |
+| 3 — MD | Diagrama esquemático da MD (já existe: `membrane.png`) | — | `tcc_images/chap01/membrane.png` |
+| 4 — Projeto | Foto da planta piloto (se disponível no LabMEMS) | LabMEMS/UFRJ | https://www.pee.ufrj.br/index.php/pt/laboratorios |
+| 4 — Projeto | Infográfico de cogeração solar + dessalinização | Lisboa et al. (2024) | https://doi.org/10.1016/j.seppur.2024.127891 |
 
 ## Slides 5 e 6: Objetivos e Organização
 
