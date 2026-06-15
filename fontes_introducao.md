@@ -59,13 +59,12 @@
 
 ## Imagens Utilizadas nos Slides
 
-| Slide | Imagem | Fonte | Path |
-|---|---|---|---|
-| 1 — Crise Global | Foto: "World enters new era of water crisis, UN says" | Health Policy Watch (2024) | `tcc_images/criseH.png` |
-| 2 — Problema Brasil | (sem imagem — slide denso de dados) | — | — |
-| 2b — Arte Brasil | Infográfico "Arte: Juliana Bezerra/CNI" | CNI (2026) | `tcc_images/artebrasillet.jpg` |
-| 3 — IPS COPPE | Esquema da instalação (Schéma de l'installation) | Relatório Luc Seixo (2024) | `tcc_images/instalacao_ips.png` |
-| 4 — V-AGMD | Esquema do destilador (Schéma du distillateur) | Relatório Luc Seixo (2024) | `tcc_images/distillateur_vagmd.png` |
+| Slide | Imagem | Fonte | Link | Path |
+|---|---|---|---|---|
+| 1 — Crise Global | "World enters new era of water crisis, UN says" | Health Policy Watch (2024) | https://healthpolicy-watch.news/world-enters-new-era-of-water-crisis-un-says/ | `tcc_images/criseH.png` |
+| 2 — Brasil | Infográfico "Arte: Juliana Bezerra/CNI" | CNI — Agência de Notícias da Indústria (2026) | https://noticias.portaldaindustria.com.br/noticias/sustentabilidade/voce-sabia-que-a-dessalinizacao-tem-potencial-para-reduzir-o-custo-da-agua-em-ate-10x/ | `tcc_images/artebrasillet.jpg` |
+| 3 — IPS COPPE | Esquema da instalação (Schéma de l'installation) | Relatório Luc Seixo (2024) | — | `tcc_images/instalacao_ips.png` |
+| 4 — V-AGMD | Esquema do destilador (Schéma du distillateur) | Relatório Luc Seixo (2024) | — | `tcc_images/distillateur_vagmd.png` |
 
 ## Slides 5 e 6: Objetivos e Organização
 
