@@ -20,17 +20,17 @@
       & Alta flexibilidade; aprox. não linear
       & Generalização limitada \\
       \midrule
-      \textbf{Híbridos}
-      & MD (geral), SGMD, DCMD
-      & PINNs na função de perda (Andrés-Mañas; Shirzadi, 2024); FO-PINNs (Shahouni, 2026)
+      \textbf{Híbridos (físico + dados)}
+      & AGMD, MD (geral)
+      & CFD → ANN serial (Abdulrahim, 2026); modelos residuais/feature-based: \textbf{nenhum para AGMD/V-AGMD}
       & Combina física + dados
       & Complexidade de implementação \\
       \bottomrule
     \end{tabular}
   }
   \vfill
-  \textbf{Lacuna:} nenhum estudo aplica PINNs especificamente a AGMD ou V-AGMD até o momento
-  \note{A revisão mostra três abordagens com as respectivas tecnologias de MD. Física: AGMD e V-AGMD. Data-driven: AGMD e VMD. Híbridos: SGMD e DCMD, mas nenhum para AGMD ou V-AGMD — essa é a lacuna que motiva este trabalho. [~1,5 min]}
+  \textbf{Lacuna:} arquiteturas híbridas residuais (ZohanResidual, HRNN) \textbf{não foram publicadas para AGMD/V-AGMD}
+  \note{A revisão mostra três abordagens. Híbridos: o único artigo é o Abdulrahim (2026) com serial CFD→ANN. Não existem arquiteturas residuais como as implementadas neste trabalho para AGMD/V-AGMD — essa é a lacuna e contribuição. [~1,5 min]}
 \end{slide}
 %========================================================================
 
