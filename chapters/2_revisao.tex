@@ -4,33 +4,36 @@
   \small
   \centering
   \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.18\linewidth} p{0.15\linewidth} p{0.32\linewidth} p{0.15\linewidth} p{0.15\linewidth}}
+    \begin{tabular}{p{0.16\linewidth} p{0.12\linewidth} p{0.28\linewidth} p{0.18\linewidth} p{0.12\linewidth} p{0.12\linewidth}}
       \toprule
-      \textbf{Abordagem} & \textbf{Tecnologia} & \textbf{Descrição} & \textbf{Vantagens} & \textbf{Limitações} \\
+      \textbf{Abordagem} & \textbf{Tecnologia} & \textbf{Descrição} & \textbf{Variáveis preditas} & \textbf{CV?} & \textbf{Híbrido?} \\
       \midrule
       \textbf{Física}
-      & AGMD, AGMD (CFD), \textbf{V-AGMD}
-      & Modelos distribuídos (Alsaadi, 2013; Ansari, 2022) e reduzido 0D (\textbf{Lisboa}, 2024)
-      & Interpretabilidade física
-      & Alto custo; simplificações \\
+      & AGMD, \textbf{V-AGMD}
+      & Alsaadi (2013), Ansari (2022), \textbf{Lisboa} (2024)
+      & Fluxo, T$_{out}$, GOR
+      & N/A
+      & Apenas físico \\
       \midrule
       \textbf{Data-driven}
-      & \textbf{AGMD}, VMD
-      & ANNs p/ predição de fluxo e temperaturas (\textbf{Ibnouf} et al.; \textbf{Mittal} et al.)
-      & Alta flexibilidade; aprox. não linear
-      & Generalização limitada \\
+      & AGMD, VMD, \textbf{V-AGMD}
+      & ANNs: \textbf{Requena} (2023, V-AGMD), Yang (2023, AGMD), \textbf{Kim} (2022, V-AGMD)
+      & Fluxo, SRF, MLR, GOR, rejeição
+      & Hold-out
+      & Não \\
       \midrule
-      \textbf{Híbridos (físico + dados)}
-      & \textbf{V-AGMD}, AGMD, VMD
-      & PINNs (Andrés-Mañas, \textbf{VMD}); CFD→ANN serial (Abdulrahim, 2026, AGMD); \textbf{residuais: nenhum p/ V-AGMD}
-      & Combina física + dados
-      & Complexidade de implementação \\
+      \textbf{Híbridos}
+      & AGMD, VMD, \textbf{V-AGMD}
+      & CFD→ANN (Abdulrahim, 2026); físico+ANN (Andrés-Mañas, 2023); \textbf{residuais: nenhum p/ V-AGMD}
+      & Fluxo, STEC, GOR
+      & Hold-out
+      & Sim \\
       \bottomrule
     \end{tabular}
   }
   \vfill
   \textbf{Lacuna:} arquiteturas híbridas residuais (ZohanResidual, HRNN) \textbf{não foram publicadas para AGMD/V-AGMD}
-  \note{A revisão mostra três abordagens. Híbridos: o único artigo é o Abdulrahim (2026) com serial CFD→ANN. Não existem arquiteturas residuais como as implementadas neste trabalho para AGMD/V-AGMD — essa é a lacuna e contribuição. [~1,5 min]}
+  \note{A revisão mostra três abordagens. Data-driven: Requena e Kim são os únicos ML em V-AGMD. Híbridos: nenhum usa arquiteturas residuais para V-AGMD — essa é a contribuição deste trabalho. [~1,5 min]}
 \end{slide}
 %========================================================================
 
