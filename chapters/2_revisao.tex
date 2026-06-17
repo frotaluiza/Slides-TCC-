@@ -4,30 +4,33 @@
   \small
   \centering
   \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.2\linewidth} p{0.25\linewidth} p{0.25\linewidth} p{0.2\linewidth}}
+    \begin{tabular}{p{0.18\linewidth} p{0.15\linewidth} p{0.32\linewidth} p{0.15\linewidth} p{0.15\linewidth}}
       \toprule
-      \textbf{Abordagem} & \textbf{Descrição} & \textbf{Vantagens} & \textbf{Limitações} \\
+      \textbf{Abordagem} & \textbf{Tecnologia} & \textbf{Descrição} & \textbf{Vantagens} & \textbf{Limitações} \\
       \midrule
-      \textbf{Física (1\textordfeminine{} princípios)}
-      & Modelos distribuídos (Alsaadi, 2013; Ansari, 2022) e reduzido 0D (Lisboa, 2024)
-      & Interpretabilidade física; consistência termodinâmica
-      & Alto custo computacional; simplificações estruturais \\
+      \textbf{Física}
+      & AGMD, AGMD (CFD), \textbf{V-AGMD}
+      & Modelos distribuídos (Alsaadi, 2013; Ansari, 2022) e reduzido 0D (\textbf{Lisboa}, 2024)
+      & Interpretabilidade física
+      & Alto custo; simplificações \\
       \midrule
-      \textbf{Data-driven (ANN)}
-      & ANNs p/ predição de fluxo e temperaturas (Ibnouf et al.; Mittal et al.)
-      & Alta flexibilidade; aproximação não linear
-      & Generalização limitada; dependente da distribuição dos dados \\
+      \textbf{Data-driven}
+      & \textbf{AGMD}, VMD
+      & ANNs p/ predição de fluxo e temperaturas (\textbf{Ibnouf} et al.; \textbf{Mittal} et al.)
+      & Alta flexibilidade; aprox. não linear
+      & Generalização limitada \\
       \midrule
       \textbf{Híbridos}
-      & PINNs: equações governantes na função de perda (Andrés-Mañas et al.)
-      & Combina física + dados; melhor consistência
-      & Maior complexidade de implementação \\
+      & MD (geral), SGMD, DCMD
+      & PINNs na função de perda (Andrés-Mañas; Shirzadi, 2024); FO-PINNs (Shahouni, 2026)
+      & Combina física + dados
+      & Complexidade de implementação \\
       \bottomrule
     \end{tabular}
   }
   \vfill
-  \textbf{Desafio central:} fenômenos acoplados calor/massa, múltiplas variáveis (T, vazão, P, salinidade), dados experimentais limitados
-  \note{A revisão mostra três grandes abordagens. Modelos físicos são interpretáveis mas caros. Data-driven são flexíveis mas dependem dos dados. Os híbridos combinam o melhor dos dois mundos. O desafio central é modelar sistemas com fenômenos acoplados e dados limitados. [~1,5 min]}
+  \textbf{Lacuna:} nenhum estudo aplica PINNs especificamente a AGMD ou V-AGMD até o momento
+  \note{A revisão mostra três abordagens com as respectivas tecnologias de MD. Física: AGMD e V-AGMD. Data-driven: AGMD e VMD. Híbridos: SGMD e DCMD, mas nenhum para AGMD ou V-AGMD — essa é a lacuna que motiva este trabalho. [~1,5 min]}
 \end{slide}
 %========================================================================
 
