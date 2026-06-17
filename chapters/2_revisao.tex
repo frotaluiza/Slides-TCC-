@@ -1,41 +1,49 @@
 ﻿\section{Revisão Bibliográfica}
 
-\begin{slide}{Desafios e Abordagens de Modelagem em MD}
-  \begin{columns}
-    \begin{column}{.5\linewidth}
-      \textbf{Desafios:}
-      \begin{Item}
-        \item Fenômenos acoplados de calor e massa
-        \item Múltiplas variáveis: T, vazão, pressão, salinidade
-        \item Polarização térmica, perdas de calor, escala piloto
-      \end{Item}
-    \end{column}
-    \begin{column}{.5\linewidth}
-      \textbf{Três abordagens:}
-      \begin{Item}
-        \item \textbf{Físicos:} balanços de massa/energia, alto custo (Ansari, 2022)
-        \item \textbf{Data-driven:} ANNs mapeiam entradas/saídas, mas generalização limitada (Ibnouf et al.)
-        \item \textbf{Híbridos:} PINNs + residuais combinam física e dados (Zhou et al., 2024)
-      \end{Item}
-    \end{column}
-  \end{columns}
-  \note{A modelagem de MD enfrenta desafios como fenômenos acoplados e múltiplas variáveis. Três abordagens principais: modelos físicos (precisos mas caros), data-driven (flexíveis mas dependentes dos dados), e híbridos que combinam o melhor dos dois mundos. [~1 min]}
+\begin{slide}{Abordagens de Modelagem em MD}
+  \small
+  \centering
+  \resizebox{\textwidth}{!}{
+    \begin{tabular}{p{0.2\linewidth} p{0.25\linewidth} p{0.25\linewidth} p{0.2\linewidth}}
+      \toprule
+      \textbf{Abordagem} & \textbf{Descrição} & \textbf{Vantagens} & \textbf{Limitações} \\
+      \midrule
+      \textbf{Física (1\textordfeminine{} princípios)}
+      & Balanços de massa/energia; EDOs; CFD (Ansari, 2022)
+      & Interpretabilidade física; consistência termodinâmica
+      & Alto custo; simplificações estruturais \\
+      \midrule
+      \textbf{Data-driven (ANN)}
+      & Mapeiam entradas $\rightarrow$ saídas por regressão (Ibnouf et al.)
+      & Alta flexibilidade; aproximação não linear
+      & Generalização limitada; dependente dos dados \\
+      \midrule
+      \textbf{Híbridos}
+      & PINNs (equações na perda) + Residuais (correção aprendida) (Zhou, 2024)
+      & Combina física + dados; melhor extrapolação
+      & Maior complexidade de implementação \\
+      \bottomrule
+    \end{tabular}
+  }
+  \vfill
+  \textbf{Desafio central:} fenômenos acoplados calor/massa, múltiplas variáveis (T, vazão, P, salinidade), dados experimentais limitados
+  \note{A revisão mostra três grandes abordagens. Modelos físicos são interpretáveis mas caros. Data-driven são flexíveis mas dependem dos dados. Os híbridos combinam o melhor dos dois mundos. O desafio central é modelar sistemas com fenômenos acoplados e dados limitados. [~1,5 min]}
 \end{slide}
 %========================================================================
 
-\begin{slide}{Lacunas da Literatura e Contribuições}
+\begin{slide}{Lacunas e Contribuições}
   \begin{columns}
     \begin{column}{.5\linewidth}
-      \textbf{Lacunas identificadas:}
+      \textbf{Lacunas na literatura:}
       \begin{Item}
-        \item Divisão aleatória simples dos dados (70/15/15 ou 80/20)
-        \item Validação cruzada raramente empregada
+        \item Divisão aleatória simples (70/15/15 ou 80/20)
+        \item Validação cruzada raramente usada
         \item Seleção de hiperparâmetros heurística
-        \item Avaliação apenas em interpolação
+        \item Avaliação só em interpolação
       \end{Item}
     \end{column}
     \begin{column}{.5\linewidth}
-      \textbf{Este trabalho:}
+      \textbf{Contribuições do trabalho:}
       \begin{Item}
         \item GroupKFold por regimes experimentais
         \item Busca sistemática de hiperparâmetros
@@ -44,24 +52,7 @@
       \end{Item}
     \end{column}
   \end{columns}
-  \note{A literatura tem limitações claras: divisão simples dos dados sem validação cruzada, seleção heurística, e foco só em interpolação. Este trabalho contribui com validação por grupos experimentais, busca sistemática, e um critério de seleção que penaliza complexidade. [~1 min]}
-\end{slide}
-%========================================================================
-
-\begin{slide}{Resumo da Revisão}
-  \small
-  \centering
-    \begin{tabular}{p{0.3\linewidth} p{0.6\linewidth}}
-      \toprule
-      \textbf{Abordagem} & \textbf{Características} \\
-      \midrule
-      Modelos Físicos & Baseados em primeiros princípios; alto custo computacional \\
-      Modelos Data-Driven & ANNs mapeiam entradas/saídas; generalização limitada \\
-      Modelos Híbridos & Combinam física + dados; PINNs e residuais \\
-      Lacuna Principal & Ausência de validação robusta e busca sistemática \\
-      \bottomrule
-    \end{tabular}
-  \note{Resumo da revisão: três abordagens, com lacuna principal na validação. O trabalho preenche essa lacuna com GroupKFold e busca sistemática. [~30s]}
+  \note{A literatura tem limitações em validação e seleção. Este trabalho contribui com validação por grupos, busca sistemática, e critério de complexidade. [~1 min]}
 \end{slide}
 %========================================================================
 
