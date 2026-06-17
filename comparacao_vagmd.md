@@ -19,8 +19,8 @@
 | 7 | **Khayet & Cojocaru (2012a)** | Feed-forward ANN (BP) | ❌ | ❌ | ❌ | Fluxo de permeado, rejeição de sais |
 | 8 | **Khayet & Cojocaru (2012b)** | RSM | ❌ | ❌ | ❌ | Fluxo de permeado |
 | 9 | **Shirazian & Alibabaei (2017)** | ANN + PSO | ❌ | ❌ | ❌ | Fluxo, GOR, T_out_fria |
-| 10 | **Khalifa et al. (2017)** | RSM, ANN, GA | ❌ | ✅ RSM vs ANN | ❌ | Fluxo de permeado |
-| 11 | **Yang (2023)** | MLR, BP-ANN, RBF-ANN | ✅ hold-out 30/10 | ✅ MLR vs ANN | ❌ | Fluxo de permeado, GOR |
+| 10 | **Khalifa et al. (2017)** | Físico + ACO/PSO | ❌ | ❌ | ❌ | Fluxo de permeado |
+| 11 | **Yang (2023)** | MLR, BP-ANN, RBF-ANN | ❌ hold-out 30/10 | ✅ MLR vs ANN | ❌ | Fluxo de permeado, GOR |
 | 12 | **Jawed et al. (2025)** | ANN + GA | ❌ hold-out | ❌ | ❌ | Fluxo de permeado |
 
 ## Principais conclusões
