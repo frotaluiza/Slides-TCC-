@@ -1,39 +1,33 @@
 ﻿\section{Revisão Bibliográfica}
 
-\begin{slide}{Abordagens de Modelagem em MD}
-  \small
+\begin{slide}{Modelagem Preditiva em V-AGMD/AGMD}
+  \footnotesize
   \centering
   \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.16\linewidth} p{0.12\linewidth} p{0.28\linewidth} p{0.18\linewidth} p{0.12\linewidth} p{0.12\linewidth}}
+    \begin{tabular}{p{0.17\linewidth} p{0.1\linewidth} p{0.12\linewidth} p{0.17\linewidth} p{0.12\linewidth} p{0.1\linewidth} p{0.1\linewidth}}
       \toprule
-      \textbf{Abordagem} & \textbf{Tecnologia} & \textbf{Descrição} & \textbf{Variáveis preditas} & \textbf{CV?} & \textbf{Híbrido?} \\
+      \textbf{Paper} & \textbf{Abordagem} & \textbf{Tecnologia} & \textbf{Variáveis preditas} & \textbf{CV?} & \textbf{Híbrido?} & \textbf{Multi-modelos?} \\
       \midrule
-      \textbf{Física}
-      & AGMD, \textbf{V-AGMD}
-      & Alsaadi (2013), Ansari (2022), \textbf{Lisboa} (2024)
-      & Fluxo, T$_{out}$, GOR
-      & N/A
-      & Apenas físico \\
+      Kim (2022) & Data-driven & V-AGMD & Fluxo & ❌ & ❌ & ✅ \\
+      Requena (2023) & Data-driven & V-AGMD & SRF, MLR & Hold-out & ❌ & ❌ \\
+      \textbf{Lisboa} (2024) & Física & V-AGMD & Fluxo, T$_{out}$ & ❌ & Apenas físico & ❌ \\
+      Andrés-Mañas (2023) & Física & V-AGMD & Fluxo, T$_{out}$, GOR, SEC & ❌ & ❌ & ❌ \\
+      Abdulrahim (2026) & Híbrido & AGMD & Fluxo, STEC & Hold-out & ✅ CFD+ANN & ❌ \\
       \midrule
-      \textbf{Data-driven}
-      & AGMD, VMD, \textbf{V-AGMD}
-      & ANNs: \textbf{Requena} (2023, V-AGMD), Yang (2023, AGMD), \textbf{Kim} (2022, V-AGMD)
-      & Fluxo, SRF, MLR, GOR, rejeição
-      & Hold-out
-      & Não \\
+      Khayet (2012a) & Data-driven & AGMD & Fluxo, rejeição & ❌ & ❌ & ❌ \\
+      Shirazian (2017) & Data-driven & AGMD & Fluxo, GOR, T$_{out}$ & ❌ & ❌ & ✅ \\
+      Yang (2023) & Data-driven & AGMD & Fluxo, GOR & Hold-out & ❌ & ✅ \\
+      Jawed (2025) & Data-driven & AGMD (foto) & Fluxo & Hold-out & ❌ & ✅ \\
+      Khalifa (2017) & Otimização & AGMD & Fluxo & ❌ & ❌ & ❌ \\
       \midrule
-      \textbf{Híbridos}
-      & AGMD, VMD, \textbf{V-AGMD}
-      & CFD→ANN (Abdulrahim, 2026); físico+ANN (Andrés-Mañas, 2023); \textbf{residuais: nenhum p/ V-AGMD}
-      & Fluxo, STEC, GOR
-      & Hold-out
-      & Sim \\
+      \rowcolor{orange!15}
+      \textbf{Este trabalho} & \textbf{Híbrido} & \textbf{V-AGMD} & \textbf{Fluxo, T$_{out\_alim}$, T$_{out\_ref}$} & \textbf{GroupKFold} & \textbf{4 arq.} & \textbf{4 famílias} \\
       \bottomrule
     \end{tabular}
   }
   \vfill
-  \textbf{Lacuna:} arquiteturas híbridas residuais (ZohanResidual, HRNN) \textbf{não foram publicadas para AGMD/V-AGMD}
-  \note{A revisão mostra três abordagens. Data-driven: Requena e Kim são os únicos ML em V-AGMD. Híbridos: nenhum usa arquiteturas residuais para V-AGMD — essa é a contribuição deste trabalho. [~1,5 min]}
+  \textbf{Lacuna:} arquiteturas híbridas residuais \textbf{não publicadas para V-AGMD} — único trabalho com GroupKFold + multi-famílias + híbridas
+  \note{Tabela com os principais trabalhos de modelagem em V-AGMD e AGMD. Nenhum usa GroupKFold. Nenhum combina múltiplas famílias com arquiteturas híbridas para V-AGMD. Esta é a contribuição original do trabalho. [~2 min]}
 \end{slide}
 %========================================================================
 

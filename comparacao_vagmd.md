@@ -1,27 +1,18 @@
 # Comparação: Trabalhos de Modelagem Preditiva em V-AGMD/AGMD
 
-## Artigos focados em V-AGMD
-
-| # | Paper | Modelo | CV? | Multi-modelos? | Híbrido? | Critério | **Variáveis preditas** |
-|---|-------|--------|-----|---------------|---------|---------|----------------------|
-| 1 | **Kim et al. (2022)** | MLR, GNN, MLFNN | ❌ | ✅ (3 tipos) | ❌ | R² | **Fluxo de permeado** |
-| 2 | **Requena et al. (2023)** | ANN (MLP 4:2:2) | ❌ hold-out 70/15/15 | ❌ só ANN | ❌ | RMSE, R² | **SRF** (rejeição de sais), **MLR** (vazamento) |
-| 3 | **Andrés-Mañas (2022)** | Caracterização experimental | N/A | N/A | N/A | N/A | **Caracterização** (não modelagem) |
-| 4 | **Andrés-Mañas (2023)** | Físico (1os princípios) | ❌ | ❌ | ❌ | Validação exp. | **Fluxo, T_out, GOR, SEC** |
-| 5 | **Lisboa et al. (2024)** | Modelo físico reduzido 0D | ❌ | ❌ | ✅ físico | Validação exp. | **Fluxo de permeado, T_out_alim, T_out_ref** |
-| 6 | **Abdulrahim (2026)** | CFD → ANN surrogate | ❌ hold-out | ❌ | ✅ CFD+ANN | R²>0.99 | **Fluxo de permeado, STEC** |
-| — | **🔥 Este trabalho** | **4 famílias + 4 híbridas** | **✅ GroupKFold** | **✅ 4 famílias** | **✅ 4 arq. híbridas** | **RMSE + 1-SE + complex.** | **Fluxo, T_out_alim, T_out_ref** |
-
-## Outros artigos de ML em AGMD (não V-AGMD)
-
-| # | Paper | Modelo | CV? | Multi-modelos? | Híbrido? | Variáveis preditas |
-|---|-------|--------|-----|---------------|---------|-------------------|
-| 7 | **Khayet & Cojocaru (2012a)** | Feed-forward ANN (BP) | ❌ | ❌ | ❌ | Fluxo de permeado, rejeição de sais |
-| 8 | **Khayet & Cojocaru (2012b)** | RSM | ❌ | ❌ | ❌ | Fluxo de permeado |
-| 9 | **Shirazian & Alibabaei (2017)** | ANN + PSO | ❌ | ❌ | ❌ | Fluxo, GOR, T_out_fria |
-| 10 | **Khalifa et al. (2017)** | Físico + ACO/PSO | ❌ | ❌ | ❌ | Fluxo de permeado |
-| 11 | **Yang (2023)** | MLR, BP-ANN, RBF-ANN | ❌ hold-out 30/10 | ✅ MLR vs ANN | ❌ | Fluxo de permeado, GOR |
-| 12 | **Jawed et al. (2025)** | ANN + GA | ❌ hold-out | ✅ DT, RF, ANN | ❌ | Fluxo de permeado |
+| # | Paper | Abordagem | Tecnologia | Modelo | Variáveis preditas | CV? | Multi-modelos? | Híbrido? | Critério |
+|---|-------|----------|-----------|-------|-------------------|-----|---------------|---------|---------|
+| 1 | Kim et al. (2022) | Data-driven | V-AGMD | MLR, GNN, MLFNN | Fluxo | ❌ | ✅ (3) | ❌ | R² |
+| 2 | Requena et al. (2023) | Data-driven | V-AGMD | ANN (MLP 4:2:2) | SRF, MLR | Hold-out 70/15/15 | ❌ | ❌ | RMSE, R² |
+| 3 | **Lisboa et al. (2024)** | Física | V-AGMD | Modelo 0D reduzido | Fluxo, T$_{out\_alim}$, T$_{out\_ref}$ | ❌ | ❌ | Apenas físico | Validação exp. |
+| 4 | Andrés-Mañas (2023) | Física | V-AGMD | 1os princípios | Fluxo, T$_{out}$, GOR, SEC | ❌ | ❌ | ❌ | Validação exp. |
+| 5 | Abdulrahim (2026) | Híbrido | AGMD | CFD→ANN surrogate | Fluxo, STEC | Hold-out | ❌ | ✅ | R²>0.99 |
+| 6 | Khayet (2012a) | Data-driven | AGMD | Feed-forward ANN | Fluxo, rejeição | ❌ | ❌ | ❌ | R² |
+| 7 | Shirazian (2017) | Data-driven | AGMD | ANN + PSO | Fluxo, GOR, T$_{out}$ | ❌ | ✅ | ❌ | R² |
+| 8 | Yang (2023) | Data-driven | AGMD | MLR, BP-ANN, RBF-ANN | Fluxo, GOR | Hold-out 30/10 | ✅ | ❌ | R² |
+| 9 | Jawed (2025) | Data-driven | AGMD (foto) | ANN + GA | Fluxo | Hold-out | ✅ DT, RF, ANN | ❌ | R² |
+| 10 | Khalifa (2017) | Otimização | AGMD | Físico + ACO/PSO | Fluxo | ❌ | ❌ | ❌ | — |
+| — | **🔥 Este trabalho** | **Híbrido** | **V-AGMD** | **4 famílias + 4 híbridas** | **Fluxo, T$_{out\_alim}$, T$_{out\_ref}$** | **✅ GroupKFold** | **✅ 4 famílias** | **✅ 4 arq.** | **RMSE + 1-SE + complex.** |
 
 ## Principais conclusões
 
