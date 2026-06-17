@@ -9,18 +9,18 @@
       \textbf{Abordagem} & \textbf{Descrição} & \textbf{Vantagens} & \textbf{Limitações} \\
       \midrule
       \textbf{Física (1\textordfeminine{} princípios)}
-      & Balanços de massa/energia; EDOs; CFD (Ansari, 2022)
+      & Modelos distribuídos (Alsaadi, 2013; Ansari, 2022) e reduzido 0D (Lisboa, 2024)
       & Interpretabilidade física; consistência termodinâmica
-      & Alto custo; simplificações estruturais \\
+      & Alto custo computacional; simplificações estruturais \\
       \midrule
       \textbf{Data-driven (ANN)}
-      & Mapeiam entradas $\rightarrow$ saídas por regressão (Ibnouf et al.)
+      & ANNs p/ predição de fluxo e temperaturas (Ibnouf et al.; Mittal et al.)
       & Alta flexibilidade; aproximação não linear
-      & Generalização limitada; dependente dos dados \\
+      & Generalização limitada; dependente da distribuição dos dados \\
       \midrule
       \textbf{Híbridos}
-      & PINNs (equações na perda) + Residuais (correção aprendida) (Zhou, 2024)
-      & Combina física + dados; melhor extrapolação
+      & PINNs: equações governantes na função de perda (Andrés-Mañas et al.)
+      & Combina física + dados; melhor consistência
       & Maior complexidade de implementação \\
       \bottomrule
     \end{tabular}
@@ -55,7 +55,5 @@
 \end{slide}
 %========================================================================
 
-\nocite{Lisboa2024}
-\nocite{ReviewAI_MD}
-\nocite{Ansari2022}
+
 
