@@ -31,6 +31,58 @@
 4. **Seu trabalho é o único** que prediz **simultaneamente** fluxo + T_out_alim + T_out_ref
 5. Seu trabalho é o único com **GroupKFold por regimes experimentais**
 
+## Legenda de abreviações
+
+**Modelos:**
+| Abrev. | Significado |
+|--------|-------------|
+| MLR | Multiple Linear Regression (regressão linear múltipla) |
+| GNN | Generalized Neural Network |
+| MLFNN | Multi-Layer Feed-Forward Neural Network |
+| ANN | Artificial Neural Network (rede neural artificial) |
+| MLP | Multi-Layer Perceptron (perceptron multicamadas) |
+| BP-ANN | Back-Propagation ANN (retropropagação) |
+| RBF-ANN | Radial Basis Function ANN (função de base radial) |
+| RSM | Response Surface Methodology (metodologia de superfície de resposta) |
+| PSO | Particle Swarm Optimization (otimização por enxame de partículas) |
+| GA | Genetic Algorithm (algoritmo genético) |
+| ACO | Ant Colony Optimization (otimização por colônia de formigas) |
+| DT | Decision Tree (árvore de decisão) |
+| RF | Random Forest (floresta aleatória) |
+| SVM | Support Vector Machine |
+| CFD | Computational Fluid Dynamics (dinâmica dos fluidos computacional) |
+
+**Tecnologias MD:**
+| Abrev. | Significado |
+|--------|-------------|
+| V-AGMD | Vacuum-Enhanced Air Gap Membrane Distillation |
+| AGMD | Air Gap Membrane Distillation |
+| VMD | Vacuum Membrane Distillation |
+| DCMD | Direct Contact Membrane Distillation |
+| SGMD | Sweeping Gas Membrane Distillation |
+
+**Variáveis preditas:**
+| Abrev. | Significado |
+|--------|-------------|
+| SRF | Salt Rejection Factor (fator de rejeição de sais) |
+| MLR | Membrane Leak Ratio (taxa de vazamento da membrana) |
+| GOR | Gained Output Ratio (razão de ganho de saída) |
+| SEC | Specific Energy Consumption (consumo específico de energia) |
+| STEC | Specific Thermal Energy Consumption |
+| T_out | Temperatura de saída |
+| T_out_alim | Temperatura de saída da alimentação |
+| T_out_ref | Temperatura de saída do resfriamento |
+
+**Métricas de validação:**
+| Abrev. | Significado |
+|--------|-------------|
+| CV | Cross-validation (validação cruzada) |
+| GroupKFold | K-Fold agrupado por regimes experimentais |
+| 1-SE | One Standard Error rule (regra de um desvio padrão) |
+| RMSE | Root Mean Square Error |
+| R² / R | Coeficiente de determinação / correlação |
+| ANOVA | Analysis of Variance |
+
 ## Referências completas
 - Kim et al. (2022) — Membr. Water Treat. — V-AGMD
 - Requena et al. (2023) — Membranes 13(11), 857 — V-AGMD
