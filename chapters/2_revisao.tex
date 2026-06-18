@@ -10,7 +10,7 @@
       \midrule
       \textbf{Física}
       & AGMD, CFD, \textbf{V-AGMD}
-      & Modelos distribuídos (Alsaadi, 2013; Ansari, 2022) e reduzido 0D (\textbf{Lisboa}, 2024)
+      & Modelos distribuídos (Alsaadi, 2013; Ansari, 2022), reduzido 0D (\textbf{Lisboa}, 2024) e físico (\textbf{Andrés-Mañas}, 2023, V-AGMD)
       & Interpretabilidade física
       & Alto custo; simplificações \\
       \midrule
@@ -21,8 +21,8 @@
       & Generalização limitada \\
       \midrule
       \textbf{Híbridos (físico + dados)}
-      & AGMD, MD (geral)
-      & CFD→ANN (Abdulrahim, 2026); residuais: \textbf{nenhum p/ AGMD/V-AGMD}
+      & AGMD, VMD, \textbf{V-AGMD}
+      & PINNs (\textbf{Andrés-Mañas}, VMD); CFD→ANN (Abdulrahim, 2026, AGMD); residuais (\textbf{este trabalho}, V-AGMD)
       & Combina física + dados
       & Complexidade de implementação \\
       \bottomrule
@@ -45,6 +45,7 @@
       \textbf{Lisboa} (2024) & Física & V-AGMD & Modelo físico reduzido 0D & Fluxo, T$_{out}$ \\
       Andrés-Mañas (2023) & Física & V-AGMD & Balanços de massa e energia & Fluxo, T$_{out}$, GOR, SEC \\
       Abdulrahim (2026) & Híbrido & AGMD & CFD + Rede Neural \textit{surrogate} & Fluxo, STEC \\
+      \textbf{Andrés-Mañas} (PINN) & \textbf{Híbrido} & \textbf{VMD} & \textbf{Physics-Informed Neural Network} & \textbf{Fluxo, GOR} \\
       \midrule
       Khayet (2012a) & Data-driven & AGMD & Rede Neural \textit{feed-forward} (retropropagação) & Fluxo, rejeição \\
       Shirazian (2017) & Data-driven & AGMD & Rede Neural + Otimização por Enxame de Partículas & Fluxo, GOR, T$_{out}$ \\

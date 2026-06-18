@@ -7,7 +7,8 @@
 | 3 | **Lisboa et al. (2024)** | Física | V-AGMD | Modelo 0D reduzido | Fluxo, T$_{out\_alim}$, T$_{out\_ref}$ |
 | 4 | Andrés-Mañas (2023) | Física | V-AGMD | 1os princípios | Fluxo, T$_{out}$, GOR, SEC |
 | 5 | Abdulrahim (2026) | Híbrido | AGMD | CFD→ANN surrogate | Fluxo, STEC |
-| 6 | Khayet (2012a) | Data-driven | AGMD | Feed-forward ANN | Fluxo, rejeição |
+| 6 | **Andrés-Mañas (PINN)** | **Híbrido** | **VMD** | **Physics-Informed Neural Network** | **Fluxo, GOR** |
+| 7 | Khayet (2012a) | Data-driven | AGMD | Feed-forward ANN | Fluxo, rejeição |
 | 7 | Shirazian (2017) | Data-driven | AGMD | ANN + PSO | Fluxo, GOR, T$_{out}$ |
 | 8 | Yang (2023) | Data-driven | AGMD | MLR, BP-ANN, RBF-ANN | Fluxo, GOR |
 | 9 | Jawed (2025) | Data-driven | AGMD (foto) | ANN + GA | Fluxo |
@@ -71,3 +72,4 @@
 - Andrés-Mañas et al. (2023) — Desalination — V-AGMD (modelo físico)
 - Lisboa et al. (2024) — Sep. Purif. Technol. 350, 127891 — V-AGMD
 - Abdulrahim et al. (2026) — Desalination — AGMD (CFD surrogate)
+- Andrés-Mañas et al. (PINN) — Desalination — VMD (PINN)
