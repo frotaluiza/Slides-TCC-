@@ -36,24 +36,24 @@
   \footnotesize
   \centering
   \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.17\linewidth} p{0.1\linewidth} p{0.12\linewidth} p{0.28\linewidth}}
+    \begin{tabular}{p{0.16\linewidth} p{0.09\linewidth} p{0.1\linewidth} p{0.25\linewidth} p{0.2\linewidth}}
       \toprule
-      \textbf{Paper} & \textbf{Abordagem} & \textbf{Tecnologia} & \textbf{Variáveis preditas} \\
+      \textbf{Paper} & \textbf{Abordagem} & \textbf{Tecnologia} & \textbf{Modelo treinado} & \textbf{Variáveis preditas} \\
       \midrule
-      Kim (2022) & Data-driven & V-AGMD & Fluxo \\
-      Requena (2023) & Data-driven & V-AGMD & SRF, MLR \\
-      \textbf{Lisboa} (2024) & Física & V-AGMD & Fluxo, T$_{out}$ \\
-      Andrés-Mañas (2023) & Física & V-AGMD & Fluxo, T$_{out}$, GOR, SEC \\
-      Abdulrahim (2026) & Híbrido & AGMD & Fluxo, STEC \\
+      Kim (2022) & Data-driven & V-AGMD & MLR, GNN, MLFNN & Fluxo \\
+      Requena (2023) & Data-driven & V-AGMD & ANN (MLP 4:2:2) & SRF, MLR \\
+      \textbf{Lisboa} (2024) & Física & V-AGMD & Modelo físico 0D & Fluxo, T$_{out}$ \\
+      Andrés-Mañas (2023) & Física & V-AGMD & Balanços massa/energia & Fluxo, T$_{out}$, GOR, SEC \\
+      Abdulrahim (2026) & Híbrido & AGMD & CFD + ANN surrogate & Fluxo, STEC \\
       \midrule
-      Khayet (2012a) & Data-driven & AGMD & Fluxo, rejeição \\
-      Shirazian (2017) & Data-driven & AGMD & Fluxo, GOR, T$_{out}$ \\
-      Yang (2023) & Data-driven & AGMD & Fluxo, GOR \\
-      Jawed (2025) & Data-driven & AGMD (foto) & Fluxo \\
-      Khalifa (2017) & Otimização & AGMD & Fluxo \\
+      Khayet (2012a) & Data-driven & AGMD & Feed-forward ANN (BP) & Fluxo, rejeição \\
+      Shirazian (2017) & Data-driven & AGMD & ANN + PSO & Fluxo, GOR, T$_{out}$ \\
+      Yang (2023) & Data-driven & AGMD & MLR, BP-ANN, RBF-ANN & Fluxo, GOR \\
+      Jawed (2025) & Data-driven & AGMD (foto) & ANN + GA; DT, RF & Fluxo \\
+      Khalifa (2017) & Otimização & AGMD & Físico + ACO/PSO & Fluxo \\
       \midrule
       \rowcolor{orange!15}
-      \textbf{Este trabalho} & \textbf{Híbrido} & \textbf{V-AGMD} & \textbf{Fluxo, T$_{out\_alim}$, T$_{out\_ref}$} \\
+      \textbf{Este trabalho} & \textbf{Híbrido} & \textbf{V-AGMD} & \textbf{4 famílias: linear, árvores, RNA, híbridas} & \textbf{Fluxo, T$_{out\_alim}$, T$_{out\_ref}$} \\
       \bottomrule
     \end{tabular}
   }
