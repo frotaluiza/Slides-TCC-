@@ -1,33 +1,63 @@
 ﻿\section{Revisão Bibliográfica}
 
-\begin{slide}{Modelagem Preditiva em V-AGMD/AGMD}
-  \footnotesize
+\begin{slide}{Abordagens de Modelagem em MD}
+  \small
   \centering
   \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.17\linewidth} p{0.1\linewidth} p{0.12\linewidth} p{0.17\linewidth} p{0.12\linewidth} p{0.1\linewidth} p{0.1\linewidth}}
+    \begin{tabular}{p{0.18\linewidth} p{0.15\linewidth} p{0.32\linewidth} p{0.15\linewidth} p{0.15\linewidth}}
       \toprule
-      \textbf{Paper} & \textbf{Abordagem} & \textbf{Tecnologia} & \textbf{Variáveis preditas} & \textbf{CV?} & \textbf{Híbrido?} & \textbf{Multi-modelos?} \\
+      \textbf{Abordagem} & \textbf{Tecnologia} & \textbf{Descrição} & \textbf{Vantagens} & \textbf{Limitações} \\
       \midrule
-      Kim (2022) & Data-driven & V-AGMD & Fluxo & ❌ & ❌ & ✅ \\
-      Requena (2023) & Data-driven & V-AGMD & SRF, MLR & Hold-out & ❌ & ❌ \\
-      \textbf{Lisboa} (2024) & Física & V-AGMD & Fluxo, T$_{out}$ & ❌ & Apenas físico & ❌ \\
-      Andrés-Mañas (2023) & Física & V-AGMD & Fluxo, T$_{out}$, GOR, SEC & ❌ & ❌ & ❌ \\
-      Abdulrahim (2026) & Híbrido & AGMD & Fluxo, STEC & Hold-out & ✅ CFD+ANN & ❌ \\
+      \textbf{Física}
+      & AGMD, CFD, \textbf{V-AGMD}
+      & Modelos distribuídos (Alsaadi, 2013; Ansari, 2022) e reduzido 0D (\textbf{Lisboa}, 2024)
+      & Interpretabilidade física
+      & Alto custo; simplificações \\
       \midrule
-      Khayet (2012a) & Data-driven & AGMD & Fluxo, rejeição & ❌ & ❌ & ❌ \\
-      Shirazian (2017) & Data-driven & AGMD & Fluxo, GOR, T$_{out}$ & ❌ & ❌ & ✅ \\
-      Yang (2023) & Data-driven & AGMD & Fluxo, GOR & Hold-out & ❌ & ✅ \\
-      Jawed (2025) & Data-driven & AGMD (foto) & Fluxo & Hold-out & ❌ & ✅ \\
-      Khalifa (2017) & Otimização & AGMD & Fluxo & ❌ & ❌ & ❌ \\
+      \textbf{Data-driven}
+      & \textbf{AGMD}, VMD
+      & ANNs p/ predição de fluxo e temperaturas (Ibnouf et al.; Mittal et al.)
+      & Alta flexibilidade; aprox. não linear
+      & Generalização limitada \\
       \midrule
-      \rowcolor{orange!15}
-      \textbf{Este trabalho} & \textbf{Híbrido} & \textbf{V-AGMD} & \textbf{Fluxo, T$_{out\_alim}$, T$_{out\_ref}$} & \textbf{GroupKFold} & \textbf{4 arq.} & \textbf{4 famílias} \\
+      \textbf{Híbridos (físico + dados)}
+      & AGMD, MD (geral)
+      & CFD→ANN (Abdulrahim, 2026); residuais: \textbf{nenhum p/ AGMD/V-AGMD}
+      & Combina física + dados
+      & Complexidade de implementação \\
       \bottomrule
     \end{tabular}
   }
-  \vfill
-  \textbf{Lacuna:} arquiteturas híbridas residuais \textbf{não publicadas para V-AGMD} — único trabalho com GroupKFold + multi-famílias + híbridas
-  \note{Tabela com os principais trabalhos de modelagem em V-AGMD e AGMD. Nenhum usa GroupKFold. Nenhum combina múltiplas famílias com arquiteturas híbridas para V-AGMD. Esta é a contribuição original do trabalho. [~2 min]}
+  \note{A revisão mostra três grandes abordagens para modelagem em MD. Física: interpretável mas cara. Data-driven: flexível mas dependente dos dados. Híbridos: combinam o melhor dos dois mundos. [~1,5 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Panorama V-AGMD/AGMD}
+  \footnotesize
+  \centering
+  \resizebox{\textwidth}{!}{
+    \begin{tabular}{p{0.17\linewidth} p{0.1\linewidth} p{0.12\linewidth} p{0.28\linewidth}}
+      \toprule
+      \textbf{Paper} & \textbf{Abordagem} & \textbf{Tecnologia} & \textbf{Variáveis preditas} \\
+      \midrule
+      Kim (2022) & Data-driven & V-AGMD & Fluxo \\
+      Requena (2023) & Data-driven & V-AGMD & SRF, MLR \\
+      \textbf{Lisboa} (2024) & Física & V-AGMD & Fluxo, T$_{out}$ \\
+      Andrés-Mañas (2023) & Física & V-AGMD & Fluxo, T$_{out}$, GOR, SEC \\
+      Abdulrahim (2026) & Híbrido & AGMD & Fluxo, STEC \\
+      \midrule
+      Khayet (2012a) & Data-driven & AGMD & Fluxo, rejeição \\
+      Shirazian (2017) & Data-driven & AGMD & Fluxo, GOR, T$_{out}$ \\
+      Yang (2023) & Data-driven & AGMD & Fluxo, GOR \\
+      Jawed (2025) & Data-driven & AGMD (foto) & Fluxo \\
+      Khalifa (2017) & Otimização & AGMD & Fluxo \\
+      \midrule
+      \rowcolor{orange!15}
+      \textbf{Este trabalho} & \textbf{Híbrido} & \textbf{V-AGMD} & \textbf{Fluxo, T$_{out\_alim}$, T$_{out\_ref}$} \\
+      \bottomrule
+    \end{tabular}
+  }
+  \note{Neste slide, destaco os trabalhos especificamente em AGMD e V-AGMD. Nosso trabalho é o único híbrido para V-AGMD, prevendo simultaneamente fluxo e temperaturas de saída. [~1 min]}
 \end{slide}
 %========================================================================
 
@@ -54,6 +84,3 @@
   \note{A literatura tem limitações em validação e seleção. Este trabalho contribui com validação por grupos, busca sistemática, e critério de complexidade. [~1 min]}
 \end{slide}
 %========================================================================
-
-
-

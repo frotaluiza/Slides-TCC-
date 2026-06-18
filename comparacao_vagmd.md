@@ -1,18 +1,18 @@
 # Comparação: Trabalhos de Modelagem Preditiva em V-AGMD/AGMD
 
-| # | Paper | Abordagem | Tecnologia | Modelo | Variáveis preditas | CV? | Multi-modelos? | Híbrido? | Critério |
-|---|-------|----------|-----------|-------|-------------------|-----|---------------|---------|---------|
-| 1 | Kim et al. (2022) | Data-driven | V-AGMD | MLR, GNN, MLFNN | Fluxo | ❌ | ✅ (3) | ❌ | R² |
-| 2 | Requena et al. (2023) | Data-driven | V-AGMD | ANN (MLP 4:2:2) | SRF, MLR | Hold-out 70/15/15 | ❌ | ❌ | RMSE, R² |
-| 3 | **Lisboa et al. (2024)** | Física | V-AGMD | Modelo 0D reduzido | Fluxo, T$_{out\_alim}$, T$_{out\_ref}$ | ❌ | ❌ | Apenas físico | Validação exp. |
-| 4 | Andrés-Mañas (2023) | Física | V-AGMD | 1os princípios | Fluxo, T$_{out}$, GOR, SEC | ❌ | ❌ | ❌ | Validação exp. |
-| 5 | Abdulrahim (2026) | Híbrido | AGMD | CFD→ANN surrogate | Fluxo, STEC | Hold-out | ❌ | ✅ | R²>0.99 |
-| 6 | Khayet (2012a) | Data-driven | AGMD | Feed-forward ANN | Fluxo, rejeição | ❌ | ❌ | ❌ | R² |
-| 7 | Shirazian (2017) | Data-driven | AGMD | ANN + PSO | Fluxo, GOR, T$_{out}$ | ❌ | ✅ | ❌ | R² |
-| 8 | Yang (2023) | Data-driven | AGMD | MLR, BP-ANN, RBF-ANN | Fluxo, GOR | Hold-out 30/10 | ✅ | ❌ | R² |
-| 9 | Jawed (2025) | Data-driven | AGMD (foto) | ANN + GA | Fluxo | Hold-out | ✅ DT, RF, ANN | ❌ | R² |
-| 10 | Khalifa (2017) | Otimização | AGMD | Físico + ACO/PSO | Fluxo | ❌ | ❌ | ❌ | — |
-| — | **🔥 Este trabalho** | **Híbrido** | **V-AGMD** | **4 famílias + 4 híbridas** | **Fluxo, T$_{out\_alim}$, T$_{out\_ref}$** | **✅ GroupKFold** | **✅ 4 famílias** | **✅ 4 arq.** | **RMSE + 1-SE + complex.** |
+| # | Paper | Abordagem | Tecnologia | Modelo | Variáveis preditas |
+|---|-------|----------|-----------|-------|-------------------|
+| 1 | Kim et al. (2022) | Data-driven | V-AGMD | MLR, GNN, MLFNN | Fluxo |
+| 2 | Requena et al. (2023) | Data-driven | V-AGMD | ANN (MLP 4:2:2) | SRF, MLR |
+| 3 | **Lisboa et al. (2024)** | Física | V-AGMD | Modelo 0D reduzido | Fluxo, T$_{out\_alim}$, T$_{out\_ref}$ |
+| 4 | Andrés-Mañas (2023) | Física | V-AGMD | 1os princípios | Fluxo, T$_{out}$, GOR, SEC |
+| 5 | Abdulrahim (2026) | Híbrido | AGMD | CFD→ANN surrogate | Fluxo, STEC |
+| 6 | Khayet (2012a) | Data-driven | AGMD | Feed-forward ANN | Fluxo, rejeição |
+| 7 | Shirazian (2017) | Data-driven | AGMD | ANN + PSO | Fluxo, GOR, T$_{out}$ |
+| 8 | Yang (2023) | Data-driven | AGMD | MLR, BP-ANN, RBF-ANN | Fluxo, GOR |
+| 9 | Jawed (2025) | Data-driven | AGMD (foto) | ANN + GA | Fluxo |
+| 10 | Khalifa (2017) | Otimização | AGMD | Físico + ACO/PSO | Fluxo |
+| — | **🔥 Este trabalho** | **Híbrido** | **V-AGMD** | **4 famílias + 4 híbridas** | **Fluxo, T$_{out\_alim}$, T$_{out\_ref}$** |
 
 ## Principais conclusões
 
@@ -63,16 +63,6 @@
 | T_out | Temperatura de saída |
 | T_out_alim | Temperatura de saída da alimentação |
 | T_out_ref | Temperatura de saída do resfriamento |
-
-**Métricas de validação:**
-| Abrev. | Significado |
-|--------|-------------|
-| CV | Cross-validation (validação cruzada) |
-| GroupKFold | K-Fold agrupado por regimes experimentais |
-| 1-SE | One Standard Error rule (regra de um desvio padrão) |
-| RMSE | Root Mean Square Error |
-| R² / R | Coeficiente de determinação / correlação |
-| ANOVA | Analysis of Variance |
 
 ## Referências completas
 - Kim et al. (2022) — Membr. Water Treat. — V-AGMD
