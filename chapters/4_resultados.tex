@@ -91,28 +91,69 @@
 
 \begin{slide}{Seleção dos Modelos Vencedores}
   \begin{columns}
-    \begin{column}{.5\linewidth}
-      \textbf{Critério 1-SE entre famílias:}
+    \begin{column}{.55\linewidth}
       \begin{Item}
-        \item ZohanResidual (base Alim): Alim (0,141) + Flux (0,060)
-        \item ZohanHRNN (base Alim): Ref (0,211) — único no limiar
-        \item Seleção pelo menor número de parâmetros dentro de 1 DP do melhor
+        \item \textbf{ZohanResidual (base Alim):} selecionado para Alim (0,141) e Flux (0,060)
+        \item \textbf{ZohanHRNN (base Alim):} selecionado para Ref (0,211) — único no limiar 1-SE
+        \item Redes especializadas para Ref e Flux eram mais complexas:
+        \begin{itemize}
+          \item Ref: 2 camadas [256,128] = 34.819 parâmetros
+          \item Flux (HPD): 8 entradas = 6.147 parâmetros
+          \item Alim: 1 camada [512] = 4.611 parâmetros
+        \end{itemize}
+        \item O ganho de RMSE não superou 1 desvio padrão → critério 1-SE selecionou o modelo mais simples
       \end{Item}
+    \end{column}
+    \begin{column}{.45\linewidth}
+      \includegraphics[width=\linewidth]{tcc_images/chap06/model_selection/sweep_l2_ZohanResidual.png}
+    \end{column}
+  \end{columns}
+  \note{O ZohanResidual (base Alim) venceu para Alim e Flux porque, embora as redes especializadas para Ref e Flux tivessem RMSE ligeiramente menor, a diferença ficou dentro de 1 desvio padrão — e o modelo mais simples foi escolhido pelo critério 1-SE. [~1,5 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Análise do Treinamento do Modelo Vencedor}
+  \begin{columns}
+    \begin{column}{.5\linewidth}
+      \includegraphics[width=\linewidth]{tcc_images/chap06/model_selection/learning_curve_baseline.png}
     \end{column}
     \begin{column}{.5\linewidth}
       \includegraphics[width=\linewidth]{tcc_images/chap06/model_selection/agmd_stage1_baseline_dados_att_com_var_com_phy_error_vs_sweepparam_KerasMLP_BaselineSearch.png}
     \end{column}
   \end{columns}
+  \note{A curva de aprendizado mostra convergência estável com Early Stopping. O gráfico de sensibilidade à taxa de aprendizado mostra que o Stage 1 encontrou o melhor compromisso entre erro de treino e validação. [~1 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Híbridos vs MLP Pura}
+  \centering
+  \begin{tabular}{lccc}
+    \toprule
+    \textbf{Modelo} & \textbf{Alim} & \textbf{Ref} & \textbf{Flux} \\
+    \midrule
+    FrozenBaseline (MLP pura) & 0,205 & 0,431 & 0,065 \\
+    \textbf{ZohanResidual (base Alim)} & \textbf{0,141} & 0,317 & \textbf{0,060} \\
+    \textbf{ZohanHRNN (base Alim)} & 0,161 & \textbf{0,211} & 0,064 \\
+    \bottomrule
+  \end{tabular}
   \vfill
   \begin{columns}
-    \begin{column}{.33\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/model_selection/learning_curve_baseline.png}
+    \begin{column}{.5\linewidth}
+      \textbf{Ganho do ZohanResidual:}
+      \begin{Item}
+        \item Alim: 0,205 $\rightarrow$ 0,141 (31\%)
+        \item Flux: 0,065 $\rightarrow$ 0,060 (8\%)
+      \end{Item}
     \end{column}
-    \begin{column}{.33\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/model_selection/sweep_l2_ZohanResidual.png}
+    \begin{column}{.5\linewidth}
+      \textbf{Ganho do ZohanHRNN:}
+      \begin{Item}
+        \item Ref: 0,431 $\rightarrow$ 0,211 (51\%)
+        \item Alim: 0,205 $\rightarrow$ 0,161 (21\%)
+      \end{Item}
     \end{column}
   \end{columns}
-  \note{O ZohanResidual (base Alim) foi selecionado para Alim e Flux. O ZohanHRNN (base Alim) foi selecionado para Ref por ser o único dentro do limiar 1-SE. O critério prioriza o modelo mais parcimonioso com desempenho estatisticamente equivalente. [~1,5 min]}
+  \note{A incorporação de informação física via arquiteturas híbridas trouxe ganhos significativos em relação à MLP pura. O ZohanResidual reduziu o RMSE do Alim em 31\% e do Flux em 8\%. O ZohanHRNN reduziu o RMSE do Ref em impressionantes 51\%. [~1 min]}
 \end{slide}
 %========================================================================
 
