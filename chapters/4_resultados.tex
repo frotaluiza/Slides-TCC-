@@ -38,7 +38,8 @@
     \textbf{Métrica} & \textbf{Fluxo} & \textbf{T$_{alim,out}$} & \textbf{T$_{ref,out}$} \\
     \midrule
     RMSE modelo 0D & 0,215 & 1,613 & 0,927 \\
-    RMSE ZohanResidual & \textbf{0,061} & \textbf{0,290} & \textbf{0,385} \\
+    RMSE ZohanResidual (base Alim) & \textbf{0,060} & \textbf{0,141} & 0,317 \\
+    RMSE ZohanHRNN (base Alim) & 0,064 & 0,161 & \textbf{0,211} \\
     \bottomrule
   \end{tabular}
   \vfill
@@ -56,7 +57,7 @@
       \includegraphics[width=\linewidth]{tcc_images/chap06/compare_flux_0d.png}
     \end{column}
   \end{columns}
-  \note{O modelo 0D captura tendências mas com dispersão. O ZohanResidual reduz o RMSE do fluxo em 72\% (0,215 $\rightarrow$ 0,061). [~1 min]}
+  \note{O modelo 0D captura tendências mas com dispersão. O ZohanResidual reduz o RMSE do fluxo em 72\% (0,215 $\rightarrow$ 0,060) e o da temperatura de alimentação em 91\% (1,613 $\rightarrow$ 0,141). [~1 min]}
 \end{slide}
 %========================================================================
 
@@ -68,12 +69,9 @@
       \textbf{Modelo} & \multicolumn{2}{c}{\textbf{T$_{alim,out}$}} & \multicolumn{2}{c}{\textbf{T$_{ref,out}$}} & \multicolumn{2}{c}{\textbf{Fluxo}} \\
       & R$^2$ & RMSE & R$^2$ & RMSE & R$^2$ & \textbf{RMSE} \\
       \midrule
-      \textbf{ZohanResidual} & 0.951 & 0.290 & 0.990 & 0.385 & \textbf{0.978} & \textbf{0.061} \\
-      HRNN & 0.972 & 0.221 & 0.991 & 0.377 & 0.963 & 0.078 \\
-      MLP sklearn & 0.922 & 0.368 & 0.925 & 1.067 & 0.970 & 0.071 \\
+      \textbf{ZohanResidual (base Alim)} & 0.981 & \textbf{0.141} & 0.989 & 0.317 & 0.972 & \textbf{0.060} \\
+      \textbf{ZohanHRNN (base Alim)} & 0.975 & 0.161 & 0.995 & \textbf{0.211} & 0.968 & 0.064 \\
       OLS & 0.965 & 0.246 & 0.996 & 0.251 & 0.952 & 0.089 \\
-      Luc & 0.931 & 0.347 & 0.985 & 0.482 & 0.954 & 0.087 \\
-      FrozenBaseline & 0.968 & 0.237 & 0.990 & 0.394 & 0.949 & 0.091 \\
       Modelo 0D & $-0.498$ & 1.613 & 0.943 & 0.927 & 0.719 & 0.215 \\
       \bottomrule
     \end{tabular}
@@ -87,19 +85,18 @@
       \includegraphics[width=\linewidth]{tcc_images/chap06/best_per_family_rmse.png}
     \end{column}
   \end{columns}
-  \note{O ZohanResidual é o melhor para fluxo (RMSE 0,061), mas a OLS tem melhor desempenho nas temperaturas. O trade-off entre variáveis é evidente: modelos híbridos concentram ganho no fluxo. [~1,5 min]}
+  \note{O ZohanResidual (base Alim) é o melhor para fluxo (0,060) e temperatura de alimentação (0,141). O ZohanHRNN (base Alim) vence para temperatura de saída (0,211). A seleção foi feita pelo critério 1-SE entre famílias, priorizando o modelo mais simples dentro de 1 desvio padrão do melhor. [~1,5 min]}
 \end{slide}
 %========================================================================
 
-\begin{slide}{Seleção do Modelo Vencedor}
+\begin{slide}{Seleção dos Modelos Vencedores}
   \begin{columns}
     \begin{column}{.5\linewidth}
-      \textbf{Critério 1-SE + complexidade:}
+      \textbf{Critério 1-SE entre famílias:}
       \begin{Item}
-        \item ZohanResidual com RMSE 0,061 (fluxo)
-        \item Redução de 31\% vs melhor linear (OLS, 0,089)
-        \item Redução de 72\% vs modelo 0D (0,215)
-        \item Baixa sensibilidade ao L2 $\rightarrow$ robusto
+        \item ZohanResidual (base Alim): Alim (0,141) + Flux (0,060)
+        \item ZohanHRNN (base Alim): Ref (0,211) — único no limiar
+        \item Seleção pelo menor número de parâmetros dentro de 1 DP do melhor
       \end{Item}
     \end{column}
     \begin{column}{.5\linewidth}
@@ -115,11 +112,11 @@
       \includegraphics[width=\linewidth]{tcc_images/chap06/model_selection/sweep_l2_ZohanResidual.png}
     \end{column}
   \end{columns}
-  \note{O ZohanResidual foi selecionado pelo critério hierárquico: melhor RMSE, dentro de 1-SE, e menor complexidade. O modelo é robusto à variação de L2, como mostra o gráfico de sensibilidade. [~1,5 min]}
+  \note{O ZohanResidual (base Alim) foi selecionado para Alim e Flux. O ZohanHRNN (base Alim) foi selecionado para Ref por ser o único dentro do limiar 1-SE. O critério prioriza o modelo mais parcimonioso com desempenho estatisticamente equivalente. [~1,5 min]}
 \end{slide}
 %========================================================================
 
-\begin{slide}{Comparação Final — ZohanResidual vs Modelo 0D}
+\begin{slide}{Comparação Final — Modelos Vencedores vs Modelo 0D}
   \begin{columns}
     \begin{column}{.33\linewidth}
       \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_ZohanResidual_Flux.png}
@@ -137,12 +134,13 @@
     \toprule
     & \textbf{Fluxo} & \textbf{T$_{alim,out}$} & \textbf{T$_{ref,out}$} \\
     \midrule
-    ZohanResidual & \textbf{0,061} & 0,290 & 0,385 \\
-    OLS (melhor linear) & 0,089 & \textbf{0,246} & \textbf{0,251} \\
+    ZohanResidual (base Alim) & \textbf{0,060} & \textbf{0,141} & 0,317 \\
+    ZohanHRNN (base Alim) & 0,064 & 0,161 & \textbf{0,211} \\
+    OLS (melhor clássico) & 0,089 & 0,246 & 0,251 \\
     Modelo 0D & 0,215 & 1,613 & 0,927 \\
     \bottomrule
   \end{tabular}
-  \note{Comparação final: ZohanResidual é o melhor para fluxo, OLS para temperaturas. A escolha depende do objetivo: se o foco é produtividade, o híbrido é a melhor opção. [~1 min]}
+  \note{Comparação final: ZohanResidual para fluxo e temperatura de alimentação, ZohanHRNN para temperatura de saída do circuito de resfriamento. A seleção por target com critério 1-SE permite que cada alvo tenha o modelo mais adequado. [~1 min]}
 \end{slide}
 %========================================================================
 
@@ -154,12 +152,13 @@
       \textbf{Tópico} & \textbf{Conclusão} \\
       \midrule
       Análise Exploratória & Temperaturas com correlação linear forte; fluxo multivariado \\
-      Modelo Físico 0D & Referência fenomenológica, mas RMSE alto (0,215 no fluxo) \\
-      Modelo Vencedor & ZohanResidual: RMSE 0,061 (fluxo), redução de 31\% vs OLS \\
-      Trade-off & Híbrido melhor para fluxo; OLS melhor para temperaturas \\
-      Generalização & GroupKFold garantiu avaliação realista entre regimes \\
+      Modelo Físico 0D & Referência fenomenológica, RMSE 0,215 no fluxo \\
+      Modelo Vencedor (Flux) & ZohanResidual (base Alim): RMSE 0,060 \\
+      Modelo Vencedor (Alim) & ZohanResidual (base Alim): RMSE 0,141 \\
+      Modelo Vencedor (Ref) & ZohanHRNN (base Alim): RMSE 0,211 \\
+      Seleção & Critério 1-SE entre famílias + menor complexidade (parâmetros) \\
       \bottomrule
     \end{tabular}
-  \note{Resumo dos principais resultados: o modelo híbrido ZohanResidual foi o vencedor para predição do fluxo de permeado, com RMSE de 0,061. Modelos lineares continuam sendo boa opção para temperaturas. [~30s]}
+  \note{Resumo: o ZohanResidual (base Alim) vence para fluxo e temperatura de alimentação; o ZohanHRNN (base Alim) vence para temperatura de saída. A seleção foi feita pelo critério 1-SE entre famílias. [~30s]}
 \end{slide}
 %========================================================================

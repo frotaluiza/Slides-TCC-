@@ -8,29 +8,29 @@
       \toprule
       \textbf{Aspecto} & \textbf{Resultado} & \textbf{Implicação} \\
       \midrule
-      \textbf{Melhor modelo}
-      & ZohanResidual: RMSE 0,061 (fluxo), redução de 31\% vs OLS (0,089)
-      & Arquitetura residual é a mais eficaz para predição do fluxo \\
+      \textbf{Melhores modelos}
+      & ZohanResidual (Alim): Flux 0,060, Alim 0,141
+      & Arquitetura residual mais simples foi suficiente para 2 targets \\
       \midrule
-      \textbf{Modelos lineares}
-      & OLS: melhor para T$_{out}$ (RMSE 0,246 e 0,251)
-      & Comportamento térmico é aproximadamente linear na faixa estudada \\
+      \textbf{Seleção 1-SE}
+      & ZohanHRNN (Alim): Ref 0,211 — único no limiar
+      & Critério parcimonioso escolheu modelo mais simples c/ performance equivalente \\
       \midrule
       \textbf{Validação}
       & GroupKFold por regimes evitou vazamento; critério 1-SE + complexidade
-      & Pipeline mais robusto que a literatura (que usa hold-out simples) \\
+      & Pipeline mais robusto que a literatura (hold-out simples) \\
       \midrule
       \textbf{Hibridização}
       & 4 arquiteturas implementadas; residuais superaram regularização na perda
       & Estratégia de correção residual é a mais promissora \\
       \midrule
-      \textbf{Limitação}
-      & Modelo híbrido piora desempenho nas temperaturas em relação ao OLS
-      & Sugere seleção multi-objetivo ou modelos distintos por variável \\
+      \textbf{Modelos lineares}
+      & OLS: competitivo para temperaturas (Ref 0,251) mas superado pela HRNN
+      & Comportamento térmico é parcialmente linear, mas híbridos trazem ganho adicional \\
       \bottomrule
     \end{tabular}
   }
-  \note{Conclusões principais: ZohanResidual venceu para fluxo com RMSE 0,061; OLS é melhor para temperaturas; o pipeline com GroupKFold é mais robusto que a literatura; arquiteturas residuais são mais eficazes que regularização na perda. [~1,5 min]}
+  \note{Conclusões principais: ZohanResidual (base Alim) vence para fluxo e temperatura de alimentação; ZohanHRNN (base Alim) vence para Ref. O critério 1-SE entre famílias com número de parâmetros como medida de complexidade guiou a seleção. [~1,5 min]}
 \end{slide}
 %========================================================================
 
@@ -41,20 +41,20 @@
       \begin{Item}
         \item Pipeline com validação cruzada agrupada por regimes (GroupKFold)
         \item 4 arquiteturas híbridas físico--dados implementadas e comparadas
-        \item Critério de seleção parcimoniosa: regra 1-SE + menor complexidade
-        \item ZohanResidual: RMSE 0,061 — redução de 31\% vs melhor linear
+        \item Critério 1-SE entre famílias com número de parâmetros como medida universal de complexidade
+        \item Seleção por target: ZohanResidual (Alim) p/ Alim+Flux, ZohanHRNN (Alim) p/ Ref
       \end{Item}
     \end{column}
     \begin{column}{.5\linewidth}
       \textbf{Trabalhos futuros:}
       \begin{Item}
-        \item PINN com função de perda híbrida (dados + regularização física)
-        \item PINN treinada com dados sintéticos do modelo 0D como substituto na arquitetura residual
-        \item Otimização multi-objetivo (fluxo + temperaturas)
+        \item PINN puramente física (EDOs) + arquitetura residual (substituir coluna phy)
+        \item PINN com EDOs + dados experimentais (comparar performances)
+        \item Busca multi-objetivo com pesos customizáveis entre alvos
         \item Novos dados experimentais em faixas operacionais ampliadas
       \end{Item}
     \end{column}
   \end{columns}
-  \note{As principais contribuições são o pipeline com GroupKFold, a comparação de 4 arquiteturas híbridas, e o critério 1-SE com complexidade. Como trabalhos futuros, destaco as duas abordagens com PINNs e a otimização multi-objetivo. [~1,5 min]}
+  \note{As principais contribuições são o pipeline com GroupKFold, a comparação de 4 arquiteturas híbridas, e o critério 1-SE entre famílias com número de parâmetros. Como trabalhos futuros: duas abordagens com PINNs (puramente física + residual, e híbrida com dados) e otimização multi-objetivo. [~1,5 min]}
 \end{slide}
 %========================================================================
