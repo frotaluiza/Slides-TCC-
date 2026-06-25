@@ -132,12 +132,12 @@
   \centering
   \begin{tabular}{lcccc}
     \toprule
-    & \textbf{Fluxo} & \textbf{T$_{alim,out}$} & \textbf{T$_{ref,out}$} \\
+    & \textbf{Fluxo} & \textbf{T$_{alim,out}$} & \textbf{T$_{ref,out}$} & \textbf{Melhoria (vs 0D)} \\
     \midrule
-    ZohanResidual (base Alim) & \textbf{0,060} & \textbf{0,141} & 0,317 \\
-    ZohanHRNN (base Alim) & 0,064 & 0,161 & \textbf{0,211} \\
-    OLS (melhor clássico) & 0,089 & 0,246 & 0,251 \\
-    Modelo 0D & 0,215 & 1,613 & 0,927 \\
+    ZohanResidual (base Alim) & \textbf{0,060} & \textbf{0,141} & 0,317 & 72\% / 91\% / 66\% \\
+    ZohanHRNN (base Alim) & 0,064 & 0,161 & \textbf{0,211} & 70\% / 90\% / 77\% \\
+    OLS (melhor clássico) & 0,089 & 0,246 & 0,251 & 59\% / 85\% / 73\% \\
+    Modelo 0D & 0,215 & 1,613 & 0,927 & --- \\
     \bottomrule
   \end{tabular}
   \note{Comparação final: ZohanResidual para fluxo e temperatura de alimentação, ZohanHRNN para temperatura de saída do circuito de resfriamento. A seleção por target com critério 1-SE permite que cada alvo tenha o modelo mais adequado. [~1 min]}
