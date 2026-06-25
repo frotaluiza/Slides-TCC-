@@ -157,6 +157,25 @@
 \end{slide}
 %========================================================================
 
+\begin{slide}{O que a Hibridização está Corrigindo?}
+  \begin{columns}
+    \begin{column}{.55\linewidth}
+        \begin{Item}
+          \item OLS explica $>95\%$ da variância de todos os targets $\rightarrow$ região aproximadamente linear
+          \item Modelos não lineares puros (árvores) têm desempenho \textbf{pior} que OLS
+          \item \textbf{Conclusão:} o ganho híbrido não vem de capturar não linearidades, mas de \textbf{corrigir o viés} dos modelos puramente orientados por dados
+          \item A informação física (modelo 0D) fornece uma referência fenomenológica que reduz o erro sistemático da MLP pura, especialmente quando os dados são escassos (174 amostras)
+        \end{Item}
+    \end{column}
+    \begin{column}{.45\linewidth}
+      \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_ZohanResidual_Flux.png}\\
+      \centering\small Linha y=x: concordância ideal (predito = experimental)
+    \end{column}
+  \end{columns}
+  \note{O ganho dos híbridos não é capturar relações não lineares — a região é aproximadamente linear (OLS com R² > 0,95). O ganho é corrigir o viés dos modelos data-driven usando a física como referência. A linha y=x representa predito = experimental. [~1 min]}
+\end{slide}
+%========================================================================
+
 \begin{slide}{Comparação Final — Modelos Vencedores vs Modelo 0D}
   \begin{columns}
     \begin{column}{.33\linewidth}
@@ -192,8 +211,9 @@
       \toprule
       \textbf{Tópico} & \textbf{Conclusão} \\
       \midrule
-      Análise Exploratória & Temperaturas com correlação linear forte; fluxo multivariado \\
+      Análise Exploratória & Pearson/Spearman próximos; OLS com R$^2>0,95$ em todos os alvos \\
       Modelo Físico 0D & Referência fenomenológica, RMSE 0,215 no fluxo \\
+      Ganho Híbrido & Correção de viés via física (não captura de não linearidades) \\
       Modelo Vencedor (Flux) & ZohanResidual (base Alim): RMSE 0,060 \\
       Modelo Vencedor (Alim) & ZohanResidual (base Alim): RMSE 0,141 \\
       Modelo Vencedor (Ref) & ZohanHRNN (base Alim): RMSE 0,211 \\
