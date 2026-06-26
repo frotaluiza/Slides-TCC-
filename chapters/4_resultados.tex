@@ -72,7 +72,11 @@
       \bottomrule
     \end{tabular}
   }
-  \vfill
+  \note{O ZohanResidual (base Alim) é o melhor para fluxo (0,060) e temperatura de alimentação (0,141). O ZohanHRNN (base Alim) vence para temperatura de saída (0,211). A seleção foi feita pelo critério 1-SE entre famílias, priorizando o modelo mais simples dentro de 1 desvio padrão do melhor. [~1,5 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Gráficos de Desempenho}
   \begin{columns}
     \begin{column}{.5\linewidth}
       \includegraphics[width=\linewidth]{tcc_images/chap06/rmse_by_target_grouped.png}
@@ -81,7 +85,7 @@
       \includegraphics[width=\linewidth]{tcc_images/chap06/best_per_family_rmse.png}
     \end{column}
   \end{columns}
-  \note{O ZohanResidual (base Alim) é o melhor para fluxo (0,060) e temperatura de alimentação (0,141). O ZohanHRNN (base Alim) vence para temperatura de saída (0,211). A seleção foi feita pelo critério 1-SE entre famílias, priorizando o modelo mais simples dentro de 1 desvio padrão do melhor. [~1,5 min]}
+  \note{O gráfico da esquerda mostra o RMSE por target para os principais modelos. O da direita mostra o melhor modelo de cada família, permitindo comparar o ganho das arquiteturas híbridas em relação às lineares e neurais. [~40s]}
 \end{slide}
 %========================================================================
 
