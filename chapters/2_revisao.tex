@@ -33,32 +33,39 @@
 %========================================================================
 
 \begin{slide}{Panorama V-AGMD/AGMD}
-  \footnotesize
+  \scriptsize
   \centering
-  \resizebox{0.85\textwidth}{!}{
-    \begin{tabular}{p{0.17\linewidth} p{0.09\linewidth} p{0.1\linewidth} p{0.28\linewidth} p{0.22\linewidth}}
+  \resizebox{\textwidth}{!}{
+    \begin{tabular}{p{0.18\linewidth} p{0.09\linewidth} p{0.09\linewidth} p{0.32\linewidth} p{0.22\linewidth}}
       \toprule
-      \textbf{Paper} & \textbf{Abordagem} & \textbf{Tecnologia} & \textbf{Modelo treinado} & \textbf{Variáveis preditas} \\
+      \textbf{Trabalho} & \textbf{Abordagem} & \textbf{Tecnologia} & \textbf{Modelo utilizado} & \textbf{Variáveis preditas} \\
       \midrule
-      Kim (2022) & Data-driven & V-AGMD & Regressão Linear Múltipla, Rede Neural Generalizada, MLP & Fluxo \\
-      Requena (2023) & Data-driven & V-AGMD & Rede Neural Artificial MLP & SRF, MLR \\
+      \multicolumn{5}{l}{\textbf{Modelos físicos (primeiros princípios)}} \\
+      Alsaadi (2013) & Física & AGMD & Modelo 1D distribuído (dif. molecular + Knudsen) & Fluxo \\
+      Ansari (2022) & Física & AGMD & Modelo 2D com CFD & Fluxo \\
       \textbf{Lisboa} (2024) & Física & V-AGMD & Modelo físico reduzido 0D & Fluxo, T$_{out}$ \\
       Andrés-Mañas (2023) & Física & V-AGMD & Balanços de massa e energia & Fluxo, T$_{out}$, GOR, SEC \\
-      Abdulrahim (2026) & Híbrido & AGMD & CFD + Rede Neural \textit{surrogate} & Fluxo, STEC \\
-      \textbf{Andrés-Mañas} (PINN) & \textbf{Híbrido} & \textbf{VMD} & \textbf{Physics-Informed Neural Network} & \textbf{Fluxo, GOR} \\
       \midrule
-      Khayet (2012a) & Data-driven & AGMD & Rede Neural \textit{feed-forward} (retropropagação) & Fluxo, rejeição \\
-      Shirazian (2017) & Data-driven & AGMD & Rede Neural + Otimização por Enxame de Partículas & Fluxo, GOR, T$_{out}$ \\
-      Yang (2023) & Data-driven & AGMD & Regressão Linear, RNA BP, RNA RBF & Fluxo, GOR \\
-      Jawed (2025) & Data-driven & AGMD (foto) & RNA + Algoritmo Genético; Árvore, Floresta Aleatória & Fluxo \\
-      Khalifa (2017) & Otimização & AGMD & Modelo físico + Otimização por Colônia de Formigas/PSO & Fluxo \\
+      \multicolumn{5}{l}{\textbf{Modelos orientados por dados}} \\
+      Kim (2022) & Data-driven & V-AGMD & Reg. Linear Múltipla, RNA Generalizada, MLP & Fluxo \\
+      Requena (2023) & Data-driven & V-AGMD & RNA MLP (Levenberg-Marquardt) & SRF, MLR \\
+      Khayet (2012a) & Data-driven & AGMD & RNA \textit{feed-forward} (retropropagação) & Fluxo, rejeição \\
+      Shirazian (2017) & Data-driven & AGMD & RNA + Otimização por Enxame de Partículas & Fluxo, GOR, T$_{out}$ \\
+      Jawed (2025) & Data-driven & AGMD (foto) & RNA + AG; Árvore, Floresta Aleatória & Fluxo \\
+      Khalifa (2017) & Otimização & AGMD & Modelo físico + Otimização (formigas/PSO) & Fluxo \\
       \midrule
-      \textbf{Este trabalho} & \textbf{Híbrido} & \textbf{V-AGMD} & \textbf{4 famílias: lineares, árvores, redes neurais e híbridas} & \textbf{Fluxo, T$_{out\_alim}$, T$_{out\_ref}$} \\
+      \multicolumn{5}{l}{\textbf{Abordagens híbridas}} \\
+      \textbf{Helali} (2025) & Híbrido & RO & Physics-Informed Neural Network & TDS, $\Delta$P \\
+      Zheng (2021) & Híbrido & Geral & Aprendizado residual baseado em conhecimento & Metodologia \\
+      Nabian (2020) & Híbrido & Geral & Regularização física na função de perda & Metodologia \\
+      Abdulrahim (2026) & Híbrido & AGMD & CFD + Rede Neural \textit{surrogate} & Fluxo, SEC \\
+      \midrule
+      \textbf{Este trabalho} & \textbf{Híbrido} & \textbf{V-AGMD} & \textbf{4 famílias: lineares, árvores, neurais e híbridas} & \textbf{Fluxo, T$_{out\_alim}$, T$_{out\_ref}$} \\
       \bottomrule
     \end{tabular}
   }
-  \note{Trabalhos de modelagem em AGMD e V-AGMD. Este trabalho é o único híbrido para V-AGMD, com 4 famílias de modelos e predição simultânea de fluxo e temperaturas. [~1 min]}
-    \end{slide}
+  \note{Tabela consolidada da revisão bibliográfica, organizada por tipo de abordagem. Destaque para o reduzido número de trabalhos híbridos em MD — este trabalho é o único híbrido para V-AGMD. [~1,5 min]}
+\end{slide}
 %========================================================================
 
 \begin{slide}{Lacunas e Contribuições}
@@ -66,9 +73,9 @@
     \begin{column}{.5\linewidth}
       \textbf{Lacunas na literatura:}
       \begin{Item}
-        \item Divisão aleatória simples (70/15/15 ou 80/20)
         \item Validação cruzada raramente usada
-        \item Seleção de hiperparâmetros heurística
+        \item Seleção de hiperparâmetros não sistemática
+        \item Poucos trabalhos em MD com abordagens híbridas
       \end{Item}
     \end{column}
     \begin{column}{.5\linewidth}
