@@ -61,29 +61,6 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{Busca de Hiperparâmetros}
-  \footnotesize
-  \centering
-  \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.18\linewidth} p{0.35\linewidth} p{0.35\linewidth}}
-      \toprule
-      \textbf{Família} & \textbf{Hiperparâmetros buscados} & \textbf{Observações} \\
-      \midrule
-      OLS & — & Referência linear sem regularização \\
-      Ridge & $\alpha \in \{10^{-3}, 10^{-2}, 10^{-1}, 1, 10, 100\}$ & Regularização L2 \\
-      Lasso / ElasticNet & $\alpha \in \{10^{-4}$ a $1\}$; $l_1$-ratio $\in \{0,1$ a $0,9\}$ & MultiTask e independente \\
-      Árvore decisão & max\_depth $\in \{2$ a $6\}$; min\_samples\_leaf $\in \{1$ a $10\}$; ccp\_alpha & Grid search completo \\
-      Random Forest & n\_estimators $\in \{200,400,600\}$; max\_depth, max\_features & Ensemble \\
-      Gradient Boosting & n\_estimators $\in \{50$ a $400\}$; learning\_rate $\in \{0,01$ a $0,1\}$; max\_depth $\in \{1,2,3\}$ & Ensemble sequencial \\
-      MLP sklearn & hidden\_layer\_sizes $\in \{(32,),(64,),(64,32),(128,64)\}$; $\alpha$, lr & 4 arquiteturas \\
-      KerasMLP baseline & 9 arq., lr $\in \{10^{-3},3\times10^{-4}\}$, l2 $\in \{0,10^{-6},10^{-5}\}$ & ReLU, Adam, Huber, 200 épocas \\
-      Híbridos (HPD, Residual, HRNN) & l2 $\in \{\text{l2}_{base}, 0, 10^{-6}, 10^{-5}, 10^{-4}\}$ & Busca restrita (congelando baseline) \\
-      \bottomrule
-    \end{tabular}
-  }
-  \note{Cada família teve espaços de busca específicos. Modelos lineares variam regularização, árvores controlam profundidade, redes neurais buscam arquitetura e taxa de aprendizado. Os híbridos têm busca restrita — apenas o l2 varia, mantendo a baseline fixa. [~1,5 min]}
-\end{slide}
-%========================================================================
 
 \begin{slide}{Arquiteturas Híbridas}
   \small
