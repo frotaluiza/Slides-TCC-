@@ -93,19 +93,20 @@
   \begin{columns}
     \begin{column}{\textwidth}
       \begin{Item}
-        \item \textbf{ZohanResidual (base Alim):} selecionado para Alim (0,141) e Flux (0,060)
-        \item \textbf{ZohanHRNN (base Alim):} selecionado para Ref (0,211) — único no limiar 1-SE
-        \item Redes especializadas para Ref e Flux eram mais complexas:
+        \item A baseline foi fixada em 1 camada [256] para todos os alvos (Alim)
+        \item A busca de HPs gerou redes mais complexas para cada target específico:
         \begin{itemize}
           \item Ref: 2 camadas [256,128]
           \item Flux: 3 camadas [128,64,32]
-          \item Alim: 1 camada [512]
+          \item Alim: 1 camada [256]
         \end{itemize}
-        \item O ganho de RMSE não superou 1 desvio padrão → critério 1-SE selecionou o modelo mais simples
+        \item Essas redes tiveram desempenho marginalmente melhor no seu target prioritário
+        \item Porém, o ganho não superou 1 desvio padrão da validação cruzada
+        \item \textbf{Critério 1-SE:} seleciona-se o modelo mais simples cujo RMSE está dentro de 1 desvio padrão do melhor — vence a baseline Alim, menos complexa
       \end{Item}
     \end{column}
   \end{columns}
-  \note{O ZohanResidual (base Alim) venceu para Alim e Flux porque, embora as redes especializadas para Ref e Flux tivessem RMSE ligeiramente menor, a diferença ficou dentro de 1 desvio padrão — e o modelo mais simples foi escolhido pelo critério 1-SE. [~1,5 min]}
+  \note{A busca de hiperparâmetros gerou redes especializadas para cada target — Ref com 2 camadas [256,128] e Flux com 3 camadas [128,64,32] — que tiveram RMSE ligeiramente menor que a baseline Alim de 1 camada [256]. Porém, como a validação cruzada tem 3 folds (um por regime), o desvio padrão do RMSE entre os folds mede a variabilidade do desempenho. Se a diferença entre a rede complexa e a baseline é menor que esse desvio padrão, não podemos afirmar que a rede complexa é realmente melhor — a diferença pode ser apenas ruído amostral. Pelo critério 1-SE, escolhemos então o modelo mais simples: a baseline Alim com 1 camada [256]. [~2 min]}
 \end{slide}
 %========================================================================
 
