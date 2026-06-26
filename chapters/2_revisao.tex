@@ -10,19 +10,19 @@
       \midrule
       \textbf{Física}
       & AGMD, CFD, \textbf{V-AGMD}
-      & Modelos distribuídos (Alsaadi, 2013; Ansari, 2022), reduzido 0D (\textbf{Lisboa}, 2024) e físico (\textbf{Andrés-Mañas}, 2023, V-AGMD)
+      & Modelos distribuídos (1D, CFD), reduzido 0D e balanços globais de massa e energia
       & Interpretabilidade física
       & Alto custo; simplificações \\
       \midrule
       \textbf{Data-driven}
       & \textbf{AGMD}, VMD
-      & ANNs p/ predição de fluxo e temperaturas (Ibnouf et al.; Mittal et al.)
+      & Redes neurais e regressão p/ predição de fluxo e temperaturas
       & Alta flexibilidade; aprox. não linear
       & Generalização limitada \\
       \midrule
       \textbf{Híbridos (físico + dados)}
       & AGMD, VMD, \textbf{V-AGMD}
-      & PINNs (\textbf{Andrés-Mañas}, VMD); CFD→ANN (Abdulrahim, 2026, AGMD); residuais (\textbf{este trabalho}, V-AGMD)
+      & PINNs, CFD + surrogate e modelos residuais com correção física
       & Combina física + dados
       & Complexidade de implementação \\
       \bottomrule
