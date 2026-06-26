@@ -1,6 +1,58 @@
 ﻿\section{Fundamentação Teórica}
 
-\begin{slide}{MD Física e Modelo Reduzido 0D}
+\begin{slide}{Princípios da Destilação por Membranas}
+  \begin{columns}
+    \begin{column}{.55\linewidth}
+      \begin{Item}
+        \item Processo de separação térmico com membrana \textbf{hidrofóbica} e microporosa
+        \item Força motriz: \textbf{gradiente térmico} $\rightarrow$ diferença de pressão parcial de vapor
+        \item Apenas a fase vapor atravessa os poros (membrana não-molhável)
+        \item Mecanismo: evaporação na interface quente $\rightarrow$ difusão nos poros $\rightarrow$ condensação no lado frio
+      \end{Item}
+      \vfill
+      \textbf{Configurações básicas:}
+      \begin{Item}
+        \item \textbf{DCMD}: contato direto — simples, mas altas perdas condutivas
+        \item \textbf{AGMD}: lacuna de ar — reduz perdas, mas resistência extra ao vapor
+        \item \textbf{VMD}: vácuo no permeado — maior fluxo, mas condensação externa
+        \item \textbf{SGMD}: gás de arraste — controle adicional necessário
+      \end{Item}
+    \end{column}
+    \begin{column}{.45\linewidth}
+      \includegraphics[width=\linewidth]{tcc_images/chap03/Model-of-heat-and-mass-transfer-in-the-AGMD.png}
+    \end{column}
+  \end{columns}
+  \note{A destilação por membranas é um processo térmico de separação. A água salgada é aquecida e circula por um lado de uma membrana hidrofóbica — ela não permite a passagem de líquido, mas o vapor consegue atravessar os poros. A força motriz é a diferença de temperatura: do lado quente a água evapora, o vapor migra pelos poros e condensa do lado frio, gerando água pura. Existem quatro configurações principais: DCMD, AGMD, VMD e SGMD. A V-AGMD, usada neste trabalho, combina o espaço de ar da AGMD com vácuo parcial, reduzindo a resistência ao transporte de vapor sem perder o isolamento térmico. [~2 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Transporte de Massa e Calor em V-AGMD}
+  \begin{columns}
+    \begin{column}{.55\linewidth}
+      \textbf{Transporte de massa:}
+      \begin{Item}
+        \item Modelo \textit{Dusty Gas}: difusão molecular + difusão de Knudsen
+        \item Fluxo mássico simplificado: $j_w = B_{eq}(p_{mf} - p_{gl})$
+        \item Resistências em série: membrana ($B_m^{-1}$) + espaço de ar ($B_g^{-1}$)
+        \item Efeito da salinidade: $p_{mf} = a_w(1-x_{salt})p_v$
+      \end{Item}
+      \vfill
+      \textbf{Transporte de calor:}
+      \begin{Item}
+        \item Convecção nos canais + condução na membrana/ar + calor latente do vapor
+        \item Rede de resistências equivalentes: $q'' = (T_f - T_c)/R_{eq}$
+        \item Calor latente: $q_v'' = j_w h_{lv}$
+      \end{Item}
+    \end{column}
+    \begin{column}{.45\linewidth}
+      \includegraphics[width=\linewidth]{tcc_images/chap03/resistencias.png}
+    \end{column}
+  \end{columns}
+  \note{No transporte de massa, o modelo Dusty Gas combina difusão molecular e difusão de Knudsen. O fluxo de permeado é proporcional à diferença de pressão parcial entre a interface quente e a superfície de condensação. A salinidade reduz a pressão de vapor — isso é modelado pela atividade da água. No transporte de calor, atuam três mecanismos acoplados: convecção nos canais, condução através da membrana e do ar, e o calor latente carregado pelo vapor. Tudo é representado como uma rede de resistências térmicas equivalentes. [~1,5 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Modelo Físico Reduzido 0D}
   \small
   \centering
   \resizebox{\textwidth}{!}{
@@ -8,30 +60,27 @@
       \toprule
       \textbf{Tópico} & \textbf{Descrição} & \textbf{Aplicação no TCC} \\
       \midrule
-      \textbf{Princípios da MD}
-      & Migração de vapor por membrana hidrofóbica; força motriz: gradiente térmico; evaporação $\rightarrow$ transporte nos poros $\rightarrow$ condensação
-      & Base física do processo \\
+      \textbf{O que é?}
+      & Formulação de parâmetros \textbf{concentrados} (Lisboa, 2024); balanços globais de massa e energia; resistências equivalentes; sem perfis espaciais
+      & Referência física do pipeline \\
       \midrule
-      \textbf{Configuração V-AGMD}
-      & Espaço de ar + vácuo parcial $\rightarrow$ reduz resistência ao vapor e aumenta fluxo, mantendo isolamento térmico
-      & Configuração adotada no projeto \\
-      \midrule
-      \textbf{Modelo físico reduzido 0D}
-      & Parâmetros concentrados (Lisboa, 2024); balanços globais de massa e energia; resistências equivalentes; sem perfis espaciais
-      & Referência física para comparação e entrada das arquiteturas híbridas \\
-      \midrule
-      \textbf{Vantagens do modelo 0D}
+      \textbf{Vantagens}
       & Baixo custo computacional; estimativas rápidas; consistência termodinâmica
-      & Viabiliza o pipeline de modelagem \\
+      & Permite gerar previsões físicas sem CFD \\
       \midrule
-      \textbf{Limitações do modelo 0D}
-      & Ignora gradientes axiais, polarização térmica, fouling e efeitos hidrodinâmicos
-      & Justifica abordagens híbridas \\
+      \textbf{Limitações}
+      & Ignora gradientes axiais, polarização térmica/concentração, fouling e efeitos hidrodinâmicos
+      & Justifica as abordagens híbridas \\
+      \midrule
+      \textbf{Papel no TCC}
+      & 3 funções: referência física, comparativo com data-driven, e fonte de informação para híbridos
+      & Entrada das arquiteturas residuais \\
       \bottomrule
     \end{tabular}
   }
-  \note{A fundamentação começa com a física da MD: uma membrana hidrofóbica separa água quente de uma câmara fria, e o vapor migra impulsionado pelo gradiente térmico. O modelo 0D simplifica o sistema com balanços globais, sendo base para as arquiteturas híbridas. [~1,5 min]}
+  \note{O modelo 0D é uma simplificação — em vez de resolver equações diferenciais ao longo do módulo, ele trata o sistema como um volume único com grandezas médias. Ele tem três funções: primeiro, serve como referência física para entender o comportamento esperado; segundo, permite comparar modelos data-driven com uma base fenomenológica; terceiro, alimenta as arquiteturas híbridas. Suas limitações — como ignorar gradientes espaciais — são justamente o que motiva as abordagens híbridas, que combinam a física do modelo 0D com o aprendizado a partir dos dados. [~1,5 min]}
 \end{slide}
+%========================================================================
 %========================================================================
 
 \begin{slide}{Fundamentos de Aprendizado de Máquinas}
