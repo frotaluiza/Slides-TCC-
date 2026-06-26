@@ -63,29 +63,24 @@
   \small
   \centering
   \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.18\linewidth} p{0.35\linewidth} p{0.35\linewidth}}
+    \begin{tabular}{p{0.2\linewidth} p{0.7\linewidth}}
       \toprule
-      \textbf{Conceito} & \textbf{Definição} & \textbf{Implementação no TCC} \\
+      \textbf{Conceito} & \textbf{Definição} \\
       \midrule
       \textbf{Regressão}
-      & $Y = f(X) + \varepsilon$ — aprender função que mapeia entradas em saídas minimizando o erro
-      & Regressão supervisionada multi-saída: 3 saídas (fluxo, T$_{alim,out}$, T$_{ref,out}$) \\
+      & $Y = f(X) + \varepsilon$ — aprender função que mapeia entradas em saídas minimizando o erro \\
       \midrule
       \textbf{Métricas}
-      & RMSE (raiz do erro quadrático médio), MAE, MAPE, R²
-      & RMSE como métrica principal de seleção \\
+      & RMSE (raiz do erro quadrático médio), MAE, MAPE, R² \\
       \midrule
       \textbf{Overfitting}
-      & Modelo memoriza ruído dos dados de treino e não generaliza
-      & 3 estratégias: regularização L1/L2, GroupKFold, critério 1-SE + complexidade \\
+      & Modelo memoriza ruído dos dados de treino e não generaliza \\
       \midrule
       \textbf{Validação Cruzada}
-      & GroupKFold: grupos inteiros mantidos juntos em cada partição
-      & Separação por regimes experimentais (10, 40, 70 g/L) \\
+      & GroupKFold: grupos inteiros mantidos juntos em cada partição \\
       \midrule
       \textbf{Pré-processamento}
-      & Padronização Z-score; Pipeline sklearn; features por critério físico
-      & Garantiu que não houvesse vazamento de dados \\
+      & Padronização Z-score; Pipeline sklearn; features por critério físico \\
       \bottomrule
     \end{tabular}
   }
