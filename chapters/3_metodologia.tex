@@ -24,7 +24,7 @@
       & Sem vazamento de dados \\
       \midrule
       \textbf{Pipeline de modelagem}
-      & 3 etapas: lineares/árvores $\rightarrow$ RNA $\rightarrow$ híbridos
+      & 3 etapas: lineares/árvores $\rightarrow$ MLP $\rightarrow$ híbridos
       & Mesmo protocolo de validação para todos
       & Complexidade crescente \\
       \bottomrule
@@ -135,7 +135,7 @@
       Validação & GroupKFold por regime, K=3 \\
       Seleção & 1-SE + menor complexidade, RMSE fluxo como prioridade \\
       Métrica final & RMSE e R² OOF \\
-      Famílias & Lineares, árvores, RNA, híbridos (4 arq.) \\
+      Famílias & Lineares, árvores, MLP, híbridos (4 arq.) \\
       Busca & GridSearch por família, busca restrita nos híbridos \\
       \bottomrule
     \end{tabular}
