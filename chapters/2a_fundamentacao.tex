@@ -27,31 +27,6 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{Transporte de Massa e Calor em V-AGMD}
-  \begin{columns}
-    \begin{column}{.55\linewidth}
-      \textbf{Transporte de massa:}
-      \begin{Item}
-        \item Modelo \textit{Dusty Gas}: difusão molecular + difusão de Knudsen
-        \item Fluxo mássico simplificado: $j_w = B_{eq}(p_{mf} - p_{gl})$
-        \item Resistências em série: membrana ($B_m^{-1}$) + espaço de ar ($B_g^{-1}$)
-        \item Efeito da salinidade: $p_{mf} = a_w(1-x_{salt})p_v$
-      \end{Item}
-      \vfill
-      \textbf{Transporte de calor:}
-      \begin{Item}
-        \item Convecção nos canais + condução na membrana/ar + calor latente do vapor
-        \item Rede de resistências equivalentes: $q'' = (T_f - T_c)/R_{eq}$
-        \item Calor latente: $q_v'' = j_w h_{lv}$
-      \end{Item}
-    \end{column}
-    \begin{column}{.45\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap03/resistencias.png}
-    \end{column}
-  \end{columns}
-  \note{No transporte de massa, o modelo Dusty Gas combina difusão molecular e difusão de Knudsen. O fluxo de permeado é proporcional à diferença de pressão parcial entre a interface quente e a superfície de condensação. A salinidade reduz a pressão de vapor — isso é modelado pela atividade da água. No transporte de calor, atuam três mecanismos acoplados: convecção nos canais, condução através da membrana e do ar, e o calor latente carregado pelo vapor. Tudo é representado como uma rede de resistências térmicas equivalentes. [~1,5 min]}
-\end{slide}
-%========================================================================
 
 \begin{slide}{Modelo Físico Reduzido 0D}
   \small
