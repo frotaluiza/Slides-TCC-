@@ -57,7 +57,7 @@
   \begin{myBox}
     \textbf{Métrica final:} RMSE e R² sobre predições \textit{Out-of-Fold} (OOF) — modelo retreinado do zero em cada partição
   \end{myBox}
-  \note{A validação usa GroupKFold com 3 partições, separando por regime de salinidade. O critério de seleção é hierárquico: melhor RMSE no fluxo, modelos dentro de 1 desvio padrão, e menor complexidade. A métrica final é calculada sobre predições out-of-fold. [~1,5 min]}
+  \note{A validação usa GroupKFold com 3 partições. A cada iteração, um regime fica de fora — então temos 3 valores de RMSE, um para cada fold. O desvio padrão desses 3 RMSEs mede o quanto o desempenho do modelo varia quando testado em regimes diferentes. Se um modelo tem RMSE médio de 0,070 com desvio de 0,010, isso significa que o RMSE pode variar cerca de 0,010 para mais ou para menos dependendo do regime. O critério 1-SE diz o seguinte: calculamos o RMSE médio de cada modelo entre os 3 folds. Pegamos o melhor modelo. Depois, consideramos todos os modelos cujo RMSE médio está dentro de 1 desvio padrão acima do melhor. Entre esses, escolhemos o mais simples. A lógica é: se a diferença entre dois modelos é menor que a própria variabilidade da avaliação, não dá para dizer que um é realmente melhor — então fica com o mais simples. [~2 min]}
 \end{slide}
 %========================================================================
 
