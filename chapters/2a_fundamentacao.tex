@@ -95,29 +95,25 @@
   \small
   \centering
   \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.2\linewidth} p{0.3\linewidth} p{0.2\linewidth} p{0.2\linewidth}}
+    \begin{tabular}{p{0.2\linewidth} p{0.35\linewidth} p{0.35\linewidth}}
       \toprule
-      \textbf{Família} & \textbf{Modelos} & \textbf{Papel} & \textbf{Característica} \\
+      \textbf{Família} & \textbf{Modelos} & \textbf{Papel} \\
       \midrule
       \textbf{Lineares}
       & OLS, Ridge, Lasso, ElasticNet
-      & Referência de menor complexidade
-      & Interpretáveis \\
+      & Referência de menor complexidade \\
       \midrule
       \textbf{Árvores}
       & Árvore, Random Forest, Gradient Boosting
-      & Capturam não linearidades
-      & Flexíveis \\
+      & Capturam não linearidades \\
       \midrule
       \textbf{Redes Neurais}
       & MLP sklearn, KerasMLP (baseline)
-      & Alta capacidade de aproximação
-      & Muitos parâmetros \\
+      & Alta capacidade de aproximação \\
       \midrule
       \textbf{Híbridos}
       & ZohanResidual, HRNN, Luc, FrozenBaseline
-      & Física + dados p/ melhor generalização
-      & 4 arquiteturas \\
+      & Física + dados p/ melhor generalização \\
       \bottomrule
     \end{tabular}
   }
