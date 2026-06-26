@@ -113,15 +113,9 @@
 %========================================================================
 
 \begin{slide}{Análise do Treinamento do Modelo Vencedor}
-  \begin{columns}
-    \begin{column}{.5\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/model_selection/learning_curve_baseline.png}
-    \end{column}
-    \begin{column}{.5\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/model_selection/agmd_stage1_baseline_dados_att_com_var_com_phy_error_vs_sweepparam_KerasMLP_BaselineSearch.png}
-    \end{column}
-  \end{columns}
-  \note{A curva de aprendizado mostra convergência estável com Early Stopping. O gráfico de sensibilidade à taxa de aprendizado mostra que o Stage 1 encontrou o melhor compromisso entre erro de treino e validação. [~1 min]}
+  \centering
+  \includegraphics[width=0.7\linewidth]{tcc_images/chap06/model_selection/learning_curve_baseline.png}
+  \note{A curva de aprendizado mostra convergência estável com Early Stopping, com o erro de validação acompanhando o de treino sem sinais de overfitting. [~40s]}
 \end{slide}
 %========================================================================
 
