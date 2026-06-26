@@ -44,7 +44,7 @@
   \vfill
   \begin{columns}
     \begin{column}{.33\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/compare_flux_0d.png}
+      \includegraphics[width=\linewidth]{tcc_images/chap06/flux_real_vs_0d.png}
     \end{column}
     \begin{column}{.33\linewidth}
       \includegraphics[width=\linewidth]{tcc_images/chap06/alim_T_out_real_vs_0d.png}
@@ -156,7 +156,6 @@
     \begin{column}{.55\linewidth}
         \begin{Item}
           \item OLS explica $>95\%$ da variância de todos os targets $\rightarrow$ região aproximadamente linear
-          \item Modelos não lineares puros (árvores) têm desempenho \textbf{pior} que OLS
           \item \textbf{Conclusão:} o ganho híbrido não vem de capturar não linearidades, mas de \textbf{corrigir o viés} dos modelos puramente orientados por dados
           \item A informação física (modelo 0D) fornece uma referência fenomenológica que reduz o erro sistemático da MLP pura, especialmente quando os dados são escassos (174 amostras)
         \end{Item}
