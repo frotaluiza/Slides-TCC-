@@ -118,25 +118,8 @@
       \bottomrule
     \end{tabular}
   }
-  \vfill
-  \textbf{Arquitetura vencedora:} ZohanResidual — conexão residual em torno do modelo físico 0D. Redução de 31\% no RMSE do fluxo vs. melhor modelo linear.
-  \note{Quatro famílias de modelos foram comparadas. Os modelos lineares servem como referência. As árvores capturam relações não lineares. As redes neurais têm alta flexibilidade. Os híbridos combinam física com dados. O vencedor foi o ZohanResidual, com redução de 31\% no erro. [~1,5 min]}
+  \note{Quatro famílias de modelos foram comparadas. Os modelos lineares servem como referência. As árvores capturam relações não lineares. As redes neurais têm alta flexibilidade. Os híbridos combinam física com dados. [~1,5 min]}
 \end{slide}
 %========================================================================
 
-\begin{slide}{Resumo da Fundamentação}
-  \small
-  \centering
-    \begin{tabular}{p{0.25\linewidth} p{0.65\linewidth}}
-      \toprule
-      \textbf{Área} & \textbf{Principais Pontos} \\
-      \midrule
-      MD Física & V-AGMD: lacuna de ar + vácuo; modelo 0D como referência física \\
-      ML — Regressão & $Y = f(X) + \varepsilon$, 3 saídas, RMSE como métrica, GroupKFold \\
-      ML — Overfitting & Regularização L1/L2, validação cruzada, critério 1-SE + complexidade \\
-      Famílias & Lineares, árvores, redes neurais e 4 arquiteturas híbridas \\
-      \bottomrule
-    \end{tabular}
-  \note{Resumo dos fundamentos: MD física com modelo 0D, ML com regressão multi-saída e GroupKFold, controle de overfitting, e quatro famílias de modelos. [~30s]}
-\end{slide}
-%========================================================================
+

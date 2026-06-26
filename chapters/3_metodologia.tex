@@ -105,7 +105,7 @@
       \midrule
       \textbf{ZohanResidual}
       & $Y_{res} = Y - Y_{phy}$; rede aprende correção residual
-      & \textbf{Vencedor:} melhor RMSE (0,061)
+      & Melhor RMSE para fluxo
       & Performance nas T$_{out}$ inferior ao linear \\
       \midrule
       \textbf{HRNN}
@@ -120,7 +120,7 @@
       \bottomrule
     \end{tabular}
   }
-  \note{Quatro arquiteturas híbridas foram implementadas. A FrozenBaseline é a referência neural sem física. A HPD adiciona a física como feature. A ZohanResidual — vencedora — aprende a correção residual. A HRNN combina ambas. A Luc usa regularização na perda. [~1,5 min]}
+  \note{Quatro arquiteturas híbridas foram implementadas. A FrozenBaseline é a referência neural sem física. A HPD adiciona a física como feature. A ZohanResidual aprende a correção residual. A HRNN combina ambas. A Luc usa regularização na perda. [~1,5 min]}
 \end{slide}
 %========================================================================
 
