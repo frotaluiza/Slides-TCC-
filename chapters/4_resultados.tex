@@ -6,7 +6,6 @@
       \begin{Item}
         \item Dispersão: T$_{out}$ correlacionada com entradas térmicas; fluxo com múltiplas variáveis
         \item Pearson: T$_{out}$ têm correlações lineares fortes ($|r|>0,9$); fluxo moderado ($|r|\approx0,7$)
-        \item Spearman: valores próximos ao Pearson $\rightarrow$ relações aproximadamente lineares
         \item Complexidade do fluxo $\rightarrow$ justifica modelagem multivariada
       \end{Item}
     \end{column}
@@ -24,10 +23,10 @@
       \includegraphics[width=\linewidth]{tcc_images/chap06/heatmap_pearson_features_targets.png}
     \end{column}
     \begin{column}{.5\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/heatmap_pearson_features_targets.png}
+      \includegraphics[width=\linewidth]{tcc_images/chap06/heatmap_spearman_features_targets.png}
     \end{column}
   \end{columns}
-  \note{Mapas de correlação de Pearson e Spearman confirmam: temperaturas fortemente associadas a variáveis térmicas, fluxo com correlações moderadas e distribuídas. [~40s]}
+  \note{O coeficiente de Pearson mede a correlação linear entre duas variáveis — valores próximos de 1 ou -1 indicam relação linear forte. O de Spearman, calculado sobre os postos, mede associações monotônicas, capturando relações que não precisam ser lineares, mas em que uma variável tende a crescer ou decrescer consistentemente com a outra. Comparando os dois mapas, vemos que as temperaturas de saída têm correlações lineares fortes com as entradas térmicas (|r| > 0,9), enquanto o fluxo apresenta correlações moderadas e mais distribuídas — isso justifica a abordagem multivariada. [~1,5 min]}
 \end{slide}
 %========================================================================
 
