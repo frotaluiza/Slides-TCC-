@@ -61,6 +61,38 @@
 \end{slide}
 %========================================================================
 
+\begin{slide}{Busca de Hiperparâmetros}
+  \footnotesize
+  \centering
+  \resizebox{\textwidth}{!}{
+    \begin{tabular}{p{0.22\linewidth} p{0.70\linewidth}}
+      \toprule
+      \textbf{Família} & \textbf{Espaço de busca — descrição} \\
+      \midrule
+      OLS
+      & Sem hiperparâmetros. Referência linear sem regularização. \\
+      Ridge
+      & $\alpha \in \{10^{-3},10^{-2},10^{-1},1,10,100\}$. $\alpha$ controla a intensidade da penalização L2. \\
+      Lasso / ElasticNet
+      & $\alpha \in \{10^{-4},10^{-3},10^{-2},10^{-1},1\}$; $l_1\text{-ratio} \in \{0,1$ a $0,9\}$ para ElasticNet. \\
+      Árvore de decisão
+      & \texttt{max\_depth} $\in \{2,3,4,5,6\}$; \texttt{min\_samples\_leaf} $\in \{1,2,5,8,10\}$; \texttt{ccp\_alpha}. \\
+      Random Forest
+      & \texttt{n\_estimators} $\in \{200,400,600\}$; \texttt{max\_depth}; \texttt{min\_samples\_leaf}; \texttt{max\_features}. \\
+      Gradient Boosting
+      & \texttt{n\_estimators} $\in \{50,100,200,400\}$; \texttt{learning\_rate} $\in \{0,01$ a $0,1\}$; \texttt{max\_depth} $\in \{1,2,3\}$. \\
+      MLP sklearn
+      & \texttt{hidden\_layer\_sizes} $\in \{(32,),(64,),(64,32),(128,64)\}$; $\alpha \in \{0,10^{-6},10^{-5},10^{-4}\}$; \texttt{learning\_rate\_init}. \\
+      KerasMLP baseline
+      & 9 arquiteturas de $\{(32,)$ a $(256,128,64)\}$; \texttt{lr} $\in \{10^{-3},3\times10^{-4}\}$; \texttt{l2} $\in \{0,10^{-6},10^{-5}\}$. ReLU, Adam, Huber, 200 épocas. \\
+      Híbridos
+      & Busca restrita: apenas \texttt{l2} $\in \{\text{l2}_{base},0,10^{-6},10^{-5},10^{-4}\}$, mantendo baseline fixa. \\
+      \bottomrule
+    \end{tabular}
+  }
+  \note{A busca foi organizada por família. Nos lineares, o foco é a intensidade da regularização. Nas árvores, controlamos profundidade e número de estimadores. Nas redes neurais, a busca envolve arquitetura, taxa de aprendizado e regularização L2. Já nos híbridos, a busca foi restrita: mantivemos toda a estrutura da baseline fixa e variamos apenas o L2, para avaliar o efeito da incorporação da física sem alterar a arquitetura. [~1,5 min]}
+\end{slide}
+%========================================================================
 
 \begin{slide}{Arquiteturas Híbridas}
   \small
@@ -70,12 +102,7 @@
       \toprule
       \textbf{Arquitetura} & \textbf{Como integra física + dados} & \textbf{Pontos fortes} & \textbf{Limitações} \\
       \midrule
-      \textbf{FrozenBaseline}
-      & Baseline neural pura (sem física)
-      & Referência data-driven justa
-      & Não usa física \\
-      \midrule
-      \textbf{HPD}
+\textbf{HPD}
       & Entrada expandida: $[X, Y_{phy}]$ — física como feature extra
       & Simples; rede explora correlações
       & Pode ignorar física \\
@@ -97,25 +124,8 @@
       \bottomrule
     \end{tabular}
   }
-  \note{Quatro arquiteturas híbridas foram implementadas. A FrozenBaseline é a referência neural sem física. A HPD adiciona a física como feature. A ZohanResidual aprende a correção residual. A HRNN combina ambas. A Luc usa regularização na perda. [~1,5 min]}
+  \note{Vamos às arquiteturas híbridas. A primeira é o HPD, Hybrid Physics Data. A ideia é simples: pegamos as predições do modelo físico 0D e concatenamos como variáveis de entrada extras, formando um vetor expandido [X, Y_phy]. A rede então aprende a relação entre esse conjunto expandido e as saídas experimentais, podendo explorar complementaridades entre os dados medidos e a física. A terceira é o ZohanResidual, que usa modelagem residual. O modelo físico dá uma estimativa inicial, e a rede neural aprende uma correção para somar a ela: Y_hat = Y_phy + Y_res. A rede não precisa aprender o comportamento inteiro do zero — só o desvio em relação ao modelo físico. A quarta é o HRNN, Hybrid Residual Neural Network, que combina as duas anteriores: a rede recebe tanto as variáveis experimentais quanto a predição física como entrada, E produz uma correção residual somada à física. É a arquitetura mais flexível, mas também a mais complexa. Por fim, o Luc não altera a arquitetura da rede — em vez disso, adiciona um termo na função de perda que penaliza a diferença entre a predição da rede e a predição física. A função objetivo passa a ter dois termos: o erro em relação aos dados experimentais e uma penalização pelo desvio em relação ao modelo físico. [~3 min]}
 \end{slide}
 %========================================================================
 
-\begin{slide}{Resumo da Metodologia}
-  \small
-  \centering
-    \begin{tabular}{p{0.25\linewidth} p{0.65\linewidth}}
-      \toprule
-      \textbf{Componente} & \textbf{Descrição} \\
-      \midrule
-      Dados & 3 regimes (10, 40, 70 g/L), 5 entradas, 3 saídas \\
-      Validação & GroupKFold por regime, K=3 \\
-      Seleção & 1-SE + menor complexidade, RMSE fluxo como prioridade \\
-      Métrica final & RMSE e R² OOF \\
-      Famílias & Lineares, árvores, MLP, híbridos (4 arq.) \\
-      Busca & GridSearch por família, busca restrita nos híbridos \\
-      \bottomrule
-    \end{tabular}
-  \note{Resumo: dados de 3 regimes, GroupKFold, critério 1-SE com complexidade, 4 famílias de modelos, busca sistemática. [~30s]}
-\end{slide}
-%========================================================================
+
