@@ -97,9 +97,9 @@
         \item \textbf{ZohanHRNN (base Alim):} selecionado para Ref (0,211) — único no limiar 1-SE
         \item Redes especializadas para Ref e Flux eram mais complexas:
         \begin{itemize}
-          \item Ref: 2 camadas [256,128] = 34.819 parâmetros
-          \item Flux (HPD): 8 entradas = 6.147 parâmetros
-          \item Alim: 1 camada [512] = 4.611 parâmetros
+          \item Ref: 2 camadas [256,128]
+          \item Flux: 3 camadas [128,64,32]
+          \item Alim: 1 camada [512]
         \end{itemize}
         \item O ganho de RMSE não superou 1 desvio padrão → critério 1-SE selecionou o modelo mais simples
       \end{Item}
