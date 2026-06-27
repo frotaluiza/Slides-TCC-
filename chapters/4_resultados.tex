@@ -93,20 +93,20 @@
   \begin{columns}
     \begin{column}{\textwidth}
       \begin{Item}
-        \item A baseline foi fixada em 1 camada [256] para todos os alvos (Alim)
-        \item A busca de HPs gerou redes mais complexas para cada target específico:
+        \item 3 baselines foram treinadas, cada uma priorizando um alvo diferente
+        \item A busca de HPs gerou redes de diferentes complexidades:
         \begin{itemize}
+          \item Alim: 1 camada [256] — arquitetura mais simples
           \item Ref: 2 camadas [256,128]
           \item Flux: 3 camadas [128,64,32]
-          \item Alim: 1 camada [256]
         \end{itemize}
-        \item Essas redes tiveram desempenho marginalmente melhor no seu target prioritário
-        \item Porém, o ganho não superou 1 desvio padrão da validação cruzada
-        \item \textbf{Critério 1-SE:} seleciona-se o modelo mais simples cujo RMSE está dentro de 1 desvio padrão do melhor — vence a baseline Alim, menos complexa
+        \item A baseline Alim apresentou o melhor equilíbrio de desempenho entre os 3 alvos
+        \item As redes especializadas para Ref e Flux tiveram ganho marginal dentro de 1 desvio padrão
+        \item \textbf{Critério 1-SE:} seleciona-se o modelo mais simples dentro de 1 desvio padrão do melhor — vence a baseline Alim
       \end{Item}
     \end{column}
   \end{columns}
-  \note{A busca de hiperparâmetros gerou redes especializadas para cada target — Ref com 2 camadas [256,128] e Flux com 3 camadas [128,64,32] — que tiveram RMSE ligeiramente menor que a baseline Alim de 1 camada [256]. Porém, como a validação cruzada tem 3 folds (um por regime), o desvio padrão do RMSE entre os folds mede a variabilidade do desempenho. Se a diferença entre a rede complexa e a baseline é menor que esse desvio padrão, não podemos afirmar que a rede complexa é realmente melhor — a diferença pode ser apenas ruído amostral. Pelo critério 1-SE, escolhemos então o modelo mais simples: a baseline Alim com 1 camada [256]. [~2 min]}
+  \note{Foram treinadas 3 baselines independentes, cada uma priorizando um alvo diferente: Alim, Ref e Flux. A baseline Alim — 1 camada [256] — teve a arquitetura mais simples e apresentou o melhor equilíbrio de desempenho entre os 3 alvos. As baselines Ref e Flux geraram redes mais complexas, com 2 e 3 camadas respectivamente, mas o ganho em seus respectivos alvos prioritários ficou dentro de 1 desvio padrão da validação cruzada. Como a validação tem 3 folds (um por regime de salinidade), o desvio padrão mede a variabilidade do RMSE entre regimes. Se a diferença entre a rede complexa e a baseline é menor que essa variabilidade, não podemos afirmar que a rede complexa é realmente melhor — a diferença pode ser ruído amostral. Pelo critério 1-SE, selecionamos o modelo mais simples: a baseline Alim com 1 camada [256]. [~2 min]}
 \end{slide}
 %========================================================================
 
