@@ -275,23 +275,39 @@ A busca foi organizada por família. Nos lineares, o foco é a intensidade da re
 ## Arquiteturas Híbridas
 
 ### 🎤 Roteiro
-Vamos às arquiteturas híbridas. A primeira é o HPD, Hybrid Physics Data. A ideia é simples: pegamos as predições do modelo físico 0D e concatenamos como variáveis de entrada extras, formando um vetor expandido [X, Y_phy]. A rede então aprende a relação entre esse conjunto expandido e as saídas experimentais, podendo explorar complementaridades entre os dados medidos e a física.
+Vamos às arquiteturas híbridas detalhadamente.
 
-A segunda é o ZohanResidual, que usa modelagem residual. O modelo físico dá uma estimativa inicial, e a rede neural aprende uma correção para somar a ela: Y_hat = Y_phy + Y_res. A rede não precisa aprender o comportamento inteiro do zero — só o desvio em relação ao modelo físico.
+A primeira é o **HPD — Hybrid Physics Data**, proposta por Zhou et al. (2025). A ideia é simples: pegamos as predições do modelo físico 0D e concatenamos como variáveis de entrada extras, formando um vetor expandido [X, Y_phy]. A rede então aprende a relação entre esse conjunto expandido e as saídas experimentais, podendo explorar complementaridades entre os dados medidos e a física. A desvantagem é que a rede pode simplesmente ignorar a física se ela não for útil para minimizar o erro.
 
-A terceira é o HRNN, Hybrid Residual Neural Network, que combina as duas anteriores: a rede recebe tanto as variáveis experimentais quanto a predição física como entrada, E produz uma correção residual somada à física. É a arquitetura mais flexível, mas também a mais complexa.
+A segunda é o **ZohanResidual**, baseado na modelagem residual de Zhou et al. (2025). O modelo físico dá uma estimativa inicial Y_phy, e a rede neural aprende uma correção para somar a ela: Y_hat = Y_phy + Y_res. A entrada da rede são apenas as variáveis experimentais X — a física entra exclusivamente via a soma externa. A rede não precisa aprender o comportamento inteiro do zero: ela só precisa aprender o desvio em relação ao modelo físico. Isso é análogo ao conceito de "aprendizado residual" popularizado pelo ResNet (He et al., 2015), mas aqui a referência não é uma camada anterior da rede, e sim um modelo físico externo. Na implementação, a arquitetura usa um slice para separar X e Y_phy da entrada concatenada: `x_part = SliceXPart(nt)(inputs)` processa as features experimentais por camadas densas, enquanto `y_phy = SliceYPhyPart(nt)(inputs)` é separado e somado apenas no final: `y_hat = Add()([y_phy, y_res])`.
 
-Por fim, o Luc não altera a arquitetura da rede — em vez disso, adiciona um termo na função de perda que penaliza a diferença entre a predição da rede e a predição física. A função objetivo passa a ter dois termos: o erro em relação aos dados experimentais e uma penalização pelo desvio em relação ao modelo físico. [~3 min]
+A terceira é o **HRNN — Hybrid Residual Neural Network**, também de Zhou et al. (2025). Ela combina as duas anteriores: a rede recebe tanto as variáveis experimentais quanto a predição física como entrada — vetor expandido [X, Y_phy] — E produz uma correção residual que é somada à física: Y_hat = f_NN(X, Y_phy) + Y_phy. É a arquitetura mais flexível porque permite que a rede use a física tanto como feature de entrada quanto como âncora para a correção residual. A contrapartida é a maior complexidade e o risco de overfitting, especialmente com conjuntos de dados pequenos como o deste estudo (174 amostras).
+
+Por fim, o **Luc** (Seixo, 2024) não altera a arquitetura da rede — em vez disso, modifica a função de perda. A função objetivo passa a ter dois termos: L = L_data(Y_true, Y_pred) + ω × L_phy(Y_pred, Y_phy). O primeiro termo mede o erro em relação aos dados experimentais; o segundo penaliza o desvio da predição em relação ao modelo físico. O hiperparâmetro ω controla o compromisso entre ajuste aos dados e fidelidade à física. Diferentemente das arquiteturas anteriores, que incorporam física na estrutura da rede (hard coding), o Luc faz uma incorporação "soft" via regularização, permitindo que a rede decida quanto se afastar da física se os dados indicarem ser necessário.
+
+Na implementação, essas 4 arquiteturas usaram a mesma estrutura de baseline (KerasMLP com hidden_layer_sizes da baseline Alim), e apenas o hiperparâmetro L2 foi variado na busca — assegurando que qualquer diferença de desempenho seja atribuível à forma de incorporação da física, não a diferenças arquiteturais. [~4 min]
 
 ### 📚 Fontes
-- **Zhou et al. (2025)** — Physics-informed machine learning framework. https://doi.org/10.1016/j.engappai.2025.109982
-- **Willard et al. (2020)** — *Integrating physics-based modeling with ML*. arXiv:2003.04919
+- **Zhou et al. (2025)** — *A physics-constrained hybrid residual neural network for the prediction of moisture content in a closed-cycle drying system*. Can. J. Chem. Eng., 103(5), 2204-2217. https://doi.org/10.1002/cjce.25516
+  - Define as 3 arquiteturas: HPD (entrada expandida), Residual (correção somada à física) e HRNN (combinação de ambas).
+  - Aplicado a secagem em ciclo fechado, mas a formulação é genérica para qualquer sistema com modelo físico disponível.
+- **Seixo (2024)** — *The Use of a Neural Network to Predict the Behavior of an Air Gap Membrane Distillation*. Internship Report, ENSEIRB-MATMECA, Bordeaux INP.
+  - Desenvolveu a arquitetura Luc (regularização física na função de perda) especificamente para este sistema V-AGMD.
+- **Willard et al. (2020)** — *Integrating Scientific Knowledge with Machine Learning for Engineering and Environmental Systems*. ACM Computing Surveys. arXiv:2003.04919
+  - Taxonomia geral de métodos híbridos: pré-processamento, fusão na arquitetura e regularização.
+- **Nabian & Meidani (2020)** — *Physics-regularized neural networks*. https://doi.org/10.1061/9780784482294.003
+  - Fundamentação teórica da regularização física na função de perda.
+- **zheng2021knowledge** — *Knowledge-based residual learning*.
+  - Abordagem residual com conhecimento físico, similar ao ZohanResidual.
 
 ### 🧠 Para expandir
-- **HPD (Hybrid Physics Data)**: é a abordagem mais simples — a física é tratada como feature adicional. Se a física for boa, a rede aprende usá-la; se for ruim, pode ignorá-la.
-- **Residual learning**: a ideia central é que Y_res = Y_true - Y_phy. A rede aprende o resíduo, não a função completa. Isso é análogo ao **residual learning** do ResNet (He et al., 2015), mas usando física externa em vez de skip connections.
-- **HRNN**: combina HPD + Residual — a rede recebe [X, Y_phy] e aprende Y_res, somando depois. Maximiza o uso da informação física.
-- **Luc**: adiciona à loss um termo ω × MSE(Y_pred, Y_phy). O peso ω controla o compromisso entre ajuste aos dados e fidelidade à física.
+- **HPD (Hybrid Physics Data)**: é a abordagem mais simples da taxonomia de Zhou — a física é uma feature extra. Se Y_phy for uma boa aproximação, a rede aprende a usá-la; se for ruim, pode atribuir peso zero (ignorar). Matematicamente: X' = [X, Y_phy], Y_hat = f_NN(X').
+- **ZohanResidual (Residual)**: Y_hat = Y_phy + f_NN(X). A rede aprende só o resíduo Y_res = Y_true - Y_phy. Isso reduz o espaço de busca: em vez de aprender o mapeamento completo X → Y, a rede aprende X → (Y - Y_phy), que é tipicamente mais suave e de menor magnitude.
+- **HRNN**: Y_hat = Y_phy + f_NN(X, Y_phy). Combina as duas estratégias — a física entra como feature E como âncora residual. É a arquitetura mais poderosa, mas com mais parâmetros e maior risco de overfitting.
+- **Luc (regularização na perda)**: L = MSE(Y_true, Y_pred) + ω × MSE(Y_pred, Y_phy). Diferencia-se das demais por não alterar a arquitetura — apenas o critério de otimização. O parâmetro ω ∈ [0, 0.7] controla a força da regularização física.
+- **Conexão com a literatura**: as 3 primeiras arquiteturas correspondem à classificação de Zhou et al. (2025): (A) HPD, (B) Residual, (C) HRNN. A Luc corresponde à categoria de "regularização física" de Willard et al. (2020) e Nabian & Meidani (2020).
+- **Analogia com ResNet**: o residual learning do ZohanResidual é conceitualmente idêntico ao ResNet (He et al., CVPR 2016), mas enquanto o ResNet usa a saída da camada anterior como referência, o ZohanResidual usa a saída de um modelo físico externo — o que pode ser visto como uma "skip connection externa".
+- **Por que a busca foi restrita?**: as 4 arquiteturas compartilham a mesma baseline para isolar o efeito da incorporação da física. Se cada uma tivesse uma arquitetura diferente, não seria possível atribuir as diferenças de desempenho à estratégia híbrida versus à capacidade da rede.
 
 ---
 
