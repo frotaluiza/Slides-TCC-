@@ -51,6 +51,57 @@
 \end{slide}
 %========================================================================
 
+\begin{slide}{Branches da Dessalinização}
+  \centering
+  \resizebox{\textwidth}{!}{
+    \begin{tikzpicture}[
+      grow=down, level distance=1.2cm,
+      edge from parent/.style={draw, thick},
+      every node/.style={rectangle, draw, rounded corners, align=center, font=\small, minimum width=4cm, minimum height=0.8cm}
+    ]
+    \node {Dessalinização}
+      child { node {Térmicos}
+        child { node {MSF (Multi-Stage Flash)} }
+        child { node {MED (Multi-Effect Distillation)} }
+        child { node {MVC (Vapor Compression)} }
+      }
+      child { node {Membrana}
+        child { node {\textbf{RO (Osmose Reversa)} \\ $\leftarrow$ \textit{mais comum}} }
+        child { node {FO (Forward Osmosis)} }
+        child { node {ED (Eletrodiálise)} }
+      }
+      child { node {Híbridos}
+        child { node {\textbf{MD (Dest. por Membrana)} \\ V-AGMD, DCMD, SGMD} }
+      };
+    \end{tikzpicture}
+  }
+  \note{Existem três grandes famílias de dessalinização. Os processos térmicos, como MSF e MED, são os mais antigos e consomem muita energia. Os processos por membrana, liderados pela osmose reversa — que domina o mercado com cerca de 70\% da capacidade instalada — são mais eficientes energeticamente. E os processos híbridos, como a destilação por membranas, combinam princípios térmicos com membranas. [~1 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Limitações e Oportunidades para o V-AGMD}
+  \begin{columns}
+    \begin{column}{.55\linewidth}
+      \begin{Item}
+        \item \textbf{Osmose Reversa:} alta pressão (50-80 bar), sensível a fouling, rejeição limitada de salmouras
+        \item \textbf{Processos térmicos:} alto consumo energético, viáveis apenas em larga escala
+        \item \textbf{V-AGMD oferece:}
+        \begin{Item}
+          \item Opera com \textbf{calor residual ou solar} (60-90°C) — energia que seria descartada
+          \item Baixa pressão (próximo da atmosférica) — menos custo de bombeamento
+          \item Alta rejeção de sais ($>$99,9\%) — ideal para salmouras e efluentes
+          \item Complementar ao RO: trata rejeito de RO e reduz descarte
+        \end{Item}
+      \end{Item}
+    \end{column}
+    \begin{column}{.45\linewidth}
+      \includegraphics[width=\linewidth]{tcc_images/distillateur_vagmd.png}
+    \end{column}
+  \end{columns}
+  \note{A osmose reversa, embora dominante, tem limitações importantes: opera a altas pressões, é sensível à qualidade da água de alimentação e não trata salmouras concentradas com eficiência. Os processos térmicos consomem muita energia. O V-AGMD surge como solução complementar: usa calor residual que seria descartado, opera a baixa pressão, rejeita mais de 99,9\% dos sais e pode tratar o rejeito da osmose reversa. [~1,5 min]}
+\end{slide}
+%========================================================================
+
 \begin{slide}{Ilha de Policogeração Sustentável (LabMEMS/COPPE)}
   \begin{Item}
     \item Protótipo pioneiro COPPE/UFRJ (2022): água potável + energia via solar térmica
@@ -91,26 +142,6 @@
   \end{columns}
   \vfill\hfill{\scriptsize Fontes: CATH, 2010; WARSINGER, 2017; YADAV et al., 2021; Imagem: SEIXO, 2024}
   \note{A destilação por membrana é a tecnologia central deste trabalho. Ela combina princípios térmicos com membrana: o vapor passa por uma membrana hidrofóbica impulsionado por diferença de temperatura. A configuração V-AGMD adiciona vácuo na lacuna de ar para aumentar o fluxo de permeado. A grande inovação é operar com calor solar ou residual, sem precisar de altas pressões como a osmose reversa. O desafio é modelar esse sistema com dados limitados. [~1 min]}
-\end{slide}
-%========================================================================
-
-\begin{slide}{Motivação e Objetivos}
-  \begin{Item}
-    \item \textbf{Motivação:} modelo preditivo confiável permite:
-    \begin{Item}
-      \item Ser usado em etapas de otimização para maximização do fluxo de permeado
-      \item Operar comunidades remotas com supervisão mínima (semiárido, ilhas)
-    \end{Item}
-    \item \textbf{Objetivo geral:} avaliar modelagem baseada em dados e híbrida para predizer desempenho V-AGMD
-    \item \textbf{Específicos:}
-    \begin{Item}
-      \item Estruturar dados com separação por regimes experimentais
-      \item Comparar 4 famílias: lineares, árvores, redes neurais e híbridas
-      \item Aplicar validação cruzada por grupos (GroupKFold)
-      \item Selecionar modelo por desempenho, validação e complexidade, buscando minimizar sobreajuste nos dados
-    \end{Item}
-  \end{Item}
-  \note{A motivação para este trabalho é que um modelo preditivo confiável permite otimizar a operação do dessalinizador, reduzir a necessidade de experimentos caros, e viabilizar a operação autônoma em comunidades remotas. O objetivo geral é avaliar estratégias de modelagem — de regressões lineares a arquiteturas híbridas — para prever o desempenho do V-AGMD. [~1,5 min]}
 \end{slide}
 %========================================================================
 
