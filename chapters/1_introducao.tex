@@ -79,55 +79,6 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{Por que V-AGMD? — Árvore de Decisão Tecnológica}
-  \centering
-  \resizebox{0.95\textwidth}{!}{
-    \begin{tikzpicture}[
-      grow=right, level distance=3.5cm, sibling distance=0.8cm,
-      edge from parent/.style={draw, thick},
-      every node/.style={rectangle, draw, rounded corners, align=center, font=\footnotesize},
-      level 1/.style={sibling distance=2.2cm},
-      level 2/.style={sibling distance=1.4cm},
-      level 3/.style={sibling distance=1.0cm},
-      pros/.style={fill=green!10, draw=green!50!black},
-      cons/.style={fill=red!10, draw=red!50!black},
-      final/.style={fill=blue!15, draw=blue!50!black, thick}
-    ]
-    \node {Dessalinização}
-      child[grow=up] { node[pros] {Térmicos (MSF/MED)}
-        child { node[cons] {Alto consumo\\energético} }
-        child { node[cons] {25\% mercado\\(declínio)} }
-      }
-      child[grow=straight] { node[pros] {Membrana (RO)}
-        child { node[pros] {69\% mercado\\eficiente} }
-        child { node[cons] {Alta pressão\\50-80 bar} }
-        child { node[cons] {Fouling +\\rejeito salino} }
-      }
-      child[grow=down] { node[pros] {Híbridos (MD)}
-        child { node[pros] {60-90°C\\1 atm} }
-        child { node[pros] {$>$99,9\%\\rejeição} }
-        child { node[cons] {Configurações\\com trade-offs} }
-        child[grow=down] { node[pros] {DCMD}
-          child { node[cons] {Alta perda\\condutiva} }
-        }
-        child[grow=down] { node[pros] {AGMD}
-          child { node[pros] {Eficiente\\energet.} }
-          child { node[cons] {Baixo fluxo\\($\downarrow$ massa)} }
-        }
-        child[grow=down] { node[pros] {VMD}
-          child { node[cons] {Condensador\\externo} }
-        }
-        child[grow=down] { node[final] {\textbf{V-AGMD}}
-          child { node[pros] {Alta eficiência\\energética} }
-          child { node[pros] {Alto fluxo\\($\downarrow$ vácuo)} }
-          child { node[pros] {Sem condensador\\externo} }
-          child { node[pros] {Calor residual\\ou solar}} };
-    \end{tikzpicture}
-  }
-  \note{Árvore de decisão: processos térmicos perdem espaço por alto consumo. RO domina mas tem limitações de pressão e fouling. A destilação por membranas emerge como alternativa híbrida. Dentro da MD, cada configuração tem trade-offs: DCMD perde calor por condução, AGMD é eficiente mas tem baixo fluxo, VMD precisa de condensador externo. O V-AGMD combina o melhor de AGMD (eficiência) com vácuo para aumentar fluxo, sem precisar de condensador externo, e opera com calor residual ou solar. [~2 min]}
-\end{slide}
-%========================================================================
-
 \begin{slide}{Ilha de Policogeração Sustentável (LabMEMS/COPPE)}
   \begin{Item}
     \item Protótipo pioneiro COPPE/UFRJ (2022): água potável + energia via solar térmica
