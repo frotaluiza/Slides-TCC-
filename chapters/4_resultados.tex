@@ -96,9 +96,9 @@
         \item 3 baselines foram treinadas, cada uma priorizando um alvo diferente
         \item A busca de HPs gerou redes de diferentes complexidades:
         \begin{itemize}
-          \item Alim: 1 camada [256] — arquitetura mais simples
-          \item Ref: 2 camadas [256,128]
-          \item Flux: 3 camadas [128,64,32]
+          \item Alim: 2 camadas [128,64] (9219 params) — ativação tanh
+          \item Ref: 2 camadas [128,64] (9219 params) — ativação tanh
+          \item Flux: 3 camadas [128,64,32] (11203 params) — ativação relu
         \end{itemize}
         \item A baseline Alim apresentou o melhor equilíbrio de desempenho entre os 3 alvos
         \item As redes especializadas para Ref e Flux tiveram ganho marginal dentro de 1 desvio padrão
