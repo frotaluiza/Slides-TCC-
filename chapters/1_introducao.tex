@@ -53,52 +53,29 @@
 
 \begin{slide}{Branches da Dessalinização}
   \centering
-  \resizebox{\textwidth}{!}{
+  \resizebox{0.9\textwidth}{!}{
     \begin{tikzpicture}[
-      grow=down, level distance=1.2cm,
+      grow=down, level distance=1cm, sibling distance=2.5cm,
       edge from parent/.style={draw, thick},
-      every node/.style={rectangle, draw, rounded corners, align=center, font=\small, minimum width=4cm, minimum height=0.8cm}
+      every node/.style={rectangle, draw, rounded corners, align=center, font=\footnotesize, minimum width=2.8cm, minimum height=0.6cm}
     ]
     \node {Dessalinização}
       child { node {Térmicos}
-        child { node {MSF (Multi-Stage Flash)} }
-        child { node {MED (Multi-Effect Distillation)} }
-        child { node {MVC (Vapor Compression)} }
+        child { node {MSF} }
+        child { node {MED} }
+        child { node {MVC} }
       }
       child { node {Membrana}
-        child { node {\textbf{RO (Osmose Reversa)} \\ $\leftarrow$ \textit{mais comum}} }
-        child { node {FO (Forward Osmosis)} }
-        child { node {ED (Eletrodiálise)} }
+        child { node {\textbf{RO} (mais comum)} }
+        child { node {FO} }
+        child { node {ED} }
       }
       child { node {Híbridos}
-        child { node {\textbf{MD (Dest. por Membrana)} \\ V-AGMD, DCMD, SGMD} }
+        child { node {\textbf{MD} (V-AGMD)} }
       };
     \end{tikzpicture}
   }
   \note{Existem três grandes famílias de dessalinização. Os processos térmicos, como MSF e MED, são os mais antigos e consomem muita energia. Os processos por membrana, liderados pela osmose reversa — que domina o mercado com cerca de 70\% da capacidade instalada — são mais eficientes energeticamente. E os processos híbridos, como a destilação por membranas, combinam princípios térmicos com membranas. [~1 min]}
-\end{slide}
-%========================================================================
-
-\begin{slide}{Limitações e Oportunidades para o V-AGMD}
-  \begin{columns}
-    \begin{column}{.55\linewidth}
-      \begin{Item}
-        \item \textbf{Osmose Reversa:} alta pressão (50-80 bar), sensível a fouling, rejeição limitada de salmouras
-        \item \textbf{Processos térmicos:} alto consumo energético, viáveis apenas em larga escala
-        \item \textbf{V-AGMD oferece:}
-        \begin{Item}
-          \item Opera com \textbf{calor residual ou solar} (60-90°C) — energia que seria descartada
-          \item Baixa pressão (próximo da atmosférica) — menos custo de bombeamento
-          \item Alta rejeção de sais ($>$99,9\%) — ideal para salmouras e efluentes
-          \item Complementar ao RO: trata rejeito de RO e reduz descarte
-        \end{Item}
-      \end{Item}
-    \end{column}
-    \begin{column}{.45\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/distillateur_vagmd.png}
-    \end{column}
-  \end{columns}
-  \note{A osmose reversa, embora dominante, tem limitações importantes: opera a altas pressões, é sensível à qualidade da água de alimentação e não trata salmouras concentradas com eficiência. Os processos térmicos consomem muita energia. O V-AGMD surge como solução complementar: usa calor residual que seria descartado, opera a baixa pressão, rejeita mais de 99,9\% dos sais e pode tratar o rejeito da osmose reversa. [~1,5 min]}
 \end{slide}
 %========================================================================
 
@@ -130,9 +107,10 @@
     \begin{column}{.55\linewidth}
       \begin{Item}
         \item \textbf{MD:} processo híbrido térmico-membrana — vapor por gradiente térmico (Cath, 2010)
-        \item \textbf{Diferenciais:} baixa T/P, $>$99,9\% rejeição, trata salmouras (Yadav et al., 2021)
+        \item \textbf{Vantagens sobre RO:} opera com \textbf{calor residual/solar} (60-90°C), baixa pressão, $>$99,9\% rejeição, trata salmouras
+        \item \textbf{Desafios do RO:} alta pressão (50-80 bar), sensível a fouling, descarte de rejeito concentrado
         \item \textbf{V-AGMD:} lacuna de ar + vácuo parcial $\rightarrow$ maior fluxo (Warsinger, 2017)
-        \item \textbf{Inovação:} opera com calor solar/residual, sem demandar alta pressão
+        \item \textbf{Complementar ao RO:} trata rejeito, aproveita calor que seria descartado
         \item \textbf{Desafio:} modelagem preditiva com dados experimentais limitados
       \end{Item}
     \end{column}
@@ -141,7 +119,7 @@
     \end{column}
   \end{columns}
   \vfill\hfill{\scriptsize Fontes: CATH, 2010; WARSINGER, 2017; YADAV et al., 2021; Imagem: SEIXO, 2024}
-  \note{A destilação por membrana é a tecnologia central deste trabalho. Ela combina princípios térmicos com membrana: o vapor passa por uma membrana hidrofóbica impulsionado por diferença de temperatura. A configuração V-AGMD adiciona vácuo na lacuna de ar para aumentar o fluxo de permeado. A grande inovação é operar com calor solar ou residual, sem precisar de altas pressões como a osmose reversa. O desafio é modelar esse sistema com dados limitados. [~1 min]}
+  \note{A destilação por membrana é a tecnologia central deste trabalho. Ela combina princípios térmicos com membrana: o vapor passa por uma membrana hidrofóbica impulsionado por diferença de temperatura. A configuração V-AGMD adiciona vácuo na lacuna de ar para aumentar o fluxo de permeado. Enquanto a osmose reversa domina o mercado, ela opera a altas pressões, é sensível à qualidade da água e tem dificuldade com salmouras concentradas. O V-AGMD surge como solução complementar: usa calor residual que seria descartado, opera a baixa pressão, rejeita mais de 99,9\% dos sais e pode tratar o rejeito da osmose reversa. O desafio é modelar esse sistema com dados limitados. [~1,5 min]}
 \end{slide}
 %========================================================================
 
