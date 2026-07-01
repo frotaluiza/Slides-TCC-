@@ -43,17 +43,15 @@
   \begin{columns}
     \begin{column}{.5\linewidth}
       \textbf{GroupKFold por Regime}
-      \begin{Item}
+      \begin{Item}[0.15]
         \item K=3 partições: um regime reservado p/ validação
         \item Grupo = Regime (10, 40, 70 g/L)
         \item Evita vazamento entre amostras correlacionadas
       \end{Item}
-<<<<<<< HEAD
-      \vspace{0.2cm}
-      \includegraphics[width=\linewidth]{tcc_images/chap04/group_k_fold.png}
-
       \vspace{0.1cm}
-      \scriptsize \textcolor{gray}{Representação do GroupKFold: a cada fold, um regime é separado para validação (em vermelho) e os demais para treino (em verde). Fonte: adaptado de \cite{sklearn_groupkfold_docs}.}
+      \includegraphics[width=\linewidth]{tcc_images/chap04/group_k_fold_custom.png}
+      \vspace{0.05cm}
+      \scriptsize \textcolor{gray}{Partição dos 3 regimes em cada fold do GroupKFold. Fonte: Elaborado pela autora.}
     \end{column}
     \begin{column}{.5\linewidth}
       \textbf{Critério de seleção (1-SE)}
@@ -67,16 +65,7 @@
       \begin{Item}[0.15]
         \item 80\% treino+val: submetido ao GroupKFold (3 folds)
         \item 20\% hold-out: separado \textbf{antes} de qualquer treino
-        \item Hold-out contém amostras dos 3 regimes — avaliação em condições representativas
-=======
-    \end{column}
-    \begin{column}{.5\linewidth}
-      \textbf{Critério de seleção (1-SE)}
-      \begin{Item}
-        \item 1º: melhor RMSE$_{CV}$ no fluxo
-        \item 2º: modelos dentro de 1 desvio padrão do melhor
-        \item 3º: menor complexidade entre eles
->>>>>>> 8a0ffc5eb43b6ebe2257b0250c6464aa2e3aece3
+        \item Hold-out contém amostras dos 3 regimes
       \end{Item}
     \end{column}
   \end{columns}
@@ -87,7 +76,6 @@
 \begin{slide}{Busca de Hiperparâmetros}
   \footnotesize
   \centering
-<<<<<<< HEAD
   \begin{tabular}{p{0.22\linewidth} p{0.70\linewidth}}
     \toprule
     \textbf{Família} & \textbf{O que foi ajustado} \\
@@ -119,34 +107,6 @@
       \end{Item}
     \end{column}
   \end{columns}
-=======
-  \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.22\linewidth} p{0.70\linewidth}}
-      \toprule
-      \textbf{Família} & \textbf{Espaço de busca — descrição} \\
-      \midrule
-      OLS
-      & Sem hiperparâmetros. Referência linear sem regularização. \\
-      Ridge
-      & $\alpha \in \{10^{-3},10^{-2},10^{-1},1,10,100\}$. $\alpha$ controla a intensidade da penalização L2. \\
-      Lasso / ElasticNet
-      & $\alpha \in \{10^{-4},10^{-3},10^{-2},10^{-1},1\}$; $l_1\text{-ratio} \in \{0,1$ a $0,9\}$ para ElasticNet. \\
-      Árvore de decisão
-      & \texttt{max\_depth} $\in \{2,3,4,5,6\}$; \texttt{min\_samples\_leaf} $\in \{1,2,5,8,10\}$; \texttt{ccp\_alpha}. \\
-      Random Forest
-      & \texttt{n\_estimators} $\in \{200,400,600\}$; \texttt{max\_depth}; \texttt{min\_samples\_leaf}; \texttt{max\_features}. \\
-      Gradient Boosting
-      & \texttt{n\_estimators} $\in \{50,100,200,400\}$; \texttt{learning\_rate} $\in \{0,01$ a $0,1\}$; \texttt{max\_depth} $\in \{1,2,3\}$. \\
-      MLP sklearn
-      & \texttt{hidden\_layer\_sizes} $\in \{(32,),(64,),(64,32),(128,64)\}$; $\alpha \in \{0,10^{-6},10^{-5},10^{-4}\}$; \texttt{learning\_rate\_init}. \\
-      KerasMLP baseline
-      & 9 arquiteturas de $\{(32,)$ a $(256,128,64)\}$; \texttt{lr} $\in \{10^{-3},3\times10^{-4}\}$; \texttt{l2} $\in \{0,10^{-6},10^{-5}\}$. ReLU, Adam, Huber, 200 épocas. \\
-      Híbridos
-      & Busca restrita: apenas \texttt{l2} $\in \{\text{l2}_{base},0,10^{-6},10^{-5},10^{-4}\}$, mantendo baseline fixa. \\
-      \bottomrule
-    \end{tabular}
-  }
->>>>>>> 8a0ffc5eb43b6ebe2257b0250c6464aa2e3aece3
   \note{A busca foi organizada por família. Nos lineares, o foco é a intensidade da regularização. Nas árvores, controlamos profundidade e número de estimadores. Nas redes neurais, a busca envolve arquitetura, taxa de aprendizado e regularização L2. Já nos híbridos, a busca foi restrita: mantivemos toda a estrutura da baseline fixa e variamos apenas o L2, para avaliar o efeito da incorporação da física sem alterar a arquitetura. [~1,5 min]}
 \end{slide}
 %========================================================================
