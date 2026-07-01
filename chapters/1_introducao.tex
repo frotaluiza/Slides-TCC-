@@ -53,28 +53,30 @@
 
 \begin{slide}{Branches da Dessalinização}
   \centering
-  \resizebox{0.85\textwidth}{!}{
-    \begin{tikzpicture}[
-      grow=down, level distance=0.8cm, sibling distance=2cm,
-      edge from parent/.style={draw, thick},
-      every node/.style={rectangle, draw, rounded corners, align=center, font=\tiny, minimum width=2.2cm, minimum height=0.4cm, inner sep=2pt}
-    ]
-    \node {Dessalinização}
-      child { node {Térmicos}
-        child { node {MSF} }
-        child { node {MED} }
-        child { node {MVC} }
-      }
-      child { node {Membrana}
-        child { node {\textbf{RO} (mais comum)} }
-        child { node {FO} }
-        child { node {ED} }
-      }
-      child { node {Híbridos}
-        child { node {\textbf{MD} (V-AGMD)} }
-      };
-    \end{tikzpicture}
-  }
+  \vspace*{-0.5cm}
+  \begin{tikzpicture}[
+    level 1/.style={sibling distance=4.5cm, level distance=1cm},
+    level 2/.style={sibling distance=1.8cm, level distance=0.8cm},
+    edge from parent/.style={draw, thick},
+    every node/.style={rectangle, draw, rounded corners, align=center, font=\tiny, inner sep=2pt, minimum width=2cm, minimum height=0.4cm}
+  ]
+  \node {Dessalinização}
+    child { node {Térmicos}
+      child[grow=down] { node {MSF} }
+      child[grow=down] { node {MED} }
+      child[grow=down] { node {MVC} }
+    }
+    child { node {Membrana}
+      child[grow=down] { node {\textbf{RO}} }
+      child[grow=down] { node {FO} }
+      child[grow=down] { node {ED} }
+    }
+    child { node {Híbridos}
+      child[grow=down] { node {\textbf{MD}} }
+    };
+  \end{tikzpicture}
+  \vfill
+  \centering\scriptsize RO: Osmose Reversa \quad FO: Forward Osmosis \quad ED: Eletrodiálise \quad MSF: Multi-Stage Flash \quad MED: Multi-Effect Distillation \quad MVC: Vapor Compression \quad MD: Destilação por Membrana
   \note{Existem três grandes famílias de dessalinização. Os processos térmicos, como MSF e MED, são os mais antigos e consomem muita energia. Os processos por membrana, liderados pela osmose reversa — que domina o mercado com cerca de 70\% da capacidade instalada — são mais eficientes energeticamente. E os processos híbridos, como a destilação por membranas, combinam princípios térmicos com membranas. [~1 min]}
 \end{slide}
 %========================================================================
