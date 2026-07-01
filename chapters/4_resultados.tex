@@ -13,6 +13,7 @@
       \includegraphics[width=\linewidth]{tcc_images/chap06/scatter_vagmd_exp_only.png}
     \end{column}
   \end{columns}
+  \vfill\hfill{\scriptsize Figura: Dispersão dos dados experimentais V-AGMD. Fonte: Elaborado pelo autor}
   \note{A análise exploratória mostra que as temperaturas de saída têm forte correlação linear com variáveis térmicas, enquanto o fluxo de permeado apresenta comportamento mais complexo, dependendo de múltiplas variáveis. Isso motiva a modelagem multivariada. [~1 min]}
 \end{slide}
 %========================================================================
@@ -26,6 +27,7 @@
       \includegraphics[width=\linewidth]{tcc_images/chap06/heatmap_spearman_features_targets.png}
     \end{column}
   \end{columns}
+  \vfill\hfill{\scriptsize Figura: Mapas de correlação Pearson (esq.) e Spearman (dir.). Fonte: Elaborado pelo autor}
   \note{O coeficiente de Pearson mede a correlação linear entre duas variáveis — valores próximos de 1 ou -1 indicam relação linear forte. O de Spearman, calculado sobre os postos, mede associações monotônicas, capturando relações que não precisam ser lineares, mas em que uma variável tende a crescer ou decrescer consistentemente com a outra. Comparando os dois mapas, vemos que as temperaturas de saída têm correlações lineares fortes com as entradas térmicas (|r| > 0,9), enquanto o fluxo apresenta correlações moderadas e mais distribuídas — isso justifica a abordagem multivariada. [~1,5 min]}
 \end{slide}
 %========================================================================
@@ -53,6 +55,7 @@
       \includegraphics[width=\linewidth]{tcc_images/chap06/ref_T_out_real_vs_0d.png}
     \end{column}
   \end{columns}
+  \vfill\hfill{\scriptsize Figura: Modelo físico 0D vs experimental para Fluxo, T$_{alim,out}$ e T$_{ref,out}$. Fonte: Elaborado pelo autor}
   \note{O modelo 0D captura tendências mas com dispersão. O ZohanResidual reduz o RMSE do fluxo em 72\% (0,215 $\rightarrow$ 0,060) e o da temperatura de alimentação em 91\% (1,613 $\rightarrow$ 0,141). [~1 min]}
 \end{slide}
 %========================================================================
@@ -85,6 +88,7 @@
       \includegraphics[width=\linewidth]{tcc_images/chap06/best_per_family_rmse.png}
     \end{column}
   \end{columns}
+  \vfill\hfill{\scriptsize Figura: RMSE por target (esq.) e melhor RMSE por família (dir.). Fonte: Elaborado pelo autor}
   \note{O gráfico da esquerda mostra o RMSE por target para os principais modelos. O da direita mostra o melhor modelo de cada família, permitindo comparar o ganho das arquiteturas híbridas em relação às lineares e neurais. [~40s]}
 \end{slide}
 %========================================================================
@@ -113,6 +117,7 @@
 \begin{slide}{Análise do Treinamento dos Modelos Vencedores}
   \centering
   \includegraphics[width=0.7\linewidth]{tcc_images/chap06/model_selection/learning_curve_baseline.png}
+  \vfill\hfill{\scriptsize Figura: Curva de aprendizado da baseline. Fonte: Elaborado pelo autor}
   \note{A curva de aprendizado mostra convergência estável com Early Stopping, com o erro de validação acompanhando o de treino sem sinais de overfitting. [~40s]}
 \end{slide}
 %========================================================================
@@ -163,6 +168,7 @@
       \centering\small Linha y=x: concordância ideal (predito = experimental)
     \end{column}
   \end{columns}
+  \vfill\hfill{\scriptsize Figura: Predito vs experimental — ZohanResidual para Fluxo. Fonte: Elaborado pelo autor}
   \note{O ganho dos híbridos não é capturar relações não lineares — a região é aproximadamente linear (OLS com R² > 0,95). O ganho é corrigir o viés dos modelos data-driven usando a física como referência. A linha y=x representa predito = experimental. [~1 min]}
 \end{slide}
 %========================================================================
@@ -179,6 +185,7 @@
       \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_ZohanResidual_Ref_T_out.png}
     \end{column}
   \end{columns}
+  \vfill\hfill{\scriptsize Figura: Predito vs experimental — ZohanResidual para Fluxo, T$_{alim,out}$ e T$_{ref,out}$. Fonte: Elaborado pelo autor}
   \vfill
   \centering
   \begin{tabular}{lcccc}
