@@ -51,6 +51,86 @@
 \end{slide}
 %========================================================================
 
+\begin{slide}{Branches da Dessalinização}
+  \centering
+  \vspace*{-0.3cm}
+  \begin{tikzpicture}[
+    scale=0.85,
+    level 1/.style={sibling distance=4cm, level distance=1.3cm},
+    level 2/.style={sibling distance=1.8cm, level distance=1.0cm},
+    edge from parent/.style={draw, thick},
+    every node/.style={rectangle, draw, rounded corners, align=center, font=\scriptsize, inner sep=3pt, minimum width=2cm},
+    level 2/.style={sibling distance=1.8cm, level distance=1.0cm, every node/.style={rectangle, draw, rounded corners, align=center, font=\scriptsize, inner sep=2pt, minimum width=1.3cm}},
+    highlight/.style={fill=green!12, draw=green!50!black}
+  ]
+  \node[minimum width=2.5cm] {Dessalinização}
+    child { node {Térmicos\\[4pt]\scriptsize MSF \; MED \; MVC} }
+    child { node {Membrana\\[4pt]\scriptsize \textbf{RO} \; FO \; ED} }
+    child { node {Híbridos\\[4pt]\scriptsize Destilação por\\Membrana (MD)}
+      child { node {DCMD} }
+      child { node[highlight] {AGMD} }
+      child { node {VMD} }
+      child { node {SGMD} }
+      child { node {PGMD} }
+    };
+  \end{tikzpicture}
+  \vfill
+  \centering\tiny
+  DCMD (Contato Direto) \;
+  \textcolor{green!50!black}{\textbf{AGMD}} (Espaço de Ar) \;
+  VMD (Vácuo) \;
+  SGMD (Arraste de Gás) \;
+  PGMD (Espaço de Permeado) \;
+  $\rightarrow$ \textcolor{poliRed}{\textbf{V-AGMD}}: AGMD + vácuo parcial
+  \vfill\hfill{\scriptsize Elaborado pelo autor}
+  \note{Existem três grandes famílias de dessalinização. A tese da Ingrid detalha as configurações de destilação por membranas: DCMD é a mais simples mas perde calor por condução; AGMD isola termicamente com espaço de ar, ganhando eficiência; VMD e SGMD usam vácuo ou gás para arraste mas precisam de condensador externo; PGMD usa o próprio permeado como lacuna. O V-AGMD, foco do trabalho, combina o isolamento térmico do AGMD com vácuo parcial para aumentar o fluxo de permeado em até 234\%. [~1,5 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Ilha de Policogeração Sustentável (LabMEMS/COPPE)}
+  \begin{Item}
+    \item Protótipo pioneiro COPPE/UFRJ (2022): água potável + energia via solar térmica
+    \item 5 kW$_e$ ($\approx$ 25 residências) + 8 kW$_t$ recuperáveis em micro-trocadores
+    \item Dessalinizador V-AGMD: produz 1.000 L/dia de água destilada ($>$ 100 pessoas/dia)
+    \item Foco em comunidades remotas/off-grid (Semiárido, ilhas, O\&G, áreas de desastre)
+    \item Alinhado aos ODS 6 (água), ODS 7 (energia limpa) e ODS 13 (ação climática)
+  \end{Item}
+  \vfill\hfill{\scriptsize Fontes: COPPE/UFRJ, 2022; LISBOA et al., 2024}
+  \note{A Ilha de Policogeração Sustentável da COPPE, inaugurada em 2022, é o projeto que abriga este trabalho. É um sistema que integra painéis solares de alta concentração com um dessalinizador V-AGMD, produzindo eletricidade para 25 residências e água para mais de 100 pessoas por dia. O foco são comunidades remotas. O projeto atende aos ODS 6, 7 e 13. [~1 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{}
+  \vspace*{\fill}
+  \begin{center}
+    \includegraphics[width=0.9\textwidth, height=0.8\textheight, keepaspectratio]{tcc_images/instalacao_ips.png}
+  \end{center}
+  \vspace*{\fill}
+  \vfill\hfill{\scriptsize Fonte: SEIXO, 2024}
+\end{slide}
+%========================================================================
+
+\begin{slide}{V-AGMD: Inovação Tecnológica}
+  \begin{columns}
+    \begin{column}{.55\linewidth}
+      \begin{Item}
+        \item \textbf{MD:} processo híbrido térmico-membrana — vapor por gradiente térmico (Cath, 2010)
+        \item \textbf{Vantagens sobre RO:} opera com \textbf{calor residual/solar} (60-90°C), baixa pressão, $>$99,9\% rejeição, trata salmouras
+        \item \textbf{Desafios do RO:} alta pressão (50-80 bar), sensível a fouling, descarte de rejeito concentrado
+        \item \textbf{V-AGMD:} lacuna de ar + vácuo parcial $\rightarrow$ maior fluxo (Warsinger, 2017)
+        \item \textbf{Complementar ao RO:} trata rejeito, aproveita calor que seria descartado
+        \item \textbf{Desafio:} modelagem preditiva com dados experimentais limitados
+      \end{Item}
+    \end{column}
+    \begin{column}{.45\linewidth}
+      \includegraphics[width=\linewidth]{tcc_images/distillateur_vagmd.png}
+    \end{column}
+  \end{columns}
+  \vfill\hfill{\scriptsize Fontes: CATH, 2010; WARSINGER, 2017; YADAV et al., 2021; Imagem: SEIXO, 2024}
+  \note{A destilação por membrana é a tecnologia central deste trabalho. Ela combina princípios térmicos com membrana: o vapor passa por uma membrana hidrofóbica impulsionado por diferença de temperatura. A configuração V-AGMD adiciona vácuo na lacuna de ar para aumentar o fluxo de permeado. Enquanto a osmose reversa domina o mercado, ela opera a altas pressões, é sensível à qualidade da água e tem dificuldade com salmouras concentradas. O V-AGMD surge como solução complementar: usa calor residual que seria descartado, opera a baixa pressão, rejeita mais de 99,9\% dos sais e pode tratar o rejeito da osmose reversa. O desafio é modelar esse sistema com dados limitados. [~1,5 min]}
+\end{slide}
+%========================================================================
+
 \begin{slide}{Organização da Apresentação}
   \begin{Item}
     \item \textbf{1. Introdução}
@@ -63,4 +143,7 @@
 \end{slide}
 %========================================================================
 
-
+\nocite{Abid2020DesalinationOverview}
+\nocite{Cath2010}
+\nocite{Warsinger2017}
+\nocite{Lisboa2024}
