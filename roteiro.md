@@ -277,36 +277,36 @@ A busca foi organizada por família. Nos lineares, o foco é a intensidade da re
 ### 🎤 Roteiro
 Vamos às arquiteturas híbridas detalhadamente.
 
-A primeira é o **HPD — Hybrid Physics Data**, proposta por Zhou et al. (2025). A ideia é simples: pegamos as predições do modelo físico 0D e concatenamos como variáveis de entrada extras, formando um vetor expandido [X, Y_phy]. A rede então aprende a relação entre esse conjunto expandido e as saídas experimentais, podendo explorar complementaridades entre os dados medidos e a física. A desvantagem é que a rede pode simplesmente ignorar a física se ela não for útil para minimizar o erro.
+A primeira é o **PhyInput — Hybrid Physics Data**, proposta por Zhou et al. (2025). A ideia é simples: pegamos as predições do modelo físico 0D e concatenamos como variáveis de entrada extras, formando um vetor expandido [X, Y_phy]. A rede então aprende a relação entre esse conjunto expandido e as saídas experimentais, podendo explorar complementaridades entre os dados medidos e a física. A desvantagem é que a rede pode simplesmente ignorar a física se ela não for útil para minimizar o erro.
 
-A segunda é o **ZohanResidual**, baseado na modelagem residual de Zhou et al. (2025). O modelo físico dá uma estimativa inicial Y_phy, e a rede neural aprende uma correção para somar a ela: Y_hat = Y_phy + Y_res. A entrada da rede são apenas as variáveis experimentais X — a física entra exclusivamente via a soma externa. A rede não precisa aprender o comportamento inteiro do zero: ela só precisa aprender o desvio em relação ao modelo físico. Isso é análogo ao conceito de "aprendizado residual" popularizado pelo ResNet (He et al., 2015), mas aqui a referência não é uma camada anterior da rede, e sim um modelo físico externo. Na implementação, a arquitetura usa um slice para separar X e Y_phy da entrada concatenada: `x_part = SliceXPart(nt)(inputs)` processa as features experimentais por camadas densas, enquanto `y_phy = SliceYPhyPart(nt)(inputs)` é separado e somado apenas no final: `y_hat = Add()([y_phy, y_res])`.
+A segunda é o **PhyResidual**, baseado na modelagem residual de Zhou et al. (2025). O modelo físico dá uma estimativa inicial Y_phy, e a rede neural aprende uma correção para somar a ela: Y_hat = Y_phy + Y_res. A entrada da rede são apenas as variáveis experimentais X — a física entra exclusivamente via a soma externa. A rede não precisa aprender o comportamento inteiro do zero: ela só precisa aprender o desvio em relação ao modelo físico. Isso é análogo ao conceito de "aprendizado residual" popularizado pelo ResNet (He et al., 2015), mas aqui a referência não é uma camada anterior da rede, e sim um modelo físico externo. Na implementação, a arquitetura usa um slice para separar X e Y_phy da entrada concatenada: `x_part = SliceXPart(nt)(inputs)` processa as features experimentais por camadas densas, enquanto `y_phy = SliceYPhyPart(nt)(inputs)` é separado e somado apenas no final: `y_hat = Add()([y_phy, y_res])`.
 
-A terceira é o **HRNN — Hybrid Residual Neural Network**, também de Zhou et al. (2025). Ela combina as duas anteriores: a rede recebe tanto as variáveis experimentais quanto a predição física como entrada — vetor expandido [X, Y_phy] — E produz uma correção residual que é somada à física: Y_hat = f_NN(X, Y_phy) + Y_phy. É a arquitetura mais flexível porque permite que a rede use a física tanto como feature de entrada quanto como âncora para a correção residual. A contrapartida é a maior complexidade e o risco de overfitting, especialmente com conjuntos de dados pequenos como o deste estudo (174 amostras).
+A terceira é o **PhyHybrid — Hybrid Residual Neural Network**, também de Zhou et al. (2025). Ela combina as duas anteriores: a rede recebe tanto as variáveis experimentais quanto a predição física como entrada — vetor expandido [X, Y_phy] — E produz uma correção residual que é somada à física: Y_hat = f_NN(X, Y_phy) + Y_phy. É a arquitetura mais flexível porque permite que a rede use a física tanto como feature de entrada quanto como âncora para a correção residual. A contrapartida é a maior complexidade e o risco de overfitting, especialmente com conjuntos de dados pequenos como o deste estudo (174 amostras).
 
-Por fim, o **Luc** (Seixo, 2024) não altera a arquitetura da rede — em vez disso, modifica a função de perda. A função objetivo passa a ter dois termos: L = L_data(Y_true, Y_pred) + ω × L_phy(Y_pred, Y_phy). O primeiro termo mede o erro em relação aos dados experimentais; o segundo penaliza o desvio da predição em relação ao modelo físico. O hiperparâmetro ω controla o compromisso entre ajuste aos dados e fidelidade à física. Diferentemente das arquiteturas anteriores, que incorporam física na estrutura da rede (hard coding), o Luc faz uma incorporação "soft" via regularização, permitindo que a rede decida quanto se afastar da física se os dados indicarem ser necessário.
+Por fim, o **PhyLoss** (Seixo, 2024) não altera a arquitetura da rede — em vez disso, modifica a função de perda. A função objetivo passa a ter dois termos: L = L_data(Y_true, Y_pred) + ω × L_phy(Y_pred, Y_phy). O primeiro termo mede o erro em relação aos dados experimentais; o segundo penaliza o desvio da predição em relação ao modelo físico. O hiperparâmetro ω controla o compromisso entre ajuste aos dados e fidelidade à física. Diferentemente das arquiteturas anteriores, que incorporam física na estrutura da rede (hard coding), o Luc faz uma incorporação "soft" via regularização, permitindo que a rede decida quanto se afastar da física se os dados indicarem ser necessário.
 
 Na implementação, essas 4 arquiteturas usaram a mesma estrutura de baseline (KerasMLP com hidden_layer_sizes da baseline Alim), e apenas o hiperparâmetro L2 foi variado na busca — assegurando que qualquer diferença de desempenho seja atribuível à forma de incorporação da física, não a diferenças arquiteturais. [~4 min]
 
 ### 📚 Fontes
 - **Zhou et al. (2025)** — *A physics-constrained hybrid residual neural network for the prediction of moisture content in a closed-cycle drying system*. Can. J. Chem. Eng., 103(5), 2204-2217. https://doi.org/10.1002/cjce.25516
-  - Define as 3 arquiteturas: HPD (entrada expandida), Residual (correção somada à física) e HRNN (combinação de ambas).
+  - Define as 3 arquiteturas: PhyInput (entrada expandida), Residual (correção somada à física) e PhyHybrid (combinação de ambas).
   - Aplicado a secagem em ciclo fechado, mas a formulação é genérica para qualquer sistema com modelo físico disponível.
 - **Seixo (2024)** — *The Use of a Neural Network to Predict the Behavior of an Air Gap Membrane Distillation*. Internship Report, ENSEIRB-MATMECA, Bordeaux INP.
-  - Desenvolveu a arquitetura Luc (regularização física na função de perda) especificamente para este sistema V-AGMD.
+  - Desenvolveu a arquitetura PhyLoss (regularização física na função de perda) especificamente para este sistema V-AGMD.
 - **Willard et al. (2020)** — *Integrating Scientific Knowledge with Machine Learning for Engineering and Environmental Systems*. ACM Computing Surveys. arXiv:2003.04919
   - Taxonomia geral de métodos híbridos: pré-processamento, fusão na arquitetura e regularização.
 - **Nabian & Meidani (2020)** — *Physics-regularized neural networks*. https://doi.org/10.1061/9780784482294.003
   - Fundamentação teórica da regularização física na função de perda.
 - **zheng2021knowledge** — *Knowledge-based residual learning*.
-  - Abordagem residual com conhecimento físico, similar ao ZohanResidual.
+  - Abordagem residual com conhecimento físico, similar ao PhyResidual.
 
 ### 🧠 Para expandir
-- **HPD (Hybrid Physics Data)**: é a abordagem mais simples da taxonomia de Zhou — a física é uma feature extra. Se Y_phy for uma boa aproximação, a rede aprende a usá-la; se for ruim, pode atribuir peso zero (ignorar). Matematicamente: X' = [X, Y_phy], Y_hat = f_NN(X').
-- **ZohanResidual (Residual)**: Y_hat = Y_phy + f_NN(X). A rede aprende só o resíduo Y_res = Y_true - Y_phy. Isso reduz o espaço de busca: em vez de aprender o mapeamento completo X → Y, a rede aprende X → (Y - Y_phy), que é tipicamente mais suave e de menor magnitude.
-- **HRNN**: Y_hat = Y_phy + f_NN(X, Y_phy). Combina as duas estratégias — a física entra como feature E como âncora residual. É a arquitetura mais poderosa, mas com mais parâmetros e maior risco de overfitting.
-- **Luc (regularização na perda)**: L = MSE(Y_true, Y_pred) + ω × MSE(Y_pred, Y_phy). Diferencia-se das demais por não alterar a arquitetura — apenas o critério de otimização. O parâmetro ω ∈ [0, 0.7] controla a força da regularização física.
-- **Conexão com a literatura**: as 3 primeiras arquiteturas correspondem à classificação de Zhou et al. (2025): (A) HPD, (B) Residual, (C) HRNN. A Luc corresponde à categoria de "regularização física" de Willard et al. (2020) e Nabian & Meidani (2020).
-- **Analogia com ResNet**: o residual learning do ZohanResidual é conceitualmente idêntico ao ResNet (He et al., CVPR 2016), mas enquanto o ResNet usa a saída da camada anterior como referência, o ZohanResidual usa a saída de um modelo físico externo — o que pode ser visto como uma "skip connection externa".
+- **PhyInput (Hybrid Physics Data)**: é a abordagem mais simples da taxonomia de Zhou — a física é uma feature extra. Se Y_phy for uma boa aproximação, a rede aprende a usá-la; se for ruim, pode atribuir peso zero (ignorar). Matematicamente: X' = [X, Y_phy], Y_hat = f_NN(X').
+- **PhyResidual (Residual)**: Y_hat = Y_phy + f_NN(X). A rede aprende só o resíduo Y_res = Y_true - Y_phy. Isso reduz o espaço de busca: em vez de aprender o mapeamento completo X → Y, a rede aprende X → (Y - Y_phy), que é tipicamente mais suave e de menor magnitude.
+- **PhyHybrid**: Y_hat = Y_phy + f_NN(X, Y_phy). Combina as duas estratégias — a física entra como feature E como âncora residual. É a arquitetura mais poderosa, mas com mais parâmetros e maior risco de overfitting.
+- **PhyLoss (regularização na perda)**: L = MSE(Y_true, Y_pred) + ω × MSE(Y_pred, Y_phy). Diferencia-se das demais por não alterar a arquitetura — apenas o critério de otimização. O parâmetro ω ∈ [0, 0.7] controla a força da regularização física.
+- **Conexão com a literatura**: as 3 primeiras arquiteturas correspondem à classificação de Zhou et al. (2025): (A) PhyInput, (B) Residual, (C) PhyHybrid. O PhyLoss corresponde à categoria de "regularização física" de Willard et al. (2020) e Nabian & Meidani (2020).
+- **Analogia com ResNet**: o residual learning do PhyResidual é conceitualmente idêntico ao ResNet (He et al., CVPR 2016), mas enquanto o ResNet usa a saída da camada anterior como referência, o PhyResidual usa a saída de um modelo físico externo — o que pode ser visto como uma "skip connection externa".
 - **Por que a busca foi restrita?**: as 4 arquiteturas compartilham a mesma baseline para isolar o efeito da incorporação da física. Se cada uma tivesse uma arquitetura diferente, não seria possível atribuir as diferenças de desempenho à estratégia híbrida versus à capacidade da rede.
 
 ---
@@ -342,7 +342,7 @@ O coeficiente de Pearson mede a correlação linear entre duas variáveis — va
 ## Modelo Físico 0D vs Experimental
 
 ### 🎤 Roteiro
-O modelo 0D captura tendências mas com dispersão. O ZohanResidual reduz o RMSE do fluxo em 72% (0,215 → 0,060) e o da temperatura de alimentação em 91% (1,613 → 0,141). [~1 min]
+O modelo 0D captura tendências mas com dispersão. O PhyResidual reduz o RMSE do fluxo em 72% (0,215 → 0,060) e o da temperatura de alimentação em 91% (1,613 → 0,141). [~1 min]
 
 ### 🧠 Para expandir
 - O modelo 0D de Lisboa (2024) foi desenvolvido e calibrado para este mesmo sistema V-AGMD, mas com dados de uma campanha experimental anterior.
@@ -354,12 +354,12 @@ O modelo 0D captura tendências mas com dispersão. O ZohanResidual reduz o RMSE
 ## Desempenho Consolidado
 
 ### 🎤 Roteiro
-O ZohanResidual (base Alim) é o melhor para fluxo (0,060) e temperatura de alimentação (0,141). O ZohanHRNN (base Alim) vence para temperatura de saída (0,211). A seleção foi feita pelo critério 1-SE entre famílias, priorizando o modelo mais simples dentro de 1 desvio padrão do melhor. [~1,5 min]
+O PhyResidual (base Alim) é o melhor para fluxo (0,060) e temperatura de alimentação (0,141). O PhyHybrid (base Alim) vence para temperatura de saída (0,211). A seleção foi feita pelo critério 1-SE entre famílias, priorizando o modelo mais simples dentro de 1 desvio padrão do melhor. [~1,5 min]
 
 ### 🧠 Para expandir
 - Note que o **OLS** é competitivo para temperaturas (Ref_T_out RMSE 0,251) — isso sugere que o comportamento térmico é aproximadamente linear na faixa operacional estudada.
 - O **modelo 0D** tem R² negativo para Alim_T_out (-0,498), o que significa que um modelo que sempre prevê a média teria melhor desempenho que o modelo 0D para essa variável.
-- O **ZohanResidual** reduz o RMSE do fluxo em 33% vs FrozenBaseline (0,091 → 0,061), confirmando que a incorporação de física via arquitetura residual traz ganho real.
+- O **PhyResidual** reduz o RMSE do fluxo em 33% vs FrozenBaseline (0,091 → 0,061), confirmando que a incorporação de física via arquitetura residual traz ganho real.
 
 ---
 
@@ -397,10 +397,10 @@ A curva de aprendizado mostra convergência estável com Early Stopping, com o e
 ## Híbridos vs MLP Pura
 
 ### 🎤 Roteiro
-A incorporação de informação física via arquiteturas híbridas trouxe ganhos significativos em relação à MLP pura. O ZohanResidual reduziu o RMSE do Alim em 31,2% e do Flux em 7,7%. O ZohanHRNN reduziu o RMSE do Ref em 51,0%. [~1 min]
+A incorporação de informação física via arquiteturas híbridas trouxe ganhos significativos em relação à MLP pura. O PhyResidual reduziu o RMSE do Alim em 31,2% e do Flux em 7,7%. O PhyHybrid reduziu o RMSE do Ref em 51,0%. [~1 min]
 
 ### 🧠 Para expandir
-- O ganho no **Ref** (51%) é o mais expressivo: a MLP pura tinha RMSE 0,431 para Ref, enquanto o HRNN alcançou 0,211. Isso mostra que a física do modelo 0D é especialmente útil para estimar a temperatura de saída do resfriamento.
+- O ganho no **Ref** (51%) é o mais expressivo: a MLP pura tinha RMSE 0,431 para Ref, enquanto o PhyHybrid alcançou 0,211. Isso mostra que a física do modelo 0D é especialmente útil para estimar a temperatura de saída do resfriamento.
 - O ganho no **Flux** é modesto (7,7%) porque a MLP pura já tinha RMSE baixo (0,065). É mais difícil melhorar quando o baseline já é forte.
 - O **FrozenBaseline** (MLP pura) tem `hidden_layer_sizes=(256,)`, a mesma arquitetura da baseline Alim.
 
@@ -414,14 +414,14 @@ O ganho dos híbridos não é capturar relações não lineares — a região é
 ### 🧠 Para expandir
 - **Por que a região é linear?** O sistema V-AGMD opera em faixa estreita de temperaturas (60-80°C) e pressões. Nessa faixa, as relações termodinâmicas (Antoine, Clausius-Clapeyron) podem ser aproximadas por funções lineares.
 - **Viés vs variância**: modelos lineares têm baixa variância mas alto viés (subajuste). MLP pura reduz o viés mas aumenta a variância. Os híbridos usam a física para **ancorar** as previsões, mantendo a variância baixa.
-- O gráfico overlay mostra os pontos do modelo 0D (círculos) e do ZohanResidual (triângulos) em relação à linha y=x. O modelo híbrido está mais próximo da diagonal.
+- O gráfico overlay mostra os pontos do modelo 0D (círculos) e do PhyResidual (triângulos) em relação à linha y=x. O modelo híbrido está mais próximo da diagonal.
 
 ---
 
 ## Comparação Final — Modelos Vencedores vs Modelo 0D
 
 ### 🎤 Roteiro
-Comparação final: ZohanResidual para fluxo e temperatura de alimentação, ZohanHRNN para temperatura de saída do circuito de resfriamento. A seleção por target com critério 1-SE permite que cada alvo tenha o modelo mais adequado. [~1 min]
+Comparação final: PhyResidual para fluxo e temperatura de alimentação, PhyHybrid para temperatura de saída do circuito de resfriamento. A seleção por target com critério 1-SE permite que cada alvo tenha o modelo mais adequado. [~1 min]
 
 ### 🧠 Para expandir
 - A **melhoria de 72% no fluxo** (RMSE 0,215 → 0,060) é o resultado mais importante do ponto de vista operacional.
@@ -433,14 +433,14 @@ Comparação final: ZohanResidual para fluxo e temperatura de alimentação, Zoh
 ## Resumo dos Resultados
 
 ### 🎤 Roteiro
-Resumo: o ZohanResidual (base Alim) vence para fluxo e temperatura de alimentação; o ZohanHRNN (base Alim) vence para temperatura de saída. A seleção foi feita pelo critério 1-SE entre famílias. [~30s]
+Resumo: o PhyResidual (base Alim) vence para fluxo e temperatura de alimentação; o PhyHybrid (base Alim) vence para temperatura de saída. A seleção foi feita pelo critério 1-SE entre famílias. [~30s]
 
 ---
 
 ## Conclusões
 
 ### 🎤 Roteiro
-Conclusões principais: ZohanResidual (base Alim) vence para fluxo e temperatura de alimentação; ZohanHRNN (base Alim) vence para Ref. O critério 1-SE entre famílias com número de parâmetros como medida de complexidade guiou a seleção. [~1,5 min]
+Conclusões principais: PhyResidual (base Alim) vence para fluxo e temperatura de alimentação; PhyHybrid (base Alim) vence para Ref. O critério 1-SE entre famílias com número de parâmetros como medida de complexidade guiou a seleção. [~1,5 min]
 
 ---
 
