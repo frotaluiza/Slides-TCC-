@@ -359,7 +359,7 @@ O PhyResidual (base Alim) é o melhor para fluxo (0,060) e temperatura de alimen
 ### 🧠 Para expandir
 - Note que o **OLS** é competitivo para temperaturas (Ref_T_out RMSE 0,251) — isso sugere que o comportamento térmico é aproximadamente linear na faixa operacional estudada.
 - O **modelo 0D** tem R² negativo para Alim_T_out (-0,498), o que significa que um modelo que sempre prevê a média teria melhor desempenho que o modelo 0D para essa variável.
-- O **PhyResidual** reduz o RMSE do fluxo em 33% vs FrozenBaseline (0,091 → 0,061), confirmando que a incorporação de física via arquitetura residual traz ganho real.
+- O **PhyResidual** reduz o RMSE do fluxo em 33% vs BaselineHibrido (0,091 → 0,061), confirmando que a incorporação de física via arquitetura residual traz ganho real.
 
 ---
 
@@ -402,7 +402,7 @@ A incorporação de informação física via arquiteturas híbridas trouxe ganho
 ### 🧠 Para expandir
 - O ganho no **Ref** (51%) é o mais expressivo: a MLP pura tinha RMSE 0,431 para Ref, enquanto o PhyHybrid alcançou 0,211. Isso mostra que a física do modelo 0D é especialmente útil para estimar a temperatura de saída do resfriamento.
 - O ganho no **Flux** é modesto (7,7%) porque a MLP pura já tinha RMSE baixo (0,065). É mais difícil melhorar quando o baseline já é forte.
-- O **FrozenBaseline** (MLP pura) tem `hidden_layer_sizes=(256,)`, a mesma arquitetura da baseline Alim.
+- O **BaselineHibrido** (MLP pura) tem `hidden_layer_sizes=(256,)`, a mesma arquitetura da baseline Alim.
 
 ---
 

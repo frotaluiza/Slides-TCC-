@@ -77,7 +77,7 @@ A métrica principal é o RMSE. Três estratégias contra overfitting: regulariz
 O GroupKFold separa os dados por regimes experimentais — 10, 40 e 70 g/L — garantindo que amostras do mesmo regime não vazem entre treino e teste."
 
 ### Slide 13: Famílias de Modelos (~1 min)
-"Quatro famílias foram comparadas. Modelos lineares — OLS, Ridge, Lasso — servem como referência de menor complexidade. Árvores e ensembles capturam não linearidades. Redes neurais têm alta flexibilidade. E os híbridos — PhyResidual, PhyHybrid, PhyLoss e FrozenBaseline — combinam física com dados.
+"Quatro famílias foram comparadas. Modelos lineares — OLS, Ridge, Lasso — servem como referência de menor complexidade. Árvores e ensembles capturam não linearidades. Redes neurais têm alta flexibilidade. E os híbridos — PhyResidual, PhyHybrid, PhyLoss e BaselineHibrido — combinam física com dados.
 
 O vencedor foi o PhyResidual, uma arquitetura de conexão residual: a rede aprende a correção em torno da predição do modelo físico 0D. Redução de 31% no RMSE do fluxo frente ao melhor modelo linear."
 
@@ -106,7 +106,7 @@ A métrica final é calculada sobre predições Out-of-Fold — ou seja, o model
 Os híbridos têm busca restrita — apenas o parâmetro L2 varia, mantendo a baseline fixa. Isso reduz custo computacional e permite isolar o efeito da incorporação da física."
 
 ### Slide 18: Arquiteturas Híbridas (~1 min)
-"Quatro arquiteturas foram implementadas. A FrozenBaseline é a referência neural sem física. A PhyInput — ZohanHPD — adiciona a saída do modelo físico como uma feature extra na entrada.
+"Quatro arquiteturas foram implementadas. A BaselineHibrido é a referência neural sem física. A PhyInput — ZohanHPD — adiciona a saída do modelo físico como uma feature extra na entrada.
 
 A PhyResidual — vencedora — aprende a correção residual: a rede prevê o desvio entre a predição física e o valor real. A PhyHybrid combina as duas abordagens anteriores. E a Luc usa regularização física na função de perda."
 
