@@ -53,30 +53,19 @@
 
 \begin{slide}{Branches da Dessalinização}
   \centering
-  \vspace*{-0.5cm}
+  \vspace*{-0.3cm}
   \begin{tikzpicture}[
-    level 1/.style={sibling distance=4.5cm, level distance=1cm},
-    level 2/.style={sibling distance=1.8cm, level distance=0.8cm},
+    level 1/.style={sibling distance=5cm, level distance=1.5cm},
     edge from parent/.style={draw, thick},
-    every node/.style={rectangle, draw, rounded corners, align=center, font=\tiny, inner sep=2pt, minimum width=2cm, minimum height=0.4cm}
+    every node/.style={rectangle, draw, rounded corners, align=center, font=\footnotesize, inner sep=4pt, minimum width=2.5cm}
   ]
   \node {Dessalinização}
-    child { node {Térmicos}
-      child[grow=down] { node {MSF} }
-      child[grow=down] { node {MED} }
-      child[grow=down] { node {MVC} }
-    }
-    child { node {Membrana}
-      child[grow=down] { node {\textbf{RO}} }
-      child[grow=down] { node {FO} }
-      child[grow=down] { node {ED} }
-    }
-    child { node {Híbridos}
-      child[grow=down] { node {\textbf{MD}} }
-    };
+    child { node {Térmicos\\[4pt]\tiny MSF / MED / MVC} }
+    child { node {Membrana\\[4pt]\tiny \textbf{RO} / FO / ED} }
+    child { node {Híbridos\\[4pt]\tiny \textbf{MD}} };
   \end{tikzpicture}
   \vfill
-  \centering\scriptsize RO: Osmose Reversa \quad FO: Forward Osmosis \quad ED: Eletrodiálise \quad MSF: Multi-Stage Flash \quad MED: Multi-Effect Distillation \quad MVC: Vapor Compression \quad MD: Destilação por Membrana
+  \centering\tiny RO: Osmose Reversa \quad FO: Forward Osmosis \quad ED: Eletrodiálise \quad MSF: Multi-Stage Flash \quad MED: Multi-Effect Distillation \quad MVC: Vapor Compression \quad MD: Destilação por Membrana
   \note{Existem três grandes famílias de dessalinização. Os processos térmicos, como MSF e MED, são os mais antigos e consomem muita energia. Os processos por membrana, liderados pela osmose reversa — que domina o mercado com cerca de 70\% da capacidade instalada — são mais eficientes energeticamente. E os processos híbridos, como a destilação por membranas, combinam princípios térmicos com membranas. [~1 min]}
 \end{slide}
 %========================================================================
