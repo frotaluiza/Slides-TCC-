@@ -77,9 +77,9 @@ A métrica principal é o RMSE. Três estratégias contra overfitting: regulariz
 O GroupKFold separa os dados por regimes experimentais — 10, 40 e 70 g/L — garantindo que amostras do mesmo regime não vazem entre treino e teste."
 
 ### Slide 13: Famílias de Modelos (~1 min)
-"Quatro famílias foram comparadas. Modelos lineares — OLS, Ridge, Lasso — servem como referência de menor complexidade. Árvores e ensembles capturam não linearidades. Redes neurais têm alta flexibilidade. E os híbridos — ZohanResidual, HRNN, Luc e FrozenBaseline — combinam física com dados.
+"Quatro famílias foram comparadas. Modelos lineares — OLS, Ridge, Lasso — servem como referência de menor complexidade. Árvores e ensembles capturam não linearidades. Redes neurais têm alta flexibilidade. E os híbridos — PhyResidual, PhyHybrid, PhyLoss e FrozenBaseline — combinam física com dados.
 
-O vencedor foi o ZohanResidual, uma arquitetura de conexão residual: a rede aprende a correção em torno da predição do modelo físico 0D. Redução de 31% no RMSE do fluxo frente ao melhor modelo linear."
+O vencedor foi o PhyResidual, uma arquitetura de conexão residual: a rede aprende a correção em torno da predição do modelo físico 0D. Redução de 31% no RMSE do fluxo frente ao melhor modelo linear."
 
 ### Slide 14: Resumo da Fundamentação (~30s)
 "Em resumo: a física da MD com modelo 0D, os fundamentos de ML — regressão multi-saída, métricas, validação — e as quatro famílias de modelos. Vamos à metodologia."
@@ -106,9 +106,9 @@ A métrica final é calculada sobre predições Out-of-Fold — ou seja, o model
 Os híbridos têm busca restrita — apenas o parâmetro L2 varia, mantendo a baseline fixa. Isso reduz custo computacional e permite isolar o efeito da incorporação da física."
 
 ### Slide 18: Arquiteturas Híbridas (~1 min)
-"Quatro arquiteturas foram implementadas. A FrozenBaseline é a referência neural sem física. A HPD — ZohanHPD — adiciona a saída do modelo físico como uma feature extra na entrada.
+"Quatro arquiteturas foram implementadas. A FrozenBaseline é a referência neural sem física. A PhyInput — ZohanHPD — adiciona a saída do modelo físico como uma feature extra na entrada.
 
-A ZohanResidual — vencedora — aprende a correção residual: a rede prevê o desvio entre a predição física e o valor real. A HRNN combina as duas abordagens anteriores. E a Luc usa regularização física na função de perda."
+A PhyResidual — vencedora — aprende a correção residual: a rede prevê o desvio entre a predição física e o valor real. A PhyHybrid combina as duas abordagens anteriores. E a Luc usa regularização física na função de perda."
 
 ### Slide 19: Resumo da Metodologia (~30s)
 "Resumo: dados de 3 regimes, GroupKFold, critério 1-SE com complexidade, 4 famílias de modelos, busca sistemática. Vamos aos resultados."
@@ -124,32 +124,32 @@ A ZohanResidual — vencedora — aprende a correção residual: a rede prevê o
 "Os mapas de correlação de Pearson e Spearman confirmam: temperaturas com correlações fortes (acima de 0,9), fluxo com correlações moderadas (em torno de 0,7). A proximidade entre Pearson e Spearman indica relações aproximadamente lineares na faixa estudada."
 
 ### Slide 22: Modelo 0D vs Experimental (~1 min)
-"O modelo físico 0D captura as tendências gerais, mas com dispersão considerável — RMSE de 0,215 para o fluxo. O modelo híbrido ZohanResidual reduz esse erro para 0,061 — uma redução de 72%. As temperaturas também melhoram significativamente."
+"O modelo físico 0D captura as tendências gerais, mas com dispersão considerável — RMSE de 0,215 para o fluxo. O modelo híbrido PhyResidual reduz esse erro para 0,061 — uma redução de 72%. As temperaturas também melhoram significativamente."
 
 ### Slide 23: Desempenho Consolidado (~1,5 min)
-"A tabela mostra o desempenho OOF de todos os modelos. O ZohanResidual é o melhor para o fluxo — RMSE 0,061, R² 0,978. O MLP sklearn fica em segundo com 0,071. Já nas temperaturas, o OLS tem o melhor desempenho — RMSE 0,246 para T_alim e 0,251 para T_ref.
+"A tabela mostra o desempenho OOF de todos os modelos. O PhyResidual é o melhor para o fluxo — RMSE 0,061, R² 0,978. O MLP sklearn fica em segundo com 0,071. Já nas temperaturas, o OLS tem o melhor desempenho — RMSE 0,246 para T_alim e 0,251 para T_ref.
 
 Isso revela um trade-off importante: o modelo híbrido concentra seu ganho no fluxo, mas perde um pouco nas temperaturas. Modelos lineares continuam sendo uma boa opção para as variáveis térmicas."
 
 ### Slide 24: Seleção do Modelo Vencedor (~1,5 min)
-"O ZohanResidual foi selecionado pelo critério hierárquico: tem o melhor RMSE no fluxo, está dentro de 1 desvio padrão, e tem complexidade adequada. A redução é de 31% frente ao melhor modelo linear — OLS com 0,089 — e de 72% frente ao modelo 0D com 0,215.
+"O PhyResidual foi selecionado pelo critério hierárquico: tem o melhor RMSE no fluxo, está dentro de 1 desvio padrão, e tem complexidade adequada. A redução é de 31% frente ao melhor modelo linear — OLS com 0,089 — e de 72% frente ao modelo 0D com 0,215.
 
 As curvas de aprendizado mostram que o treinamento foi estável, com early stopping atuando adequadamente. A análise de sensibilidade ao L2 mostra que o modelo é robusto — o erro se mantém estável na região de baixa regularização."
 
-### Slide 25: Comparação Final — ZohanResidual vs Modelo 0D (~1 min)
-"Os gráficos overlay mostram claramente a superioridade do ZohanResidual em relação ao modelo 0D para as três variáveis. O modelo híbrido consegue acompanhar muito melhor os dados experimentais.
+### Slide 25: Comparação Final — PhyResidual vs Modelo 0D (~1 min)
+"Os gráficos overlay mostram claramente a superioridade do PhyResidual em relação ao modelo 0D para as três variáveis. O modelo híbrido consegue acompanhar muito melhor os dados experimentais.
 
-Na tabela comparativa: ZohanResidual tem RMSE 0,061 para o fluxo, contra 0,089 do OLS e 0,215 do modelo 0D. Para as temperaturas, o OLS ainda lidera, mas o híbrido fica muito próximo."
+Na tabela comparativa: PhyResidual tem RMSE 0,061 para o fluxo, contra 0,089 do OLS e 0,215 do modelo 0D. Para as temperaturas, o OLS ainda lidera, mas o híbrido fica muito próximo."
 
 ### Slide 26: Resumo dos Resultados (~30s)
-"Resumo: o modelo híbrido ZohanResidual foi o vencedor para predição do fluxo. Modelos lineares continuam sendo a melhor opção para temperaturas. A validação com GroupKFold garantiu uma avaliação realista."
+"Resumo: o modelo híbrido PhyResidual foi o vencedor para predição do fluxo. Modelos lineares continuam sendo a melhor opção para temperaturas. A validação com GroupKFold garantiu uma avaliação realista."
 
 ---
 
 ## 6. Conclusões e Contribuições (~3 min) — 2 slides
 
 ### Slide 27: Conclusões (~1,5 min)
-"Concluindo: o modelo híbrido ZohanResidual obteve o melhor desempenho para predição do fluxo de permeado, com RMSE de 0,061 — uma redução de 31% em relação ao melhor modelo linear.
+"Concluindo: o modelo híbrido PhyResidual obteve o melhor desempenho para predição do fluxo de permeado, com RMSE de 0,061 — uma redução de 31% em relação ao melhor modelo linear.
 
 Modelos lineares, especialmente a OLS, tiveram o melhor desempenho para as temperaturas de saída. Isso sugere que o comportamento térmico é aproximadamente linear na faixa operacional estudada.
 
@@ -158,7 +158,7 @@ O pipeline com GroupKFold por regimes e critério 1-SE com complexidade é mais 
 A principal limitação é que o modelo híbrido piorou o desempenho nas temperaturas em relação ao OLS, o que sugere que uma seleção multi-objetivo ou modelos distintos por variável podem ser explorados no futuro."
 
 ### Slide 28: Contribuições e Trabalhos Futuros (~1,5 min)
-"As principais contribuições deste trabalho são: primeiro, um pipeline completo de modelagem com validação cruzada agrupada por regimes experimentais — algo inédito para V-AGMD. Segundo, a implementação e comparação de quatro arquiteturas híbridas físico-dados. Terceiro, um critério de seleção parcimoniosa que combina a regra 1-SE com penalização de complexidade. E quarto, o modelo ZohanResidual, que atingiu RMSE de 0,061 para o fluxo de permeado.
+"As principais contribuições deste trabalho são: primeiro, um pipeline completo de modelagem com validação cruzada agrupada por regimes experimentais — algo inédito para V-AGMD. Segundo, a implementação e comparação de quatro arquiteturas híbridas físico-dados. Terceiro, um critério de seleção parcimoniosa que combina a regra 1-SE com penalização de complexidade. E quarto, o modelo PhyResidual, que atingiu RMSE de 0,061 para o fluxo de permeado.
 
 Para trabalhos futuros, sugiro duas abordagens com PINNs: uma com função de perda híbrida combinando dados e regularização física, e outra com uma PINN treinada exclusivamente com dados sintéticos do modelo 0D, que poderia substituir o próprio modelo físico na arquitetura residual. Além disso, uma otimização multi-objetivo considerando simultaneamente fluxo e temperaturas seria um avanço natural.
 

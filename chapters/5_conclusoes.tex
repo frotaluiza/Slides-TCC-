@@ -9,15 +9,15 @@
       \textbf{Aspecto} & \textbf{Resultado} & \textbf{Implicação} \\
       \midrule
       \textbf{Melhores modelos}
-      & ZohanResidual (Alim): Flux 0,060, Alim 0,141
+      & PhyResidual (Alim): Flux 0,060, Alim 0,141
       & Arquitetura residual mais simples foi suficiente para 2 targets \\
       \midrule
       \textbf{Seleção 1-SE}
-      & ZohanHRNN (Alim): Ref 0,211 — único no limiar
+      & PhyHybrid (Alim): Ref 0,211 — único no limiar
       & Critério parcimonioso escolheu modelo mais simples c/ performance equivalente \\
       \midrule
         \textbf{Validação}
-        & GroupKFold por regimes + critério 1-SE com número de parâmetros (OLS: 18; Alim/Ref: 9219; Flux: 11203; HPD/HRNN: +384)
+        & GroupKFold por regimes + critério 1-SE com número de parâmetros (OLS: 18; Alim/Ref: 9219; Flux: 11203; PhyInput/PhyHybrid: +384)
         & Pipeline mais robusto que a literatura (hold-out simples) \\
       \midrule
       \textbf{Hibridização}
@@ -25,12 +25,12 @@
       & Estratégia de correção residual é a mais promissora \\
       \midrule
       \textbf{Modelos lineares}
-      & OLS: competitivo para temperaturas (Ref 0,251) mas superado pela HRNN
+      & OLS: competitivo para temperaturas (Ref 0,251) mas superado pela PhyHybrid
       & Comportamento térmico é parcialmente linear, mas híbridos trazem ganho adicional \\
       \bottomrule
     \end{tabular}
   }
-  \note{Conclusões principais: ZohanResidual (base Alim) vence para fluxo e temperatura de alimentação; ZohanHRNN (base Alim) vence para Ref. O critério 1-SE entre famílias com número de parâmetros como medida de complexidade guiou a seleção. [~1,5 min]}
+  \note{Conclusões principais: PhyResidual (base Alim) vence para fluxo e temperatura de alimentação; PhyHybrid (base Alim) vence para Ref. O critério 1-SE entre famílias com número de parâmetros como medida de complexidade guiou a seleção. [~1,5 min]}
 \end{slide}
 %========================================================================
 
@@ -42,7 +42,7 @@
         \item Pipeline com validação cruzada agrupada por regimes (GroupKFold)
         \item 4 arquiteturas híbridas físico--dados implementadas e comparadas
         \item Critério 1-SE entre famílias com número de parâmetros como medida universal de complexidade
-        \item Seleção por target: ZohanResidual (Alim) p/ Alim+Flux, ZohanHRNN (Alim) p/ Ref
+        \item Seleção por target: PhyResidual (Alim) p/ Alim+Flux, PhyHybrid (Alim) p/ Ref
       \end{Item}
     \end{column}
     \begin{column}{.5\linewidth}

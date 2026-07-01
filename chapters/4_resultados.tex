@@ -39,8 +39,8 @@
     \textbf{Métrica} & \textbf{Fluxo} & \textbf{T$_{alim,out}$} & \textbf{T$_{ref,out}$} \\
     \midrule
     RMSE modelo 0D & 0,215 & 1,613 & 0,927 \\
-    RMSE ZohanResidual (base Alim) & \textbf{0,060} & \textbf{0,141} & 0,317 \\
-    RMSE ZohanHRNN (base Alim) & 0,064 & 0,161 & \textbf{0,211} \\
+    RMSE PhyResidual (base Alim) & \textbf{0,060} & \textbf{0,141} & 0,317 \\
+    RMSE PhyHybrid (base Alim) & 0,064 & 0,161 & \textbf{0,211} \\
     \bottomrule
   \end{tabular}
   \vfill
@@ -56,7 +56,7 @@
     \end{column}
   \end{columns}
   \vfill\hfill{\scriptsize Figura: Modelo físico 0D vs experimental para Fluxo, T$_{alim,out}$ e T$_{ref,out}$. Fonte: Elaborado pelo autor}
-  \note{O modelo 0D captura tendências mas com dispersão. O ZohanResidual reduz o RMSE do fluxo em 72\% (0,215 $\rightarrow$ 0,060) e o da temperatura de alimentação em 91\% (1,613 $\rightarrow$ 0,141). [~1 min]}
+  \note{O modelo 0D captura tendências mas com dispersão. O PhyResidual reduz o RMSE do fluxo em 72\% (0,215 $\rightarrow$ 0,060) e o da temperatura de alimentação em 91\% (1,613 $\rightarrow$ 0,141). [~1 min]}
 \end{slide}
 %========================================================================
 
@@ -68,14 +68,14 @@
       \textbf{Modelo} & \multicolumn{2}{c}{\textbf{T$_{alim,out}$}} & \multicolumn{2}{c}{\textbf{T$_{ref,out}$}} & \multicolumn{2}{c}{\textbf{Fluxo}} \\
       & R$^2$ & RMSE & R$^2$ & RMSE & R$^2$ & \textbf{RMSE} \\
       \midrule
-      \textbf{ZohanResidual (base Alim)} & 0.981 & \textbf{0.141} & 0.989 & 0.317 & 0.972 & \textbf{0.060} \\
-      \textbf{ZohanHRNN (base Alim)} & 0.975 & 0.161 & 0.995 & \textbf{0.211} & 0.968 & 0.064 \\
+      \textbf{PhyResidual (base Alim)} & 0.981 & \textbf{0.141} & 0.989 & 0.317 & 0.972 & \textbf{0.060} \\
+      \textbf{PhyHybrid (base Alim)} & 0.975 & 0.161 & 0.995 & \textbf{0.211} & 0.968 & 0.064 \\
       OLS & 0.965 & 0.246 & 0.996 & 0.251 & 0.952 & 0.089 \\
       Modelo 0D & $-0.498$ & 1.613 & 0.943 & 0.927 & 0.719 & 0.215 \\
       \bottomrule
     \end{tabular}
   }
-  \note{O ZohanResidual (base Alim) é o melhor para fluxo (0,060) e temperatura de alimentação (0,141). O ZohanHRNN (base Alim) vence para temperatura de saída (0,211). A seleção foi feita pelo critério 1-SE entre famílias, priorizando o modelo mais simples dentro de 1 desvio padrão do melhor. [~1,5 min]}
+  \note{O PhyResidual (base Alim) é o melhor para fluxo (0,060) e temperatura de alimentação (0,141). O PhyHybrid (base Alim) vence para temperatura de saída (0,211). A seleção foi feita pelo critério 1-SE entre famílias, priorizando o modelo mais simples dentro de 1 desvio padrão do melhor. [~1,5 min]}
 \end{slide}
 %========================================================================
 
@@ -129,28 +129,28 @@
     \textbf{Modelo} & \textbf{Alim} & \textbf{Ref} & \textbf{Flux} \\
     \midrule
     FrozenBaseline (MLP pura, base Alim) & 0,205 & 0,431 & 0,065 \\
-    \textbf{ZohanResidual (base Alim)} & \textbf{0,141} & 0,317 & \textbf{0,060} \\
-    \textbf{ZohanHRNN (base Alim)} & 0,161 & \textbf{0,211} & 0,064 \\
+    \textbf{PhyResidual (base Alim)} & \textbf{0,141} & 0,317 & \textbf{0,060} \\
+    \textbf{PhyHybrid (base Alim)} & 0,161 & \textbf{0,211} & 0,064 \\
     \bottomrule
   \end{tabular}
   \vfill
   \begin{columns}
     \begin{column}{.5\linewidth}
-      \textbf{Ganho do ZohanResidual:}
+      \textbf{Ganho do PhyResidual:}
       \begin{Item}
         \item Alim: 0,205 $\rightarrow$ 0,141 (31,2\%)
         \item Flux: 0,065 $\rightarrow$ 0,060 (7,7\%)
       \end{Item}
     \end{column}
     \begin{column}{.5\linewidth}
-      \textbf{Ganho do ZohanHRNN:}
+      \textbf{Ganho do PhyHybrid:}
       \begin{Item}
         \item Ref: 0,431 $\rightarrow$ 0,211 (51,0\%)
         \item Alim: 0,205 $\rightarrow$ 0,161 (21,5\%)
       \end{Item}
     \end{column}
   \end{columns}
-  \note{A incorporação de informação física via arquiteturas híbridas trouxe ganhos significativos em relação à MLP pura. O ZohanResidual reduziu o RMSE do Alim em 31,2\% e do Flux em 7,7\%. O ZohanHRNN reduziu o RMSE do Ref em 51,0\%. [~1 min]}
+  \note{A incorporação de informação física via arquiteturas híbridas trouxe ganhos significativos em relação à MLP pura. O PhyResidual reduziu o RMSE do Alim em 31,2\% e do Flux em 7,7\%. O PhyHybrid reduziu o RMSE do Ref em 51,0\%. [~1 min]}
 \end{slide}
 %========================================================================
 
@@ -164,11 +164,11 @@
         \end{Item}
     \end{column}
     \begin{column}{.45\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_ZohanResidual_Flux.png}\\
+      \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_PhyResidual_Flux.png}\\
       \centering\small Linha y=x: concordância ideal (predito = experimental)
     \end{column}
   \end{columns}
-  \vfill\hfill{\scriptsize Figura: Predito vs experimental — ZohanResidual para Fluxo. Fonte: Elaborado pelo autor}
+  \vfill\hfill{\scriptsize Figura: Predito vs experimental — PhyResidual para Fluxo. Fonte: Elaborado pelo autor}
   \note{O ganho dos híbridos não é capturar relações não lineares — a região é aproximadamente linear (OLS com R² > 0,95). O ganho é corrigir o viés dos modelos data-driven usando a física como referência. A linha y=x representa predito = experimental. [~1 min]}
 \end{slide}
 %========================================================================
@@ -176,29 +176,29 @@
 \begin{slide}{Comparação Final — Modelos Vencedores vs Modelo 0D}
   \begin{columns}
     \begin{column}{.33\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_ZohanResidual_Flux.png}
+      \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_PhyResidual_Flux.png}
     \end{column}
     \begin{column}{.33\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_ZohanResidual_Alim_T_out.png}
+      \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_PhyResidual_Alim_T_out.png}
     \end{column}
     \begin{column}{.33\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_ZohanResidual_Ref_T_out.png}
+      \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_PhyResidual_Ref_T_out.png}
     \end{column}
   \end{columns}
-  \vfill\hfill{\scriptsize Figura: Predito vs experimental — ZohanResidual para Fluxo, T$_{alim,out}$ e T$_{ref,out}$. Fonte: Elaborado pelo autor}
+  \vfill\hfill{\scriptsize Figura: Predito vs experimental — PhyResidual para Fluxo, T$_{alim,out}$ e T$_{ref,out}$. Fonte: Elaborado pelo autor}
   \vfill
   \centering
   \begin{tabular}{lcccc}
     \toprule
     & \textbf{Fluxo} & \textbf{T$_{alim,out}$} & \textbf{T$_{ref,out}$} & \textbf{Melhoria (vs 0D)} \\
     \midrule
-    ZohanResidual (base Alim) & \textbf{0,060} & \textbf{0,141} & 0,317 & 72\% / 91\% / 66\% \\
-    ZohanHRNN (base Alim) & 0,064 & 0,161 & \textbf{0,211} & 70\% / 90\% / 77\% \\
+    PhyResidual (base Alim) & \textbf{0,060} & \textbf{0,141} & 0,317 & 72\% / 91\% / 66\% \\
+    PhyHybrid (base Alim) & 0,064 & 0,161 & \textbf{0,211} & 70\% / 90\% / 77\% \\
     OLS (melhor clássico) & 0,089 & 0,246 & 0,251 & 59\% / 85\% / 73\% \\
     Modelo 0D & 0,215 & 1,613 & 0,927 & --- \\
     \bottomrule
   \end{tabular}
-  \note{Comparação final: ZohanResidual para fluxo e temperatura de alimentação, ZohanHRNN para temperatura de saída do circuito de resfriamento. A seleção por target com critério 1-SE permite que cada alvo tenha o modelo mais adequado. [~1 min]}
+  \note{Comparação final: PhyResidual para fluxo e temperatura de alimentação, PhyHybrid para temperatura de saída do circuito de resfriamento. A seleção por target com critério 1-SE permite que cada alvo tenha o modelo mais adequado. [~1 min]}
 \end{slide}
 %========================================================================
 
@@ -212,12 +212,12 @@
       Análise Exploratória & Pearson/Spearman próximos; OLS com R$^2>0,95$ em todos os alvos \\
       Modelo Físico 0D & Referência fenomenológica, RMSE 0,215 no fluxo \\
       Ganho Híbrido & Correção de viés via física (não captura de não linearidades) \\
-      Modelo Vencedor (Flux) & ZohanResidual (base Alim): RMSE 0,060 \\
-      Modelo Vencedor (Alim) & ZohanResidual (base Alim): RMSE 0,141 \\
-      Modelo Vencedor (Ref) & ZohanHRNN (base Alim): RMSE 0,211 \\
+      Modelo Vencedor (Flux) & PhyResidual (base Alim): RMSE 0,060 \\
+      Modelo Vencedor (Alim) & PhyResidual (base Alim): RMSE 0,141 \\
+      Modelo Vencedor (Ref) & PhyHybrid (base Alim): RMSE 0,211 \\
       Seleção & Critério 1-SE entre famílias + menor complexidade (parâmetros) \\
       \bottomrule
     \end{tabular}
-  \note{Resumo: o ZohanResidual (base Alim) vence para fluxo e temperatura de alimentação; o ZohanHRNN (base Alim) vence para temperatura de saída. A seleção foi feita pelo critério 1-SE entre famílias. [~30s]}
+  \note{Resumo: o PhyResidual (base Alim) vence para fluxo e temperatura de alimentação; o PhyHybrid (base Alim) vence para temperatura de saída. A seleção foi feita pelo critério 1-SE entre famílias. [~30s]}
 \end{slide}
 %========================================================================
