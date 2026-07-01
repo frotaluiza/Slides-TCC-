@@ -96,7 +96,12 @@
   \begin{center}
     \includegraphics[width=0.55\linewidth]{tcc_images/chap04/esquematizacao_regressao.png}
   \end{center}
+<<<<<<< HEAD
   \note{O pipeline começa com os dados experimentais. Temos 5 variáveis de entrada e 3 saídas. O modelo físico 0D é executado para cada observação, gerando previsões que alimentam as arquiteturas híbridas. O pré-processamento é ajustado apenas no treino de cada fold. A validação usa GroupKFold, que é essencial para evitar superestimativa da performance. [~1,5 min]}
+=======
+  \vfill\hfill{\scriptsize Figura: Fluxograma do pipeline de modelagem. Fonte: Elaborado pelo autor}
+  \note{O pipeline começa com os dados experimentais. Temos 5 variáveis de entrada: Alim\_T\_in — temperatura de entrada da alimentação, que define a força motriz térmica; Ref\_T\_in — temperatura de entrada do resfriamento, que junto com a anterior estabelece o gradiente térmico; Ref\_V\_in — vazão da corrente de resfriamento, que afeta o regime de escoamento e o tempo de residência; P\_vacuum — pressão de vácuo na câmara de ar, que modifica a resistência difusiva; e C\_NaCl — concentração de sal, que reduz a pressão de vapor da solução. As 3 saídas são: Fluxo de permeado, temperatura de saída da alimentação e temperatura de saída do resfriamento. O modelo físico 0D é executado para cada observação, gerando previsões que alimentam as arquiteturas híbridas. O pré-processamento é ajustado apenas no treino de cada fold. A modelagem segue 3 etapas de complexidade crescente. [~2,5 min]}
+>>>>>>> 7dcbc6dfc49caa57a068539a7d485ca27cf15a24
 \end{slide}
 %========================================================================
 

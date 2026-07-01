@@ -32,39 +32,39 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{Panorama V-AGMD/AGMD}
-  \scriptsize
+\begin{slide}{Panorama de Publicações em MD}
+  \small
   \centering
-  \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.18\linewidth} p{0.09\linewidth} p{0.09\linewidth} p{0.32\linewidth} p{0.22\linewidth}}
-      \toprule
-      \textbf{Trabalho} & \textbf{Abordagem} & \textbf{Tecnologia} & \textbf{Modelo utilizado} & \textbf{Variáveis preditas} \\
-      \midrule
-      \multicolumn{5}{l}{\textbf{Modelos físicos (primeiros princípios)}} \\
-      Alsaadi (2013) & Física & AGMD & Modelo 1D distribuído (dif. molecular + Knudsen) & Fluxo \\
-      Ansari (2022) & Física & AGMD & Modelo 2D com CFD & Fluxo \\
-      \textbf{Lisboa} (2024) & Física & V-AGMD & Modelo físico reduzido 0D & Fluxo, T$_{out}$ \\
-      Andrés-Mañas (2023) & Física & V-AGMD & Balanços de massa e energia & Fluxo, T$_{out}$, GOR, SEC \\
-      \midrule
-      \multicolumn{5}{l}{\textbf{Modelos orientados por dados}} \\
-      Kim (2022) & Data-driven & V-AGMD & Reg. Linear Múltipla, RNA Generalizada, MLP & Fluxo \\
-      Requena (2023) & Data-driven & V-AGMD & RNA MLP (Levenberg-Marquardt) & SRF, MLR \\
-      Khayet (2012a) & Data-driven & AGMD & RNA \textit{feed-forward} (retropropagação) & Fluxo, rejeição \\
-      Shirazian (2017) & Data-driven & AGMD & RNA + Otimização por Enxame de Partículas & Fluxo, GOR, T$_{out}$ \\
-      Jawed (2025) & Data-driven & AGMD (foto) & RNA + AG; Árvore, Floresta Aleatória & Fluxo \\
-      Khalifa (2017) & Otimização & AGMD & Modelo físico + Otimização (formigas/PSO) & Fluxo \\
-      \midrule
-      \multicolumn{5}{l}{\textbf{Abordagens híbridas}} \\
-      \textbf{Helali} (2025) & Híbrido & RO & Physics-Informed Neural Network & TDS, $\Delta$P \\
-      Zheng (2021) & Híbrido & Geral & Aprendizado residual baseado em conhecimento & Metodologia \\
-      Nabian (2020) & Híbrido & Geral & Regularização física na função de perda & Metodologia \\
-      Abdulrahim (2026) & Híbrido & AGMD & CFD + Rede Neural \textit{surrogate} & Fluxo, SEC \\
-      \midrule
-      \textbf{Este trabalho} & \textbf{Híbrido} & \textbf{V-AGMD} & \textbf{4 famílias: lineares, árvores, neurais e híbridas} & \textbf{Fluxo, T$_{out\_alim}$, T$_{out\_ref}$} \\
-      \bottomrule
-    \end{tabular}
-  }
-  \note{Tabela consolidada da revisão bibliográfica, organizada por tipo de abordagem. Destaque para o reduzido número de trabalhos híbridos em MD — este trabalho é o único híbrido para V-AGMD. [~1,5 min]}
+  \begin{tabular}{p{0.22\linewidth} p{0.10\linewidth} p{0.55\linewidth}}
+    \toprule
+    \textbf{Abordagem} & \textbf{Nº} & \textbf{Modelos} \\
+    \midrule
+    \textbf{Física} & 4 & 0D, 1D, 2D/CFD \\
+    \midrule
+    \textbf{Data-driven} & 6 & RL, RNA, MLP, RF, PSO \\
+    \midrule
+    \textbf{Híbrida} & 4 & PINN, CFD+Surrogate, Residual \\
+    \midrule
+    \textbf{Este trabalho} & 1 & RL, DT, GB, RF, MLP, Residual, Luc \\
+    \bottomrule
+  \end{tabular}
+  \vfill
+  \centering\scriptsize
+  \textbf{Legenda:}
+  0D — Balanços globais \;
+  1D — Modelo distribuído \;
+  2D/CFD — Fluidodinâmica \;
+  RL — Regressão Linear \;
+  RNA — Rede Neural Artificial \;
+  MLP — \textit{Multi-Layer Perceptron} \;
+  DT — Árvore de Decisão \;
+  GB — \textit{Gradient Boosting} \;
+  RF — \textit{Random Forest} \;
+  PSO — \textit{Particle Swarm Optimisation} \;
+  PINN — \textit{Physics-Informed Neural Network} \;
+  Residual — Correção da saída física \;
+  Luc — Perda regularizada pela física
+  \note{Panorama consolidado das publicações. A maioria dos trabalhos usa modelos puramente físicos ou data-driven. Apenas 5 trabalhos (incluindo este) exploram abordagens híbridas — e este é o único focado em V-AGMD. [~1,5 min]}
 \end{slide}
 %========================================================================
 
