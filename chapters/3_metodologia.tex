@@ -1,6 +1,68 @@
 ﻿\section{Metodologia Proposta}
 
-\begin{slide}{Pipeline e Dados}
+\begin{slide}{Vis\~ao Geral do Pipeline}
+  \centering
+  \vspace*{-0.3cm}
+  \resizebox{0.98\textwidth}{!}{%
+  \begin{tikzpicture}[
+      every node/.style={font=\scriptsize},
+      stage/.style={rectangle, rounded corners, draw=poliBlue, thick, align=center,
+                    minimum width=2.8cm, minimum height=0.9cm, fill=blue!6},
+      detail/.style={rectangle, rounded corners, draw=black!40, thick, align=center,
+                     minimum width=2.2cm, minimum height=0.6cm, fill=gray!6},
+      arrow/.style={->, thick, >=stealth},
+    ]
+    % Linha do tempo horizontal
+    \node[stage] (dados)     {Dados\\Experimentais};
+    \node[stage, right=0.3cm of dados] (eda) {An\'alise\\Explorat\'oria};
+    \node[stage, right=0.3cm of eda] (fisico) {Modelo\\F\'isico 0D};
+    \node[stage, right=0.3cm of fisico] (s0) {Stage 0\\Cl\'assicos};
+    \node[stage, right=0.3cm of s0] (s1) {Stage 1\\Baseline Keras};
+    \node[stage, right=0.3cm of s1] (s2) {Stage 2\\H\'ibridos};
+    \node[stage, right=0.3cm of s2] (sel) {Sele\c{c}\~ao\\1-SE};
+    \node[stage, right=0.3cm of sel] (final) {Compara\c{c}\~ao\\Final};
+
+    \draw[arrow] (dados) -- (eda);
+    \draw[arrow] (eda) -- (fisico);
+    \draw[arrow] (fisico) -- (s0);
+    \draw[arrow] (s0) -- (s1);
+    \draw[arrow] (s1) -- (s2);
+    \draw[arrow] (s2) -- (sel);
+    \draw[arrow] (sel) -- (final);
+
+    % Detalhes abaixo de cada estagio
+    \node[detail, below=0.25cm of dados] {174 amostras, 3 regimes};
+    \node[detail, below=0.25cm of eda]   {Correla\c{c}\~ao, dispers\~ao};
+    \node[detail, below=0.25cm of fisico] {C\''odigo C (Lisboa, 2024)};
+    \node[detail, below=0.25cm of s0]     {OLS, Ridge, Lasso,\\ElasticNet, DT, RF, GB};
+    \node[detail, below=0.25cm of s1]     {MLP multi-sa\'ida\\(128,64,32), ReLU};
+    \node[detail, below=0.25cm of s2]     {ZohanResidual,\\ZohanHPD, Luc, HRNN};
+    \node[detail, below=0.25cm of sel]    {1-SE + min.\\complexidade};
+    \node[detail, below=0.25cm of final]  {Vencedor \textit{vs} 0D};
+  \end{tikzpicture}
+  }
+  \vfill
+  \begin{columns}
+    \begin{column}{0.48\linewidth}
+      \textbf{Valida\c{c}\~ao Cruzada: GroupKFold (K=3)}
+      \begin{Item}[0.15]
+        \item Cada fold treina com 2 regimes e valida no 3\raisebox{-0.5ex}{\textdegree}
+        \item Imp\^ede vazamento entre amostras correlacionadas
+      \end{Item}
+    \end{column}
+    \begin{column}{0.48\linewidth}
+      \textbf{Sele\c{c}\~ao: 1-SE + complexidade}
+      \begin{Item}[0.15]
+        \item Modelos dentro de 1 desvio padr\~ao do melhor
+        \item Entre eles, o de menor complexidade
+      \end{Item}
+    \end{column}
+  \end{columns}
+  \note{Visão geral do pipeline em 7 etapas: dados, análise exploratória, modelo físico 0D, Stage 0 com modelos clássicos, Stage 1 com baseline Keras, Stage 2 com arquiteturas híbridas, seleção pelo critério 1-SE e comparação final. A validação usa GroupKFold com K=3, onde cada fold segura um regime inteiro fora do treino. A seleção combina 1-SE com mínima complexidade. [~2 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Dados e Preparação}
   \small
   \centering
   \resizebox{\textwidth}{!}{
@@ -14,79 +76,140 @@
       & 10, 40 e 70 g/L de NaCl \\
       \midrule
       \textbf{Modelo físico 0D}
-      & Executado para cada observação; gera coluna \texttt{phy}
+      & Executado para cada observação; gera predições \texttt{phy}
       & Saídas: Fluxo$_{phy}$, T$_{out\_phy}$
-      & Script Python automatiza execução em C \\
+      & Script Python automatiza (Lisboa, 2024) \\
       \midrule
       \textbf{Pré-processamento}
-      & Padronização Z-score
+      & Padronização Z-score (por fold, sem vazamento)
       & 
       &  \\
       \midrule
-      \textbf{Pipeline de modelagem}
-      & 3 etapas: lineares/árvores $\rightarrow$ MLP $\rightarrow$ híbridos
-      & 
-      &  \\
+      \textbf{GroupKFold}
+      & 3 partições: cada uma treina 2 regimes, valida 1
+      & Grupo = Regime
+      & K-fold comum superestima performance \\
       \bottomrule
     \end{tabular}
   }
   \vfill
   \begin{center}
-    \includegraphics[width=0.7\linewidth]{tcc_images/chap04/esquematizacao_regressao.png}
+    \includegraphics[width=0.55\linewidth]{tcc_images/chap04/esquematizacao_regressao.png}
   \end{center}
-  \note{O pipeline começa com os dados experimentais. Temos 5 variáveis de entrada: Alim\_T\_in — temperatura de entrada da alimentação, que define a força motriz térmica; Ref\_T\_in — temperatura de entrada do resfriamento, que junto com a anterior estabelece o gradiente térmico; Ref\_V\_in — vazão da corrente de resfriamento, que afeta o regime de escoamento e o tempo de residência; P\_vacuum — pressão de vácuo na câmara de ar, que modifica a resistência difusiva; e C\_NaCl — concentração de sal, que reduz a pressão de vapor da solução. As 3 saídas são: Fluxo de permeado, temperatura de saída da alimentação e temperatura de saída do resfriamento. O modelo físico 0D é executado para cada observação, gerando previsões que alimentam as arquiteturas híbridas. O pré-processamento é ajustado apenas no treino de cada fold. A modelagem segue 3 etapas de complexidade crescente. [~2,5 min]}
+  \note{O pipeline começa com os dados experimentais. Temos 5 variáveis de entrada e 3 saídas. O modelo físico 0D é executado para cada observação, gerando previsões que alimentam as arquiteturas híbridas. O pré-processamento é ajustado apenas no treino de cada fold. A validação usa GroupKFold, que é essencial para evitar superestimativa da performance. [~1,5 min]}
 \end{slide}
 %========================================================================
 
-\begin{slide}{Validação Cruzada e Seleção de Modelos}
+\begin{slide}{Justificativa do GroupKFold}
+  \small
+  \begin{columns}
+    \begin{column}{0.48\linewidth}
+      \textbf{KFold comum (sem grupo)}
+      \begin{Item}[0.15]
+        \item Embaralha e divide aleatoriamente
+        \item Amostras do mesmo regime podem estar no treino e no teste
+        \item Modelo ``aprende'' padrões específicos do regime
+      \end{Item}
+      \vspace{0.2cm}
+      \textbf{GroupKFold (por Regime)}
+      \begin{Item}[0.15]
+        \item Cada fold treina 2 regimes, valida o 3\raisebox{-0.5ex}{\textdegree}
+        \item Teste \textbf{sempre} em regime n\~ao visto
+        \item Métrica conservadora e realista
+      \end{Item}
+    \end{column}
+    \begin{column}{0.48\linewidth}
+      \textbf{Diferença observada — RMSE Flux (Stage 0)}
+      \scriptsize
+      \begin{tabular}{lcc}
+        \toprule
+        \textbf{Modelo} & \textbf{CV KFold} & \textbf{CV GroupKFold} \\
+        \midrule
+        OLS            & 0.078 & 0.081 \\
+        Ridge (Ref)    & 0.078 & 0.082 \\
+        Lasso\_Indep   & 0.079 & 0.082 \\
+        DT (Alim)      & 0.269 & \textbf{0.485} \\
+        RF (Ref)       & 0.199 & \textbf{0.422} \\
+        GB (Alim)      & 0.085 & \textbf{0.358} \\
+        \bottomrule
+      \end{tabular}
+      \vspace{0.2cm}
+      \begin{tcolorbox}[colback=orange!10, colframe=orange!40, arc=2pt, boxrule=0.5pt]
+        \scriptsize \textbf{Conclusão:} Modelos complexos (árvores, GB) superestimam performance em KFold. GroupKFold revela que só os lineares generalizam bem entre regimes.
+      \end{tcolorbox}
+    \end{column}
+  \end{columns}
+  \note{A justificativa do GroupKFold está nos números. Quando usamos KFold comum, modelos como Gradient Boosting apresentam RMSE de 0,085 — parece excelente. Mas quando usamos GroupKFold, que força o teste em regimes não vistos, o RMSE sobe para 0,358. Isso mostra que o GB estava apenas memorizando as condições operacionais dos regimes vistos no treino. Os modelos lineares, por outro lado, mantêm desempenho praticamente igual nos dois tipos de validação — CV KFold de 0,078 vs GroupKFold de 0,081 — indicando que eles realmente generalizam. Essa diferença é crucial para justificar metodologicamente o uso do GroupKFold no trabalho. [~2 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Valida\c{c}\~ao Cruzada e Sele\c{c}\~ao de Modelos}
   \begin{columns}
     \begin{column}{.5\linewidth}
       \textbf{GroupKFold por Regime}
-      \begin{Item}
+      \begin{Item}[0.15]
         \item K=3 partições: um regime reservado p/ validação
         \item Grupo = Regime (10, 40, 70 g/L)
         \item Evita vazamento entre amostras correlacionadas
       \end{Item}
+      \vspace{0.2cm}
+      \includegraphics[width=\linewidth]{tcc_images/chap04/group_k_fold.png}
     \end{column}
     \begin{column}{.5\linewidth}
       \textbf{Critério de seleção (1-SE)}
-      \begin{Item}
-        \item 1º: melhor RMSE$_{CV}$ no fluxo
-        \item 2º: modelos dentro de 1 desvio padrão do melhor
-        \item 3º: menor complexidade entre eles
+      \begin{Item}[0.15]
+        \item 1\raisebox{-0.5ex}{\textordmasculine}: melhor RMSE$_{CV}$ no fluxo
+        \item 2\raisebox{-0.5ex}{\textordmasculine}: modelos dentro de 1 desvio padr\~ao do melhor
+        \item 3\raisebox{-0.5ex}{\textordmasculine}: menor complexidade entre eles
+      \end{Item}
+      \vspace{0.3cm}
+      \textbf{Split Treino/Teste}
+      \begin{Item}[0.15]
+        \item 80\% treino+val: CV + OOF (GroupKFold)
+        \item 20\% teste hold-out: avaliação final
+        \item 3 regimes presentes nos dois conjuntos
       \end{Item}
     \end{column}
   \end{columns}
-  \note{A validação usa GroupKFold com 3 partições. A cada iteração, um regime fica de fora — então temos 3 valores de RMSE, um para cada fold. O desvio padrão desses 3 RMSEs mede o quanto o desempenho do modelo varia quando testado em regimes diferentes. Se um modelo tem RMSE médio de 0,070 com desvio de 0,010, isso significa que o RMSE pode variar cerca de 0,010 para mais ou para menos dependendo do regime. O critério 1-SE diz o seguinte: calculamos o RMSE médio de cada modelo entre os 3 folds. Pegamos o melhor modelo. Depois, consideramos todos os modelos cujo RMSE médio está dentro de 1 desvio padrão acima do melhor. Entre esses, escolhemos o mais simples. A lógica é: se a diferença entre dois modelos é menor que a própria variabilidade da avaliação, não dá para dizer que um é realmente melhor — então fica com o mais simples. [~2 min]}
+  \note{A validação usa GroupKFold com 3 partições. A cada iteração, um regime fica de fora — então temos 3 valores de RMSE, um para cada fold. O desvio padrão desses 3 RMSEs mede o quanto o desempenho do modelo varia quando testado em regimes diferentes. O critério 1-SE seleciona modelos dentro de 1 desvio padrão do melhor, priorizando o mais simples. [~1,5 min]}
 \end{slide}
 %========================================================================
 
 \begin{slide}{Busca de Hiperparâmetros}
   \footnotesize
   \centering
-  \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.22\linewidth} p{0.70\linewidth}}
+  \resizebox{0.98\textwidth}{!}{
+    \begin{tabular}{p{0.22\linewidth} p{0.42\linewidth} p{0.28\linewidth}}
       \toprule
-      \textbf{Família} & \textbf{Espaço de busca — descrição} \\
+      \textbf{Família} & \textbf{Parâmetros ajustados} & \textbf{Efeito na modelagem} \\
       \midrule
       OLS
-      & Sem hiperparâmetros. Referência linear sem regularização. \\
+      & Nenhum (modelo sem regularização)
+      & Referência linear: estima coeﬁcientes por mínimos quadrados. Sem controle de complexidade. \\
       Ridge
-      & $\alpha \in \{10^{-3},10^{-2},10^{-1},1,10,100\}$. $\alpha$ controla a intensidade da penalização L2. \\
-      Lasso / ElasticNet
-      & $\alpha \in \{10^{-4},10^{-3},10^{-2},10^{-1},1\}$; $l_1\text{-ratio} \in \{0,1$ a $0,9\}$ para ElasticNet. \\
+      & Penalização L2 ($\alpha$)
+      & Reduz coeﬁcientes proporcionalmente ao seu valor. Parâmetros maiores simpliﬁcam o modelo. \\
+      Lasso e ElasticNet
+      & Penalização L1 ($\alpha$) + mistura L1/L2 ($l_1$)
+      & Lasso seleciona variáveis (coeﬁcientes nulos); ElasticNet combina seleção com agrupamento. \\
       Árvore de decisão
-      & \texttt{max\_depth} $\in \{2,3,4,5,6\}$; \texttt{min\_samples\_leaf} $\in \{1,2,5,8,10\}$; \texttt{ccp\_alpha}. \\
+      & Profundidade máxima, folhas mínimas, custo-complexidade
+      & Controlam o número de regiões e a poda da árvore. Valores menores evitam sobreajuste. \\
       Random Forest
-      & \texttt{n\_estimators} $\in \{200,400,600\}$; \texttt{max\_depth}; \texttt{min\_samples\_leaf}; \texttt{max\_features}. \\
+      & Número de árvores, profundidade, amostras por folha, fração de features
+      & Mais árvores + mais randomization reduzem variância. Profundidade controla o ajuste individual. \\
       Gradient Boosting
-      & \texttt{n\_estimators} $\in \{50,100,200,400\}$; \texttt{learning\_rate} $\in \{0,01$ a $0,1\}$; \texttt{max\_depth} $\in \{1,2,3\}$. \\
-      MLP sklearn
-      & \texttt{hidden\_layer\_sizes} $\in \{(32,),(64,),(64,32),(128,64)\}$; $\alpha \in \{0,10^{-6},10^{-5},10^{-4}\}$; \texttt{learning\_rate\_init}. \\
-      KerasMLP baseline
-      & 9 arquiteturas de $\{(32,)$ a $(256,128,64)\}$; \texttt{lr} $\in \{10^{-3},3\times10^{-4}\}$; \texttt{l2} $\in \{0,10^{-6},10^{-5}\}$. ReLU, Adam, Huber, 200 épocas. \\
+      & Taxa de aprendizado, profundidade, número de estimadores, subamostragem
+      & Taxa baixa + mais estimadores melhoram generalização. Subamostragem reduz correlação entre árvores. \\
+      MLP (sklearn)
+      & Arquitetura (camadas/neurônios), regularização L2, taxa de aprendizado
+      & Arquitetura deﬁne capacidade do modelo. L2 evita coeﬁcientes muito grandes. \\
+      KerasMLP (baseline)
+      & Arquitetura, L2, taxa de aprendizado, otimizador, função de perda
+      & Arquitetura maior = mais parâmetros. Huber como perda reduz sensibilidade a outliers. \\
       Híbridos
-      & Busca restrita: apenas \texttt{l2} $\in \{\text{l2}_{base},0,10^{-6},10^{-5},10^{-4}\}$, mantendo baseline fixa. \\
+      & Regularização L2 (busca restrita)
+      & Mantida a estrutura da baseline, variou-se apenas L2 para isolar o efeito da física. \\
       \bottomrule
     \end{tabular}
   }
@@ -124,8 +247,6 @@
       \bottomrule
     \end{tabular}
   }
-  \note{Vamos às arquiteturas híbridas. A primeira é o HPD, Hybrid Physics Data. A ideia é simples: pegamos as predições do modelo físico 0D e concatenamos como variáveis de entrada extras, formando um vetor expandido [X, Y_phy]. A rede então aprende a relação entre esse conjunto expandido e as saídas experimentais, podendo explorar complementaridades entre os dados medidos e a física. A terceira é o ZohanResidual, que usa modelagem residual. O modelo físico dá uma estimativa inicial, e a rede neural aprende uma correção para somar a ela: Y_hat = Y_phy + Y_res. A rede não precisa aprender o comportamento inteiro do zero — só o desvio em relação ao modelo físico. A quarta é o HRNN, Hybrid Residual Neural Network, que combina as duas anteriores: a rede recebe tanto as variáveis experimentais quanto a predição física como entrada, E produz uma correção residual somada à física. É a arquitetura mais flexível, mas também a mais complexa. Por fim, o Luc não altera a arquitetura da rede — em vez disso, adiciona um termo na função de perda que penaliza a diferença entre a predição da rede e a predição física. A função objetivo passa a ter dois termos: o erro em relação aos dados experimentais e uma penalização pelo desvio em relação ao modelo físico. [~3 min]}
+  \note{Vamos às arquiteturas híbridas. HPD concatena as predições físicas como features extras. ZohanResidual usa modelagem residual — a rede aprende a correção em relação ao modelo físico, não o comportamento inteiro. HRNN combina as duas abordagens. Luc adiciona regularização física na função de perda. [~2 min]}
 \end{slide}
 %========================================================================
-
-
