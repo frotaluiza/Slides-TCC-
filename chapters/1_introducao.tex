@@ -56,17 +56,33 @@
   \vspace*{-0.3cm}
   \begin{tikzpicture}[
     level 1/.style={sibling distance=5cm, level distance=1.5cm},
+    level 2/.style={sibling distance=1.6cm, level distance=1.2cm},
     edge from parent/.style={draw, thick},
-    every node/.style={rectangle, draw, rounded corners, align=center, font=\footnotesize, inner sep=4pt, minimum width=2.5cm}
+    every node/.style={rectangle, draw, rounded corners, align=center, font=\footnotesize, inner sep=4pt, minimum width=2.5cm},
+    level 2/.style={sibling distance=1.6cm, level distance=1.2cm, every node/.style={rectangle, draw, rounded corners, align=center, font=\tiny, inner sep=3pt, minimum width=1.5cm}},
+    highlight/.style={fill=green!12, draw=green!50!black},
+    tag/.style={fill=blue!8, draw=blue!40!black}
   ]
-  \node {Dessalinização}
-    child { node {Térmicos\\[4pt]\tiny MSF / MED / MVC} }
-    child { node {Membrana\\[4pt]\tiny \textbf{RO} / FO / ED} }
-    child { node {Híbridos\\[4pt]\tiny \textbf{MD}} };
+  \node[minimum width=3cm, font=\small] {Dessalinização}
+    child { node {Térmicos\\[4pt]\tiny MSF \; MED \; MVC} }
+    child { node {Membrana\\[4pt]\tiny \textbf{RO} \; FO \; ED} }
+    child { node[tag] {Híbridos\\[4pt]\tiny Destilação por\\Membrana (MD)}
+      child { node {DCMD} }
+      child { node[highlight] {\textbf{AGMD}} }
+      child { node {VMD} }
+      child { node {SGMD} }
+      child { node {PGMD} }
+    };
   \end{tikzpicture}
   \vfill
-  \centering\tiny RO: Osmose Reversa \quad FO: Forward Osmosis \quad ED: Eletrodiálise \quad MSF: Multi-Stage Flash \quad MED: Multi-Effect Distillation \quad MVC: Vapor Compression \quad MD: Destilação por Membrana
-  \note{Existem três grandes famílias de dessalinização. Os processos térmicos, como MSF e MED, são os mais antigos e consomem muita energia. Os processos por membrana, liderados pela osmose reversa — que domina o mercado com cerca de 70\% da capacidade instalada — são mais eficientes energeticamente. E os processos híbridos, como a destilação por membranas, combinam princípios térmicos com membranas. [~1 min]}
+  \centering\tiny
+  DCMD (Contato Direto) \;
+  \textcolor{green!50!black}{\textbf{AGMD}} (Espaço de Ar) \;
+  VMD (Vácuo) \;
+  SGMD (Arraste de Gás) \;
+  PGMD (Espaço de Permeado) \;
+  $\rightarrow$ \textcolor{poliRed}{\textbf{V-AGMD}}: AGMD + vácuo parcial
+  \note{Existem três grandes famílias de dessalinização. A tese da Ingrid detalha as configurações de destilação por membranas: DCMD é a mais simples mas perde calor por condução; AGMD isola termicamente com espaço de ar, ganhando eficiência; VMD e SGMD usam vácuo ou gás para arraste mas precisam de condensador externo; PGMD usa o próprio permeado como lacuna. O V-AGMD, foco do trabalho, combina o isolamento térmico do AGMD com vácuo parcial para aumentar o fluxo de permeado em até 234\%. [~1,5 min]}
 \end{slide}
 %========================================================================
 
