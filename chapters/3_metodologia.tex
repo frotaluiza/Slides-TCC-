@@ -168,11 +168,11 @@
         \item 3\raisebox{-0.5ex}{\textordmasculine}: menor complexidade entre eles
       \end{Item}
       \vspace{0.3cm}
-      \textbf{Split Treino/Teste}
+      \textbf{Split Treino/Val/Teste}
       \begin{Item}[0.15]
-        \item 80\% treino+val: CV + OOF (GroupKFold)
-        \item 20\% teste hold-out: avaliação final
-        \item 3 regimes presentes nos dois conjuntos
+        \item 80\% treino+val: submetido ao GroupKFold (3 folds)
+        \item 20\% hold-out: separado \textbf{antes} de qualquer treino
+        \item Hold-out contém amostras dos 3 regimes — avaliação em condições representativas
       \end{Item}
     \end{column}
   \end{columns}
@@ -183,41 +183,37 @@
 \begin{slide}{Busca de Hiperparâmetros}
   \footnotesize
   \centering
-  \resizebox{0.98\textwidth}{!}{
-    \begin{tabular}{p{0.22\linewidth} p{0.42\linewidth} p{0.28\linewidth}}
-      \toprule
-      \textbf{Família} & \textbf{Parâmetros ajustados} & \textbf{Efeito na modelagem} \\
-      \midrule
-      OLS
-      & Nenhum (modelo sem regularização)
-      & Referência linear: estima coeﬁcientes por mínimos quadrados. Sem controle de complexidade. \\
-      Ridge
-      & Penalização L2 ($\alpha$)
-      & Reduz coeﬁcientes proporcionalmente ao seu valor. Parâmetros maiores simpliﬁcam o modelo. \\
-      Lasso e ElasticNet
-      & Penalização L1 ($\alpha$) + mistura L1/L2 ($l_1$)
-      & Lasso seleciona variáveis (coeﬁcientes nulos); ElasticNet combina seleção com agrupamento. \\
-      Árvore de decisão
-      & Profundidade máxima, folhas mínimas, custo-complexidade
-      & Controlam o número de regiões e a poda da árvore. Valores menores evitam sobreajuste. \\
-      Random Forest
-      & Número de árvores, profundidade, amostras por folha, fração de features
-      & Mais árvores + mais randomization reduzem variância. Profundidade controla o ajuste individual. \\
-      Gradient Boosting
-      & Taxa de aprendizado, profundidade, número de estimadores, subamostragem
-      & Taxa baixa + mais estimadores melhoram generalização. Subamostragem reduz correlação entre árvores. \\
-      MLP (sklearn)
-      & Arquitetura (camadas/neurônios), regularização L2, taxa de aprendizado
-      & Arquitetura deﬁne capacidade do modelo. L2 evita coeﬁcientes muito grandes. \\
-      KerasMLP (baseline)
-      & Arquitetura, L2, taxa de aprendizado, otimizador, função de perda
-      & Arquitetura maior = mais parâmetros. Huber como perda reduz sensibilidade a outliers. \\
-      Híbridos
-      & Regularização L2 (busca restrita)
-      & Mantida a estrutura da baseline, variou-se apenas L2 para isolar o efeito da física. \\
-      \bottomrule
-    \end{tabular}
-  }
+  \begin{tabular}{p{0.22\linewidth} p{0.70\linewidth}}
+    \toprule
+    \textbf{Família} & \textbf{O que foi ajustado} \\
+    \midrule
+    OLS & Sem parâmetros. Referência linear. \\
+    Ridge / Lasso / ElasticNet & Intensidade da regularização ($\alpha$) e proporção L1/L2. \\
+    Árvore de decisão & Profundidade, folhas mínimas e poda por custo-complexidade. \\
+    Random Forest & Número de árvores, profundidade e fração de \textit{features}. \\
+    Gradient Boosting & Taxa de aprendizado, profundidade e subamostragem. \\
+    MLP (sklearn) & Arquitetura (camadas/neurônios), regularização L2, taxa de aprendizado. \\
+    KerasMLP (baseline) & Arquitetura, L2, taxa de aprendizado, otimizador. \\
+    Híbridos & Busca restrita: apenas L2, mantendo a baseline fixa. \\
+    \bottomrule
+  \end{tabular}
+  \vfill
+  \begin{columns}
+    \begin{column}{0.48\linewidth}
+      \textbf{Critério de seleção:}
+      \begin{Item}[0.15]
+        \item Grid search (clássicos) ou busca aleatória (Keras)
+        \item 1-SE + mínima complexidade dentro de cada família
+      \end{Item}
+    \end{column}
+    \begin{column}{0.48\linewidth}
+      \textbf{Busca por alvo:}
+      \begin{Item}[0.15]
+        \item Cada família otimizada separadamente para Flux, Alim e Ref
+        \item 3 conjuntos de parâmetros por família
+      \end{Item}
+    \end{column}
+  \end{columns}
   \note{A busca foi organizada por família. Nos lineares, o foco é a intensidade da regularização. Nas árvores, controlamos profundidade e número de estimadores. Nas redes neurais, a busca envolve arquitetura, taxa de aprendizado e regularização L2. Já nos híbridos, a busca foi restrita: mantivemos toda a estrutura da baseline fixa e variamos apenas o L2, para avaliar o efeito da incorporação da física sem alterar a arquitetura. [~1,5 min]}
 \end{slide}
 %========================================================================
