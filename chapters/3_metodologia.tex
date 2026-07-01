@@ -140,7 +140,7 @@
       \end{tabular}
       \vspace{0.2cm}
       \begin{tcolorbox}[colback=orange!10, colframe=orange!40, arc=2pt, boxrule=0.5pt]
-        \scriptsize \textbf{Conclusão:} Modelos complexos (árvores, GB) superestimam performance em KFold. GroupKFold revela que só os lineares generalizam bem entre regimes.
+        \scriptsize \textbf{Conclusão:} O KFold comum superestima a capacidade de generalização, principalmente em modelos mais flexíveis. O GroupKFold produz métricas mais proporcionais à real capacidade do modelo de predizer em condições n\~ao observadas durante o treinamento.
       \end{tcolorbox}
     \end{column}
   \end{columns}
