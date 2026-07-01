@@ -1,9 +1,11 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.15)  1 JUL 2026 12:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.15)  1 JUL 2026 16:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**\let\section\relax\input{presentationTCC}
+**./presentationTCC.tex
 (presentationTCC.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
 (C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/latex/beamer\beamer.cls
 Document Class: beamer 2026/01/22 v3.77 A class for typesetting presentations
 
@@ -1789,7 +1791,28 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 (C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/latex/trimspaces\trimspaces.s
 ty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
-)) (C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\courier.sty
+))
+(C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen377
+\lightrulewidth=\dimen378
+\cmidrulewidth=\dimen379
+\belowrulesep=\dimen380
+\belowbottomsep=\dimen381
+\aboverulesep=\dimen382
+\abovetopsep=\dimen383
+\cmidrulesep=\dimen384
+\cmidrulekern=\dimen385
+\defaultaddspace=\dimen386
+\@cmidla=\count415
+\@cmidlb=\count416
+\@aboverulesep=\dimen387
+\@belowrulesep=\dimen388
+\@thisruleclass=\count417
+\@lastruleclass=\count418
+\@thisrulewidth=\dimen389
+)
+(C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\courier.sty
 Package: courier 2020/03/25 PSNFSS-v9.3 (WaS) 
 )
 (C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcolorbox.sty
@@ -1798,11 +1821,11 @@ Package: tcolorbox 2025/11/28 version 6.9.0 text color boxes
 \tcb@upperbox=\box145
 \tcb@lowerbox=\box146
 \tcb@phantombox=\box147
-\c@tcbbreakpart=\count415
-\c@tcblayer=\count416
-\c@tcolorbox@number=\count417
+\c@tcbbreakpart=\count419
+\c@tcblayer=\count420
+\c@tcolorbox@number=\count421
 \l__tcobox_tmpa_box=\box148
-\l__tcobox_tmpa_dim=\dimen377
+\l__tcobox_tmpa_dim=\dimen390
 \tcb@temp=\box149
 \tcb@temp=\box150
 \tcb@temp=\box151
@@ -1816,8 +1839,8 @@ y)
 \bibindent=\skip91
 \minimumbiblabelwidth=\skip92
 \ABCIauxlen=\skip93
-\c@ABCIaux=\count418
-\c@ABCImax=\count419
+\c@ABCIaux=\count422
+\c@ABCImax=\count423
  (C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifxetex.sty
 Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
 ) (C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/latex/relsize\relsize.sty
@@ -1857,7 +1880,7 @@ File: tikzlibraryarrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
 aryarrows.code.tex
 File: pgflibraryarrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\arrowsize=\dimen378
+\arrowsize=\dimen391
 ))
 (C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
 z/libraries\tikzlibraryshapes.code.tex
@@ -1915,14 +1938,14 @@ File: tikzlibrarytrees.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 z/libraries\tikzlibrarydecorations.code.tex
 (C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
 decorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen379
-\pgfdecoratedremainingdistance=\dimen380
-\pgfdecoratedinputsegmentcompleteddistance=\dimen381
-\pgfdecoratedinputsegmentremainingdistance=\dimen382
-\pgf@decorate@distancetomove=\dimen383
-\pgf@decorate@repeatstate=\count420
-\pgfdecorationsegmentamplitude=\dimen384
-\pgfdecorationsegmentlength=\dimen385
+\pgfdecoratedcompleteddistance=\dimen392
+\pgfdecoratedremainingdistance=\dimen393
+\pgfdecoratedinputsegmentcompleteddistance=\dimen394
+\pgfdecoratedinputsegmentremainingdistance=\dimen395
+\pgf@decorate@distancetomove=\dimen396
+\pgf@decorate@repeatstate=\count424
+\pgfdecorationsegmentamplitude=\dimen397
+\pgfdecorationsegmentlength=\dimen398
 )
 \tikz@lib@dec@box=\box173
 ))
@@ -1932,7 +1955,7 @@ z/libraries\tikzlibraryintersections.code.tex
 aryintersections.code.tex
 (C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
 aryfpu.code.tex)
-\pgf@intersect@solutions=\count421
+\pgf@intersect@solutions=\count425
 ))
 (C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
 z/libraries\tikzlibrarythrough.code.tex
@@ -1942,10 +1965,10 @@ File: tikzlibrarythrough.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 zmark.code.tex
 File: tikzlibrarytikzmark.code.tex 2026/05/31 v1.16 TikZ library for marking po
 sitions in a document
-\l__sn_x_dim=\dimen386
-\l__sn_y_dim=\dimen387
-\l__sn_xa_dim=\dimen388
-\l__sn_ya_dim=\dimen389
+\l__sn_x_dim=\dimen399
+\l__sn_y_dim=\dimen400
+\l__sn_xa_dim=\dimen401
+\l__sn_ya_dim=\dimen402
 )
 (C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
 z/libraries\tikzlibrarypositioning.code.tex
@@ -2034,16 +2057,16 @@ LaTeX Font Info:    ... okay on input line 85.
 (C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count422
-\scratchdimen=\dimen390
+\scratchcounter=\count426
+\scratchdimen=\dimen403
 \scratchbox=\box174
-\nofMPsegments=\count423
-\nofMParguments=\count424
+\nofMPsegments=\count427
+\nofMParguments=\count428
 \everyMPshowfont=\toks65
-\MPscratchCnt=\count425
-\MPscratchDim=\dimen391
-\MPnumerator=\count426
-\makeMPintoPDFobject=\count427
+\MPscratchCnt=\count429
+\MPscratchDim=\dimen404
+\MPnumerator=\count430
+\makeMPintoPDFobject=\count431
 \everyMPtoPDFconversion=\toks66
 )
 (C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
@@ -2129,7 +2152,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 85.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Package xypdf Info: Line width: 0.39998pt on input line 85.
-\c@lstlisting=\count428
+\c@lstlisting=\count432
 
 (presentationTCC.nav)
 Overfull \hbox (0.7626pt too wide) in paragraph at lines 85--85
@@ -2171,18 +2194,19 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 a/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} <./figures/logo/b
 g.png> <./figures/logo/Logo_EPUFRJ_2020.png> <./figures/logo/UFRJ_Horizontal_Co
 r_RGB_Completa.png>]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 99--99
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 93--93
 [][]  
  []
 
-<figures/logo/poliUFRJ.png, id=83, 1535.7375pt x 1475.5125pt>
+(presentationTCC.toc)
+<figures/logo/poliUFRJ.png, id=90, 1535.7375pt x 1475.5125pt>
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 99.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 93.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 99.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 93.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -2221,7 +2245,7 @@ Overfull \hbox (0.7626pt too wide) in paragraph at lines 19--19
 [][]  
  []
 
-<tcc_images/criseH.png, id=111, 1027.84pt x 447.6725pt>
+<tcc_images/criseH.png, id=118, 1027.84pt x 447.6725pt>
 File: tcc_images/criseH.png Graphic file (type png)
 <use tcc_images/criseH.png>
 Package pdftex.def Info: tcc_images/criseH.png  used on input line 19.
@@ -2252,7 +2276,7 @@ LaTeX Font Info:    Trying to load font information for TS1+lmss on input line
 (C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmss.fd
 File: ts1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-<tcc_images/artebrasillet.jpg, id=121, 1296.845pt x 1786.675pt>
+<tcc_images/artebrasillet.jpg, id=128, 1296.845pt x 1786.675pt>
 File: tcc_images/artebrasillet.jpg Graphic file (type jpg)
 <use tcc_images/artebrasillet.jpg>
 Package pdftex.def Info: tcc_images/artebrasillet.jpg  used on input line 39.
@@ -2299,22 +2323,17 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
 {C:/Users/frota/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 86--86
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 87--87
 [][]  
- []
-
-
-Overfull \hbox (17.47444pt too wide) in paragraph at lines 86--86
- [][] 
  []
 
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 86.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 87.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 86.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 87.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -2324,17 +2343,17 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [7
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 99--99
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 100--100
 [][]  
  []
 
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 99.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 100.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 99.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 100.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -2344,23 +2363,23 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [8
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 109--109
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 110--110
 [][]  
  []
 
-<tcc_images/instalacao_ips.png, id=156, 845.40843pt x 368.1253pt>
+<tcc_images/instalacao_ips.png, id=162, 845.40843pt x 368.1253pt>
 File: tcc_images/instalacao_ips.png Graphic file (type png)
 <use tcc_images/instalacao_ips.png>
-Package pdftex.def Info: tcc_images/instalacao_ips.png  used on input line 109.
+Package pdftex.def Info: tcc_images/instalacao_ips.png  used on input line 110.
 
 (pdftex.def)             Requested size: 373.86424pt x 162.79573pt.
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 109.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 110.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 109.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 110.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -2370,75 +2389,9 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [9
 
  <./tcc_images/instalacao_ips.png (PNG copy)>]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 129--129
-[][]  
- []
-
-<tcc_images/distillateur_vagmd.png, id=164, 515.67656pt x 409.53pt>
-File: tcc_images/distillateur_vagmd.png Graphic file (type png)
-<use tcc_images/distillateur_vagmd.png>
-Package pdftex.def Info: tcc_images/distillateur_vagmd.png  used on input line 
-129.
-(pdftex.def)             Requested size: 186.93224pt x 148.44925pt.
-File: figures/logo/poliUFRJ.png Graphic file (type png)
-<use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 129.
-(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
-File: figures/logo/bg.png Graphic file (type png)
-<use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 129.
-(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
-
-Overfull \hbox (0.7626pt too wide) has occurred while \output is active
-[][] 
- []
-
-[10
-
- <./tcc_images/distillateur_vagmd.png (PNG copy)>]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 149--149
-[][]  
- []
-
-File: figures/logo/poliUFRJ.png Graphic file (type png)
-<use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 149.
-(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
-File: figures/logo/bg.png Graphic file (type png)
-<use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 149.
-(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
-
-Overfull \hbox (0.7626pt too wide) has occurred while \output is active
-[][] 
- []
-
-[11
-
-]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 161--161
-[][]  
- []
-
-File: figures/logo/poliUFRJ.png Graphic file (type png)
-<use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 161.
-(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
-File: figures/logo/bg.png Graphic file (type png)
-<use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 161.
-(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
-
-Overfull \hbox (0.7626pt too wide) has occurred while \output is active
-[][] 
- []
-
-[12
-
-]
 
 LaTeX Warning: Citation `Abid2020DesalinationOverview' undefined on input line 
-164.
+113.
 
 )
 \openout2 = `chapters/2_revisao.aux'.
@@ -2462,7 +2415,7 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[13
+[10
 
 
 
@@ -2476,28 +2429,6 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 32.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 32.
-! Undefined control sequence.
-<argument> ...idth } p{0.15\linewidth }} \toprule 
-                                                  \textbf {Abordagem} & \tex...
-l.32 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.32 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 32--32
 []|\T1/lmss/m/n/9 AGMD, CFD,
@@ -2507,17 +2438,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--32
 Overfull \hbox (4.75275pt too wide) in paragraph at lines 32--32
 []|\T1/lmss/m/n/9 Interpretabilidade
  []
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.32 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 32--32
@@ -2534,17 +2454,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--32
 []|\T1/lmss/m/n/9 Generalização
  []
 
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.32 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 
 Underfull \hbox (badness 6725) in paragraph at lines 32--32
 []|\T1/lmss/m/n/9 AGMD, VMD,
@@ -2560,17 +2469,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--32
 []|\T1/lmss/m/n/9 Complexidade
  []
 
-! Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.32 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
 Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 32.
@@ -2584,91 +2482,15 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[14
+[11
 
 ]
 Overfull \hbox (0.7626pt too wide) in paragraph at lines 68--68
 [][]  
  []
 
-! Undefined control sequence.
-<argument> ...idth } p{0.22\linewidth }} \toprule 
-                                                  \textbf {Trabalho} & \text...
-l.68 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.68 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.68 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <7> not available
 (Font)              Font shape `T1/lmss/m/sl' tried instead on input line 68.
-
-Underfull \hbox (badness 10000) in paragraph at lines 68--68
-[]|\T1/lmss/m/n/7 AGMD
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 68--68
-[]|\T1/lmss/m/n/7 Modelo fí-sico + Oti-mi-za-ção (for-mi-
- []
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.68 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.68 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.68 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
 Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 68.
@@ -2682,9 +2504,9 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[15
+[12
 
-{C:/Users/frota/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
+]
 Overfull \hbox (0.7626pt too wide) in paragraph at lines 92--92
 [][]  
  []
@@ -2702,7 +2524,7 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[16
+[13
 
 ])
 \openout2 = `chapters/2a_fundamentacao.aux'.
@@ -2726,35 +2548,102 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[17
+[14
 
 
 
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 27--27
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 29--29
 [][]  
  []
 
-<tcc_images/chap03/Model-of-heat-and-mass-transfer-in-the-AGMD.png, id=237, 257
+<tcc_images/chap03/Model-of-heat-and-mass-transfer-in-the-AGMD.png, id=222, 257
 .46187pt x 332.74312pt>
 File: tcc_images/chap03/Model-of-heat-and-mass-transfer-in-the-AGMD.png Graphic
  file (type png)
 <use tcc_images/chap03/Model-of-heat-and-mass-transfer-in-the-AGMD.png>
 Package pdftex.def Info: tcc_images/chap03/Model-of-heat-and-mass-transfer-in-t
-he-AGMD.png  used on input line 27.
-(pdftex.def)             Requested size: 141.2375pt x 182.53708pt.
+he-AGMD.png  used on input line 29.
+(pdftex.def)             Requested size: 119.63582pt x 154.61224pt.
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 27.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 29.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 
-Overfull \vbox (18.89699pt too high) detected at line 27
+Overfull \vbox (18.89699pt too high) detected at line 29
  []
 
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 27.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 29.
+(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
+
+Overfull \hbox (0.7626pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[15
+
+ <./tcc_images/chap03/Model-of-heat-and-mass-transfer-in-the-AGMD.png>]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 60--60
+[][]  
+ []
+
+File: figures/logo/poliUFRJ.png Graphic file (type png)
+<use figures/logo/poliUFRJ.png>
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 60.
+(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
+File: figures/logo/bg.png Graphic file (type png)
+<use figures/logo/bg.png>
+Package pdftex.def Info: figures/logo/bg.png  used on input line 60.
+(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
+
+Overfull \hbox (0.7626pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[16
+
+]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 93--93
+[][]  
+ []
+
+
+LaTeX Warning: Citation `Ghahramani2015' on page 17 undefined on input line 93.
+
+
+
+LaTeX Warning: Citation `Rai2020' on page 17 undefined on input line 93.
+
+File: figures/logo/poliUFRJ.png Graphic file (type png)
+<use figures/logo/poliUFRJ.png>
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 93.
+(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
+File: figures/logo/bg.png Graphic file (type png)
+<use figures/logo/bg.png>
+Package pdftex.def Info: figures/logo/bg.png  used on input line 93.
+(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
+
+Overfull \hbox (0.7626pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[17
+
+{C:/Users/frota/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 123--123
+[][]  
+ []
+
+File: figures/logo/poliUFRJ.png Graphic file (type png)
+<use figures/logo/poliUFRJ.png>
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 123.
+(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
+File: figures/logo/bg.png Graphic file (type png)
+<use figures/logo/bg.png>
+Package pdftex.def Info: figures/logo/bg.png  used on input line 123.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -2762,282 +2651,6 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
  []
 
 [18
-
- <./tcc_images/chap03/Model-of-heat-and-mass-transfer-in-the-AGMD.png>]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 58--58
-[][]  
- []
-
-! Undefined control sequence.
-<argument> ...idth } p{0.35\linewidth }} \toprule 
-                                                  \textbf {TÃ³pico} & \textb...
-l.58 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.58 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.58 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.58 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.58 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.58 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-File: figures/logo/poliUFRJ.png Graphic file (type png)
-<use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 58.
-(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
-File: figures/logo/bg.png Graphic file (type png)
-<use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 58.
-(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
-
-Overfull \hbox (0.7626pt too wide) has occurred while \output is active
-[][] 
- []
-
-[19
-
-]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 91--91
-[][]  
- []
-
-
-LaTeX Warning: Citation `Ghahramani2015' on page 20 undefined on input line 91.
-
-
-
-LaTeX Warning: Citation `Rai2020' on page 20 undefined on input line 91.
-
-! Undefined control sequence.
-<argument> ...width } p{0.7\linewidth }} \toprule 
-                                                  \textbf {Conceito} & \text...
-l.91 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.91 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.91 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.91 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.91 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.91 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.91 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-File: figures/logo/poliUFRJ.png Graphic file (type png)
-<use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 91.
-(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
-File: figures/logo/bg.png Graphic file (type png)
-<use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 91.
-(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
-
-Overfull \hbox (0.7626pt too wide) has occurred while \output is active
-[][] 
- []
-
-[20
-
-]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 121--121
-[][]  
- []
-
-! Undefined control sequence.
-<argument> ...idth } p{0.35\linewidth }} \toprule 
-                                                  \textbf {FamÃ­lia} & \text...
-l.121 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.121 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.121 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.121 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.121 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.121 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-File: figures/logo/poliUFRJ.png Graphic file (type png)
-<use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 121.
-(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
-File: figures/logo/bg.png Graphic file (type png)
-<use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 121.
-(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
-
-Overfull \hbox (0.7626pt too wide) has occurred while \output is active
-[][] 
- []
-
-[21
 
 ])
 \openout2 = `chapters/3_metodologia.aux'.
@@ -3061,140 +2674,140 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[22
+[19
 
 
 
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 38--38
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 62--62
 [][]  
  []
 
-! Undefined control sequence.
-<argument> ...idth } p{0.25\linewidth }} \toprule 
-                                                  \textbf {Etapa} & \textbf ...
-l.38 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+File: figures/logo/poliUFRJ.png Graphic file (type png)
+<use figures/logo/poliUFRJ.png>
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 62.
+(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
+File: figures/logo/bg.png Graphic file (type png)
+<use figures/logo/bg.png>
+Package pdftex.def Info: figures/logo/bg.png  used on input line 62.
+(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.38 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+Overfull \hbox (0.7626pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[20
+
+]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 105--105
+[][]  
+ []
 
 
-Underfull \hbox (badness 3428) in paragraph at lines 38--38
+Underfull \hbox (badness 3428) in paragraph at lines 105--105
 []|\T1/lmss/bx/n/9 Dados ex-pe-ri-
  []
 
 
-Underfull \hbox (badness 3058) in paragraph at lines 38--38
+Underfull \hbox (badness 3058) in paragraph at lines 105--105
 []|\T1/lmss/m/n/9 Sistema V-AGMD pi-loto
  []
 
 
-Underfull \hbox (badness 5431) in paragraph at lines 38--38
+Underfull \hbox (badness 5431) in paragraph at lines 105--105
 []|\T1/lmss/m/n/9 Entradas: T$[]$, va-zão,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 38--38
+Underfull \hbox (badness 10000) in paragraph at lines 105--105
 \T1/lmss/m/n/9 P$[]$, C$[]$; Sa-í-das:
  []
 
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.38 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 38--38
+Underfull \hbox (badness 10000) in paragraph at lines 105--105
 []|\T1/lmss/bx/n/9 Modelo fí-sico
  []
 
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 38
-.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 10
+5.
 (C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.38 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 38--38
+Underfull \hbox (badness 10000) in paragraph at lines 105--105
 []|\T1/lmss/bx/n/9 Pré-
  []
 
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.38 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 38--38
-[]|\T1/lmss/bx/n/9 Pipeline de
+Underfull \hbox (badness 2359) in paragraph at lines 105--105
+[]|\T1/lmss/m/n/9 3 par-ti-ções: cada uma
  []
 
-! Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.38 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-<tcc_images/chap04/esquematizacao_regressao.png, id=285, 1497.595pt x 1057.9525
+<tcc_images/chap04/esquematizacao_regressao.png, id=277, 1497.595pt x 1057.9525
 pt>
 File: tcc_images/chap04/esquematizacao_regressao.png Graphic file (type png)
 <use tcc_images/chap04/esquematizacao_regressao.png>
 Package pdftex.def Info: tcc_images/chap04/esquematizacao_regressao.png  used o
-n input line 38.
-(pdftex.def)             Requested size: 290.7842pt x 205.4201pt.
+n input line 105.
+(pdftex.def)             Requested size: 228.47556pt x 161.39806pt.
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 38.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 105.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 
-Overfull \vbox (121.82932pt too high) detected at line 38
+Overfull \vbox (136.94125pt too high) detected at line 105
  []
 
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 38.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 105.
+(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
+
+Overfull \hbox (0.7626pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[21
+
+{C:/Users/frota/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./t
+cc_images/chap04/esquematizacao_regressao.png (PNG copy)>]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 148--148
+[][]  
+ []
+
+File: figures/logo/poliUFRJ.png Graphic file (type png)
+<use figures/logo/poliUFRJ.png>
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 148.
+(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
+File: figures/logo/bg.png Graphic file (type png)
+<use figures/logo/bg.png>
+Package pdftex.def Info: figures/logo/bg.png  used on input line 148.
+(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
+
+Overfull \hbox (0.7626pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[22
+
+]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 180--180
+[][]  
+ []
+
+<tcc_images/chap04/group_k_fold.png, id=293, 602.25pt x 301.125pt>
+File: tcc_images/chap04/group_k_fold.png Graphic file (type png)
+<use tcc_images/chap04/group_k_fold.png>
+Package pdftex.def Info: tcc_images/chap04/group_k_fold.png  used on input line
+ 180.
+(pdftex.def)             Requested size: 207.7039pt x 103.85147pt.
+File: figures/logo/poliUFRJ.png Graphic file (type png)
+<use figures/logo/poliUFRJ.png>
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 180.
+(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
+File: figures/logo/bg.png Graphic file (type png)
+<use figures/logo/bg.png>
+Package pdftex.def Info: figures/logo/bg.png  used on input line 180.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3203,19 +2816,24 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
 [23
 
-{C:/Users/frota/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./t
-cc_images/chap04/esquematizacao_regressao.png (PNG copy)>]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 61--61
+ <./tcc_images/chap04/group_k_fold.png (PNG copy)>]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 222--222
 [][]  
  []
 
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 222.
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 61.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 222.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
+
+Overfull \vbox (85.64812pt too high) detected at line 222
+ []
+
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 61.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 222.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3225,79 +2843,22 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [24
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 94--94
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 256--256
 [][]  
  []
 
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 94.
-! Undefined control sequence.
-<argument> ...idth } p{0.70\linewidth }} \toprule 
-                                                  \textbf {FamÃ­lia} & \text...
-l.94 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.94 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
-[]|\T1/pcr/m/n/8 n_estimators $\OMS/lmsy/m/n/8 2 f\OT1/lmr/m/n/8 200\OML/lmm/m/
-it/8 ; \OT1/lmr/m/n/8 400\OML/lmm/m/it/8 ; \OT1/lmr/m/n/8 600\OMS/lmsy/m/n/8 g$
-\T1/lmss/m/n/8 ; \T1/pcr/m/n/8 max_depth\T1/lmss/m/n/8 ; \T1/pcr/m/n/8 min_samp
-les_leaf\T1/lmss/m/n/8 ;
+Underfull \hbox (badness 2376) in paragraph at lines 256--256
+[]|\T1/lmss/m/n/9 Melhor RMSE para
  []
-
-
-Underfull \hbox (badness 1102) in paragraph at lines 94--94
-[]|\T1/pcr/m/n/8 n_estimators $\OMS/lmsy/m/n/8 2 f\OT1/lmr/m/n/8 50\OML/lmm/m/i
-t/8 ; \OT1/lmr/m/n/8 100\OML/lmm/m/it/8 ; \OT1/lmr/m/n/8 200\OML/lmm/m/it/8 ; \
-OT1/lmr/m/n/8 400\OMS/lmsy/m/n/8 g$\T1/lmss/m/n/8 ; \T1/pcr/m/n/8 learning_rate
- $\OMS/lmsy/m/n/8 2 f\OT1/lmr/m/n/8 0\OML/lmm/m/it/8 ; \OT1/lmr/m/n/8 01$ \T1/l
-mss/m/n/8 a $\OT1/lmr/m/n/8 0\OML/lmm/m/it/8 ; \OT1/lmr/m/n/8 1\OMS/lmsy/m/n/8 
-g$\T1/lmss/m/n/8 ;
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
-[]|\T1/pcr/m/n/8 hidden_layer_sizes $\OMS/lmsy/m/n/8 2 f\OT1/lmr/m/n/8 (32\OML/
-lmm/m/it/8 ; \OT1/lmr/m/n/8 )\OML/lmm/m/it/8 ; \OT1/lmr/m/n/8 (64\OML/lmm/m/it/
-8 ; \OT1/lmr/m/n/8 )\OML/lmm/m/it/8 ; \OT1/lmr/m/n/8 (64\OML/lmm/m/it/8 ; \OT1/
-lmr/m/n/8 32)\OML/lmm/m/it/8 ; \OT1/lmr/m/n/8 (128\OML/lmm/m/it/8 ; \OT1/lmr/m/
-n/8 64)\OMS/lmsy/m/n/8 g$\T1/lmss/m/n/8 ; $\OML/lmm/m/it/8  \OMS/lmsy/m/n/8 2
- []
-
-! Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.94 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 94.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 256.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 94.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 256.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3305,97 +2866,6 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
  []
 
 [25
-
-]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 128--128
-[][]  
- []
-
-! Undefined control sequence.
-<argument> ...width } p{0.2\linewidth }} \toprule 
-                                                  \textbf {Arquitetura} & \t...
-l.128 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.128 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.128 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Underfull \hbox (badness 2376) in paragraph at lines 128--128
-[]|\T1/lmss/m/n/9 Melhor RMSE para
- []
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.128 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.128 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.128 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-File: figures/logo/poliUFRJ.png Graphic file (type png)
-<use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 128.
-(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
-File: figures/logo/bg.png Graphic file (type png)
-<use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 128.
-(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
-
-Overfull \hbox (0.7626pt too wide) has occurred while \output is active
-[][] 
- []
-
-[26
 
 ])
 \openout2 = `chapters/4_resultados.aux'.
@@ -3419,30 +2889,66 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[27
+[26
 
 
 
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 17--17
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 18--18
 [][]  
  []
 
-<tcc_images/chap06/scatter_vagmd_exp_only.png, id=335, 1704.3675pt x 929.4725pt
+<tcc_images/chap06/scatter_vagmd_exp_only.png, id=332, 1704.3675pt x 929.4725pt
 >
 File: tcc_images/chap06/scatter_vagmd_exp_only.png Graphic file (type png)
 <use tcc_images/chap06/scatter_vagmd_exp_only.png>
 Package pdftex.def Info: tcc_images/chap06/scatter_vagmd_exp_only.png  used on 
-input line 17.
+input line 18.
 (pdftex.def)             Requested size: 207.7039pt x 113.26216pt.
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 17.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 18.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 17.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 18.
+(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
+
+Overfull \hbox (0.7626pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[27
+
+ <./tcc_images/chap06/scatter_vagmd_exp_only.png (PNG copy)>]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 32--32
+[][]  
+ []
+
+<tcc_images/chap06/heatmap_pearson_features_targets.png, id=340, 513.117pt x 46
+9.755pt>
+File: tcc_images/chap06/heatmap_pearson_features_targets.png Graphic file (type
+ png)
+<use tcc_images/chap06/heatmap_pearson_features_targets.png>
+Package pdftex.def Info: tcc_images/chap06/heatmap_pearson_features_targets.png
+  used on input line 32.
+(pdftex.def)             Requested size: 207.7039pt x 190.14938pt.
+<tcc_images/chap06/heatmap_spearman_features_targets.png, id=341, 513.117pt x 4
+69.755pt>
+File: tcc_images/chap06/heatmap_spearman_features_targets.png Graphic file (typ
+e png)
+<use tcc_images/chap06/heatmap_spearman_features_targets.png>
+Package pdftex.def Info: tcc_images/chap06/heatmap_spearman_features_targets.pn
+g  used on input line 32.
+(pdftex.def)             Requested size: 207.7039pt x 190.14938pt.
+File: figures/logo/poliUFRJ.png Graphic file (type png)
+<use figures/logo/poliUFRJ.png>
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 32.
+(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
+File: figures/logo/bg.png Graphic file (type png)
+<use figures/logo/bg.png>
+Package pdftex.def Info: figures/logo/bg.png  used on input line 32.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3451,34 +2957,37 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
 [28
 
- <./tcc_images/chap06/scatter_vagmd_exp_only.png (PNG copy)>]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 30--30
+ <./tcc_images/chap06/heatmap_pearson_features_targets.png> <./tcc_images/chap0
+6/heatmap_spearman_features_targets.png>]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 60--60
 [][]  
  []
 
-<tcc_images/chap06/heatmap_pearson_features_targets.png, id=344, 513.117pt x 46
-9.755pt>
-File: tcc_images/chap06/heatmap_pearson_features_targets.png Graphic file (type
- png)
-<use tcc_images/chap06/heatmap_pearson_features_targets.png>
-Package pdftex.def Info: tcc_images/chap06/heatmap_pearson_features_targets.png
-  used on input line 30.
-(pdftex.def)             Requested size: 207.7039pt x 190.14938pt.
-<tcc_images/chap06/heatmap_spearman_features_targets.png, id=345, 513.117pt x 4
-69.755pt>
-File: tcc_images/chap06/heatmap_spearman_features_targets.png Graphic file (typ
-e png)
-<use tcc_images/chap06/heatmap_spearman_features_targets.png>
-Package pdftex.def Info: tcc_images/chap06/heatmap_spearman_features_targets.pn
-g  used on input line 30.
-(pdftex.def)             Requested size: 207.7039pt x 190.14938pt.
+<tcc_images/chap06/flux_real_vs_0d.png, id=351, 462.528pt x 346.896pt>
+File: tcc_images/chap06/flux_real_vs_0d.png Graphic file (type png)
+<use tcc_images/chap06/flux_real_vs_0d.png>
+Package pdftex.def Info: tcc_images/chap06/flux_real_vs_0d.png  used on input l
+ine 60.
+(pdftex.def)             Requested size: 137.08533pt x 102.81511pt.
+<tcc_images/chap06/alim_T_out_real_vs_0d.png, id=352, 462.528pt x 346.896pt>
+File: tcc_images/chap06/alim_T_out_real_vs_0d.png Graphic file (type png)
+<use tcc_images/chap06/alim_T_out_real_vs_0d.png>
+Package pdftex.def Info: tcc_images/chap06/alim_T_out_real_vs_0d.png  used on i
+nput line 60.
+(pdftex.def)             Requested size: 137.08533pt x 102.81511pt.
+<tcc_images/chap06/ref_T_out_real_vs_0d.png, id=353, 462.528pt x 346.896pt>
+File: tcc_images/chap06/ref_T_out_real_vs_0d.png Graphic file (type png)
+<use tcc_images/chap06/ref_T_out_real_vs_0d.png>
+Package pdftex.def Info: tcc_images/chap06/ref_T_out_real_vs_0d.png  used on in
+put line 60.
+(pdftex.def)             Requested size: 137.08533pt x 102.81511pt.
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 30.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 60.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 30.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 60.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3487,70 +2996,19 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
 [29
 
- <./tcc_images/chap06/heatmap_pearson_features_targets.png> <./tcc_images/chap0
-6/heatmap_spearman_features_targets.png>]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 57--57
+ <./tcc_images/chap06/flux_real_vs_0d.png> <./tcc_images/chap06/alim_T_out_real
+_vs_0d.png> <./tcc_images/chap06/ref_T_out_real_vs_0d.png>]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 79--79
 [][]  
  []
 
-! Undefined control sequence.
-\beamer@doifinframe ...n {tabular}{lccc} \toprule 
-                                                  \textbf {MÃ©trica} & \text...
-l.57 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.57 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.57 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-<tcc_images/chap06/flux_real_vs_0d.png, id=355, 462.528pt x 346.896pt>
-File: tcc_images/chap06/flux_real_vs_0d.png Graphic file (type png)
-<use tcc_images/chap06/flux_real_vs_0d.png>
-Package pdftex.def Info: tcc_images/chap06/flux_real_vs_0d.png  used on input l
-ine 57.
-(pdftex.def)             Requested size: 137.08533pt x 102.81511pt.
-<tcc_images/chap06/alim_T_out_real_vs_0d.png, id=356, 462.528pt x 346.896pt>
-File: tcc_images/chap06/alim_T_out_real_vs_0d.png Graphic file (type png)
-<use tcc_images/chap06/alim_T_out_real_vs_0d.png>
-Package pdftex.def Info: tcc_images/chap06/alim_T_out_real_vs_0d.png  used on i
-nput line 57.
-(pdftex.def)             Requested size: 137.08533pt x 102.81511pt.
-<tcc_images/chap06/ref_T_out_real_vs_0d.png, id=357, 462.528pt x 346.896pt>
-File: tcc_images/chap06/ref_T_out_real_vs_0d.png Graphic file (type png)
-<use tcc_images/chap06/ref_T_out_real_vs_0d.png>
-Package pdftex.def Info: tcc_images/chap06/ref_T_out_real_vs_0d.png  used on in
-put line 57.
-(pdftex.def)             Requested size: 137.08533pt x 102.81511pt.
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 57.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 79.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 57.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 79.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3559,52 +3017,30 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
 [30
 
- <./tcc_images/chap06/flux_real_vs_0d.png> <./tcc_images/chap06/alim_T_out_real
-_vs_0d.png> <./tcc_images/chap06/ref_T_out_real_vs_0d.png>]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 76--76
+]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 93--93
 [][]  
  []
 
-! Undefined control sequence.
-<argument>  \begin {tabular}{lcccccc} \toprule 
-                                               \textbf {Modelo} & \multicolu...
-l.76 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.76 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.76 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
+<tcc_images/chap06/rmse_by_target_grouped.png, id=373, 913.887pt x 462.528pt>
+File: tcc_images/chap06/rmse_by_target_grouped.png Graphic file (type png)
+<use tcc_images/chap06/rmse_by_target_grouped.png>
+Package pdftex.def Info: tcc_images/chap06/rmse_by_target_grouped.png  used on 
+input line 93.
+(pdftex.def)             Requested size: 207.7039pt x 105.11588pt.
+<tcc_images/chap06/best_per_family_rmse.png, id=374, 1084.05pt x 361.35pt>
+File: tcc_images/chap06/best_per_family_rmse.png Graphic file (type png)
+<use tcc_images/chap06/best_per_family_rmse.png>
+Package pdftex.def Info: tcc_images/chap06/best_per_family_rmse.png  used on in
+put line 93.
+(pdftex.def)             Requested size: 207.7039pt x 69.23064pt.
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 76.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 93.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 76.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 93.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3613,30 +3049,19 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
 [31
 
-]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 89--89
+ <./tcc_images/chap06/rmse_by_target_grouped.png> <./tcc_images/chap06/best_per
+_family_rmse.png>]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 114--114
 [][]  
  []
 
-<tcc_images/chap06/rmse_by_target_grouped.png, id=376, 913.887pt x 462.528pt>
-File: tcc_images/chap06/rmse_by_target_grouped.png Graphic file (type png)
-<use tcc_images/chap06/rmse_by_target_grouped.png>
-Package pdftex.def Info: tcc_images/chap06/rmse_by_target_grouped.png  used on 
-input line 89.
-(pdftex.def)             Requested size: 207.7039pt x 105.11588pt.
-<tcc_images/chap06/best_per_family_rmse.png, id=377, 1084.05pt x 361.35pt>
-File: tcc_images/chap06/best_per_family_rmse.png Graphic file (type png)
-<use tcc_images/chap06/best_per_family_rmse.png>
-Package pdftex.def Info: tcc_images/chap06/best_per_family_rmse.png  used on in
-put line 89.
-(pdftex.def)             Requested size: 207.7039pt x 69.23064pt.
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 89.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 114.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 89.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 114.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3645,19 +3070,26 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
 [32
 
- <./tcc_images/chap06/rmse_by_target_grouped.png> <./tcc_images/chap06/best_per
-_family_rmse.png>]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 110--110
+]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 122--122
 [][]  
  []
 
+<tcc_images/chap06/model_selection/learning_curve_baseline.png, id=392, 1156.32
+pt x 361.35pt>
+File: tcc_images/chap06/model_selection/learning_curve_baseline.png Graphic fil
+e (type png)
+<use tcc_images/chap06/model_selection/learning_curve_baseline.png>
+Package pdftex.def Info: tcc_images/chap06/model_selection/learning_curve_basel
+ine.png  used on input line 122.
+(pdftex.def)             Requested size: 290.7842pt x 90.8666pt.
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 110.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 122.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 110.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 122.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3666,26 +3098,18 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
 [33
 
-]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 117--117
+ <./tcc_images/chap06/model_selection/learning_curve_baseline.png>]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 154--154
 [][]  
  []
 
-<tcc_images/chap06/model_selection/learning_curve_baseline.png, id=394, 1156.32
-pt x 361.35pt>
-File: tcc_images/chap06/model_selection/learning_curve_baseline.png Graphic fil
-e (type png)
-<use tcc_images/chap06/model_selection/learning_curve_baseline.png>
-Package pdftex.def Info: tcc_images/chap06/model_selection/learning_curve_basel
-ine.png  used on input line 117.
-(pdftex.def)             Requested size: 290.7842pt x 90.8666pt.
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 117.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 154.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 117.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 154.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3694,51 +3118,25 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
 [34
 
- <./tcc_images/chap06/model_selection/learning_curve_baseline.png>]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 149--149
+]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 173--173
 [][]  
  []
 
-! Undefined control sequence.
-\beamer@doifinframe ...n {tabular}{lccc} \toprule 
-                                                  \textbf {Modelo} & \textbf...
-l.149 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.149 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.149 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
+<tcc_images/chap06/overlay_ZohanResidual_Flux.png, id=408, 563.706pt x 491.436p
+t>
+File: tcc_images/chap06/overlay_ZohanResidual_Flux.png Graphic file (type png)
+<use tcc_images/chap06/overlay_ZohanResidual_Flux.png>
+Package pdftex.def Info: tcc_images/chap06/overlay_ZohanResidual_Flux.png  used
+ on input line 173.
+(pdftex.def)             Requested size: 186.93224pt x 162.96175pt.
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 149.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 173.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 149.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 173.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3747,25 +3145,43 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
 [35
 
-]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 167--167
+ <./tcc_images/chap06/overlay_ZohanResidual_Flux.png>]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 202--202
 [][]  
  []
 
-<tcc_images/chap06/overlay_ZohanResidual_Flux.png, id=410, 563.706pt x 491.436p
-t>
 File: tcc_images/chap06/overlay_ZohanResidual_Flux.png Graphic file (type png)
 <use tcc_images/chap06/overlay_ZohanResidual_Flux.png>
 Package pdftex.def Info: tcc_images/chap06/overlay_ZohanResidual_Flux.png  used
- on input line 167.
-(pdftex.def)             Requested size: 186.93224pt x 162.96175pt.
+ on input line 202.
+(pdftex.def)             Requested size: 137.08533pt x 119.50677pt.
+<tcc_images/chap06/overlay_ZohanResidual_Alim_T_out.png, id=417, 563.706pt x 49
+1.436pt>
+File: tcc_images/chap06/overlay_ZohanResidual_Alim_T_out.png Graphic file (type
+ png)
+<use tcc_images/chap06/overlay_ZohanResidual_Alim_T_out.png>
+Package pdftex.def Info: tcc_images/chap06/overlay_ZohanResidual_Alim_T_out.png
+  used on input line 202.
+(pdftex.def)             Requested size: 137.08533pt x 119.50677pt.
+<tcc_images/chap06/overlay_ZohanResidual_Ref_T_out.png, id=418, 563.706pt x 491
+.436pt>
+File: tcc_images/chap06/overlay_ZohanResidual_Ref_T_out.png Graphic file (type 
+png)
+<use tcc_images/chap06/overlay_ZohanResidual_Ref_T_out.png>
+Package pdftex.def Info: tcc_images/chap06/overlay_ZohanResidual_Ref_T_out.png 
+ used on input line 202.
+(pdftex.def)             Requested size: 137.08533pt x 119.50677pt.
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 167.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 202.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
+
+Overfull \vbox (0.4786pt too high) detected at line 202
+ []
+
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 167.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 202.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3774,72 +3190,19 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
 [36
 
- <./tcc_images/chap06/overlay_ZohanResidual_Flux.png>]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 195--195
+ <./tcc_images/chap06/overlay_ZohanResidual_Alim_T_out.png> <./tcc_images/chap0
+6/overlay_ZohanResidual_Ref_T_out.png>]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 222--222
 [][]  
  []
 
-File: tcc_images/chap06/overlay_ZohanResidual_Flux.png Graphic file (type png)
-<use tcc_images/chap06/overlay_ZohanResidual_Flux.png>
-Package pdftex.def Info: tcc_images/chap06/overlay_ZohanResidual_Flux.png  used
- on input line 195.
-(pdftex.def)             Requested size: 137.08533pt x 119.50677pt.
-<tcc_images/chap06/overlay_ZohanResidual_Alim_T_out.png, id=419, 563.706pt x 49
-1.436pt>
-File: tcc_images/chap06/overlay_ZohanResidual_Alim_T_out.png Graphic file (type
- png)
-<use tcc_images/chap06/overlay_ZohanResidual_Alim_T_out.png>
-Package pdftex.def Info: tcc_images/chap06/overlay_ZohanResidual_Alim_T_out.png
-  used on input line 195.
-(pdftex.def)             Requested size: 137.08533pt x 119.50677pt.
-<tcc_images/chap06/overlay_ZohanResidual_Ref_T_out.png, id=420, 563.706pt x 491
-.436pt>
-File: tcc_images/chap06/overlay_ZohanResidual_Ref_T_out.png Graphic file (type 
-png)
-<use tcc_images/chap06/overlay_ZohanResidual_Ref_T_out.png>
-Package pdftex.def Info: tcc_images/chap06/overlay_ZohanResidual_Ref_T_out.png 
- used on input line 195.
-(pdftex.def)             Requested size: 137.08533pt x 119.50677pt.
-! Undefined control sequence.
-\beamer@doifinframe ... {tabular}{lcccc} \toprule 
-                                                  & \textbf {Fluxo} & \textb...
-l.195 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.195 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.195 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 195.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 222.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 195.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 222.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3847,60 +3210,6 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
  []
 
 [37
-
- <./tcc_images/chap06/overlay_ZohanResidual_Alim_T_out.png> <./tcc_images/chap0
-6/overlay_ZohanResidual_Ref_T_out.png>]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 215--215
-[][]  
- []
-
-! Undefined control sequence.
-\beamer@doifinframe ...{0.6\linewidth }} \toprule 
-                                                  \textbf {TÃ³pico} & \textb...
-l.215 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.215 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.215 \end{slide}
-                 
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-File: figures/logo/poliUFRJ.png Graphic file (type png)
-<use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 215.
-(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
-File: figures/logo/bg.png Graphic file (type png)
-<use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 215.
-(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
-
-Overfull \hbox (0.7626pt too wide) has occurred while \output is active
-[][] 
- []
-
-[38
 
 ])
 \openout2 = `chapters/5_conclusoes.aux'.
@@ -3924,7 +3233,7 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[39
+[38
 
 
 
@@ -3934,87 +3243,10 @@ Overfull \hbox (0.7626pt too wide) in paragraph at lines 34--34
 [][]  
  []
 
-! Undefined control sequence.
-<argument> ...idth } p{0.35\linewidth }} \toprule 
-                                                  \textbf {Aspecto} & \textb...
-l.34 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.34 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.34 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.34 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.34 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \midrule 
-                         
-l.34 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 
 Underfull \hbox (badness 1983) in paragraph at lines 34--34
 []|\T1/lmss/m/n/9 Comportamento tér-mico é par-ci-al-
  []
-
-! Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.34 \end{slide}
-                
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
@@ -4029,20 +3261,41 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[40
+[39
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 60--60
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 58--58
 [][]  
  []
 
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 60.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 58.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 60.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 58.
+(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
+
+Overfull \hbox (0.7626pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[40
+
+])
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 109--109
+[][]  
+ []
+
+(presentationTCC.toc)
+File: figures/logo/poliUFRJ.png Graphic file (type png)
+<use figures/logo/poliUFRJ.png>
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 109.
+(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
+File: figures/logo/bg.png Graphic file (type png)
+<use figures/logo/bg.png>
+Package pdftex.def Info: figures/logo/bg.png  used on input line 109.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -4051,19 +3304,20 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
 [41
 
-])
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 115--115
+
+
+]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 125--125
 [][]  
  []
 
-(presentationTCC.toc)
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 115.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 125.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 115.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 125.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -4072,36 +3326,14 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
 [42
 
-
-
-]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 131--131
-[][]  
- []
-
-File: figures/logo/poliUFRJ.png Graphic file (type png)
-<use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 131.
-(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
-File: figures/logo/bg.png Graphic file (type png)
-<use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 131.
-(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
-
-Overfull \hbox (0.7626pt too wide) has occurred while \output is active
-[][] 
- []
-
-[43
-
  <C:/Users/frota/AppData/Local/Programs/MiKTeX/tex/latex/beamer/beamericonartic
 le.pdf>]
 File: figures/logo/Logo_EPUFRJ_2020.png Graphic file (type png)
 <use figures/logo/Logo_EPUFRJ_2020.png>
 Package pdftex.def Info: figures/logo/Logo_EPUFRJ_2020.png  used on input line 
-186.
+180.
 (pdftex.def)             Requested size: 207.74847pt x 71.1124pt.
- [44
+ [43
 
 ]
 \tf@nav=\write7
@@ -4125,17 +3357,26 @@ L3 programming layer <2025-12-24>
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `presentationTCC.out' has not changed.
-(rerunfilecheck)             Checksum: 1853F65C4A9FB5BA031EE7631D5F9C15;933.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `presentationTCC.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `presentationTCC.out':
+(rerunfilecheck)             Before: D1495395AB5531E93B172E0D4C08EBAB;940
+(rerunfilecheck)             After:  1853F65C4A9FB5BA031EE7631D5F9C15;933.
  ) 
 Here is how much of TeX's memory you used:
- 40083 strings out of 467871
- 834725 string characters out of 5418376
- 1308301 words of memory out of 5000000
- 67905 multiletter control sequences out of 15000+600000
- 698111 words of font info for 103 fonts, out of 8000000 for 9000
+ 40222 strings out of 467871
+ 836370 string characters out of 5418376
+ 1299777 words of memory out of 5000000
+ 68040 multiletter control sequences out of 15000+600000
+ 697866 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 132i,16n,126p,3282b,1260s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,16n,123p,3262b,1274s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/frota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pf
 b><C:/Users/frota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi5.pfb
 ><C:/Users/frota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb>
@@ -4145,23 +3386,20 @@ C:/Users/frota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C
 /Users/frota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/
 Users/frota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Us
 ers/frota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/User
-s/frota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/
-frota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/fr
-ota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/fr
-ota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb><C:/Users/fr
-ota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss8.pfb><C:/Users/fro
-ta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss9.pfb><C:/Users/frot
-a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/fr
-ota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso8.pfb><C:/Users/fr
-ota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/fr
-ota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy5.pfb><C:/Users/fro
-ta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/frot
-a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/frota
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/Users/frota/
-AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on presentationTCC.pdf (44 pages, 6373492 bytes).
+s/frota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/
+frota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/
+frota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb><C:/Users/
+frota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss8.pfb><C:/Users/f
+rota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss9.pfb><C:/Users/fr
+ota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/
+frota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso8.pfb><C:/Users/
+frota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/
+frota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy5.pfb><C:/Users/f
+rota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/Users/fr
+ota/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on presentationTCC.pdf (43 pages, 6126886 bytes).
 PDF statistics:
- 639 PDF objects out of 1000 (max. 8388607)
- 107 named destinations out of 1000 (max. 500000)
+ 627 PDF objects out of 1000 (max. 8388607)
+ 105 named destinations out of 1000 (max. 500000)
  321 words of extra memory for PDF output out of 10000 (max. 10000000)
 

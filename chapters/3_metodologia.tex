@@ -20,7 +20,7 @@
     \node[stage, right=0.3cm of s0] (s1) {Stage 1\\Baseline Keras};
     \node[stage, right=0.3cm of s1] (s2) {Stage 2\\H\'ibridos};
     \node[stage, right=0.3cm of s2] (sel) {Sele\c{c}\~ao\\1-SE};
-    \node[stage, right=0.3cm of sel] (final) {Compara\c{c}\~ao\\Final};
+    \node[stage, right=0.3cm of sel] (final) {Vencedor /\\0D / Redes};
 
     \draw[arrow] (dados) -- (eda);
     \draw[arrow] (eda) -- (fisico);
@@ -38,7 +38,7 @@
     \node[detail, below=0.25cm of s1]     {MLP multi-sa\'ida\\(128,64,32), ReLU};
     \node[detail, below=0.25cm of s2]     {ZohanResidual,\\ZohanHPD, Luc, HRNN};
     \node[detail, below=0.25cm of sel]    {1-SE + min.\\complexidade};
-    \node[detail, below=0.25cm of final]  {Vencedor \textit{vs} 0D};
+    \node[detail, below=0.25cm of final]  {Compara\c{c}\~ao vencedor\\\textit{vs} 0D \textit{vs} redes};
   \end{tikzpicture}
   }
   \vfill
