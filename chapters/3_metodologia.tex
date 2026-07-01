@@ -1,41 +1,62 @@
 ﻿\section{Metodologia Proposta}
 
-\begin{slide}{Pipeline e Dados}
-  \small
+\begin{slide}{Visão Geral do Pipeline}
   \centering
-  \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.15\linewidth} p{0.25\linewidth} p{0.25\linewidth} p{0.25\linewidth}}
-      \toprule
-      \textbf{Etapa} & \textbf{Descrição} & \textbf{Variáveis} & \textbf{Detalhes} \\
-      \midrule
-      \textbf{Dados experimentais}
-      & Sistema V-AGMD piloto (LabMEMS); 3 regimes de salinidade
-      & Entradas: T$_{in}$, vazão, P$_{vac}$, C$_{NaCl}$; Saídas: Fluxo, T$_{out}$
-      & 10, 40 e 70 g/L de NaCl \\
-      \midrule
-      \textbf{Modelo físico 0D}
-      & Executado para cada observação; gera coluna \texttt{phy}
-      & Saídas: Fluxo$_{phy}$, T$_{out\_phy}$
-      & Script Python automatiza execução em C \\
-      \midrule
-      \textbf{Pré-processamento}
-      & Padronização Z-score
-      & 
-      &  \\
-      \midrule
-      \textbf{Pipeline de modelagem}
-      & 3 etapas: lineares/árvores $\rightarrow$ MLP $\rightarrow$ híbridos
-      & 
-      &  \\
-      \bottomrule
-    \end{tabular}
+  \vspace*{-0.3cm}
+  \resizebox{0.98\textwidth}{!}{%
+  \begin{tikzpicture}[
+      every node/.style={font=\scriptsize},
+      stage/.style={rectangle, rounded corners, draw=poliBlue, thick, align=center,
+                    minimum width=2.8cm, minimum height=0.9cm, fill=blue!6},
+      detail/.style={rectangle, rounded corners, draw=black!40, thick, align=center,
+                     minimum width=2.2cm, minimum height=0.6cm, fill=gray!6},
+      arrow/.style={->, thick, >=stealth},
+    ]
+    \node[stage] (dados)     {Dados\\Experimentais};
+    \node[stage, right=0.3cm of dados] (eda) {Análise\\Exploratória};
+    \node[stage, right=0.3cm of eda] (fisico) {Modelo\\Físico 0D};
+    \node[stage, right=0.3cm of fisico] (s0) {Stage 0\\Clássicos};
+    \node[stage, right=0.3cm of s0] (s1) {Stage 1\\Baseline Keras};
+    \node[stage, right=0.3cm of s1] (s2) {Stage 2\\Híbridos};
+    \node[stage, right=0.3cm of s2] (sel) {Seleção\\1-SE};
+    \node[stage, right=0.3cm of sel] (final) {Vencedor /\\0D / Redes};
+
+    \draw[arrow] (dados) -- (eda);
+    \draw[arrow] (eda) -- (fisico);
+    \draw[arrow] (fisico) -- (s0);
+    \draw[arrow] (s0) -- (s1);
+    \draw[arrow] (s1) -- (s2);
+    \draw[arrow] (s2) -- (sel);
+    \draw[arrow] (sel) -- (final);
+
+    \node[detail, below=0.25cm of dados] {174 amostras, 3 regimes};
+    \node[detail, below=0.25cm of eda]   {Correlação, dispersão};
+    \node[detail, below=0.25cm of fisico] {Código C (Lisboa, 2024)};
+    \node[detail, below=0.25cm of s0]     {OLS, Ridge, Lasso,\\ElasticNet, DT, RF, GB};
+    \node[detail, below=0.25cm of s1]     {MLP multi-saída\\(128,64,32), ReLU};
+    \node[detail, below=0.25cm of s2]     {PhyInput, PhyResidual,\\PhyLoss, PhyHybrid};
+    \node[detail, below=0.25cm of sel]    {1-SE + min.\\complexidade};
+    \node[detail, below=0.25cm of final]  {Comparação vencedor\\\textit{vs} 0D \textit{vs} redes};
+  \end{tikzpicture}
   }
   \vfill
-  \begin{center}
-    \includegraphics[width=0.7\linewidth]{tcc_images/chap04/esquematizacao_regressao.png}
-  \end{center}
-  \vfill\hfill{\scriptsize Figura: Fluxograma do pipeline de modelagem. Fonte: Elaborado pelo autor}
-  \note{O pipeline começa com os dados experimentais. Temos 5 variáveis de entrada: Alim\_T\_in — temperatura de entrada da alimentação, que define a força motriz térmica; Ref\_T\_in — temperatura de entrada do resfriamento, que junto com a anterior estabelece o gradiente térmico; Ref\_V\_in — vazão da corrente de resfriamento, que afeta o regime de escoamento e o tempo de residência; P\_vacuum — pressão de vácuo na câmara de ar, que modifica a resistência difusiva; e C\_NaCl — concentração de sal, que reduz a pressão de vapor da solução. As 3 saídas são: Fluxo de permeado, temperatura de saída da alimentação e temperatura de saída do resfriamento. O modelo físico 0D é executado para cada observação, gerando previsões que alimentam as arquiteturas híbridas. O pré-processamento é ajustado apenas no treino de cada fold. A modelagem segue 3 etapas de complexidade crescente. [~2,5 min]}
+  \begin{columns}
+    \begin{column}{0.48\linewidth}
+      \textbf{Validação Cruzada: GroupKFold (K=3)}
+      \begin{Item}[0.15]
+        \item Cada fold treina com 2 regimes e valida no 3°
+        \item Impede vazamento entre amostras correlacionadas
+      \end{Item}
+    \end{column}
+    \begin{column}{0.48\linewidth}
+      \textbf{Seleção: 1-SE + complexidade}
+      \begin{Item}[0.15]
+        \item Modelos dentro de 1 desvio padrão do melhor
+        \item Entre eles, o de menor complexidade
+      \end{Item}
+    \end{column}
+  \end{columns}
+  \note{Visão geral do pipeline em 7 etapas: dados, análise exploratória, modelo físico 0D, Stage 0 com modelos clássicos, Stage 1 com baseline Keras, Stage 2 com arquiteturas híbridas, seleção pelo critério 1-SE e comparação final. A validação usa GroupKFold com K=3, onde cada fold segura um regime inteiro fora do treino. A seleção combina 1-SE com mínima complexidade. [~2 min]}
 \end{slide}
 %========================================================================
 
