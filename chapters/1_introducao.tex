@@ -55,20 +55,20 @@
   \centering
   \vspace*{-0.3cm}
   \begin{tikzpicture}[
-    level 1/.style={sibling distance=5cm, level distance=1.5cm},
-    level 2/.style={sibling distance=1.6cm, level distance=1.2cm},
+    scale=0.85,
+    level 1/.style={sibling distance=4cm, level distance=1.3cm},
+    level 2/.style={sibling distance=1.3cm, level distance=1.0cm},
     edge from parent/.style={draw, thick},
-    every node/.style={rectangle, draw, rounded corners, align=center, font=\footnotesize, inner sep=4pt, minimum width=2.5cm},
-    level 2/.style={sibling distance=1.6cm, level distance=1.2cm, every node/.style={rectangle, draw, rounded corners, align=center, font=\tiny, inner sep=3pt, minimum width=1.5cm}},
-    highlight/.style={fill=green!12, draw=green!50!black},
-    tag/.style={fill=blue!8, draw=blue!40!black}
+    every node/.style={rectangle, draw, rounded corners, align=center, font=\scriptsize, inner sep=3pt, minimum width=2cm},
+    level 2/.style={sibling distance=1.3cm, level distance=1.0cm, every node/.style={rectangle, draw, rounded corners, align=center, font=\scriptsize, inner sep=2pt, minimum width=1.3cm}},
+    highlight/.style={fill=green!12, draw=green!50!black}
   ]
-  \node[minimum width=3cm, font=\small] {Dessalinização}
-    child { node {Térmicos\\[4pt]\tiny MSF \; MED \; MVC} }
-    child { node {Membrana\\[4pt]\tiny \textbf{RO} \; FO \; ED} }
-    child { node[tag] {Híbridos\\[4pt]\tiny Destilação por\\Membrana (MD)}
+  \node[minimum width=2.5cm] {Dessalinização}
+    child { node {Térmicos\\[4pt]\scriptsize MSF \; MED \; MVC} }
+    child { node {Membrana\\[4pt]\scriptsize \textbf{RO} \; FO \; ED} }
+    child { node {Híbridos\\[4pt]\scriptsize Destilação por\\Membrana (MD)}
       child { node {DCMD} }
-      child { node[highlight] {\textbf{AGMD}} }
+      child { node[highlight] {AGMD} }
       child { node {VMD} }
       child { node {SGMD} }
       child { node {PGMD} }
