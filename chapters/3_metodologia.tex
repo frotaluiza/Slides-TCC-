@@ -27,7 +27,7 @@
     \node[detail, below=0.15cm of fisico] {Código C\\Lisboa (2024)};
 
     % Row 2
-    \node[stage, below=0.6cm of fisico] (s0)    {Stage 0\\Clássicos};
+    \node[stage, below=0.9cm of fisico] (s0)    {Stage 0\\Clássicos};
     \node[stage, right=0.35cm of s0] (s1)    {Stage 1\\Baseline Keras};
     \node[stage, right=0.35cm of s1] (s2)    {Stage 2\\Híbridos};
     \node[stage, right=0.35cm of s2] (val) {Definindo\\Validação};
@@ -44,7 +44,7 @@
     \draw[darrow] (fisico.south) -- ++(0,-0.1) -| (s0.north);
 
     % Row 3
-    \node[stage, below=0.6cm of val] (sel)   {Seleção\\1-SE};
+    \node[stage, below=0.9cm of val] (sel)   {Seleção\\1-SE};
     \node[stage, right=0.35cm of sel] (final) {Vencedor /\\0D / Redes};
     \draw[arrow] (sel) -- (final);
 
