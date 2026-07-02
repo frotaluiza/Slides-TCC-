@@ -7,8 +7,6 @@
       every node/.style={font=\scriptsize},
       stage/.style={rectangle, rounded corners, draw=poliBlue, thick, align=center,
                     minimum width=2cm, minimum height=0.65cm, fill=blue!6},
-      detail/.style={rectangle, rounded corners, draw=black!40, thick, align=center,
-                     minimum width=1.5cm, minimum height=0.35cm, fill=gray!6},
       arrow/.style={->, thick, >=stealth},
       darrow/.style={->, thick, >=stealth, dashed},
     ]
@@ -21,10 +19,6 @@
     \draw[arrow] (prep) -- (eda);
     \draw[arrow] (eda) -- (fisico);
 
-    \node[detail, below=0.15cm of dados] {174 amostras, 3 regimes};
-    \node[detail, below=0.15cm of prep]  {Z-score, split\\treino/val/teste};
-    \node[detail, below=0.15cm of eda]   {Correlação, dispersão};
-    \node[detail, below=0.15cm of fisico] {Código C\\Lisboa (2024)};
 
     % Row 2
     \node[stage, below=0.9cm of fisico] (s0)    {Stage 0\\Clássicos};
@@ -35,11 +29,6 @@
     \draw[arrow] (s1) -- (s2);
     \draw[arrow] (s2) -- (val);
 
-    \node[detail, below=0.15cm of s0]   {OLS, Ridge, Lasso,\\ElasticNet, DT, RF, GB};
-    \node[detail, below=0.15cm of s1]   {MLP multi-saída\\(128,64,32), ReLU};
-    \node[detail, below=0.15cm of s2]   {PhyInput, PhyResidual,\\PhyLoss, PhyHybrid};
-    \node[detail, below=0.15cm of val]  {GroupKFold,\\critério 1-SE};
-
     % Connection Row1 -> Row2
     \draw[darrow] (fisico.south) -- ++(0,-0.1) -| (s0.north);
 
@@ -47,9 +36,6 @@
     \node[stage, below=0.9cm of val] (sel)   {Seleção\\1-SE};
     \node[stage, right=0.35cm of sel] (final) {Vencedor /\\0D / Redes};
     \draw[arrow] (sel) -- (final);
-
-    \node[detail, below=0.15cm of sel]   {1-SE + min.\\complexidade};
-    \node[detail, below=0.15cm of final] {Comparação\\vencedor \textit{vs}\\0D \textit{vs} redes};
 
     % Connection Row2 -> Row3
     \draw[darrow] (val.south) -- (sel.north);
