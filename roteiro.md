@@ -370,7 +370,7 @@ O gráfico da esquerda mostra o RMSE por target para os principais modelos. O da
 
 ---
 
-## Seleção dos Modelos Vencedores
+## Seleção dos Modelos Selecionadoes
 
 ### 🎤 Roteiro
 Foram treinadas 3 baselines independentes, cada uma priorizando um alvo diferente: Alim, Ref e Flux. A baseline Alim — 1 camada [256] — teve a arquitetura mais simples e apresentou o melhor equilíbrio de desempenho entre os 3 alvos. As baselines Ref e Flux geraram redes mais complexas, com 2 e 3 camadas respectivamente, mas o ganho em seus respectivos alvos prioritários ficou dentro de 1 desvio padrão da validação cruzada. Como a validação tem 3 folds (um por regime de salinidade), o desvio padrão mede a variabilidade do RMSE entre regimes. Se a diferença entre a rede complexa e a baseline é menor que essa variabilidade, não podemos afirmar que a rede complexa é realmente melhor — a diferença pode ser ruído amostral. Pelo critério 1-SE, selecionamos o modelo mais simples: a baseline Alim com 1 camada [256]. [~2 min]
@@ -382,7 +382,7 @@ Foram treinadas 3 baselines independentes, cada uma priorizando um alvo diferent
 
 ---
 
-## Análise do Treinamento dos Modelos Vencedores
+## Análise do Treinamento dos Modelos Selecionadoes
 
 ### 🎤 Roteiro
 A curva de aprendizado mostra convergência estável com Early Stopping, com o erro de validação acompanhando o de treino sem sinais de overfitting. [~40s]
@@ -418,7 +418,7 @@ O ganho dos híbridos não é capturar relações não lineares — a região é
 
 ---
 
-## Comparação Final — Modelos Vencedores vs Modelo 0D
+## Comparação Final — Modelos Selecionadoes vs Modelo 0D
 
 ### 🎤 Roteiro
 Comparação final: PhyResidual para fluxo e temperatura de alimentação, PhyHybrid para temperatura de saída do circuito de resfriamento. A seleção por target com critério 1-SE permite que cada alvo tenha o modelo mais adequado. [~1 min]
