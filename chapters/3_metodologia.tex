@@ -168,46 +168,7 @@
 \end{slide}
 %========================================================================
 
-<<<<<<< HEAD
-\begin{slide}{Validação Cruzada e Seleção de Modelos}
-  \begin{columns}
-    \begin{column}{.5\linewidth}
-      \textbf{GroupKFold por Regime}
-      \begin{Item}[0.15]
-        \item K=3 partições: um regime reservado p/ validação
-        \item Grupo = Regime (10, 40, 70 g/L)
-        \item Evita vazamento entre amostras correlacionadas
-      \end{Item}
-      \vspace{0.1cm}
-      \includegraphics[width=\linewidth]{tcc_images/chap04/group_k_fold_custom.png}
-      \vspace{0.05cm}
-      \scriptsize \textcolor{gray}{Partição dos 3 regimes em cada fold do GroupKFold. Fonte: Elaborado pela autora.}
-    \end{column}
-    \begin{column}{.5\linewidth}
-      \textbf{Seleção em 2 níveis}
-      \begin{Item}[0.15]
-        \item \textbf{Nível 1 — Dentro de cada família:}
-        \item 1-SE + mínima complexidade para escolher hiperparâmetros
-        \item \textbf{Nível 2 — Entre famílias:}
-        \item Comparação direta pelo menor RMSE$_{CV}$ (sem 1-SE)
-      \end{Item}
-      \vspace{0.2cm}
-      \textbf{Split Treino/Val/Teste}
-      \begin{Item}[0.15]
-        \item 80\% treino+val: submetido ao GroupKFold (3 folds)
-        \item 20\% hold-out: separado \textbf{antes} de qualquer treino
-        \item Hold-out contém amostras dos 3 regimes
-      \end{Item}
-    \end{column}
-  \end{columns}
-  \note{A validação usa GroupKFold com 3 partições. A cada iteração, um regime fica de fora. A seleção tem dois níveis: dentro de cada família, o 1-SE combinado com mínima complexidade escolhe os melhores hiperparâmetros. Entre famílias, a comparação é direta pelo menor RMSE. O split 80/20 separa 35 amostras que nunca participam do treino para avaliação final. [~2 min]}
-\end{slide}
-%========================================================================
-
-\begin{slide}{Busca de Hiperparâmetros}
-=======
 \begin{slide}{5. Stage 0 — Modelos Clássicos}
->>>>>>> 4a057e9b414b3ce93cf8ea1ea33a1624687eab85
   \footnotesize
   \centering
   \begin{tabular}{p{0.22\linewidth} p{0.38\linewidth} p{0.30\linewidth}}
