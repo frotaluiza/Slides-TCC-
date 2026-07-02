@@ -14,9 +14,9 @@
     ]
     % Row 1
     \node[stage] (dados)      {Dados\\Experimentais};
-    \node[stage, right=0.2cm of dados] (prep)  {Preparação\\dos Dados};
-    \node[stage, right=0.2cm of prep] (eda)    {Análise\\Exploratória};
-    \node[stage, right=0.2cm of eda] (fisico) {Modelo\\Físico 0D};
+    \node[stage, right=0.35cm of dados] (prep)  {Preparação\\dos Dados};
+    \node[stage, right=0.35cm of prep] (eda)    {Análise\\Exploratória};
+    \node[stage, right=0.35cm of eda] (fisico) {Modelo\\Físico 0D};
     \draw[arrow] (dados) -- (prep);
     \draw[arrow] (prep) -- (eda);
     \draw[arrow] (eda) -- (fisico);
@@ -28,9 +28,9 @@
 
     % Row 2
     \node[stage, below=0.6cm of fisico] (s0)    {Stage 0\\Clássicos};
-    \node[stage, right=0.2cm of s0] (s1)    {Stage 1\\Baseline Keras};
-    \node[stage, right=0.2cm of s1] (s2)    {Stage 2\\Híbridos};
-    \node[stage, right=0.2cm of s2] (val) {Definindo\\Validação};
+    \node[stage, right=0.35cm of s0] (s1)    {Stage 1\\Baseline Keras};
+    \node[stage, right=0.35cm of s1] (s2)    {Stage 2\\Híbridos};
+    \node[stage, right=0.35cm of s2] (val) {Definindo\\Validação};
     \draw[arrow] (s0) -- (s1);
     \draw[arrow] (s1) -- (s2);
     \draw[arrow] (s2) -- (val);
@@ -45,7 +45,7 @@
 
     % Row 3
     \node[stage, below=0.6cm of val] (sel)   {Seleção\\1-SE};
-    \node[stage, right=0.2cm of sel] (final) {Vencedor /\\0D / Redes};
+    \node[stage, right=0.35cm of sel] (final) {Vencedor /\\0D / Redes};
     \draw[arrow] (sel) -- (final);
 
     \node[detail, below=0.15cm of sel]   {1-SE + min.\\complexidade};
