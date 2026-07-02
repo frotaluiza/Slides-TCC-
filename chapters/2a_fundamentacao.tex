@@ -54,10 +54,45 @@
       \midrule
       \textbf{Pré-processamento}
       & Padronização Z-score \\
+      \midrule
+      \textbf{Análise de Correlação}
+      & Pearson (linear) e Spearman (monotônica) — identificam associações entre variáveis \\
       \bottomrule
     \end{tabular}
   }
   \note{Um ponto importante é o pré-processamento por padronização Z-score. As variáveis de entrada do sistema V-AGMD têm unidades físicas e ordens de grandeza muito distintas — temperatura em °C, vazão em L/h, pressão de vácuo em mbar, concentração salina em g/L. O Z-score centraliza cada variável subtraindo sua média e dividindo pelo desvio padrão. Assim, todas passam a ter média zero e desvio padrão unitário, ficando em escala comparável. Isso evita que variáveis com magnitudes maiores — como temperatura — dominem desproporcionalmente o ajuste do modelo. É especialmente importante em modelos regularizados como Ridge e Lasso, onde a penalização dos coeficientes é sensível à escala. [~1,5 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Análise de Correlação}
+  \small
+  \begin{columns}
+    \begin{column}{.5\linewidth}
+      \textbf{Coeficiente de Pearson ($r$)}
+      \begin{Item}[0.15]
+        \item Mede a relação \textbf{linear} entre duas variáveis
+        \item $r \in [-1, 1]$: $|r|$ próximo de 1 indica forte correlação linear
+        \item Sensível a outliers
+        \item $r = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum (x_i - \bar{x})^2 \sum (y_i - \bar{y})^2}}$
+      \end{Item}
+    \end{column}
+    \begin{column}{.5\linewidth}
+      \textbf{Coeficiente de Spearman ($\rho$)}
+      \begin{Item}[0.15]
+        \item Mede a relação \textbf{monotônica} (baseada em postos)
+        \item $\rho \in [-1, 1]$: captura tendências crescentes ou decrescentes
+        \item Menos sensível a outliers que Pearson
+        \item Calculado sobre os \textit{ranks} (postos) dos dados
+      \end{Item}
+    \end{column}
+  \end{columns}
+  \vfill
+  \begin{Item}
+    \item \textbf{Papel no ML:} identificar associações entre variáveis; orientar seleção de atributos; detectar multicolinearidade entre preditores
+    \item Pearson $\approx$ Spearman $\rightarrow$ relação aproximadamente linear
+    \item Pearson $\neq$ Spearman $\rightarrow$ relação não linear ou presença de outliers
+  \end{Item}
+  \note{A análise de correlação é uma ferramenta exploratória fundamental em ML. O coeficiente de Pearson mede associações lineares, enquanto o de Spearman captura tendências monotônicas mais gerais. A comparação entre eles ajuda a identificar a natureza das relações entre variáveis, orientando a escolha de modelos e a seleção de atributos. [~1,5 min]}
 \end{slide}
 %========================================================================
 

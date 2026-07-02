@@ -79,7 +79,7 @@ O GroupKFold separa os dados por regimes experimentais — 10, 40 e 70 g/L — g
 ### Slide 13: Famílias de Modelos (~1 min)
 "Quatro famílias foram comparadas. Modelos lineares — OLS, Ridge, Lasso — servem como referência de menor complexidade. Árvores e ensembles capturam não linearidades. Redes neurais têm alta flexibilidade. E os híbridos — PhyResidual, PhyHybrid, PhyLoss e BaselineHibrido — combinam física com dados.
 
-O vencedor foi o PhyResidual, uma arquitetura de conexão residual: a rede aprende a correção em torno da predição do modelo físico 0D. Redução de 31% no RMSE do fluxo frente ao melhor modelo linear."
+O selecionado foi o PhyResidual, uma arquitetura de conexão residual: a rede aprende a correção em torno da predição do modelo físico 0D. Redução de 31% no RMSE do fluxo frente ao melhor modelo linear."
 
 ### Slide 14: Resumo da Fundamentação (~30s)
 "Em resumo: a física da MD com modelo 0D, os fundamentos de ML — regressão multi-saída, métricas, validação — e as quatro famílias de modelos. Vamos à metodologia."
@@ -108,7 +108,7 @@ Os híbridos têm busca restrita — apenas o parâmetro L2 varia, mantendo a ba
 ### Slide 18: Arquiteturas Híbridas (~1 min)
 "Quatro arquiteturas foram implementadas. A BaselineHibrido é a referência neural sem física. A PhyInput — ZohanHPD — adiciona a saída do modelo físico como uma feature extra na entrada.
 
-A PhyResidual — vencedora — aprende a correção residual: a rede prevê o desvio entre a predição física e o valor real. A PhyHybrid combina as duas abordagens anteriores. E a Luc usa regularização física na função de perda."
+A PhyResidual — selecionadoa — aprende a correção residual: a rede prevê o desvio entre a predição física e o valor real. A PhyHybrid combina as duas abordagens anteriores. E a Luc usa regularização física na função de perda."
 
 ### Slide 19: Resumo da Metodologia (~30s)
 "Resumo: dados de 3 regimes, GroupKFold, critério 1-SE com complexidade, 4 famílias de modelos, busca sistemática. Vamos aos resultados."
@@ -131,7 +131,7 @@ A PhyResidual — vencedora — aprende a correção residual: a rede prevê o d
 
 Isso revela um trade-off importante: o modelo híbrido concentra seu ganho no fluxo, mas perde um pouco nas temperaturas. Modelos lineares continuam sendo uma boa opção para as variáveis térmicas."
 
-### Slide 24: Seleção do Modelo Vencedor (~1,5 min)
+### Slide 24: Seleção do Modelo Selecionado (~1,5 min)
 "O PhyResidual foi selecionado pelo critério hierárquico: tem o melhor RMSE no fluxo, está dentro de 1 desvio padrão, e tem complexidade adequada. A redução é de 31% frente ao melhor modelo linear — OLS com 0,089 — e de 72% frente ao modelo 0D com 0,215.
 
 As curvas de aprendizado mostram que o treinamento foi estável, com early stopping atuando adequadamente. A análise de sensibilidade ao L2 mostra que o modelo é robusto — o erro se mantém estável na região de baixa regularização."
@@ -142,7 +142,7 @@ As curvas de aprendizado mostram que o treinamento foi estável, com early stopp
 Na tabela comparativa: PhyResidual tem RMSE 0,061 para o fluxo, contra 0,089 do OLS e 0,215 do modelo 0D. Para as temperaturas, o OLS ainda lidera, mas o híbrido fica muito próximo."
 
 ### Slide 26: Resumo dos Resultados (~30s)
-"Resumo: o modelo híbrido PhyResidual foi o vencedor para predição do fluxo. Modelos lineares continuam sendo a melhor opção para temperaturas. A validação com GroupKFold garantiu uma avaliação realista."
+"Resumo: o modelo híbrido PhyResidual foi o selecionado para predição do fluxo. Modelos lineares continuam sendo a melhor opção para temperaturas. A validação com GroupKFold garantiu uma avaliação realista."
 
 ---
 

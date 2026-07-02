@@ -34,7 +34,7 @@
 
     % Row 3
     \node[stage, below=0.9cm of s2] (sel)   {Seleção\\1-SE};
-    \node[stage, right=0.35cm of sel] (final) {Vencedor /\\0D / Redes};
+    \node[stage, right=0.35cm of sel] (final) {Selecionado /\\0D / Redes};
     \draw[arrow] (sel) -- (final);
 
     % Connection Row2 -> Row3
@@ -55,9 +55,6 @@
         \item 5 entradas: T$_{in,alim}$, T$_{in,ref}$, vazão$_{ref}$, P$_{vac}$, C$_{NaCl}$
         \item 3 saídas: Fluxo de permeado, T$_{out,alim}$, T$_{out,ref}$
       \end{Item}
-    \end{column}
-    \begin{column}{.45\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/scatter_vagmd_exp_only.png}
     \end{column}
   \end{columns}
   \note{O conjunto de dados tem 174 pontos experimentais obtidos em um sistema V-AGMD piloto. Foram testados 3 regimes de salinidade: 10, 40 e 70 g/L. As 5 variáveis de entrada incluem temperaturas, vazão, pressão de vácuo e concentração salina. As 3 saídas são o fluxo de permeado e as duas temperaturas de saída. [~1 min]}
@@ -93,20 +90,25 @@
 
 \begin{slide}{3. Análise Exploratória}
   \small
+  \begin{Item}
+    \item Objetivo: identificar padrões, tendências e relações entre variáveis antes da modelagem
+    \item Coeficiente de correlação de Pearson: mede associação linear entre duas variáveis
+    \item Coeficiente de correlação de Spearman: mede associação monotônica (postos)
+    \item Comparação entre Pearson e Spearman indica se relação é aproximadamente linear
+    \item Mapas de calor (\textit{heatmaps}) para visualização das correlações
+  \end{Item}
+  \vfill
   \begin{columns}
     \begin{column}{.5\linewidth}
-      \begin{Item}
-        \item Temperaturas de saída: correlação linear forte ($|r|>0,9$) com entradas térmicas
-        \item Fluxo de permeado: correlação moderada ($|r|\approx0,7$), mais distribuída
-        \item Pearson e Spearman próximos $\rightarrow$ relações aproximadamente lineares
-        \item Complexidade do fluxo justifica modelagem multivariada
-      \end{Item}
+      \centering Pearson \\
+      \includegraphics[width=0.9\linewidth]{tcc_images/chap06/heatmap_pearson_features_targets.png}
     \end{column}
     \begin{column}{.5\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/heatmap_pearson_features_targets.png}
+      \centering Spearman \\
+      \includegraphics[width=0.9\linewidth]{tcc_images/chap06/heatmap_spearman_features_targets.png}
     \end{column}
   \end{columns}
-  \note{A análise exploratória mostrou que as temperaturas de saída têm forte correlação linear com variáveis térmicas, enquanto o fluxo de permeado apresenta comportamento mais complexo, dependendo de múltiplas variáveis. As correlações de Pearson e Spearman são próximas, indicando relações aproximadamente lineares. [~1 min]}
+  \note{A análise exploratória usa coeficientes de Pearson e Spearman para identificar associações entre variáveis. Pearson mede correlação linear; Spearman, correlação monotônica. A comparação entre eles ajuda a entender a natureza das relações. Os heatmaps auxiliam na visualização. [~1 min]}
 \end{slide}
 %========================================================================
 
@@ -284,7 +286,7 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{10. Vencedor / 0D / Redes}
+\begin{slide}{10. Selecionado / 0D / Redes}
   \centering
   \begin{tabular}{lccc}
     \toprule
