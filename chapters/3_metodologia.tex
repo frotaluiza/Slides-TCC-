@@ -57,15 +57,18 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{2.1 Preparação dos Dados: Padronização}
-  \small
+\begin{slide}{Padronização e Divisão treino/validação/teste}
+  \centering
+  \includegraphics[width=0.7\linewidth]{tcc_images/chap04/esquematizacao_regressao.png}
+  \vfill
   \begin{columns}
     \begin{column}{.5\linewidth}
       \textbf{Pré-processamento}
       \begin{Item}[0.15]
-        \item Padronização Z-score (por fold, sem vazamento)
-        \item Ajustada apenas no treino de cada partição
-        \item Evita que variáveis com maior magnitude dominem
+        \item Padronização Z-score aplicada em \textbf{entradas e saídas}
+        \item Ajustada apenas no treino de cada partição (fold)
+        \item Evita vazamento de informação entre treino e validação
+        \item Garante que todas as variáveis fiquem na mesma escala
       \end{Item}
     \end{column}
     \begin{column}{.5\linewidth}
@@ -77,10 +80,7 @@
       \end{Item}
     \end{column}
   \end{columns}
-  \vfill
-  \centering
-  \includegraphics[width=0.6\linewidth]{tcc_images/chap04/esquematizacao_regressao.png}
-  \note{O pré-processamento usa padronização Z-score, ajustada apenas no treino de cada fold para evitar vazamento. Os dados são divididos em 80\% para treino+validação e 20\% para hold-out, este último separado antes de qualquer modelagem. [~1 min]}
+  \note{O pré-processamento usa padronização Z-score em entradas e saídas, ajustada apenas no treino de cada fold para evitar vazamento. Os dados são divididos em 80\% para treino+validação e 20\% para hold-out. [~1 min]}
 \end{slide}
 %========================================================================
 
