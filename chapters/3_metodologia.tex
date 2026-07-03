@@ -62,37 +62,43 @@
   \end{columns}
   \note{O conjunto de dados tem 174 pontos experimentais obtidos em um sistema V-AGMD piloto. Foram testados 3 regimes de salinidade: 10, 40 e 70 g/L. As 5 variáveis de entrada incluem temperaturas, vazão, pressão de vácuo e concentração salina. As 3 saídas são o fluxo de permeado e as duas temperaturas de saída. [~1 min]}
 \end{slide}
-\begin{slide}{Etapa 2.1: Padronização e Divisão Treino/Validação/Teste}
+\begin{slide}{Etapa 2.1: Padronização}
+  \small
+  \begin{Item}[0.15]
+    \item Padronização Z-score aplicada em \textbf{entradas e saídas} (X e Y)
+    \item Ajustada apenas no treino de cada partição (fold)
+    \item Evita vazamento de informação entre treino e validação
+    \item Garante que todas as variáveis fiquem na mesma escala
+    \item $z = \frac{x - \mu}{\sigma}$ — média 0, desvio padrão 1
+  \end{Item}
+  \note{A padronização Z-score é aplicada em entradas e saídas, ajustada apenas no treino de cada fold para evitar vazamento de informação entre treino e validação. [~1 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Etapa 2.2: Divisão Treino/Validação/Teste}
   \small
   \begin{columns}
     \begin{column}{.5\linewidth}
-      \textbf{Padronização Z-score}
-      \begin{Item}[0.15]
-        \item Aplicada em \textbf{entradas e saídas} (X e Y)
-        \item Ajustada apenas no treino de cada partição (fold)
-        \item Evita vazamento de informação entre treino e validação
-        \item Garante que todas as variáveis fiquem na mesma escala
-        \item $z = \frac{x - \mu}{\sigma}$ — média 0, desvio 1
-      \end{Item}
-    \end{column}
-    \begin{column}{.5\linewidth}
-      \textbf{Divisão dos dados}
+      \textbf{Split dos dados}
       \begin{Item}[0.15]
         \item 80\% treino+val $\rightarrow$ GroupKFold (3 folds)
         \item 20\% hold-out (35 amostras) separado \textbf{antes} de qualquer modelo
         \item Hold-out contém amostras dos 3 regimes de salinidade
-        \item Split estratificado por regime: cada fold treina 2 regimes, valida 1
+        \item Cada fold treina 2 regimes, valida o terceiro
       \end{Item}
     \end{column}
+    \begin{column}{.5\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{tcc_images/chap04/group_k_fold_custom.png}
+      \vspace{0.1cm}
+      {\scriptsize Partição dos 3 regimes em cada fold do GroupKFold. Fonte: Elaborado pela autora.}
+    \end{column}
   \end{columns}
-  \vfill
-  \textbf{Fluxo:}
-  \begin{Item}
-    \item Dados brutos $\rightarrow$ separar hold-out $\rightarrow$ aplicar Z-score nos dados de treino (por fold) $\rightarrow$ treinar modelo $\rightarrow$ transformar validação com parâmetros do treino $\rightarrow$ avaliar
-  \end{Item}
-  \note{O pré-processamento usa padronização Z-score em entradas e saídas, ajustada apenas no treino de cada fold para evitar vazamento. Os dados são divididos em 80\% para treino+validação e 20\% para hold-out, separado antes de qualquer modelagem. O fluxo garante que a padronização nunca use informação do conjunto de validação. [~1,5 min]}
+  \note{Os dados são divididos em 80\% para treino+validação com GroupKFold e 20\% para hold-out, separado antes de qualquer modelagem. O GroupKFold garante que, em cada iteração, um regime inteiro seja reservado para validação. [~1 min]}
 \end{slide}
-\begin{slide}{Etapa 2.2: Seleção de \textit{Features} e Discretização}
+%========================================================================
+
+\begin{slide}{Etapa 2.3: Seleção de \textit{Features} e Discretização}
   \small
   \begin{columns}
     \begin{column}{.5\linewidth}
@@ -119,6 +125,58 @@
   \end{Item}
   \note{A seleção de atributos visa identificar um subconjunto relevante de variáveis de entrada para melhorar a capacidade preditiva e reduzir overfitting. Foram testadas 32 configurações combinando variáveis contínuas e discretizadas. Como a discretização não produziu ganhos consistentes, optou-se por manter a forma contínua original. [~1 min]}
 \end{slide}
+%========================================================================
+
+\begin{slide}{Etapa 2.4: Fluxo}
+  \small
+  \centering
+  \begin{Item}
+    \item \textbf{Etapas do pipeline:}
+  \end{Item}
+  \vspace{0.3cm}
+  \resizebox{0.9\textwidth}{!}{%
+  \begin{tikzpicture}[
+      every node/.style={font=\footnotesize, align=center},
+      box/.style={rectangle, rounded corners, draw=poliBlue, thick,
+                  minimum width=2cm, minimum height=0.7cm, fill=blue!6},
+      arrow/.style={->, thick, >=stealth},
+    ]
+    \node[box] (dados)    {Dados\\brutos};
+    \node[box, right=0.3cm of dados] (hold) {Separar\\hold-out};
+    \node[box, right=0.3cm of hold] (z) {Z-score\\treino};
+    \node[box, right=0.3cm of z] (gkf) {GroupKFold\\3 folds};
+    \node[box, right=0.3cm of gkf] (treino) {Treinar\\modelo};
+    \node[box, right=0.3cm of treino] (eval) {Avaliar\\validação};
+    \node[box, right=0.3cm of eval] (test) {Teste\\hold-out};
+    \draw[arrow] (dados) -- (hold);
+    \draw[arrow] (hold) -- (z);
+    \draw[arrow] (z) -- (gkf);
+    \draw[arrow] (gkf) -- (treino);
+    \draw[arrow] (treino) -- (eval);
+    \draw[arrow] (eval) -- (test);
+  \end{tikzpicture}
+  }
+  \vfill
+  \begin{columns}
+    \begin{column}{.5\linewidth}
+      \textbf{Métricas de erro}
+      \begin{Item}[0.15]
+        \item \textbf{Erro de generalização:} média do RMSE entre os 3 folds do GroupKFold
+        \item Mede o desempenho esperado em regimes não vistos
+      \end{Item}
+    \end{column}
+    \begin{column}{.5\linewidth}
+      \textbf{Avaliação final}
+      \begin{Item}[0.15]
+        \item \textbf{Erro de teste:} RMSE no hold-out (35 amostras)
+        \item Hold-out contém amostras dos 3 regimes — avaliação em condições representativas
+      \end{Item}
+    \end{column}
+  \end{columns}
+  \note{O fluxo da modelagem segue: dados brutos, separação do hold-out, padronização Z-score ajustada no treino, validação cruzada com GroupKFold, treinamento, avaliação. O erro de generalização é a média do RMSE entre os 3 folds. O erro de teste é calculado no hold-out, que contém amostras dos 3 regimes. [~2 min]}
+\end{slide}
+%========================================================================
+
 \begin{slide}{Etapa 3: Critérios de Seleção}
   \small
   \begin{columns}
