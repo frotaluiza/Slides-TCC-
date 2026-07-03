@@ -102,28 +102,23 @@
   \small
   \begin{columns}
     \begin{column}{.5\linewidth}
-      \textbf{Seleção de atributos (\textit{Feature Selection})}
+      \textbf{Seleção de atributos}
       \begin{Item}[0.15]
-        \item Identificar subconjunto relevante de variáveis de entrada
-        \item 3 categorias: filtro, wrapper, embutido (\cite{Sarkar2018PML})
-        \item Reduz complexidade, overfitting e redundância entre preditores
+        \item \textbf{Justificativa:} verificar se o conjunto de 5 preditores selecionados por critério físico poderia ser simplificado sem perda de desempenho
+        \item \textbf{Método:} busca exaustiva (\textit{Best Subset Selection}) avaliando todas as $2^5 = 32$ combinações de variáveis com regressão linear multialvo e GroupKFold
+        \item \textbf{Resultado:} as configurações com melhor desempenho incluíam todos os 5 preditores — a seleção física inicial foi consistente com a análise baseada em dados
       \end{Item}
     \end{column}
     \begin{column}{.5\linewidth}
       \textbf{Discretização (\textit{Binning})}
       \begin{Item}[0.15]
-        \item Transforma variável contínua em intervalos discretos
-        \item Avaliada via mistura Gaussiana (AIC/BIC)
-        \item $2^5 = 32$ configurações testadas (contínua vs discretizada)
+        \item \textbf{Justificativa:} os experimentos seguem um planejamento fatorial, produzindo regiões de dispersão bem delimitadas para cada variável de entrada — a discretização poderia capturar essas faixas operacionais
+        \item \textbf{Método:} mistura Gaussiana unidimensional (critérios AIC/BIC) para definir os intervalos; $2^5 = 32$ configurações contínua vs discretizada avaliadas com regressão linear multialvo
+        \item \textbf{Resultado:} nenhuma configuração discretizada apresentou melhoria consistente para os 3 alvos simultaneamente — optou-se por manter a forma contínua original
       \end{Item}
     \end{column}
   \end{columns}
-  \vfill
-  \begin{Item}
-    \item \textbf{Conclusão metodológica:} a forma contínua foi mantida — discretização não trouxe ganho consistente para os 3 alvos simultaneamente
-    \item Seleção inicial dos preditores fundamentada na descrição física do processo
-  \end{Item}
-  \note{A seleção de atributos visa identificar um subconjunto relevante de variáveis de entrada para melhorar a capacidade preditiva e reduzir overfitting. Foram testadas 32 configurações combinando variáveis contínuas e discretizadas. Como a discretização não produziu ganhos consistentes, optou-se por manter a forma contínua original. [~1 min]}
+  \note{Tanto a seleção de atributos quanto a discretização foram avaliadas por busca exaustiva com regressão linear multialvo. Nenhuma das estratégias ofereceu ganho consistente para os 3 alvos, confirmando que a seleção física inicial dos preditores e a forma contínua das variáveis eram adequadas. [~1,5 min]}
 \end{slide}
 %========================================================================
 
