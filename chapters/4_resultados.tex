@@ -3,7 +3,7 @@
 \begin{slide}{Análise Exploratória}
   \begin{columns}
     \begin{column}{.5\linewidth}
-      \begin{Item}
+      \begin{Item}[0.15]
         \item Dispersão: T$_{out}$ correlacionada com entradas térmicas; fluxo com múltiplas variáveis
         \item Pearson: T$_{out}$ têm correlações lineares fortes ($|r|>0,9$); fluxo moderado ($|r|\approx0,7$)
         \item Complexidade do fluxo $\rightarrow$ justifica modelagem multivariada
@@ -13,8 +13,8 @@
       \includegraphics[width=\linewidth]{tcc_images/chap06/scatter_vagmd_exp_only.png}
     \end{column}
   \end{columns}
-  \vfill\hfill{\scriptsize Figura: Dispersão dos dados experimentais V-AGMD. Fonte: Elaborado pelo autor}
-  \note{A análise exploratória mostra que as temperaturas de saída têm forte correlação linear com variáveis térmicas, enquanto o fluxo de permeado apresenta comportamento mais complexo, dependendo de múltiplas variáveis. Isso motiva a modelagem multivariada. [~1 min]}
+  \vfill\hfill{\scriptsize Figura: Dispersão dos dados experimentais V-AGMD.}
+  \note{Análise exploratória: temperaturas de saída têm forte correlação linear, fluxo é mais complexo. [~1 min]}
 \end{slide}
 %========================================================================
 
@@ -27,20 +27,19 @@
       \includegraphics[width=\linewidth]{tcc_images/chap06/heatmap_spearman_features_targets.png}
     \end{column}
   \end{columns}
-  \vfill\hfill{\scriptsize Figura: Mapas de correlação Pearson (esq.) e Spearman (dir.). Fonte: Elaborado pelo autor}
-  \note{O coeficiente de Pearson mede a correlação linear entre duas variáveis — valores próximos de 1 ou -1 indicam relação linear forte. O de Spearman, calculado sobre os postos, mede associações monotônicas, capturando relações que não precisam ser lineares, mas em que uma variável tende a crescer ou decrescer consistentemente com a outra. Comparando os dois mapas, vemos que as temperaturas de saída têm correlações lineares fortes com as entradas térmicas (|r| > 0,9), enquanto o fluxo apresenta correlações moderadas e mais distribuídas — isso justifica a abordagem multivariada. [~1,5 min]}
+  \vfill\hfill{\scriptsize Figura: Mapas de correlação Pearson (esq.) e Spearman (dir.).}
+  \note{Temperaturas têm correlações lineares fortes (|r| > 0,9); fluxo tem correlações moderadas. [~1 min]}
 \end{slide}
 %========================================================================
 
-\begin{slide}{Modelo Físico 0D vs Experimental}
+\begin{slide}{Modelo Físico 0D}
   \centering
   \begin{tabular}{lccc}
     \toprule
     \textbf{Métrica} & \textbf{Fluxo} & \textbf{T$_{alim,out}$} & \textbf{T$_{ref,out}$} \\
     \midrule
-    RMSE modelo 0D & 0,215 & 1,613 & 0,927 \\
-    RMSE PhyResidual (base Alim) & \textbf{0,060} & \textbf{0,141} & 0,317 \\
-    RMSE PhyHybrid (base Alim) & 0,064 & 0,161 & \textbf{0,211} \\
+    RMSE modelo 0D & 0,206 & 1,549 & 0,851 \\
+    R$^2$ modelo 0D & 0,631 & -0,404 & 0,948 \\
     \bottomrule
   \end{tabular}
   \vfill
@@ -55,169 +54,142 @@
       \includegraphics[width=\linewidth]{tcc_images/chap06/ref_T_out_real_vs_0d.png}
     \end{column}
   \end{columns}
-  \vfill\hfill{\scriptsize Figura: Modelo físico 0D vs experimental para Fluxo, T$_{alim,out}$ e T$_{ref,out}$. Fonte: Elaborado pelo autor}
-  \note{O modelo 0D captura tendências mas com dispersão. O PhyResidual reduz o RMSE do fluxo em 72\% (0,215 $\rightarrow$ 0,060) e o da temperatura de alimentação em 91\% (1,613 $\rightarrow$ 0,141). [~1 min]}
+  \vfill\hfill{\scriptsize Figura: Modelo físico 0D vs experimental.}
+  \note{O modelo 0D captura tendências mas com dispersão. RMSE fluxo = 0,206. [~40s]}
 \end{slide}
 %========================================================================
 
-\begin{slide}{Desempenho Consolidado}
+\begin{slide}{Stage 0 -- Modelos Cl\'assicos}
   \centering
-  \resizebox{\textwidth}{!}{
-    \begin{tabular}{lcccccc}
-      \toprule
-      \textbf{Modelo} & \multicolumn{2}{c}{\textbf{T$_{alim,out}$}} & \multicolumn{2}{c}{\textbf{T$_{ref,out}$}} & \multicolumn{2}{c}{\textbf{Fluxo}} \\
-      & R$^2$ & RMSE & R$^2$ & RMSE & R$^2$ & \textbf{RMSE} \\
-      \midrule
-      \textbf{PhyResidual (base Alim)} & 0.981 & \textbf{0.141} & 0.989 & 0.317 & 0.972 & \textbf{0.060} \\
-      \textbf{PhyHybrid (base Alim)} & 0.975 & 0.161 & 0.995 & \textbf{0.211} & 0.968 & 0.064 \\
-      OLS & 0.965 & 0.246 & 0.996 & 0.251 & 0.952 & 0.089 \\
-      Modelo 0D & $-0.498$ & 1.613 & 0.943 & 0.927 & 0.719 & 0.215 \\
-      \bottomrule
-    \end{tabular}
-  }
-  \note{O PhyResidual (base Alim) é o melhor para fluxo (0,060) e temperatura de alimentação (0,141). O PhyHybrid (base Alim) vence para temperatura de saída (0,211). A seleção foi feita pelo critério 1-SE entre famílias, priorizando o modelo mais simples dentro de 1 desvio padrão do melhor. [~1,5 min]}
-\end{slide}
-%========================================================================
-
-\begin{slide}{Gráficos de Desempenho}
-  \begin{columns}
-    \begin{column}{.5\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/rmse_by_target_grouped.png}
-    \end{column}
-    \begin{column}{.5\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/best_per_family_rmse.png}
-    \end{column}
-  \end{columns}
-  \vfill\hfill{\scriptsize Figura: RMSE por target (esq.) e melhor RMSE por família (dir.). Fonte: Elaborado pelo autor}
-  \note{O gráfico da esquerda mostra o RMSE por target para os principais modelos. O da direita mostra o melhor modelo de cada família, permitindo comparar o ganho das arquiteturas híbridas em relação às lineares e neurais. [~40s]}
-\end{slide}
-%========================================================================
-
-\begin{slide}{Seleção dos Modelos Selecionadoes}
-  \begin{columns}
-    \begin{column}{\textwidth}
-      \begin{Item}
-        \item 3 baselines foram treinadas, cada uma priorizando um alvo diferente
-        \item A busca de HPs gerou redes de diferentes complexidades:
-        \begin{itemize}
-          \item Alim: 2 camadas [128,64] (9219 params) — ativação tanh
-          \item Ref: 2 camadas [128,64] (9219 params) — ativação tanh
-          \item Flux: 3 camadas [128,64,32] (11203 params) — ativação relu
-        \end{itemize}
-        \item A baseline Alim apresentou o melhor equilíbrio de desempenho entre os 3 alvos
-        \item As redes especializadas para Ref e Flux tiveram ganho marginal dentro de 1 desvio padrão
-        \item \textbf{Critério 1-SE:} seleciona-se o modelo mais simples dentro de 1 desvio padrão do melhor — vence a baseline Alim
-      \end{Item}
-    \end{column}
-  \end{columns}
-  \note{Foram treinadas 3 baselines independentes, cada uma priorizando um alvo diferente: Alim, Ref e Flux. A baseline Alim — 1 camada [256] — teve a arquitetura mais simples e apresentou o melhor equilíbrio de desempenho entre os 3 alvos. As baselines Ref e Flux geraram redes mais complexas, com 2 e 3 camadas respectivamente, mas o ganho em seus respectivos alvos prioritários ficou dentro de 1 desvio padrão da validação cruzada. Como a validação tem 3 folds (um por regime de salinidade), o desvio padrão mede a variabilidade do RMSE entre regimes. Se a diferença entre a rede complexa e a baseline é menor que essa variabilidade, não podemos afirmar que a rede complexa é realmente melhor — a diferença pode ser ruído amostral. Pelo critério 1-SE, selecionamos o modelo mais simples: a baseline Alim com 1 camada [256]. [~2 min]}
-\end{slide}
-%========================================================================
-
-\begin{slide}{Análise do Treinamento dos Modelos Selecionadoes}
-  \centering
-  \includegraphics[width=0.7\linewidth]{tcc_images/chap06/model_selection/learning_curve_baseline.png}
-  \vfill\hfill{\scriptsize Figura: Curva de aprendizado da baseline. Fonte: Elaborado pelo autor}
-  \note{A curva de aprendizado mostra convergência estável com Early Stopping, com o erro de validação acompanhando o de treino sem sinais de overfitting. [~40s]}
-\end{slide}
-%========================================================================
-
-\begin{slide}{Híbridos vs MLP Pura}
-  \centering
-  \begin{tabular}{lccc}
+  \scriptsize
+  \begin{tabular}{llcccccc}
     \toprule
-    \textbf{Modelo} & \textbf{Alim} & \textbf{Ref} & \textbf{Flux} \\
+    \textbf{Modelo} & \textbf{Alvo} & \multicolumn{3}{c}{\textbf{CV RMSE}} & \multicolumn{3}{c}{\textbf{Test RMSE}} \\
+    \cmidrule(lr){3-5} \cmidrule(lr){6-8}
+    & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
     \midrule
-    BaselineHibrido (MLP pura, base Alim) & 0,205 & 0,431 & 0,065 \\
-    \textbf{PhyResidual (base Alim)} & \textbf{0,141} & 0,317 & \textbf{0,060} \\
-    \textbf{PhyHybrid (base Alim)} & 0,161 & \textbf{0,211} & 0,064 \\
+    OLS & --- & 0,196 & 0,240 & 0,081 & 0,231 & 0,227 & 0,077 \\
+    \midrule
+    Ridge & Alim & 0,225 & 0,448 & 0,094 & 0,274 & 0,407 & 0,075 \\
+    Ridge & Ref  & 0,195 & 0,244 & 0,082 & 0,232 & 0,219 & 0,076 \\
+    Ridge & Flux & 0,225 & 0,448 & 0,094 & 0,274 & 0,407 & 0,075 \\
+    \midrule
+    Lasso\_Indep & Alim & 0,197 & 0,270 & 0,082 & 0,233 & 0,235 & 0,075 \\
+    Lasso\_Indep & Ref  & 0,197 & 0,270 & 0,082 & 0,233 & 0,235 & 0,075 \\
+    Lasso\_Indep & Flux & 0,197 & 0,270 & 0,082 & 0,233 & 0,235 & 0,075 \\
+    \midrule
+    ElasticNet & Alim & 0,364 & 0,656 & 0,126 & 0,385 & 0,649 & 0,090 \\
+    ElasticNet & Ref  & 0,197 & 0,268 & 0,082 & 0,233 & 0,232 & 0,075 \\
+    ElasticNet & Flux & 0,281 & 0,528 & 0,109 & 0,316 & 0,481 & 0,081 \\
+    \midrule
+    GB & Alim & 0,614 & 0,484 & 0,358 & 0,406 & 0,309 & 0,193 \\
+    GB & Ref  & 0,618 & 0,468 & 0,358 & 0,417 & 0,324 & 0,198 \\
+    GB & Flux & 0,632 & 0,465 & 0,344 & 0,429 & 0,286 & 0,190 \\
     \bottomrule
   \end{tabular}
   \vfill
-  \begin{columns}
-    \begin{column}{.5\linewidth}
-      \textbf{Ganho do PhyResidual:}
-      \begin{Item}
-        \item Alim: 0,205 $\rightarrow$ 0,141 (31,2\%)
-        \item Flux: 0,065 $\rightarrow$ 0,060 (7,7\%)
-      \end{Item}
-    \end{column}
-    \begin{column}{.5\linewidth}
-      \textbf{Ganho do PhyHybrid:}
-      \begin{Item}
-        \item Ref: 0,431 $\rightarrow$ 0,211 (51,0\%)
-        \item Alim: 0,205 $\rightarrow$ 0,161 (21,5\%)
-      \end{Item}
-    \end{column}
-  \end{columns}
-  \note{A incorporação de informação física via arquiteturas híbridas trouxe ganhos significativos em relação à MLP pura. O PhyResidual reduziu o RMSE do Alim em 31,2\% e do Flux em 7,7\%. O PhyHybrid reduziu o RMSE do Ref em 51,0\%. [~1 min]}
+  {\color{poliBlue}\rule{\textwidth}{0.5pt}}
+  \vspace{0.1cm}
+  \scriptsize Lineares: Test RMSE Flux $\approx$ 0,075 (R$^2\approx0,95$). GB: CV alto ($\approx$0,35), Test razo\'avel ($\approx$0,19).
+  \note{Stage 0: modelos lineares generalizam bem entre regimes (CV e Test pr\'oximos). [~1,5 min]}
 \end{slide}
 %========================================================================
 
-\begin{slide}{O que a Hibridização está Corrigindo?}
-  \begin{columns}
-    \begin{column}{.55\linewidth}
-        \begin{Item}
-          \item OLS explica $>95\%$ da variância de todos os targets $\rightarrow$ região aproximadamente linear
-          \item \textbf{Conclusão:} o ganho híbrido não vem de capturar não linearidades, mas de \textbf{corrigir o viés} dos modelos puramente orientados por dados
-          \item A informação física (modelo 0D) fornece uma referência fenomenológica que reduz o erro sistemático da MLP pura, especialmente quando os dados são escassos (174 amostras)
-        \end{Item}
-    \end{column}
-    \begin{column}{.45\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_PhyResidual_Flux.png}\\
-      \centering\small Linha y=x: concordância ideal (predito = experimental)
-    \end{column}
-  \end{columns}
-  \vfill\hfill{\scriptsize Figura: Predito vs experimental — PhyResidual para Fluxo. Fonte: Elaborado pelo autor}
-  \note{O ganho dos híbridos não é capturar relações não lineares — a região é aproximadamente linear (OLS com R² > 0,95). O ganho é corrigir o viés dos modelos data-driven usando a física como referência. A linha y=x representa predito = experimental. [~1 min]}
-\end{slide}
-%========================================================================
-
-\begin{slide}{Comparação Final — Modelos Selecionadoes vs Modelo 0D}
-  \begin{columns}
-    \begin{column}{.33\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_PhyResidual_Flux.png}
-    \end{column}
-    \begin{column}{.33\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_PhyResidual_Alim_T_out.png}
-    \end{column}
-    \begin{column}{.33\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_PhyResidual_Ref_T_out.png}
-    \end{column}
-  \end{columns}
-  \vfill\hfill{\scriptsize Figura: Predito vs experimental — PhyResidual para Fluxo, T$_{alim,out}$ e T$_{ref,out}$. Fonte: Elaborado pelo autor}
+\begin{slide}{Stage 1 -- Baseline Keras (FrozenBaseline)}
+  \centering
+  \scriptsize
+  \begin{tabular}{llcccccc}
+    \toprule
+    \textbf{Arquitetura} & \textbf{Alvo} & \multicolumn{3}{c}{\textbf{CV RMSE}} & \multicolumn{3}{c}{\textbf{Test RMSE}} \\
+    \cmidrule(lr){3-5} \cmidrule(lr){6-8}
+    & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
+    \midrule
+    (128,64), tanh, lr=0,001, l2=0,001 & Alim & 0,260 & 0,445 & 0,115 & 0,215 & 0,309 & 0,073 \\
+    (128,64), tanh, lr=0,001, l2=0,001 & Ref  & 0,267 & 0,459 & 0,116 & 0,227 & 0,318 & 0,073 \\
+    (128,64,32), relu, lr=0,003, l2=0,0 & Flux & 0,222 & 0,554 & 0,081 & 0,178 & 0,369 & 0,066 \\
+    \bottomrule
+  \end{tabular}
   \vfill
+  {\color{poliBlue}\rule{\textwidth}{0.5pt}}
+  \vspace{0.1cm}
+  \scriptsize Baseline Flux: melhor Test RMSE Flux (0,066). Arquitetura maior (3 camadas) mas sem regulariza\c{c}\~ao L2.
+  \note{Três baselines Keras. A otimizada para Flux tem arquitetura maior (128,64,32) mas L2=0. [~1 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Stage 2 -- Modelos H\'ibridos}
+  \centering
+  \scriptsize
+  \begin{tabular}{llcccccc}
+    \toprule
+    \textbf{Modelo} & \textbf{Alvo} & \multicolumn{3}{c}{\textbf{CV RMSE}} & \multicolumn{3}{c}{\textbf{Test RMSE}} \\
+    \cmidrule(lr){3-5} \cmidrule(lr){6-8}
+    & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
+    \midrule
+    FrozenBaseline & Alim & 0,260 & 0,445 & 0,115 & 0,215 & 0,309 & 0,073 \\
+    FrozenBaseline & Ref  & 0,267 & 0,459 & 0,116 & 0,227 & 0,318 & 0,073 \\
+    FrozenBaseline & Flux & 0,222 & 0,554 & 0,081 & 0,178 & 0,369 & 0,066 \\
+    \midrule
+    \rowcolor{green!10}
+    \textbf{ZohanResidual} & Alim & 0,275 & 0,301 & 0,060 & 0,225 & 0,222 & 0,057 \\
+    \textbf{ZohanResidual} & Ref  & 0,274 & 0,305 & 0,061 & 0,224 & 0,231 & 0,058 \\
+    \textbf{ZohanResidual} & \textbf{Flux} & 0,236 & 0,346 & 0,072 & 0,183 & 0,214 & \textbf{0,054} \\
+    \midrule
+    ZohanHRNN & Alim & 0,273 & 0,306 & 0,061 & 0,224 & 0,231 & 0,058 \\
+    ZohanHRNN & Ref  & 0,275 & 0,302 & 0,061 & 0,225 & 0,230 & 0,058 \\
+    ZohanHRNN & Flux & 0,284 & 0,399 & 0,075 & 0,222 & 0,239 & 0,055 \\
+    \midrule
+    ZohanHPD & Alim & 0,273 & 0,325 & 0,098 & 0,213 & 0,250 & 0,064 \\
+    ZohanHPD & Ref  & 0,275 & 0,432 & 0,106 & 0,216 & 0,269 & 0,066 \\
+    ZohanHPD & Flux & 0,260 & 0,625 & 0,104 & 0,213 & 0,426 & 0,063 \\
+    \bottomrule
+  \end{tabular}
+  \vfill
+  {\color{poliBlue}\rule{\textwidth}{0.5pt}}
+  \vspace{0.1cm}
+  \scriptsize \textbf{ZohanResidual (Flux)}: Test RMSE = 0,054 (18\% melhor que baseline 0,066; 28\% melhor que cl\'assico 0,075).
+  \note{ZohanResidual e ZohanHRNN s\~ao os melhores, com Test Flux 0,054-0,055. [~2 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Compara\c{c}\~ao Final}
   \centering
   \begin{tabular}{lcccc}
     \toprule
-    & \textbf{Fluxo} & \textbf{T$_{alim,out}$} & \textbf{T$_{ref,out}$} & \textbf{Melhoria (vs 0D)} \\
+    \textbf{Modelo} & \textbf{CV Flux} & \textbf{Test Flux} & \textbf{Test R$^2$} & \textbf{Melhoria vs 0D} \\
     \midrule
-    PhyResidual (base Alim) & \textbf{0,060} & \textbf{0,141} & 0,317 & 72\% / 91\% / 66\% \\
-    PhyHybrid (base Alim) & 0,064 & 0,161 & \textbf{0,211} & 70\% / 90\% / 77\% \\
-    OLS (melhor clássico) & 0,089 & 0,246 & 0,251 & 59\% / 85\% / 73\% \\
-    Modelo 0D & 0,215 & 1,613 & 0,927 & --- \\
+    Lasso\_Indep (melhor cl\'assico) & 0,082 & 0,075 & 0,951 & 64\% \\
+    FrozenBaseline Flux (baseline) & 0,081 & 0,066 & 0,972 & 68\% \\
+    \rowcolor{green!10}
+    \textbf{ZohanResidual (Flux)} & 0,072 & \textbf{0,054} & \textbf{0,979} & \textbf{74\%} \\
+    ZohanHRNN (Flux) & 0,075 & 0,055 & 0,978 & 73\% \\
+    Modelo F\'isico 0D & --- & 0,206 & 0,631 & --- \\
     \bottomrule
   \end{tabular}
-  \note{Comparação final: PhyResidual para fluxo e temperatura de alimentação, PhyHybrid para temperatura de saída do circuito de resfriamento. A seleção por target com critério 1-SE permite que cada alvo tenha o modelo mais adequado. [~1 min]}
+  \vfill
+  \centering
+  {\color{poliBlue}\rule{\textwidth}{0.5pt}}
+  \vspace{0.1cm}
+  \scriptsize ZohanResidual (Flux): 74\% de redu\c{c}\~ao no RMSE em rela\c{c}\~ao ao modelo f\'isico 0D.
+  \note{O ZohanResidual (Flux) \'e o melhor modelo: Test Flux 0,054, R$^2$ = 0,979. [~1 min]}
 \end{slide}
 %========================================================================
 
 \begin{slide}{Resumo dos Resultados}
   \small
   \centering
-    \begin{tabular}{p{0.3\linewidth} p{0.6\linewidth}}
-      \toprule
-      \textbf{Tópico} & \textbf{Conclusão} \\
-      \midrule
-      Análise Exploratória & Pearson/Spearman próximos; OLS com R$^2>0,95$ em todos os alvos \\
-      Modelo Físico 0D & Referência fenomenológica, RMSE 0,215 no fluxo \\
-      Ganho Híbrido & Correção de viés via física (não captura de não linearidades) \\
-      Modelo Selecionado (Flux) & PhyResidual (base Alim): RMSE 0,060 \\
-      Modelo Selecionado (Alim) & PhyResidual (base Alim): RMSE 0,141 \\
-      Modelo Selecionado (Ref) & PhyHybrid (base Alim): RMSE 0,211 \\
-      Seleção & Critério 1-SE entre famílias + menor complexidade (parâmetros) \\
-      \bottomrule
-    \end{tabular}
-  \note{Resumo: o PhyResidual (base Alim) vence para fluxo e temperatura de alimentação; o PhyHybrid (base Alim) vence para temperatura de saída. A seleção foi feita pelo critério 1-SE entre famílias. [~30s]}
+  \begin{tabular}{p{0.3\linewidth} p{0.6\linewidth}}
+    \toprule
+    \textbf{T\'opico} & \textbf{Conclus\~ao} \\
+    \midrule
+    Anal. Explorat\'oria & Pearson/Spearman pr\'oximos; regi\~ao aproximadamente linear \\
+    Modelo F\'isico 0D & RMSE 0,206 no fluxo, refer\^encia fenomenol\'ogica \\
+    Stage 0 (Cl\'assicos) & Lineares generalizam bem (Test Flux $\approx$ 0,075) \\
+    Stage 1 (Baseline Keras) & Test Flux 0,066 com arquitetura (128,64,32) \\
+    \rowcolor{green!10}
+    Stage 2 (Vencedor) & \textbf{ZohanResidual: Test Flux 0,054 (74\% melhor que 0D)} \\
+    \bottomrule
+  \end{tabular}
+  \note{Resumo por est\'agio. [~30s]}
 \end{slide}
 %========================================================================
