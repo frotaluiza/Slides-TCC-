@@ -44,7 +44,7 @@
   }
   \note{Visão geral do pipeline em 9 etapas: dados, preparação, análise exploratória, modelo físico 0D, Stage 0, Stage 1, Stage 2, definição das técnicas de validação, seleção pelo critério 1-SE e comparação final. [~1,5 min]}
 \end{slide}
-\begin{slide}{Etapa 1: Dados Experimentais}
+\begin{slide}{1. Dados Experimentais}
   \small
   \begin{columns}
     \begin{column}{.35\linewidth}
@@ -62,7 +62,7 @@
   \end{columns}
   \note{O conjunto de dados tem 174 pontos experimentais obtidos em um sistema V-AGMD piloto. Foram testados 3 regimes de salinidade: 10, 40 e 70 g/L. As 5 variáveis de entrada incluem temperaturas, vazão, pressão de vácuo e concentração salina. As 3 saídas são o fluxo de permeado e as duas temperaturas de saída. [~1 min]}
 \end{slide}
-\begin{slide}{Etapa 2.1: Padronização}
+\begin{slide}{2.1 Preparação: Padronização}
   \small
   \begin{Item}[0.15]
     \item Padronização Z-score aplicada em \textbf{entradas e saídas} (X e Y)
@@ -75,7 +75,7 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{Etapa 2.2: Divisão Treino/Validação/Teste}
+\begin{slide}{2.2 Preparação: Divisão Treino/Val/Teste}
   \small
   \begin{columns}
     \begin{column}{.5\linewidth}
@@ -98,7 +98,7 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{Etapa 2.3: Seleção de \textit{Features} e Discretização}
+\begin{slide}{2.3 Preparação: Seleção de Features e Discretização}
   \small
   \begin{columns}
     \begin{column}{.5\linewidth}
@@ -122,7 +122,7 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{Etapa 2.4: Fluxo}
+\begin{slide}{2.4 Preparação: Fluxo do Pipeline}
   \small
   \centering
   \begin{Item}
@@ -172,7 +172,7 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{Etapa 3: Critérios de Seleção}
+\begin{slide}{3. Critérios de Seleção}
   \small
   \begin{columns}
     \begin{column}{.5\linewidth}
@@ -196,7 +196,7 @@
   \end{columns}
   \note{O critério 1-SE seleciona modelos dentro de 1 desvio padrão do melhor RMSE no fluxo, priorizando o mais simples. A seleção por target identificou o PhyResidual para Fluxo e Alim, e o PhyHybrid para Ref. [~1 min]}
 \end{slide}
-\begin{slide}{Etapa 4: Análise Exploratória}
+\begin{slide}{4. Análise Exploratória}
   \small
   \begin{Item}
     \item Objetivo: identificar padrões, tendências e relações entre variáveis antes da modelagem
@@ -218,7 +218,7 @@
   \end{columns}
   \note{A análise exploratória usa coeficientes de Pearson e Spearman para identificar associações entre variáveis. Pearson mede correlação linear; Spearman, correlação monotônica. A comparação entre eles ajuda a entender a natureza das relações. Os heatmaps auxiliam na visualização. [~1 min]}
 \end{slide}
-\begin{slide}{Etapa 5: Modelo Físico Reduzido 0D}
+\begin{slide}{5. Modelo Físico Reduzido 0D}
   \small
   \centering
   \resizebox{\textwidth}{!}{
@@ -316,7 +316,7 @@
   \end{columns}
   \note{Stage 0 avalia modelos clássicos: lineares (OLS, Ridge, Lasso, ElasticNet) e baseados em árvores (DecisionTree, RandomForest, GradientBoosting). A busca usa GridSearch com validação cruzada GroupKFold. [~1 min]}
 \end{slide}
-\begin{slide}{Etapa 7: Definindo Validação}
+\begin{slide}{7. Definindo a Validação Cruzada}
   \small
   \begin{columns}
     \begin{column}{0.48\linewidth}
@@ -357,7 +357,7 @@
   \end{columns}
   \note{A justificativa do GroupKFold está nos números. Modelos como Gradient Boosting apresentam RMSE de 0,085 com KFold comum, mas sobem para 0,358 com GroupKFold — mostrando que estavam memorizando regimes. Os lineares mantêm desempenho estável, indicando que realmente generalizam. [~1,5 min]}
 \end{slide}
-\begin{slide}{Etapa 8: Stage 1 — Baseline Keras}
+\begin{slide}{8. Stage 1 — Baseline Keras}
   \footnotesize
   \centering
   \begin{tabular}{p{0.22\linewidth} p{0.38\linewidth} p{0.30\linewidth}}
@@ -376,7 +376,7 @@
   \end{Item}
   \note{Stage 1 treina baselines MLP com busca de hiperparâmetros. Foram treinadas 3 baselines independentes, cada uma priorizando um alvo diferente. A baseline Alim (1 camada, 256 neurônios) teve a melhor relação desempenho-complexidade. [~1,5 min]}
 \end{slide}
-\begin{slide}{Etapa 9: Stage 2 — Modelos Híbridos}
+\begin{slide}{9. Stage 2 — Modelos Híbridos}
   \small
   \centering
   \resizebox{\textwidth}{!}{
@@ -402,7 +402,7 @@
   \textbf{Busca restrita:} apenas L2, mantendo a baseline fixa — para isolar o efeito da física
   \note{Stage 2 implementa 4 arquiteturas híbridas que incorporam informação do modelo físico 0D. A busca de hiperparâmetros foi restrita ao L2, mantendo a baseline fixa, para isolar o efeito da incorporação de física. PhyResidual venceu para Fluxo e Alim; PhyHybrid venceu para Ref. [~2 min]}
 \end{slide}
-\begin{slide}{Etapa 10: Selecionado / 0D / Redes}
+\begin{slide}{10. Selecionado / 0D / Redes}
   \centering
   \begin{tabular}{lccc}
     \toprule

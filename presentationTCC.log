@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.15)  3 JUL 2026 16:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.15)  6 JUL 2026 00:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2649,22 +2649,24 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
 {C:/Users/frota/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 126--126
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 132--132
 [][]  
  []
 
+LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <9> not available
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 132.
 
-Underfull \hbox (badness 3281) in paragraph at lines 126--126
-[]|\T1/lmss/m/n/9 PhyResidual, PhyHy-brid, Phy-Loss,
- []
+
+LaTeX Warning: Citation `Sarkar2018PML' on page 18 undefined on input line 132.
+
 
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 126.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 132.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 126.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 132.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -2672,6 +2674,31 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
  []
 
 [18
+
+]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 162--162
+[][]  
+ []
+
+
+Underfull \hbox (badness 3281) in paragraph at lines 162--162
+[]|\T1/lmss/m/n/9 PhyResidual, PhyHy-brid, Phy-Loss,
+ []
+
+File: figures/logo/poliUFRJ.png Graphic file (type png)
+<use figures/logo/poliUFRJ.png>
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 162.
+(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
+File: figures/logo/bg.png Graphic file (type png)
+<use figures/logo/bg.png>
+Package pdftex.def Info: figures/logo/bg.png  used on input line 162.
+(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
+
+Overfull \hbox (0.7626pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[19
 
 ])
 \openout2 = `chapters/3_metodologia.aux'.
@@ -2695,43 +2722,23 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[19
-
-
-
-
-]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 45--45
-[][]  
- []
-
-File: figures/logo/poliUFRJ.png Graphic file (type png)
-<use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 45.
-(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
-File: figures/logo/bg.png Graphic file (type png)
-<use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 45.
-(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
-
-Overfull \hbox (0.7626pt too wide) has occurred while \output is active
-[][] 
- []
-
 [20
 
+
+
+
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 57--57
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 46--46
 [][]  
  []
 
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 57.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 46.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 57.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 46.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -2741,28 +2748,24 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [21
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 84--84
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 64--64
 [][]  
  []
 
-<tcc_images/chap04/esquematizacao_regressao.png, id=290, 1497.595pt x 1057.9525
+<tcc_images/chap04/esquematizacao_regressao.png, id=291, 1497.595pt x 1057.9525
 pt>
 File: tcc_images/chap04/esquematizacao_regressao.png Graphic file (type png)
 <use tcc_images/chap04/esquematizacao_regressao.png>
 Package pdftex.def Info: tcc_images/chap04/esquematizacao_regressao.png  used o
-n input line 84.
-(pdftex.def)             Requested size: 249.24721pt x 176.07207pt.
+n input line 64.
+(pdftex.def)             Requested size: 270.01253pt x 190.7461pt.
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 84.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 64.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
-
-Overfull \vbox (39.26897pt too high) detected at line 84
- []
-
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 84.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 64.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -2772,27 +2775,17 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [22
 
  <./tcc_images/chap04/esquematizacao_regressao.png (PNG copy)>]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 113--113
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 75--75
 [][]  
  []
 
-LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <9> not available
-(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 113.
-
-
-LaTeX Warning: Citation `Sarkar2018PML' on page 23 undefined on input line 113.
-
-
-LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <14.4> not available
-(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 113.
-
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 113.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 75.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 113.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 75.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -2802,37 +2795,23 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [23
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 137--137
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 98--98
 [][]  
  []
 
-<tcc_images/chap06/heatmap_pearson_features_targets.png, id=306, 513.117pt x 46
-9.755pt>
-File: tcc_images/chap06/heatmap_pearson_features_targets.png Graphic file (type
- png)
-<use tcc_images/chap06/heatmap_pearson_features_targets.png>
-Package pdftex.def Info: tcc_images/chap06/heatmap_pearson_features_targets.png
-  used on input line 137.
-(pdftex.def)             Requested size: 186.93224pt x 171.13301pt.
-<tcc_images/chap06/heatmap_spearman_features_targets.png, id=307, 513.117pt x 4
-69.755pt>
-File: tcc_images/chap06/heatmap_spearman_features_targets.png Graphic file (typ
-e png)
-<use tcc_images/chap06/heatmap_spearman_features_targets.png>
-Package pdftex.def Info: tcc_images/chap06/heatmap_spearman_features_targets.pn
-g  used on input line 137.
-(pdftex.def)             Requested size: 186.93224pt x 171.13301pt.
+<tcc_images/chap04/group_k_fold_custom.png, id=306, 865.43324pt x 367.1316pt>
+File: tcc_images/chap04/group_k_fold_custom.png Graphic file (type png)
+<use tcc_images/chap04/group_k_fold_custom.png>
+Package pdftex.def Info: tcc_images/chap04/group_k_fold_custom.png  used on inp
+ut line 98.
+(pdftex.def)             Requested size: 207.7039pt x 88.10777pt.
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 137.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 98.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
-
-Overfull \vbox (57.03pt too high) detected at line 137
- []
-
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 137.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 98.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -2841,29 +2820,18 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
 [24
 
- <./tcc_images/chap06/heatmap_pearson_features_targets.png> <./tcc_images/chap0
-6/heatmap_spearman_features_targets.png>]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 168--168
+ <./tcc_images/chap04/group_k_fold_custom.png>]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 122--122
 [][]  
  []
 
-
-Underfull \hbox (badness 1609) in paragraph at lines 168--168
-[]|\T1/lmss/m/n/9 Parâmetros con-cen-tra-dos; ba-lan-ços
- []
-
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 16
-8.
-(C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 168.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 122.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 168.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 122.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -2872,27 +2840,18 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
 [25
 
-{C:/Users/frota/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 204--204
+]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 172--172
 [][]  
  []
 
-<tcc_images/chap04/group_k_fold_custom.png, id=326, 865.43324pt x 367.1316pt>
-File: tcc_images/chap04/group_k_fold_custom.png Graphic file (type png)
-<use tcc_images/chap04/group_k_fold_custom.png>
-Package pdftex.def Info: tcc_images/chap04/group_k_fold_custom.png  used on inp
-ut line 204.
-(pdftex.def)             Requested size: 207.7039pt x 88.10777pt.
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 204.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 172.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 204.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 172.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -2902,27 +2861,57 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [26
 
 ]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 198--198
+[][]  
+ []
+
+File: figures/logo/poliUFRJ.png Graphic file (type png)
+<use figures/logo/poliUFRJ.png>
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 198.
+(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 204.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 198.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[27 <./tcc_images/chap04/group_k_fold_custom.png>]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 211--211
+[27
+
+]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 220--220
 [][]  
  []
 
+<tcc_images/chap06/heatmap_pearson_features_targets.png, id=337, 513.117pt x 46
+9.755pt>
+File: tcc_images/chap06/heatmap_pearson_features_targets.png Graphic file (type
+ png)
+<use tcc_images/chap06/heatmap_pearson_features_targets.png>
+Package pdftex.def Info: tcc_images/chap06/heatmap_pearson_features_targets.png
+  used on input line 220.
+(pdftex.def)             Requested size: 186.93224pt x 171.13301pt.
+<tcc_images/chap06/heatmap_spearman_features_targets.png, id=338, 513.117pt x 4
+69.755pt>
+File: tcc_images/chap06/heatmap_spearman_features_targets.png Graphic file (typ
+e png)
+<use tcc_images/chap06/heatmap_spearman_features_targets.png>
+Package pdftex.def Info: tcc_images/chap06/heatmap_spearman_features_targets.pn
+g  used on input line 220.
+(pdftex.def)             Requested size: 186.93224pt x 171.13301pt.
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 211.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 220.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
+
+Overfull \vbox (57.03pt too high) detected at line 220
+ []
+
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 211.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 220.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -2931,25 +2920,29 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
 [28
 
-]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 236--236
+ <./tcc_images/chap06/heatmap_pearson_features_targets.png> <./tcc_images/chap0
+6/heatmap_spearman_features_targets.png>]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 249--249
 [][]  
  []
 
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 236.
 
-Underfull \hbox (badness 10000) in paragraph at lines 236--236
-[]|\T1/lmss/m/n/8 Árvores, pro-fun-di-dade, le-ar-
+Underfull \hbox (badness 1609) in paragraph at lines 249--249
+[]|\T1/lmss/m/n/9 Parâmetros con-cen-tra-dos; ba-lan-ços
  []
 
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 24
+9.
+(C:\Users\frota\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 236.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 249.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 236.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 249.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -2958,18 +2951,26 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
 [29
 
-]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 279--279
+{C:/Users/frota/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 286--286
 [][]  
  []
 
+File: tcc_images/chap04/group_k_fold_custom.png Graphic file (type png)
+<use tcc_images/chap04/group_k_fold_custom.png>
+Package pdftex.def Info: tcc_images/chap04/group_k_fold_custom.png  used on inp
+ut line 286.
+(pdftex.def)             Requested size: 207.7039pt x 88.10777pt.
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 279.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 286.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 279.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 286.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -2979,37 +2980,27 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [30
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 300--300
-[][]  
- []
-
-File: figures/logo/poliUFRJ.png Graphic file (type png)
-<use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 300.
-(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 300.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 286.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[31
-
-]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 328--328
+[31]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 293--293
 [][]  
  []
 
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 328.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 293.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 328.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 293.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3019,17 +3010,24 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [32
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 354--354
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 318--318
 [][]  
+ []
+
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 318.
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--318
+[]|\T1/lmss/m/n/8 Árvores, pro-fun-di-dade, le-ar-
  []
 
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 354.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 318.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 354.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 318.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3039,28 +3037,17 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [33
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 373--373
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 359--359
 [][]  
  []
 
-<tcc_images/chap06/overlay_PhyResidual_Flux.png, id=385, 563.706pt x 491.436pt>
-
-File: tcc_images/chap06/overlay_PhyResidual_Flux.png Graphic file (type png)
-<use tcc_images/chap06/overlay_PhyResidual_Flux.png>
-Package pdftex.def Info: tcc_images/chap06/overlay_PhyResidual_Flux.png  used o
-n input line 373.
-(pdftex.def)             Requested size: 207.7039pt x 181.0711pt.
 File: figures/logo/poliUFRJ.png Graphic file (type png)
 <use figures/logo/poliUFRJ.png>
-Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 373.
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 359.
 (pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
-
-Overfull \vbox (54.54857pt too high) detected at line 373
- []
-
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 373.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 359.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3068,6 +3055,77 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
  []
 
 [34
+
+]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 378--378
+[][]  
+ []
+
+File: figures/logo/poliUFRJ.png Graphic file (type png)
+<use figures/logo/poliUFRJ.png>
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 378.
+(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
+File: figures/logo/bg.png Graphic file (type png)
+<use figures/logo/bg.png>
+Package pdftex.def Info: figures/logo/bg.png  used on input line 378.
+(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
+
+Overfull \hbox (0.7626pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[35
+
+]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 404--404
+[][]  
+ []
+
+File: figures/logo/poliUFRJ.png Graphic file (type png)
+<use figures/logo/poliUFRJ.png>
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 404.
+(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
+File: figures/logo/bg.png Graphic file (type png)
+<use figures/logo/bg.png>
+Package pdftex.def Info: figures/logo/bg.png  used on input line 404.
+(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
+
+Overfull \hbox (0.7626pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[36
+
+]
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 421--421
+[][]  
+ []
+
+<tcc_images/chap06/overlay_PhyResidual_Flux.png, id=406, 563.706pt x 491.436pt>
+
+File: tcc_images/chap06/overlay_PhyResidual_Flux.png Graphic file (type png)
+<use tcc_images/chap06/overlay_PhyResidual_Flux.png>
+Package pdftex.def Info: tcc_images/chap06/overlay_PhyResidual_Flux.png  used o
+n input line 421.
+(pdftex.def)             Requested size: 207.7039pt x 181.0711pt.
+File: figures/logo/poliUFRJ.png Graphic file (type png)
+<use figures/logo/poliUFRJ.png>
+Package pdftex.def Info: figures/logo/poliUFRJ.png  used on input line 421.
+(pdftex.def)             Requested size: 33.2989pt x 31.9999pt.
+
+Overfull \vbox (54.54857pt too high) detected at line 421
+ []
+
+File: figures/logo/bg.png Graphic file (type png)
+<use figures/logo/bg.png>
+Package pdftex.def Info: figures/logo/bg.png  used on input line 421.
+(pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
+
+Overfull \hbox (0.7626pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[37
 
  <./tcc_images/chap06/overlay_PhyResidual_Flux.png>])
 \openout2 = `chapters/4_resultados.aux'.
@@ -3092,7 +3150,7 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[35
+[38
 
 
 
@@ -3102,7 +3160,7 @@ Overfull \hbox (0.7626pt too wide) in paragraph at lines 18--18
 [][]  
  []
 
-<tcc_images/chap06/scatter_vagmd_exp_only.png, id=407, 1704.3675pt x 929.4725pt
+<tcc_images/chap06/scatter_vagmd_exp_only.png, id=429, 1704.3675pt x 929.4725pt
 >
 File: tcc_images/chap06/scatter_vagmd_exp_only.png Graphic file (type png)
 <use tcc_images/chap06/scatter_vagmd_exp_only.png>
@@ -3122,7 +3180,7 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[36
+[39
 
  <./tcc_images/chap06/scatter_vagmd_exp_only.png (PNG copy)>]
 Overfull \hbox (0.7626pt too wide) in paragraph at lines 32--32
@@ -3154,26 +3212,26 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[37
+[40
 
 ]
 Overfull \hbox (0.7626pt too wide) in paragraph at lines 59--59
 [][]  
  []
 
-<tcc_images/chap06/flux_real_vs_0d.png, id=424, 462.528pt x 346.896pt>
+<tcc_images/chap06/flux_real_vs_0d.png, id=445, 462.528pt x 346.896pt>
 File: tcc_images/chap06/flux_real_vs_0d.png Graphic file (type png)
 <use tcc_images/chap06/flux_real_vs_0d.png>
 Package pdftex.def Info: tcc_images/chap06/flux_real_vs_0d.png  used on input l
 ine 59.
 (pdftex.def)             Requested size: 137.08533pt x 102.81511pt.
-<tcc_images/chap06/alim_T_out_real_vs_0d.png, id=425, 462.528pt x 346.896pt>
+<tcc_images/chap06/alim_T_out_real_vs_0d.png, id=446, 462.528pt x 346.896pt>
 File: tcc_images/chap06/alim_T_out_real_vs_0d.png Graphic file (type png)
 <use tcc_images/chap06/alim_T_out_real_vs_0d.png>
 Package pdftex.def Info: tcc_images/chap06/alim_T_out_real_vs_0d.png  used on i
 nput line 59.
 (pdftex.def)             Requested size: 137.08533pt x 102.81511pt.
-<tcc_images/chap06/ref_T_out_real_vs_0d.png, id=426, 462.528pt x 346.896pt>
+<tcc_images/chap06/ref_T_out_real_vs_0d.png, id=447, 462.528pt x 346.896pt>
 File: tcc_images/chap06/ref_T_out_real_vs_0d.png Graphic file (type png)
 <use tcc_images/chap06/ref_T_out_real_vs_0d.png>
 Package pdftex.def Info: tcc_images/chap06/ref_T_out_real_vs_0d.png  used on in
@@ -3192,7 +3250,7 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[38
+[41
 
  <./tcc_images/chap06/flux_real_vs_0d.png> <./tcc_images/chap06/alim_T_out_real
 _vs_0d.png> <./tcc_images/chap06/ref_T_out_real_vs_0d.png>]
@@ -3213,7 +3271,7 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[39
+[42
 
 ]
 Overfull \hbox (0.7626pt too wide) in paragraph at lines 117--117
@@ -3233,7 +3291,7 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[40
+[43
 
 ]
 Overfull \hbox (0.7626pt too wide) in paragraph at lines 152--152
@@ -3253,7 +3311,7 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[41
+[44
 
 ]
 Overfull \hbox (0.7626pt too wide) in paragraph at lines 175--175
@@ -3273,7 +3331,7 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[42
+[45
 
 ]
 Overfull \hbox (0.7626pt too wide) in paragraph at lines 194--194
@@ -3293,7 +3351,7 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[43
+[46
 
 ])
 \openout2 = `chapters/5_conclusoes.aux'.
@@ -3317,7 +3375,7 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[44
+[47
 
 
 
@@ -3350,7 +3408,7 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[45
+[48
 
 ]
 Overfull \hbox (0.7626pt too wide) in paragraph at lines 58--58
@@ -3370,7 +3428,7 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[46
+[49
 
 ])
 Overfull \hbox (0.7626pt too wide) in paragraph at lines 109--109
@@ -3391,7 +3449,7 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[47
+[50
 
 
 
@@ -3413,7 +3471,7 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [][] 
  []
 
-[48
+[51
 
  <C:/Users/frota/AppData/Local/Programs/MiKTeX/tex/latex/beamer/beamericonartic
 le.pdf>]
@@ -3422,7 +3480,7 @@ File: figures/logo/Logo_EPUFRJ_2020.png Graphic file (type png)
 Package pdftex.def Info: figures/logo/Logo_EPUFRJ_2020.png  used on input line 
 180.
 (pdftex.def)             Requested size: 207.74847pt x 71.1124pt.
- [49
+ [52
 
 ]
 \tf@nav=\write7
@@ -3450,11 +3508,11 @@ Package rerunfilecheck Info: File `presentationTCC.out' has not changed.
 (rerunfilecheck)             Checksum: 1853F65C4A9FB5BA031EE7631D5F9C15;933.
  ) 
 Here is how much of TeX's memory you used:
- 40353 strings out of 467871
- 836494 string characters out of 5418376
- 1291542 words of memory out of 5000000
- 68148 multiletter control sequences out of 15000+600000
- 703510 words of font info for 104 fonts, out of 8000000 for 9000
+ 40434 strings out of 467871
+ 838055 string characters out of 5418376
+ 1290539 words of memory out of 5000000
+ 68223 multiletter control sequences out of 15000+600000
+ 700708 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,16n,123p,3262b,1274s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/frota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pf
@@ -3483,9 +3541,9 @@ rota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/fr
 ota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Users/fro
 ta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/Users/frot
 a/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on presentationTCC.pdf (49 pages, 5510022 bytes).
+Output written on presentationTCC.pdf (52 pages, 5943272 bytes).
 PDF statistics:
- 694 PDF objects out of 1000 (max. 8388607)
- 117 named destinations out of 1000 (max. 500000)
+ 716 PDF objects out of 1000 (max. 8388607)
+ 123 named destinations out of 1000 (max. 500000)
  296 words of extra memory for PDF output out of 10000 (max. 10000000)
 
