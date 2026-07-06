@@ -344,22 +344,3 @@
   \note{O hold-out de 20\% \'e uma etapa adicional de valida\c{c}\~ao para garantir que os modelos n\~ao est\~ao superestimando o desempenho devido \'a correla\c{c}\~ao entre amostras dentro dos folds. [~1,5 min]}
 \end{slide}
 
-%========================================================================
-
-\begin{slide}{Resumo dos Resultados}
-  \small
-  \centering
-  \begin{tabular}{p{0.3\linewidth} p{0.6\linewidth}}
-    \toprule
-    \textbf{T\'opico} & \textbf{Conclus\~ao} \\
-    \midrule
-    Anal. Explorat\'oria & Pearson/Spearman pr\'oximos; regi\~ao aproximadamente linear \\
-    Modelo F\'isico 0D & RMSE 0,206 no fluxo, refer\^encia fenomenol\'ogica \\
-    Stage 0 (Cl\'assicos) & Lineares generalizam bem (Test Flux $\approx$ 0,075) \\
-    Stage 1 (Baseline Keras) & Test Flux 0,066 com arquitetura (128,64,32) \\
-    \rowcolor{green!10}
-    Stage 2 (Selecionado) & \textbf{PhyResidual: Test Flux 0,054 (74\% melhor que 0D)} \\
-    \bottomrule
-  \end{tabular}
-  \note{Resumo por est\'agio. [~30s]}
-\end{slide}
