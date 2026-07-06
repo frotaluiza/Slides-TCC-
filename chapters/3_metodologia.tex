@@ -9,6 +9,7 @@
                     minimum width=2cm, minimum height=0.65cm, fill=blue!6},
       arrow/.style={->, thick, >=stealth},
       darrow/.style={->, thick, >=stealth, dashed},
+      detail/.style={rectangle, rounded corners, draw=black!40, thick, align=center, font=\tiny, minimum width=2.2cm, minimum height=0.4cm, fill=gray!6},
     ]
     % Row 1
     \node[stage] (dados)      {Dados\\Experimentais};
@@ -62,7 +63,7 @@
   \end{columns}
   \note{O conjunto de dados tem 174 pontos experimentais obtidos em um sistema V-AGMD piloto. Foram testados 3 regimes de salinidade: 10, 40 e 70 g/L. As 5 variáveis de entrada incluem temperaturas, vazão, pressão de vácuo e concentração salina. As 3 saídas são o fluxo de permeado e as duas temperaturas de saída. [~1 min]}
 \end{slide}
-\begin{slide}{Etapa 2.1: Padronização}
+\begin{slide}{Etapa 2.1: Preparação dos Dados — Padronização}
   \small
   \begin{Item}[0.15]
     \item Padronização Z-score aplicada em \textbf{entradas e saídas} (X e Y)
@@ -75,7 +76,7 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{Etapa 2.2: Divisão Treino/Validação/Teste}
+\begin{slide}{Etapa 2.2: Preparação dos Dados — Divisão Treino/Validação/Teste}
   \small
   \begin{columns}
     \begin{column}{.5\linewidth}
@@ -98,7 +99,7 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{Etapa 2.3: Seleção de \textit{Features} e Discretização}
+\begin{slide}{Etapa 2.3: Preparação dos Dados — Seleção de \textit{Features} e Discretização}
   \small
   \begin{columns}
     \begin{column}{.5\linewidth}
@@ -122,7 +123,7 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{Etapa 2.4: Fluxo}
+\begin{slide}{Etapa 2.4: Preparação dos Dados — Fluxo}
   \small
   \centering
   \begin{Item}
@@ -200,23 +201,11 @@
   \small
   \begin{Item}
     \item Objetivo: identificar padrões, tendências e relações entre variáveis antes da modelagem
-    \item Coeficiente de correlação de Pearson: mede associação linear entre duas variáveis
-    \item Coeficiente de correlação de Spearman: mede associação monotônica (postos)
-    \item Comparação entre Pearson e Spearman indica se relação é aproximadamente linear
-    \item Mapas de calor (\textit{heatmaps}) para visualização das correlações
+    \item Visualização por gráficos de dispersão entre entradas e saídas
+    \item Análise de correlação para quantificar associações entre variáveis
+    \item Identificação de variáveis com maior influência sobre cada saída
   \end{Item}
-  \vfill
-  \begin{columns}
-    \begin{column}{.5\linewidth}
-      \centering Pearson \\
-      \includegraphics[width=0.9\linewidth]{tcc_images/chap06/heatmap_pearson_features_targets.png}
-    \end{column}
-    \begin{column}{.5\linewidth}
-      \centering Spearman \\
-      \includegraphics[width=0.9\linewidth]{tcc_images/chap06/heatmap_spearman_features_targets.png}
-    \end{column}
-  \end{columns}
-  \note{A análise exploratória usa coeficientes de Pearson e Spearman para identificar associações entre variáveis. Pearson mede correlação linear; Spearman, correlação monotônica. A comparação entre eles ajuda a entender a natureza das relações. Os heatmaps auxiliam na visualização. [~1 min]}
+  \note{A análise exploratória utiliza gráficos de dispersão e coeficientes de correlação para identificar padrões e relações entre as variáveis de entrada e saída do sistema V-AGMD, orientando as etapas seguintes de modelagem. [~1 min]}
 \end{slide}
 \begin{slide}{Etapa 5: Modelo Físico Reduzido 0D}
   \small
@@ -247,53 +236,9 @@
   \end{Item}
   \note{Três níveis de modelos físicos na literatura de MD. Modelos distribuídos resolvem equações em cada ponto do módulo — alta fidelidade mas alto custo. Modelos reduzidos 0D tratam o módulo como um volume único com grandezas médias — este é o adotado no trabalho. Modelos globais aplicam balanços em estado estacionário sem discretização. O modelo 0D tem 3 funções: referência física, comparativo com data-driven, e fonte de informação para arquiteturas híbridas. [~1,5 min]}
 \end{slide}
-<<<<<<< HEAD
 %========================================================================
 
-<<<<<<< HEAD
-\begin{slide}{Validação Cruzada e Seleção de Modelos}
-  \begin{columns}
-    \begin{column}{.5\linewidth}
-      \textbf{GroupKFold por Regime}
-      \begin{Item}[0.15]
-        \item K=3 partições: um regime reservado p/ validação
-        \item Grupo = Regime (10, 40, 70 g/L)
-        \item Evita vazamento entre amostras correlacionadas
-      \end{Item}
-      \vspace{0.1cm}
-      \includegraphics[width=\linewidth]{tcc_images/chap04/group_k_fold_custom.png}
-      \vspace{0.05cm}
-      \scriptsize \textcolor{gray}{Partição dos 3 regimes em cada fold do GroupKFold. Fonte: Elaborado pela autora.}
-    \end{column}
-    \begin{column}{.5\linewidth}
-      \textbf{Seleção em 2 níveis}
-      \begin{Item}[0.15]
-        \item \textbf{Nível 1 — Dentro de cada família:}
-        \item 1-SE + mínima complexidade para escolher hiperparâmetros
-        \item \textbf{Nível 2 — Entre famílias:}
-        \item Comparação direta pelo menor RMSE$_{CV}$ (sem 1-SE)
-      \end{Item}
-      \vspace{0.2cm}
-      \textbf{Split Treino/Val/Teste}
-      \begin{Item}[0.15]
-        \item 80\% treino+val: submetido ao GroupKFold (3 folds)
-        \item 20\% hold-out: separado \textbf{antes} de qualquer treino
-        \item Hold-out contém amostras dos 3 regimes
-      \end{Item}
-    \end{column}
-  \end{columns}
-  \note{A validação usa GroupKFold com 3 partições. A cada iteração, um regime fica de fora. A seleção tem dois níveis: dentro de cada família, o 1-SE combinado com mínima complexidade escolhe os melhores hiperparâmetros. Entre famílias, a comparação é direta pelo menor RMSE. O split 80/20 separa 35 amostras que nunca participam do treino para avaliação final. [~2 min]}
-\end{slide}
-%========================================================================
-
-\begin{slide}{Busca de Hiperparâmetros}
-  \centering
-  \scriptsize
-  Hiperparâmetros ajustados por família: regularização (Ridge, Lasso, ElasticNet), profundidade (DT, RF, GB), arquitetura (MLP, Keras). Busca restrita a L2 nos híbridos.
-\end{slide}
-%========================================================================
-
-\begin{slide}{5. Stage 0 — Modelos Clássicos}
+\begin{slide}{Etapa 6: Stage 0 — Modelos Clássicos}
   \footnotesize
   \centering
   \begin{tabular}{p{0.22\linewidth} p{0.38\linewidth} p{0.30\linewidth}}
