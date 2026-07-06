@@ -149,8 +149,6 @@
     \textbf{Modelo} & \textbf{Alvo} & \multicolumn{3}{c}{\textbf{CV RMSE}} & \multicolumn{3}{c}{\textbf{Test RMSE}} \\
     \cmidrule(lr){3-5} \cmidrule(lr){6-8}
     & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
-    \midrule
-    \rowcolor{blue!6}
     \textbf{PhyResidual} & \textbf{Alim} & 0,275 & 0,301 & 0,060 & 0,225 & 0,222 & 0,057 \\
     \rowcolor{orange!6}
     \textbf{PhyResidual} & \textbf{Ref}  & 0,274 & 0,305 & 0,061 & 0,224 & 0,231 & 0,058 \\
@@ -177,33 +175,33 @@
 \begin{slide}{Compara\c{c}\~ao Final — Consolidado por Alvo}
   \centering
   \footnotesize
-  \begin{tabular}{lclccc}
+    \begin{tabular}{lclccc}
     \toprule
-    \textbf{Alvo} & \textbf{Est\'agio} & \textbf{Modelo} & \textbf{Test RMSE} & \textbf{Test R$^2$} & \textbf{Melhoria vs 0D} \\
+    \textbf{Alvo} & \textbf{Est\'agio} & \textbf{Modelo} & \textbf{Test RMSE} & \textbf{Test R$^2$} & \textbf{Dif CV$\to$Test} \\
     \midrule
     \rowcolor{blue!6}
     \multirow{3}{*}{\textbf{T$_{alim,out}$}}
-    & Stage 0 & OLS & 0,231 & 0,965 & 85\% \\
+    & Stage 0 & OLS & 0,231 & 0,965 & +17,9\% \\
     \rowcolor{blue!6}
-    & Stage 1 & Baseline Alim & 0,215 & 0,981 & 86\% \\
+    & Stage 1 & Baseline Alim & 0,215 & 0,981 & $-$17,3\% \\
     \rowcolor{blue!6}
-    & \textbf{Stage 2} & \textbf{PhyResidual (Alim)} & \textbf{0,225} & \textbf{0,981} & \textbf{85\%} \\
+    & \textbf{Stage 2} & \textbf{PhyResidual (Alim)} & \textbf{0,225} & \textbf{0,981} & $-$18,2\% \\
     \midrule
     \rowcolor{orange!6}
     \multirow{3}{*}{\textbf{T$_{ref,out}$}}
-    & Stage 0 & Ridge (Ref) & 0,219 & 0,996 & 74\% \\
+    & Stage 0 & Ridge (Ref) & 0,219 & 0,996 & $-$10,2\% \\
     \rowcolor{orange!6}
-    & Stage 1 & Baseline Alim & 0,309 & 0,989 & 64\% \\
+    & Stage 1 & Baseline Alim & 0,309 & 0,989 & $-$30,6\% \\
     \rowcolor{orange!6}
-    & \textbf{Stage 2} & \textbf{PhyHybrid (Alim)} & \textbf{0,230} & \textbf{0,995} & \textbf{75\%} \\
+    & \textbf{Stage 2} & \textbf{PhyHybrid (Alim)} & \textbf{0,230} & \textbf{0,995} & $-$23,8\% \\
     \midrule
     \rowcolor{green!6}
     \multirow{3}{*}{\textbf{Flux}}
-    & Stage 0 & Lasso\_Indep & 0,075 & 0,951 & 64\% \\
+    & Stage 0 & Lasso\_Indep & 0,075 & 0,951 & $-$8,5\% \\
     \rowcolor{green!6}
-    & Stage 1 & Baseline Flux & 0,066 & 0,972 & 68\% \\
+    & Stage 1 & Baseline Flux & 0,066 & 0,972 & $-$18,5\% \\
     \rowcolor{green!6}
-    & \textbf{Stage 2} & \textbf{PhyResidual (Flux)} & \textbf{0,054} & \textbf{0,979} & \textbf{74\%} \\
+    & \textbf{Stage 2} & \textbf{PhyResidual (Flux)} & \textbf{0,054} & \textbf{0,979} & $-$25,0\% \\
     \midrule
     Modelo F\'isico 0D & --- & --- & 0,206 & 0,631 & --- \\
     \bottomrule
@@ -243,7 +241,7 @@
     Stage 0 (Cl\'assicos) & Lineares generalizam bem (Test Flux $\approx$ 0,075) \\
     Stage 1 (Baseline Keras) & Test Flux 0,066 com arquitetura (128,64,32) \\
     \rowcolor{green!10}
-    Stage 2 (Vencedor) & \textbf{ZohanResidual: Test Flux 0,054 (74\% melhor que 0D)} \\
+    Stage 2 (Selecionado) & \textbf{PhyResidual: Test Flux 0,054 (74\% melhor que 0D)} \\
     \bottomrule
   \end{tabular}
   \note{Resumo por est\'agio. [~30s]}
