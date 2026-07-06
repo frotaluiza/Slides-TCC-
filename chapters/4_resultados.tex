@@ -233,12 +233,11 @@
     \textbf{Flux} & Stage 2 & PhyResidual (Alim) & \textbf{0,057} & 0,977 & $-$5,0\% \\
     \midrule
     \rowcolor{gray!6}
-    \multirow{3}{*}{\textbf{Modelo F\'isico 0D}}
-    & \textbf{Flux} & --- & 0,206 & 0,631 & --- \\
+    \textbf{Flux} & \multirow{3}{*}{\textbf{Modelo F\'isico 0D}} & --- & 0,206 & 0,631 & --- \\
     \rowcolor{gray!6}
-    & \textbf{T$_{alim,out}$} & --- & 1,549 & $-$0,404 & --- \\
+    \textbf{T$_{alim,out}$} & & --- & 1,549 & $-$0,404 & --- \\
     \rowcolor{gray!6}
-    & \textbf{T$_{ref,out}$} & --- & 0,851 & 0,948 & --- \\
+    \textbf{T$_{ref,out}$} & & --- & 0,851 & 0,948 & --- \\
     \bottomrule
   \end{tabular}
   \vfill
@@ -257,7 +256,7 @@
     \item[\textcolor{orange!70!black}{T$_{ref,out}$}:] Nem a MLP (Stage 1) nem as h\'ibridas (Stage 2) conseguiram superar a regress\~ao linear (Ridge, 0,219), indicando que a natureza desta vari\'avel se assemelha a de uma regi\~ao linear — confirmando as an\'alises iniciais da an\'alise explorat\'oria.
     \item[\textcolor{green!70!black}{Flux}:] Principal demonstra\c{c}\~ao mensur\'avel da vantagem da incorpora\c{c}\~ao das informa\c{c}\~oes das leis f\'isicas na arquitetura h\'ibrida. O modelo selecionado \'e o \textbf{PhyResidual (Alim)} (Test RMSE 0,057, Dif CV$\to$Test $-$5,0\%), por apresentar diferen\c{c}a CV$\to$Test muito menor que a rede otimizada para o fluxo ($-$25,0\%), indicando estimativas de generaliza\c{c}\~ao mais confi\'aveis.
   \end{Item}
-  \note{Talim: modelo 0D fraco limitou ganho da hibridiza\c{c}\~ao. Tref: natureza linear confirmada. Flux: PhyResidual (Alim) selecionado por generaliza\c{c}\~ao mais est\'avel. [~1,5 min]}
+  \note{Talim: modelo 0D fraco limitou ganho da hibridiza\c{c}\~ao. Tref: natureza linear confirmada. Flux: principal demonstra\c{c}\~ao da vantagem da incorpora\c{c}\~ao das leis f\'isicas. [~1,5 min]}
 \end{slide}
 
 %========================================================================
