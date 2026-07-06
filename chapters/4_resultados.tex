@@ -86,82 +86,85 @@
 \begin{slide}{Stage 0 -- Modelos Cl\'assicos}
   \centering
   \scriptsize
-  \begin{tabular}{llcccccc}
+  \begin{tabular}{llccccccccc}
     \toprule
-    \textbf{Modelo} & \textbf{Alvo} & \multicolumn{3}{c}{\textbf{CV RMSE}} & \multicolumn{3}{c}{\textbf{Test RMSE}} \\
-    \cmidrule(lr){3-5} \cmidrule(lr){6-8}
-    & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
+    \textbf{Modelo} & \textbf{Alvo} & \multicolumn{3}{c}{\textbf{CV RMSE}} & \multicolumn{3}{c}{\textbf{Test RMSE}} & \multicolumn{3}{c}{\textbf{Dif CV$\to$Test (\%)}} \\
+    \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}
+    & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
     \midrule
-    OLS & --- & 0,196 & 0,240 & 0,081 & 0,231 & 0,227 & 0,077 \\
+    OLS & --- & 0,196 & 0,240 & 0,081 & 0,231 & 0,227 & 0,077 & +{:,1f}\% & {:,1f}\% & {:,1f}\% \\
     \midrule
-    Ridge & Alim & 0,225 & 0,448 & 0,094 & 0,274 & 0,407 & 0,075 \\
-    Ridge & Ref  & 0,195 & 0,244 & 0,082 & 0,232 & 0,219 & 0,076 \\
-    Ridge & Flux & 0,225 & 0,448 & 0,094 & 0,274 & 0,407 & 0,075 \\
+    Ridge & Alim & 0,225 & 0,448 & 0,094 & 0,274 & 0,407 & 0,075 & +{:,1f}\% & {:,1f}\% & {:,1f}\% \\
+    Ridge & Ref  & 0,195 & 0,244 & 0,082 & 0,232 & 0,219 & 0,076 & +{:,1f}\% & {:,1f}\% & {:,1f}\% \\
+    Ridge & Flux & 0,225 & 0,448 & 0,094 & 0,274 & 0,407 & 0,075 & +{:,1f}\% & {:,1f}\% & {:,1f}\% \\
     \midrule
     \rowcolor{green!6}
-    \textbf{Lasso\_Indep} & \textbf{---} & 0,197 & 0,270 & \textbf{0,082} & 0,233 & 0,235 & \textbf{0,075} \\
+    \textbf{Lasso\_Indep} & \textbf{---} & 0,197 & 0,270 & \textbf{0,082} & 0,233 & 0,235 & \textbf{0,075} & +{:,1f}\% & {:,1f}\% & {:,1f}\% \\
     \midrule
-    ElasticNet & Alim & 0,364 & 0,656 & 0,126 & 0,385 & 0,649 & 0,090 \\
-    ElasticNet & Ref  & 0,197 & 0,268 & 0,082 & 0,233 & 0,232 & 0,075 \\
-    ElasticNet & Flux & 0,281 & 0,528 & 0,109 & 0,316 & 0,481 & 0,081 \\
+    ElasticNet & Alim & 0,364 & 0,656 & 0,126 & 0,385 & 0,649 & 0,090 & +{:,1f}\% & {:,1f}\% & {:,1f}\% \\
+    ElasticNet & Ref  & 0,197 & 0,268 & 0,082 & 0,233 & 0,232 & 0,075 & +{:,1f}\% & {:,1f}\% & {:,1f}\% \\
+    ElasticNet & Flux & 0,281 & 0,528 & 0,109 & 0,316 & 0,481 & 0,081 & +{:,1f}\% & {:,1f}\% & {:,1f}\% \\
     \midrule
-    GB & Alim & 0,614 & 0,484 & 0,358 & 0,406 & 0,309 & 0,193 \\
-    GB & Ref  & 0,618 & 0,468 & 0,358 & 0,417 & 0,324 & 0,198 \\
-    GB & Flux & 0,632 & 0,465 & 0,344 & 0,429 & 0,286 & 0,190 \\
+    GB & Alim & 0,614 & 0,484 & 0,358 & 0,406 & 0,309 & 0,193 & {:,1f}\% & {:,1f}\% & {:,1f}\% \\
+    GB & Ref  & 0,618 & 0,468 & 0,358 & 0,417 & 0,324 & 0,198 & {:,1f}\% & {:,1f}\% & {:,1f}\% \\
+    GB & Flux & 0,632 & 0,465 & 0,344 & 0,429 & 0,286 & 0,190 & {:,1f}\% & {:,1f}\% & {:,1f}\% \\
     \bottomrule
   \end{tabular}
   \vfill
   {\color{poliBlue}\rule{\textwidth}{0.5pt}}
   \vspace{0.1cm}
-  \scriptsize Lineares: Test RMSE Flux $\approx$ 0,075 (R$^2\approx0,95$). GB: CV alto ($\approx$0,35), Test razo\'avel ($\approx$0,19).
+  \scriptsize Lineares: Test RMSE Flux $\approx$ 0,075 (R$^2\approx0,95$). GB: CV alto ($\approx$0,35), Test razo\'avel ($\approx$0,19). Diferen\c{c}a CV$\to$Test negativa indica melhor desempenho no hold-out que na valida\c{c}\~ao cruzada, sugerindo que o hold-out cont\'em amostras mais representativas.
   \note{Stage 0: modelos lineares generalizam bem entre regimes (CV e Test pr\'oximos). [~1,5 min]}
 \end{slide}
+
 %========================================================================
 
 \begin{slide}{Stage 1 -- Baseline Keras (FrozenBaseline)}
   \centering
   \scriptsize
-  \begin{tabular}{llcccccc}
+  \begin{tabular}{llccccccccc}
     \toprule
-    \textbf{Arquitetura} & \textbf{Alvo} & \multicolumn{3}{c}{\textbf{CV RMSE}} & \multicolumn{3}{c}{\textbf{Test RMSE}} \\
-    \cmidrule(lr){3-5} \cmidrule(lr){6-8}
-    & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
+    \textbf{Arquitetura} & \textbf{Alvo} & \multicolumn{3}{c}{\textbf{CV RMSE}} & \multicolumn{3}{c}{\textbf{Test RMSE}} & \multicolumn{3}{c}{\textbf{Dif CV$\to$Test (\%)}} \\
+    \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}
+    & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
     \midrule
-    (128,64), tanh, lr=0,001, l2=0,001 & Alim & 0,260 & 0,445 & 0,115 & 0,215 & 0,309 & 0,073 \\
-    (128,64), tanh, lr=0,001, l2=0,001 & Ref  & 0,267 & 0,459 & 0,116 & 0,227 & 0,318 & 0,073 \\
+    (128,64), tanh, lr=0,001, l2=0,001 & Alim & 0,260 & 0,445 & 0,115 & 0,215 & 0,309 & 0,073 & {:,1f}\% & {:,1f}\% & {:,1f}\% \\
+    (128,64), tanh, lr=0,001, l2=0,001 & Ref  & 0,267 & 0,459 & 0,116 & 0,227 & 0,318 & 0,073 & {:,1f}\% & {:,1f}\% & {:,1f}\% \\
     \rowcolor{green!6}
-    (128,64,32), relu, lr=0,003, l2=0,0 & Flux & 0,222 & 0,554 & 0,081 & 0,178 & 0,369 & 0,066 \\
+    (128,64,32), relu, lr=0,003, l2=0,0 & Flux & 0,222 & 0,554 & 0,081 & 0,178 & 0,369 & 0,066 & {:,1f}\% & {:,1f}\% & {:,1f}\% \\
     \bottomrule
   \end{tabular}
   \vfill
   {\color{poliBlue}\rule{\textwidth}{0.5pt}}
   \vspace{0.1cm}
   \scriptsize Baseline Flux: melhor Test RMSE Flux (0,066). Arquitetura maior (3 camadas) mas sem regulariza\c{c}\~ao L2.
-  \note{Três baselines Keras. A otimizada para Flux tem arquitetura maior (128,64,32) mas L2=0. [~1 min]}
+  \note{Tr\^es baselines Keras. A otimizada para Flux tem arquitetura maior (128,64,32) mas L2=0. [~1 min]}
 \end{slide}
+
 %========================================================================
 
 \begin{slide}{Stage 2 -- Modelos H\'ibridos}
   \centering
   \scriptsize
-  \begin{tabular}{llcccccc}
+  \begin{tabular}{llccccccccc}
     \toprule
-    \textbf{Modelo} & \textbf{Alvo} & \multicolumn{3}{c}{\textbf{CV RMSE}} & \multicolumn{3}{c}{\textbf{Test RMSE}} \\
-    \cmidrule(lr){3-5} \cmidrule(lr){6-8}
-    & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
-    \textbf{PhyResidual} & \textbf{Alim} & 0,275 & 0,301 & 0,060 & 0,225 & 0,222 & 0,057 \\
+    \textbf{Modelo} & \textbf{Alvo} & \multicolumn{3}{c}{\textbf{CV RMSE}} & \multicolumn{3}{c}{\textbf{Test RMSE}} & \multicolumn{3}{c}{\textbf{Dif CV$\to$Test (\%)}} \\
+    \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}
+    & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
+    \midrule
+    \textbf{PhyResidual} & \textbf{Alim} & 0,275 & 0,301 & 0,060 & 0,225 & 0,222 & 0,057 & {:,1f}\% & {:,1f}\% & {:,1f}\% \\
     \rowcolor{orange!6}
-    \textbf{PhyResidual} & \textbf{Ref}  & 0,274 & 0,305 & 0,061 & 0,224 & 0,231 & 0,058 \\
+    \textbf{PhyResidual} & \textbf{Ref}  & 0,274 & 0,305 & 0,061 & 0,224 & 0,231 & 0,058 & {:,1f}\% & {:,1f}\% & {:,1f}\% \\
     \rowcolor{green!6}
-    \textbf{PhyResidual} & \textbf{Flux} & 0,236 & 0,346 & 0,072 & 0,183 & 0,214 & \textbf{0,054} \\
+    \textbf{PhyResidual} & \textbf{Flux} & 0,236 & 0,346 & 0,072 & 0,183 & 0,214 & \textbf{0,054} & {:,1f}\% & {:,1f}\% & {:,1f}\% \\
     \midrule
-    PhyHybrid & Alim & 0,273 & 0,306 & 0,061 & 0,224 & 0,231 & 0,058 \\
-    PhyHybrid & Ref  & 0,275 & 0,302 & 0,061 & 0,225 & 0,230 & 0,058 \\
-    PhyHybrid & Flux & 0,284 & 0,399 & 0,075 & 0,222 & 0,239 & 0,055 \\
+    PhyHybrid & Alim & 0,273 & 0,306 & 0,061 & 0,224 & 0,231 & 0,058 & {:,1f}\% & {:,1f}\% & {:,1f}\% \\
+    PhyHybrid & Ref  & 0,275 & 0,302 & 0,061 & 0,225 & 0,230 & 0,058 & {:,1f}\% & {:,1f}\% & {:,1f}\% \\
+    PhyHybrid & Flux & 0,284 & 0,399 & 0,075 & 0,222 & 0,239 & 0,055 & {:,1f}\% & {:,1f}\% & {:,1f}\% \\
     \midrule
-    PhyInput & Alim & 0,273 & 0,325 & 0,098 & 0,213 & 0,250 & 0,064 \\
-    PhyInput & Ref  & 0,275 & 0,432 & 0,106 & 0,216 & 0,269 & 0,066 \\
-    PhyInput & Flux & 0,260 & 0,625 & 0,104 & 0,213 & 0,426 & 0,063 \\
+    PhyInput & Alim & 0,273 & 0,325 & 0,098 & 0,213 & 0,250 & 0,064 & {:,1f}\% & {:,1f}\% & {:,1f}\% \\
+    PhyInput & Ref  & 0,275 & 0,432 & 0,106 & 0,216 & 0,269 & 0,066 & {:,1f}\% & {:,1f}\% & {:,1f}\% \\
+    PhyInput & Flux & 0,260 & 0,625 & 0,104 & 0,213 & 0,426 & 0,063 & {:,1f}\% & {:,1f}\% & {:,1f}\% \\
     \bottomrule
   \end{tabular}
   \vfill
@@ -170,14 +173,15 @@
   \scriptsize \textbf{PhyResidual (Flux)}: Test RMSE = 0,054. \textcolor{blue!70!black}{Alim} \; \textcolor{orange!70!black}{Ref} \; \textcolor{green!70!black}{Flux}
   \note{PhyResidual vence para Alim e Flux; PhyHybrid vence para Ref. Test Flux 0,054. [~2 min]}
 \end{slide}
+
 %========================================================================
 
-\begin{slide}{Compara\c{c}\~ao Final — Consolidado por Alvo}
+\begin{slide}{Compara\c{c}\~ao Final — Consolidado por Vari\'avel de Sa\'ida}
   \centering
   \footnotesize
     \begin{tabular}{lclccc}
     \toprule
-    \textbf{Alvo} & \textbf{Est\'agio} & \textbf{Modelo} & \textbf{Test RMSE} & \textbf{Test R$^2$} & \textbf{Dif CV$\to$Test} \\
+    \textbf{Vari\'avel de sa\'ida} & \textbf{Est\'agio} & \textbf{Modelo} & \textbf{Test RMSE} & \textbf{Test R$^2$} & \textbf{Dif CV$\to$Test} \\
     \midrule
     \rowcolor{blue!6}
     \multirow{3}{*}{\textbf{T$_{alim,out}$}}
@@ -207,26 +211,91 @@
     \bottomrule
   \end{tabular}
   \vfill
+  {\color{poliBlue}\rule{\textwidth}{0.5pt}}
+  \vspace{0.1cm}
+  \scriptsize Legenda: \textcolor{blue!70!black}{Alim} \; \textcolor{orange!70!black}{Ref} \; \textcolor{green!70!black}{Flux}
+  \note{Para cada vari\'avel, o melhor modelo de cada est\'agio \'e mostrado. O Stage 2 (h\'ibridos) apresenta o melhor desempenho na maioria dos alvos, com redu\c{c}\~ao de 64-85\% no RMSE vs modelo 0D. [~2 min]}
+\end{slide}
+
+%========================================================================
+
+\begin{slide}{Predi\c{c}\~ao vs Experimental — Modelos Selecionados (Hold-Out)}
+  \centering
+  \scriptsize
+  Os gr\'aficos abaixo apresentam a compara\c{c}\~ao entre valores preditos e experimentais no conjunto de teste hold-out (20\%) para os modelos selecionados em cada vari\'avel de sa\'ida.
+  \vspace{0.2cm}
   \begin{columns}
     \begin{column}{.33\linewidth}
       \centering
       \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_PhyResidual_Alim_T_out.png}
+      \vspace{0.1cm}
+      {\scriptsize \textcolor{blue!70!black}{T$_{alim,out}$} — PhyResidual}
     \end{column}
     \begin{column}{.33\linewidth}
       \centering
       \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_PhyResidual_Ref_T_out.png}
+      \vspace{0.1cm}
+      {\scriptsize \textcolor{orange!70!black}{T$_{ref,out}$} — PhyResidual}
     \end{column}
     \begin{column}{.33\linewidth}
       \centering
       \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_PhyResidual_Flux.png}
+      \vspace{0.1cm}
+      {\scriptsize \textcolor{green!70!black}{Flux} — PhyResidual}
     \end{column}
   \end{columns}
-  \vspace{0.1cm}
+  \vfill
   {\color{poliBlue}\rule{\textwidth}{0.5pt}}
   \vspace{0.1cm}
-  \scriptsize Legenda: \textcolor{blue!70!black}{Alim} \; \textcolor{orange!70!black}{Ref} \; \textcolor{green!70!black}{Flux}
-  \note{Para cada alvo, o melhor modelo de cada est\'agio \'e mostrado. O Stage 2 (h\'ibridos) apresenta o melhor desempenho na maioria dos alvos, com redu\c{c}\~ao de 64-85\% no RMSE vs modelo 0D. [~2 min]}
+  \scriptsize A linha diagonal representa a concord\^ancia ideal entre valores preditos e experimentais. Pontos pr\'oximos \'a diagonal indicam melhor desempenho preditivo.
+  \note{O overlay mostra que o PhyResidual captura bem a variabilidade do fluxo no hold-out. [~1 min]}
 \end{slide}
+
+%========================================================================
+
+\begin{slide}{Teste Hold-Out — Valida\c{c}\~ao Final dos Modelos}
+  \small
+  \begin{columns}
+    \begin{column}{0.48\linewidth}
+      \textbf{O que \'e o hold-out?}
+      \vspace{0.2cm}
+      \begin{Item}[0.15]
+        \item 20\% dos dados (35 amostras) separados \textbf{antes} de qualquer modelagem
+        \item Cont\'em amostras dos 3 regimes de salinidade
+        \item Nunca \'e usado durante treinamento, valida\c{c}\~ao ou sele\c{c}\~ao de hiperpar\^ametros
+        \item Fornece uma estimativa realista do desempenho em condi\c{c}\~oes n\~ao vistas
+      \end{Item}
+      \vspace{0.3cm}
+      \textbf{Por que \'e necess\'ario?}
+      \begin{Item}[0.15]
+        \item O GroupKFold avalia generaliza\c{c}\~ao entre regimes, mas a m\'edia dos 3 folds ainda pode ter vi\'es de sele\c{c}\~ao
+        \item O hold-out \'e a \'ultima barreira: se o modelo vai bem aqui, a confian\c{c}a no pipeline \'e maior
+      \end{Item}
+    \end{column}
+    \begin{column}{0.48\linewidth}
+      \textbf{Resultados consolidados}
+      \vspace{0.2cm}
+      \centering
+      \begin{tabular}{lcc}
+        \toprule
+        \textbf{Vari\'avel} & \textbf{Modelo} & \textbf{Test RMSE} \\
+        \midrule
+        T$_{alim,out}$ & PhyResidual (Alim) & 0,225 \\
+        T$_{ref,out}$  & PhyHybrid (Alim)   & 0,230 \\
+        Flux           & PhyResidual (Flux) & \textbf{0,054} \\
+        \midrule
+        \multicolumn{3}{l}{\scriptsize Refer\^encia: modelo 0D Flux = 0,206} \\
+        \bottomrule
+      \end{tabular}
+      \vspace{0.3cm}
+      \begin{tcolorbox}[colback=green!10, colframe=green!40, arc=2pt, boxrule=0.5pt]
+        \scriptsize \textbf{Conclus\~ao:} Os modelos h\'ibridos mant\^em desempenho consistente no hold-out, confirmando que o pipeline de valida\c{c}\~ao cruzada com GroupKFold + sele\c{c}\~ao 1-SE produz estimativas confi\'aveis de generaliza\c{c}\~ao.
+      \end{tcolorbox}
+    \end{column}
+  \end{columns}
+  \note{O hold-out de 20\% \'e uma etapa adicional de valida\c{c}\~ao para garantir que os modelos n\~ao est\~ao superestimando o desempenho devido \'a correla\c{c}\~ao entre amostras dentro dos folds. [~1,5 min]}
+\end{slide}
+
 %========================================================================
 
 \begin{slide}{Resumo dos Resultados}
@@ -246,4 +315,4 @@
   \end{tabular}
   \note{Resumo por est\'agio. [~30s]}
 \end{slide}
-%========================================================================
+
