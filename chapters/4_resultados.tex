@@ -30,11 +30,11 @@
       \end{tabular}
       \vspace{0.2cm}
       \begin{tcolorbox}[colback=orange!10, colframe=orange!40, arc=2pt, boxrule=0.5pt]
-        \scriptsize \textbf{Conclusão:} Modelos complexos (DT, RF, GB) superestimam performance em KFold comum. O GroupKFold revela que apenas os modelos lineares generalizam bem entre regimes — justificando seu uso no pipeline.
+        \scriptsize \textbf{Conclusão:} Foram observadas mudanças mensuráveis na performance de todos os modelos avaliados ao comparar as duas estratégias de validação, confirmando que a escolha do método de partição impacta a estimativa de desempenho.
       \end{tcolorbox}
     \end{column}
   \end{columns}
-  \note{A comparação entre KFold comum e GroupKFold mostra que modelos complexos como Gradient Boosting apresentam RMSE de 0,085 com KFold comum, mas sobem para 0,358 com GroupKFold — evidenciando que estavam memorizando padrões específicos dos regimes. Modelos lineares mantêm desempenho estável, confirmando sua capacidade de generalização. Isso justifica o uso do GroupKFold no pipeline. [~1,5 min]}
+  \note{A comparação entre KFold comum e GroupKFold mostra diferenças mensuráveis na performance de todos os modelos do Stage 0, confirmando que a estratégia de validação impacta a estimativa de erro. O GroupKFold foi adotado por respeitar a estrutura de grupos dos dados experimentais. [~1,5 min]}
 \end{slide}
 %========================================================================
 
