@@ -74,9 +74,10 @@
     Ridge & Ref  & 0,195 & 0,244 & 0,082 & 0,232 & 0,219 & 0,076 \\
     Ridge & Flux & 0,225 & 0,448 & 0,094 & 0,274 & 0,407 & 0,075 \\
     \midrule
-    Lasso\_Indep & Alim & 0,197 & 0,270 & 0,082 & 0,233 & 0,235 & 0,075 \\
-    Lasso\_Indep & Ref  & 0,197 & 0,270 & 0,082 & 0,233 & 0,235 & 0,075 \\
-    Lasso\_Indep & Flux & 0,197 & 0,270 & 0,082 & 0,233 & 0,235 & 0,075 \\
+    \rowcolor{orange!10}
+    \textbf{Lasso\_Indep} & Alim & 0,197 & 0,270 & 0,082 & 0,233 & 0,235 & \textbf{0,075} \\
+    \textbf{Lasso\_Indep} & Ref  & 0,197 & 0,270 & 0,082 & 0,233 & 0,235 & \textbf{0,075} \\
+    \textbf{Lasso\_Indep} & Flux & 0,197 & 0,270 & 0,082 & 0,233 & 0,235 & \textbf{0,075} \\
     \midrule
     ElasticNet & Alim & 0,364 & 0,656 & 0,126 & 0,385 & 0,649 & 0,090 \\
     ElasticNet & Ref  & 0,197 & 0,268 & 0,082 & 0,233 & 0,232 & 0,075 \\
@@ -114,14 +115,15 @@
     \midrule
     (128,64), tanh, lr=0,001, l2=0,001 & Alim & 0,260 & 0,445 & 0,115 & 0,215 & 0,309 & 0,073 \\
     (128,64), tanh, lr=0,001, l2=0,001 & Ref  & 0,267 & 0,459 & 0,116 & 0,227 & 0,318 & 0,073 \\
-    (128,64,32), relu, lr=0,003, l2=0,0 & Flux & 0,222 & 0,554 & 0,081 & 0,178 & 0,369 & 0,066 \\
+    \rowcolor{orange!10}
+    \textbf{(128,64,32), relu, lr=0,003, l2=0,0} & \textbf{Flux} & 0,222 & 0,554 & 0,081 & 0,178 & 0,369 & \textbf{0,066} \\
     \bottomrule
   \end{tabular}
   \vfill
   {\color{poliBlue}\rule{\textwidth}{0.5pt}}
   \vspace{0.1cm}
-  \scriptsize Baseline Flux: melhor Test RMSE Flux (0,066). Arquitetura maior (3 camadas) mas sem regulariza\c{c}\~ao L2.
-  \note{Três baselines Keras. A otimizada para Flux tem arquitetura maior (128,64,32) mas L2=0. [~1 min]}
+  \scriptsize \textbf{Vencedor Stage 1:} Baseline Flux, Test RMSE = 0,066 (RMSE puro). Arquitetura maior (3 camadas) mas sem regulariza\c{c}\~ao L2.
+  \note{Três baselines Keras. Vencedor: Flux-optimized, Test Flux = 0,066. [~1 min]}
 \end{slide}
 %========================================================================
 
