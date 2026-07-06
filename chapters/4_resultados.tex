@@ -94,20 +94,32 @@
     \midrule
     OLS & --- & 0,196 & 0,240 & 0,081 & 0,231 & 0,227 & 0,077 \\
     \midrule
+    \rowcolor{blue!6}
     Ridge & Alim & 0,225 & 0,448 & 0,094 & 0,274 & 0,407 & 0,075 \\
+    \rowcolor{orange!6}
     Ridge & Ref  & 0,195 & 0,244 & 0,082 & 0,232 & 0,219 & 0,076 \\
+    \rowcolor{green!6}
     Ridge & Flux & 0,225 & 0,448 & 0,094 & 0,274 & 0,407 & 0,075 \\
     \midrule
+    \rowcolor{blue!6}
     Lasso\_Indep & Alim & 0,197 & 0,270 & 0,082 & 0,233 & 0,235 & 0,075 \\
+    \rowcolor{orange!6}
     Lasso\_Indep & Ref  & 0,197 & 0,270 & 0,082 & 0,233 & 0,235 & 0,075 \\
+    \rowcolor{green!6}
     Lasso\_Indep & Flux & 0,197 & 0,270 & 0,082 & 0,233 & 0,235 & 0,075 \\
     \midrule
+    \rowcolor{blue!6}
     ElasticNet & Alim & 0,364 & 0,656 & 0,126 & 0,385 & 0,649 & 0,090 \\
+    \rowcolor{orange!6}
     ElasticNet & Ref  & 0,197 & 0,268 & 0,082 & 0,233 & 0,232 & 0,075 \\
+    \rowcolor{green!6}
     ElasticNet & Flux & 0,281 & 0,528 & 0,109 & 0,316 & 0,481 & 0,081 \\
     \midrule
+    \rowcolor{blue!6}
     GB & Alim & 0,614 & 0,484 & 0,358 & 0,406 & 0,309 & 0,193 \\
+    \rowcolor{orange!6}
     GB & Ref  & 0,618 & 0,468 & 0,358 & 0,417 & 0,324 & 0,198 \\
+    \rowcolor{green!6}
     GB & Flux & 0,632 & 0,465 & 0,344 & 0,429 & 0,286 & 0,190 \\
     \bottomrule
   \end{tabular}
@@ -128,8 +140,11 @@
     \cmidrule(lr){3-5} \cmidrule(lr){6-8}
     & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
     \midrule
+    \rowcolor{blue!6}
     (128,64), tanh, lr=0,001, l2=0,001 & Alim & 0,260 & 0,445 & 0,115 & 0,215 & 0,309 & 0,073 \\
+    \rowcolor{orange!6}
     (128,64), tanh, lr=0,001, l2=0,001 & Ref  & 0,267 & 0,459 & 0,116 & 0,227 & 0,318 & 0,073 \\
+    \rowcolor{green!6}
     (128,64,32), relu, lr=0,003, l2=0,0 & Flux & 0,222 & 0,554 & 0,081 & 0,178 & 0,369 & 0,066 \\
     \bottomrule
   \end{tabular}
@@ -150,21 +165,32 @@
     \cmidrule(lr){3-5} \cmidrule(lr){6-8}
     & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
     \midrule
+    \rowcolor{blue!6}
     FrozenBaseline & Alim & 0,260 & 0,445 & 0,115 & 0,215 & 0,309 & 0,073 \\
+    \rowcolor{orange!6}
     FrozenBaseline & Ref  & 0,267 & 0,459 & 0,116 & 0,227 & 0,318 & 0,073 \\
+    \rowcolor{green!6}
     FrozenBaseline & Flux & 0,222 & 0,554 & 0,081 & 0,178 & 0,369 & 0,066 \\
     \midrule
-    \rowcolor{green!10}
+    \rowcolor{blue!6}
     \textbf{ZohanResidual} & Alim & 0,275 & 0,301 & 0,060 & 0,225 & 0,222 & 0,057 \\
+    \rowcolor{orange!6}
     \textbf{ZohanResidual} & Ref  & 0,274 & 0,305 & 0,061 & 0,224 & 0,231 & 0,058 \\
+    \rowcolor{green!6}
     \textbf{ZohanResidual} & \textbf{Flux} & 0,236 & 0,346 & 0,072 & 0,183 & 0,214 & \textbf{0,054} \\
     \midrule
+    \rowcolor{blue!6}
     ZohanHRNN & Alim & 0,273 & 0,306 & 0,061 & 0,224 & 0,231 & 0,058 \\
+    \rowcolor{orange!6}
     ZohanHRNN & Ref  & 0,275 & 0,302 & 0,061 & 0,225 & 0,230 & 0,058 \\
+    \rowcolor{green!6}
     ZohanHRNN & Flux & 0,284 & 0,399 & 0,075 & 0,222 & 0,239 & 0,055 \\
     \midrule
+    \rowcolor{blue!6}
     ZohanHPD & Alim & 0,273 & 0,325 & 0,098 & 0,213 & 0,250 & 0,064 \\
+    \rowcolor{orange!6}
     ZohanHPD & Ref  & 0,275 & 0,432 & 0,106 & 0,216 & 0,269 & 0,066 \\
+    \rowcolor{green!6}
     ZohanHPD & Flux & 0,260 & 0,625 & 0,104 & 0,213 & 0,426 & 0,063 \\
     \bottomrule
   \end{tabular}
@@ -176,26 +202,43 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{Compara\c{c}\~ao Final}
+\begin{slide}{Compara\c{c}\~ao Final — Consolidado por Alvo}
   \centering
-  \begin{tabular}{lcccc}
+  \scriptsize
+  \begin{tabular}{lccccc}
     \toprule
-    \textbf{Modelo} & \textbf{CV Flux} & \textbf{Test Flux} & \textbf{Test R$^2$} & \textbf{Melhoria vs 0D} \\
+    \textbf{Alvo} & \textbf{Modelo} & \textbf{CV RMSE} & \textbf{Test RMSE} & \textbf{Test R$^2$} & \textbf{Melhoria vs 0D} \\
     \midrule
-    Lasso\_Indep (melhor cl\'assico) & 0,082 & 0,075 & 0,951 & 64\% \\
-    FrozenBaseline Flux (baseline) & 0,081 & 0,066 & 0,972 & 68\% \\
-    \rowcolor{green!10}
-    \textbf{ZohanResidual (Flux)} & 0,072 & \textbf{0,054} & \textbf{0,979} & \textbf{74\%} \\
-    ZohanHRNN (Flux) & 0,075 & 0,055 & 0,978 & 73\% \\
-    Modelo F\'isico 0D & --- & 0,206 & 0,631 & --- \\
+    \rowcolor{blue!6}
+    \textbf{T$_{alim,out}$} & PhyResidual (Alim) & 0,275 & 0,225 & 0,981 & 85\% \\
+    \rowcolor{orange!6}
+    \textbf{T$_{ref,out}$} & PhyHybrid (Alim) & 0,302 & 0,230 & 0,995 & 73\% \\
+    \rowcolor{green!6}
+    \textbf{Flux} & PhyResidual (Flux) & 0,072 & \textbf{0,054} & 0,979 & 74\% \\
+    \midrule
+    Modelo F\'isico 0D & --- & --- & 0,206 & 0,631 & --- \\
     \bottomrule
   \end{tabular}
   \vfill
-  \centering
+  \begin{columns}
+    \begin{column}{.33\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_PhyResidual_Alim_T_out.png}
+    \end{column}
+    \begin{column}{.33\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_PhyResidual_Ref_T_out.png}
+    \end{column}
+    \begin{column}{.33\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_PhyResidual_Flux.png}
+    \end{column}
+  \end{columns}
+  \vspace{0.1cm}
   {\color{poliBlue}\rule{\textwidth}{0.5pt}}
   \vspace{0.1cm}
-  \scriptsize ZohanResidual (Flux): 74\% de redu\c{c}\~ao no RMSE em rela\c{c}\~ao ao modelo f\'isico 0D.
-  \note{O ZohanResidual (Flux) \'e o melhor modelo: Test Flux 0,054, R$^2$ = 0,979. [~1 min]}
+  \scriptsize Legenda: \textcolor{blue!70!black}{Alim} \; \textcolor{orange!70!black}{Ref} \; \textcolor{green!70!black}{Flux}
+  \note{Cada alvo tem seu pr\'oprio modelo selecionado pelo crit\'erio 1-SE. Redu\c{c}\~ao de 74-85\% no RMSE vs modelo 0D. [~1,5 min]}
 \end{slide}
 %========================================================================
 
