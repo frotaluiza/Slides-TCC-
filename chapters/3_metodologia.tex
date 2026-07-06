@@ -98,7 +98,7 @@
     \draw[arrow] (padrao) -- (split);
     \draw[arrow] (split) -- (kfold);
     \draw[arrow] (kfold.east) -- (gkf.west);
-    \draw[arrow] (kfold.south) -- ++(0,-0.2) -| (decide.west);
+    \draw[arrow] (kfold.south) -- ++(0,-0.2) |- (decide.west);
     \draw[arrow] (gkf) -- (decide);
     \draw[arrow] (decide) -- (result);
   \end{tikzpicture}
@@ -305,13 +305,6 @@
       \begin{Item}[0.15]
         \item RMSE e R² calculados no hold-out para cada variável de saída
         \item Erro de generalização (média do RMSE dos 3 folds do GroupKFold)
-      \end{Item}
-      \vspace{0.3cm}
-      \textbf{Seleção final:}
-      \begin{Item}[0.15]
-        \item Cada target (Flux, T$_{alim,out}$, T$_{ref,out}$) pode ter um modelo diferente
-        \item A seleção é feita pelo critério 1-SE entre famílias
-        \item O modelo selecionado para cada target é o mais simples dentro de 1 desvio padrão do melhor RMSE
       \end{Item}
     \end{column}
   \end{columns}
