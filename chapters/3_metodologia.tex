@@ -80,25 +80,25 @@
 \begin{slide}{Etapa 2.2: Preparação dos Dados — Estratégia de Validação}
   \centering
   \vspace*{-0.3cm}
-  \resizebox{0.55\textwidth}{!}{%
+  \resizebox{0.35\textwidth}{!}{%
   \begin{tikzpicture}[
-      every node/.style={font=\small, align=center},
+      every node/.style={font=\normalsize, align=center},
       box/.style={rectangle, rounded corners, draw=poliBlue, thick,
-                  minimum width=2cm, minimum height=0.6cm, fill=blue!6},
+                  minimum width=1.5cm, minimum height=0.5cm, fill=blue!6},
       dec/.style={rectangle, rounded corners, draw=orange!60!black, thick,
-                  minimum width=2cm, minimum height=0.6cm, fill=orange!6},
+                  minimum width=1.5cm, minimum height=0.5cm, fill=orange!6},
       arrow/.style={->, thick, >=stealth},
     ]
-    \node[box] (padrao) {Padronização\\Z-score};
-    \node[box, below=0.4cm of padrao] (split) {Divisão\\80/20};
-    \node[box, below=0.4cm of split] (kfold) {KFold\\comum};
-    \node[box, right=0.4cm of kfold] (gkf) {GroupKFold\\3 regimes};
-    \node[dec, below=0.4cm of gkf] (decide) {Comparar\\RMSEs};
-    \node[box, below=0.4cm of decide] (result) {Decisão:\\GroupKFold};
+    \node[box] (padrao) {Padronização};
+    \node[box, below=0.3cm of padrao] (split) {Divisão 80/20};
+    \node[box, below=0.3cm of split] (kfold) {KFold};
+    \node[box, right=0.3cm of kfold] (gkf) {GroupKFold};
+    \node[dec, below=0.3cm of gkf] (decide) {Comparar};
+    \node[box, below=0.3cm of decide] (result) {GroupKFold};
     \draw[arrow] (padrao) -- (split);
     \draw[arrow] (split) -- (kfold);
-    \draw[arrow] (split.east) -- ++(0.1,0) |- (gkf.west);
-    \draw[arrow] (kfold.south) -- ++(0,-0.3) -| (decide.west);
+    \draw[arrow] (split.east) -- ++(0.08,0) |- (gkf.west);
+    \draw[arrow] (kfold.south) -- ++(0,-0.2) -| (decide.west);
     \draw[arrow] (gkf) -- (decide);
     \draw[arrow] (decide) -- (result);
   \end{tikzpicture}
@@ -106,10 +106,10 @@
   \vfill
   \begin{Item}
     \item Objetivo: determinar qual estratégia de validação usar (KFold ou GroupKFold)
-    \item Modelos do Stage 0 treinados com ambas as estratégias para comparar os RMSEs
-    \item A diferença observada fundamenta a escolha — resultados no Capítulo de Resultados
+    \item Modelos do Stage 0 treinados com ambas para comparar RMSEs
+    \item A diferença observada fundamenta a escolha (resultados no Cap. Resultados)
   \end{Item}
-  \note{A etapa de validação compara duas estratégias: KFold comum e GroupKFold. Modelos do Stage 0 são treinados com ambas, e a comparação dos RMSEs fundamenta a escolha. O GroupKFold foi selecionado por respeitar os regimes experimentais. [~1,5 min]}
+  \note{A etapa de validação compara KFold comum e GroupKFold. Modelos do Stage 0 são treinados com ambas estratégias. O GroupKFold foi selecionado por respeitar os regimes experimentais. [~1,5 min]}
 \end{slide}
 %========================================================================
 
