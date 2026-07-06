@@ -85,13 +85,21 @@
     GB & Alim & 0,614 & 0,484 & 0,358 & 0,406 & 0,309 & 0,193 \\
     GB & Ref  & 0,618 & 0,468 & 0,358 & 0,417 & 0,324 & 0,198 \\
     GB & Flux & 0,632 & 0,465 & 0,344 & 0,429 & 0,286 & 0,190 \\
+    \midrule
+    DT & Alim & 0,793 & 1,471 & 0,485 & 0,683 & 1,150 & 0,300 \\
+    DT & Ref  & 1,059 & 1,464 & 0,504 & 0,836 & 1,197 & 0,310 \\
+    DT & Flux & 1,099 & 2,260 & 0,573 & 1,149 & 1,956 & 0,372 \\
+    \midrule
+    RF & Alim & 0,900 & 1,455 & 0,434 & 0,829 & 1,144 & 0,292 \\
+    RF & Ref  & 0,799 & 1,137 & 0,422 & 0,652 & 0,859 & 0,263 \\
+    RF & Flux & 1,019 & 2,240 & 0,419 & 0,989 & 2,042 & 0,300 \\
     \bottomrule
   \end{tabular}
   \vfill
   {\color{poliBlue}\rule{\textwidth}{0.5pt}}
   \vspace{0.1cm}
-  \scriptsize Lineares: Test RMSE Flux $\approx$ 0,075 (R$^2\approx0,95$). GB: CV alto ($\approx$0,35), Test razo\'avel ($\approx$0,19).
-  \note{Stage 0: modelos lineares generalizam bem entre regimes (CV e Test pr\'oximos). [~1,5 min]}
+  \scriptsize Lineares: Test RMSE Flux $\approx$ 0,075 (R$^2\approx0,95$). GB: CV alto ($\approx$0,35), Test razo\'avel ($\approx$0,19). DT e RF: desempenho inferior, n\~ao competitivos para o fluxo.
+  \note{Stage 0: modelos lineares generalizam bem entre regimes. [~1,5 min]}
 \end{slide}
 %========================================================================
 
