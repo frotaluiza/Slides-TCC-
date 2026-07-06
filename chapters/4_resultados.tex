@@ -222,26 +222,17 @@
     \toprule
     \textbf{Vari\'avel de sa\'ida} & \textbf{Est\'agio} & \textbf{Modelo} & \textbf{Test RMSE} & \textbf{Test R$^2$} & \textbf{Dif CV$\to$Test} \\
     \midrule
-    \rowcolor{blue!6}
     \textbf{T$_{alim,out}$} & Stage 0 & OLS & 0,231 & 0,965 & +17,9\% \\
-    \rowcolor{blue!6}
-    \textbf{T$_{alim,out}$} & Stage 1 & Baseline Alim & 0,215 & 0,981 & $-$17,3\% \\
-    \rowcolor{blue!6}
-    \textbf{T$_{alim,out}$} & \textbf{Stage 2} & \textbf{PhyResidual (Alim)} & \textbf{0,225} & \textbf{0,981} & $-$18,2\% \\
+    \textbf{T$_{alim,out}$} & Stage 1 & Baseline Alim & \textbf{0,215} & \textbf{0,981} & $-$17,3\% \\
+    \textbf{T$_{alim,out}$} & Stage 2 & PhyResidual (Alim) & 0,225 & \textbf{0,981} & $-$18,2\% \\
     \midrule
-    \rowcolor{orange!6}
-    \textbf{T$_{ref,out}$} & Stage 0 & Ridge (Ref) & 0,219 & 0,996 & $-$10,2\% \\
-    \rowcolor{orange!6}
+    \textbf{T$_{ref,out}$} & Stage 0 & Ridge (Ref) & \textbf{0,219} & \textbf{0,996} & $-$10,2\% \\
     \textbf{T$_{ref,out}$} & Stage 1 & Baseline Alim & 0,309 & 0,989 & $-$30,6\% \\
-    \rowcolor{orange!6}
-    \textbf{T$_{ref,out}$} & \textbf{Stage 2} & \textbf{PhyHybrid (Alim)} & \textbf{0,230} & \textbf{0,995} & $-$23,8\% \\
+    \textbf{T$_{ref,out}$} & Stage 2 & PhyHybrid (Alim) & 0,230 & 0,995 & $-$23,8\% \\
     \midrule
-    \rowcolor{green!6}
     \textbf{Flux} & Stage 0 & Lasso\_Indep & 0,075 & 0,951 & $-$8,5\% \\
-    \rowcolor{green!6}
     \textbf{Flux} & Stage 1 & Baseline Flux & 0,066 & 0,972 & $-$18,5\% \\
-    \rowcolor{green!6}
-    \textbf{Flux} & \textbf{Stage 2} & \textbf{PhyResidual (Flux)} & \textbf{0,054} & \textbf{0,979} & $-$25,0\% \\
+    \textbf{Flux} & Stage 2 & PhyResidual (Flux) & \textbf{0,054} & \textbf{0,979} & $-$25,0\% \\
     \midrule
     \rowcolor{gray!6}
     \multirow{3}{*}{\textbf{Modelo F\'isico 0D}}
