@@ -321,20 +321,25 @@
       \textbf{Resultados consolidados}
       \vspace{0.2cm}
       \centering
-      \begin{tabular}{lcc}
+      \begin{tabular}{lccc}
         \toprule
-        \textbf{Vari\'avel} & \textbf{Modelo} & \textbf{Test RMSE} \\
+        \textbf{Vari\'avel} & \textbf{Modelo} & \textbf{Test RMSE} & \textbf{vs 0D} \\
         \midrule
-        T$_{alim,out}$ & PhyResidual (Alim) & 0,225 \\
-        T$_{ref,out}$  & PhyHybrid (Alim)   & 0,230 \\
-        Flux           & PhyResidual (Flux) & \textbf{0,054} \\
+        T$_{alim,out}$ & PhyResidual (Alim) & 0,225 & $-$85\% \\
+        T$_{ref,out}$  & PhyHybrid (Alim)   & 0,230 & $-$73\% \\
+        Flux           & PhyResidual (Flux) & \textbf{0,054} & $-$74\% \\
         \midrule
-        \multicolumn{3}{l}{\scriptsize Refer\^encia: modelo 0D Flux = 0,206} \\
+        \multicolumn{4}{l}{\scriptsize Ref. 0D: Talim=1,549 \; Tref=0,851 \; Flux=0,206} \\
         \bottomrule
       \end{tabular}
-      \vspace{0.3cm}
-      \begin{tcolorbox}[colback=green!10, colframe=green!40, arc=2pt, boxrule=0.5pt]
-        \scriptsize \textbf{Conclus\~ao:} Os modelos h\'ibridos mant\^em desempenho consistente no hold-out, confirmando que o pipeline de valida\c{c}\~ao cruzada com GroupKFold + sele\c{c}\~ao 1-SE produz estimativas confi\'aveis de generaliza\c{c}\~ao.
+      \vspace{0.2cm}
+      \begin{tcolorbox}[colback=blue!6, colframe=blue!40, arc=2pt, boxrule=0.5pt]
+        \scriptsize \textbf{Observa\c{c}\~oes:}
+        \begin{Item}[0.05]
+          \item T$_{alim,out}$: Stage 1 teve melhor RMSE (0,215), mas PhyResidual (0,225) chega pr\'oximo com R$^2$ 0,981.
+          \item T$_{ref,out}$: Ridge (Stage 0, 0,219) superou as h\'ibridas — a fenomenologia linear j\'a captura bem esta vari\'avel.
+          \item Flux: PhyResidual vence com folga em todos os est\'agios, confirmando a hibridiza\c{c}\~ao como caminho mais promissor.
+        \end{Item}
       \end{tcolorbox}
     \end{column}
   \end{columns}
