@@ -77,26 +77,37 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{Etapa 2.2: Preparação dos Dados — Divisão Treino/Validação/Teste}
-  \small
-  \begin{columns}
-    \begin{column}{.5\linewidth}
-      \textbf{Split dos dados}
-      \begin{Item}[0.15]
-        \item 80\% treino+val $\rightarrow$ GroupKFold (3 folds)
-        \item 20\% hold-out (35 amostras) separado \textbf{antes} de qualquer modelo
-        \item Hold-out contém amostras dos 3 regimes de salinidade
-        \item Cada fold treina 2 regimes, valida o terceiro
-      \end{Item}
-    \end{column}
-    \begin{column}{.5\linewidth}
-      \centering
-      \includegraphics[width=\linewidth]{tcc_images/chap04/group_k_fold_custom.png}
-      \vspace{0.1cm}
-      {\scriptsize Partição dos 3 regimes em cada fold do GroupKFold. Fonte: Elaborado pela autora.}
-    \end{column}
-  \end{columns}
-  \note{Os dados são divididos em 80\% para treino+validação com GroupKFold e 20\% para hold-out, separado antes de qualquer modelagem. O GroupKFold garante que, em cada iteração, um regime inteiro seja reservado para validação. [~1 min]}
+\begin{slide}{Etapa 2.2: Preparação dos Dados — Estratégia de Validação}
+  \centering
+  \vspace*{-0.3cm}
+  \begin{tikzpicture}[
+      every node/.style={font=\footnotesize, align=center},
+      box/.style={rectangle, rounded corners, draw=poliBlue, thick,
+                  minimum width=2.6cm, minimum height=0.7cm, fill=blue!6},
+      dec/.style={rectangle, rounded corners, draw=orange!60!black, thick,
+                  minimum width=2.6cm, minimum height=0.7cm, fill=orange!6},
+      arrow/.style={->, thick, >=stealth},
+    ]
+    \node[box] (padrao) {Padronização\\Z-score};
+    \node[box, below=0.5cm of padrao] (split) {Divisão\\80/20};
+    \node[box, below=0.5cm of split] (kfold) {KFold\\comum};
+    \node[box, right=0.5cm of kfold] (gkf) {GroupKFold\\3 regimes};
+    \node[dec, below=0.5cm of gkf] (decide) {Comparar\\RMSEs};
+    \node[box, below=0.5cm of decide] (result) {Decisão:\\GroupKFold};
+    \draw[arrow] (padrao) -- (split);
+    \draw[arrow] (split) -- (kfold);
+    \draw[arrow] (split.east) -- ++(0.15,0) |- (gkf.west);
+    \draw[arrow] (kfold) -- ++(0,-0.15) -| (decide.west);
+    \draw[arrow] (gkf) -- (decide);
+    \draw[arrow] (decide) -- (result);
+  \end{tikzpicture}
+  \vfill
+  \begin{Item}
+    \item Objetivo: determinar qual estratégia de validação usar (KFold ou GroupKFold)
+    \item Modelos do Stage 0 treinados com ambas as estratégias para comparar os RMSEs
+    \item A diferença observada fundamenta a escolha — resultados no Capítulo de Resultados
+  \end{Item}
+  \note{A etapa de validação compara duas estratégias: KFold comum e GroupKFold. Modelos do Stage 0 são treinados com ambas, e a comparação dos RMSEs fundamenta a escolha. O GroupKFold foi selecionado por respeitar os regimes experimentais. [~1,5 min]}
 \end{slide}
 %========================================================================
 
@@ -124,53 +135,34 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{Etapa 2.4: Preparação dos Dados — Fluxo}
+\begin{slide}{Etapa 2.4: Preparação dos Dados — Métricas de Erro}
   \small
-  \centering
-  \begin{Item}
-    \item \textbf{Etapas do pipeline:}
-  \end{Item}
-  \vspace{0.3cm}
-  \resizebox{0.9\textwidth}{!}{%
-  \begin{tikzpicture}[
-      every node/.style={font=\footnotesize, align=center},
-      box/.style={rectangle, rounded corners, draw=poliBlue, thick,
-                  minimum width=2cm, minimum height=0.7cm, fill=blue!6},
-      arrow/.style={->, thick, >=stealth},
-    ]
-    \node[box] (dados)    {Dados\\brutos};
-    \node[box, right=0.3cm of dados] (hold) {Separar\\hold-out};
-    \node[box, right=0.3cm of hold] (z) {Z-score\\treino};
-    \node[box, right=0.3cm of z] (gkf) {GroupKFold\\3 folds};
-    \node[box, right=0.3cm of gkf] (treino) {Treinar\\modelo};
-    \node[box, right=0.3cm of treino] (eval) {Avaliar\\validação};
-    \node[box, right=0.3cm of eval] (test) {Teste\\hold-out};
-    \draw[arrow] (dados) -- (hold);
-    \draw[arrow] (hold) -- (z);
-    \draw[arrow] (z) -- (gkf);
-    \draw[arrow] (gkf) -- (treino);
-    \draw[arrow] (treino) -- (eval);
-    \draw[arrow] (eval) -- (test);
-  \end{tikzpicture}
-  }
-  \vfill
   \begin{columns}
     \begin{column}{.5\linewidth}
-      \textbf{Métricas de erro}
+      \textbf{Erro de generalização}
       \begin{Item}[0.15]
-        \item \textbf{Erro de generalização:} média do RMSE entre os 3 folds do GroupKFold
-        \item Mede o desempenho esperado em regimes não vistos
+        \item Obtido a partir da validação cruzada com GroupKFold
+        \item Média do RMSE entre os 3 folds
+        \item Mede o desempenho esperado do modelo em regimes não vistos durante o treino
+        \item Utilizado durante a busca de hiperparâmetros e seleção de modelos
       \end{Item}
     \end{column}
     \begin{column}{.5\linewidth}
-      \textbf{Avaliação final}
+      \textbf{Avaliação final (hold-out)}
       \begin{Item}[0.15]
-        \item \textbf{Erro de teste:} RMSE no hold-out (35 amostras)
-        \item Hold-out contém amostras dos 3 regimes — avaliação em condições representativas
+        \item Conjunto de teste separado \textbf{antes} de qualquer modelagem
+        \item 20\% dos dados (35 amostras) com amostras dos 3 regimes de salinidade
+        \item O RMSE no hold-out é a métrica de avaliação final para seleção de modelos
+        \item Permite estimar o desempenho em condições operacionais representativas
       \end{Item}
     \end{column}
   \end{columns}
-  \note{O fluxo da modelagem segue: dados brutos, separação do hold-out, padronização Z-score ajustada no treino, validação cruzada com GroupKFold, treinamento, avaliação. O erro de generalização é a média do RMSE entre os 3 folds. O erro de teste é calculado no hold-out, que contém amostras dos 3 regimes. [~2 min]}
+  \vfill
+  \begin{Item}
+    \item O erro de generalização (validação cruzada) guia a busca de hiperparâmetros
+    \item O erro de teste (hold-out) é a métrica final para comparar modelos selecionados
+  \end{Item}
+  \note{Duas métricas são utilizadas: o erro de generalização, obtido pela média do RMSE dos 3 folds do GroupKFold, guia a busca de hiperparâmetros e a seleção dentro de cada família. O erro de teste, calculado no hold-out de 35 amostras separado antes de qualquer modelo, é a métrica final para comparação entre os modelos selecionados. [~1,5 min]}
 \end{slide}
 %========================================================================
 
@@ -180,9 +172,8 @@
     \begin{column}{.5\linewidth}
       \textbf{Critério hierárquico:}
       \begin{Item}[0.15]
-        \item 1º: menor RMSE$_{CV}$ no fluxo
-        \item 2º: modelos dentro de 1 desvio padrão do melhor
-        \item 3º: menor complexidade entre eles
+        \item \textbf{Nível 1 — Dentro de cada família:} 1-SE + mínima complexidade para escolher hiperparâmetros
+        \item \textbf{Nível 2 — Entre famílias:} comparação direta pelo menor RMSE$_{CV}$ no fluxo
       \end{Item}
       \vspace{0.3cm}
       \textbf{Medida de complexidade:} número de parâmetros treináveis
@@ -190,13 +181,13 @@
     \begin{column}{.5\linewidth}
       \textbf{Seleção por target:}
       \begin{Item}[0.15]
-        \item Flux: PhyResidual (base Alim) — RMSE 0,060
-        \item T$_{alim,out}$: PhyResidual (base Alim) — RMSE 0,141
-        \item T$_{ref,out}$: PhyHybrid (base Alim) — RMSE 0,211
+        \item Cada variável de saída (Flux, T$_{alim,out}$, T$_{ref,out}$) pode ter um modelo diferente
+        \item A busca de hiperparâmetros é otimizada separadamente para cada alvo
+        \item Ao final, cada target tem seu próprio modelo selecionado pelo critério 1-SE
       \end{Item}
     \end{column}
   \end{columns}
-  \note{O critério 1-SE seleciona modelos dentro de 1 desvio padrão do melhor RMSE no fluxo, priorizando o mais simples. A seleção por target identificou o PhyResidual para Fluxo e Alim, e o PhyHybrid para Ref. [~1 min]}
+  \note{O critério de seleção tem dois níveis: dentro de cada família, o 1-SE combinado com mínima complexidade escolhe os melhores hiperparâmetros. Entre famílias, a comparação é direta pelo menor RMSE no fluxo. A seleção por target permite que cada variável de saída tenha o modelo mais adequado. [~1,5 min]}
 \end{slide}
 \begin{slide}{Etapa 4: Análise Exploratória}
   \small
@@ -262,48 +253,7 @@
   \end{columns}
   \note{Stage 0 avalia modelos clássicos: lineares (OLS, Ridge, Lasso, ElasticNet) e baseados em árvores (DecisionTree, RandomForest, GradientBoosting). A busca usa GridSearch com validação cruzada GroupKFold. [~1 min]}
 \end{slide}
-\begin{slide}{Etapa 7: Definindo Validação}
-  \small
-  \begin{columns}
-    \begin{column}{0.48\linewidth}
-      \textbf{KFold comum (sem grupo)}
-      \begin{Item}[0.15]
-        \item Embaralha e divide aleatoriamente
-        \item Amostras do mesmo regime podem estar no treino e no teste
-        \item Modelo ``aprende'' padrões específicos do regime
-      \end{Item}
-      \vspace{0.2cm}
-      \textbf{GroupKFold (por Regime)}
-      \begin{Item}[0.15]
-        \item Cada fold treina 2 regimes, valida o 3°
-        \item Teste \textbf{sempre} em regime não visto
-        \item Métrica conservadora e realista
-      \end{Item}
-    \end{column}
-    \begin{column}{0.48\linewidth}
-      \textbf{Diferença observada — RMSE Flux (Stage 0)}
-      \scriptsize
-      \begin{tabular}{lcc}
-        \toprule
-        \textbf{Modelo} & \textbf{CV KFold} & \textbf{CV GroupKFold} \\
-        \midrule
-        OLS            & 0.078 & 0.081 \\
-        Ridge (Ref)    & 0.078 & 0.082 \\
-        Lasso\_Indep   & 0.079 & 0.082 \\
-        DT (Alim)      & 0.269 & \textbf{0.485} \\
-        RF (Ref)       & 0.199 & \textbf{0.422} \\
-        GB (Alim)      & 0.085 & \textbf{0.358} \\
-        \bottomrule
-      \end{tabular}
-      \vspace{0.2cm}
-      \begin{tcolorbox}[colback=orange!10, colframe=orange!40, arc=2pt, boxrule=0.5pt]
-        \scriptsize \textbf{Conclusão:} Modelos complexos superestimam performance em KFold. GroupKFold revela que só os lineares generalizam entre regimes.
-      \end{tcolorbox}
-    \end{column}
-  \end{columns}
-  \note{A justificativa do GroupKFold está nos números. Modelos como Gradient Boosting apresentam RMSE de 0,085 com KFold comum, mas sobem para 0,358 com GroupKFold — mostrando que estavam memorizando regimes. Os lineares mantêm desempenho estável, indicando que realmente generalizam. [~1,5 min]}
-\end{slide}
-\begin{slide}{Etapa 8: Stage 1 — Baseline Keras}
+\begin{slide}{Etapa 7: Stage 1 — Baseline Keras}
   \footnotesize
   \centering
   \begin{tabular}{p{0.22\linewidth} p{0.38\linewidth} p{0.30\linewidth}}
@@ -322,7 +272,7 @@
   \end{Item}
   \note{Stage 1 treina baselines MLP com busca de hiperparâmetros. Foram treinadas 3 baselines independentes, cada uma priorizando um alvo diferente. A baseline Alim (1 camada, 256 neurônios) teve a melhor relação desempenho-complexidade. [~1,5 min]}
 \end{slide}
-\begin{slide}{Etapa 9: Stage 2 — Modelos Híbridos}
+\begin{slide}{Etapa 8: Stage 2 — Modelos Híbridos}
   \small
   \centering
   \resizebox{\textwidth}{!}{
@@ -348,7 +298,7 @@
   \textbf{Busca restrita:} apenas L2, mantendo a baseline fixa — para isolar o efeito da física
   \note{Stage 2 implementa 4 arquiteturas híbridas que incorporam informação do modelo físico 0D. A busca de hiperparâmetros foi restrita ao L2, mantendo a baseline fixa, para isolar o efeito da incorporação de física. PhyResidual venceu para Fluxo e Alim; PhyHybrid venceu para Ref. [~2 min]}
 \end{slide}
-\begin{slide}{Etapa 10: Selecionado / 0D / Redes}
+\begin{slide}{Etapa 9: Selecionado / 0D / Redes}
   \centering
   \begin{tabular}{lccc}
     \toprule
