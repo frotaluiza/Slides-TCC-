@@ -1,11 +1,15 @@
 \section{Resultados}
 
-\begin{slide}{Análise Exploratória}
+\definecolor{colorAlim}{HTML}{4A90D9}
+\definecolor{colorRef}{HTML}{E67E22}
+\definecolor{colorFlux}{HTML}{27AE60}
+
+\begin{slide}{An\'alise Explorat\'oria}
   \begin{columns}
     \begin{column}{.5\linewidth}
       \begin{Item}[0.15]
-        \item Dispersão: T$_{out}$ correlacionada com entradas térmicas; fluxo com múltiplas variáveis
-        \item Pearson: T$_{out}$ têm correlações lineares fortes ($|r|>0,9$); fluxo moderado ($|r|\approx0,7$)
+        \item Dispers\~ao: T$_{out}$ correlacionada com entradas t\'ermicas; fluxo com m\'ultiplas vari\'aveis
+        \item Pearson: T$_{out}$ t\^em correla\c{c}\~oes lineares fortes ($|r|>0,9$); fluxo moderado ($|r|\approx0,7$)
         \item Complexidade do fluxo $\rightarrow$ justifica modelagem multivariada
       \end{Item}
     \end{column}
@@ -13,12 +17,11 @@
       \includegraphics[width=\linewidth]{tcc_images/chap06/scatter_vagmd_exp_only.png}
     \end{column}
   \end{columns}
-  \vfill\hfill{\scriptsize Figura: Dispersão dos dados experimentais V-AGMD.}
-  \note{Análise exploratória: temperaturas de saída têm forte correlação linear, fluxo é mais complexo. [~1 min]}
+  \note{An\'alise explorat\'oria. [~1 min]}
 \end{slide}
 %========================================================================
 
-\begin{slide}{Correlações}
+\begin{slide}{Correla\c{c}\~oes}
   \begin{columns}
     \begin{column}{.5\linewidth}
       \includegraphics[width=\linewidth]{tcc_images/chap06/heatmap_pearson_features_targets.png}
@@ -27,16 +30,15 @@
       \includegraphics[width=\linewidth]{tcc_images/chap06/heatmap_spearman_features_targets.png}
     \end{column}
   \end{columns}
-  \vfill\hfill{\scriptsize Figura: Mapas de correlação Pearson (esq.) e Spearman (dir.).}
-  \note{Temperaturas têm correlações lineares fortes (|r| > 0,9); fluxo tem correlações moderadas. [~1 min]}
+  \note{Mapas de correla\c{c}\~ao. [~1 min]}
 \end{slide}
 %========================================================================
 
-\begin{slide}{Modelo Físico 0D}
+\begin{slide}{Modelo F\'isico 0D}
   \centering
   \begin{tabular}{lccc}
     \toprule
-    \textbf{Métrica} & \textbf{Fluxo} & \textbf{T$_{alim,out}$} & \textbf{T$_{ref,out}$} \\
+    \textbf{M\'etrica} & \textbf{Fluxo} & \textbf{T$_{alim,out}$} & \textbf{T$_{ref,out}$} \\
     \midrule
     RMSE modelo 0D & 0,206 & 1,549 & 0,851 \\
     R$^2$ modelo 0D & 0,631 & -0,404 & 0,948 \\
@@ -54,8 +56,7 @@
       \includegraphics[width=\linewidth]{tcc_images/chap06/ref_T_out_real_vs_0d.png}
     \end{column}
   \end{columns}
-  \vfill\hfill{\scriptsize Figura: Modelo físico 0D vs experimental.}
-  \note{O modelo 0D captura tendências mas com dispersão. RMSE fluxo = 0,206. [~40s]}
+  \note{Modelo 0D: RMSE fluxo = 0,206. [~40s]}
 \end{slide}
 %========================================================================
 
@@ -68,16 +69,15 @@
     \cmidrule(lr){3-5} \cmidrule(lr){6-8}
     & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
     \midrule
-    OLS & --- & 0,196 & 0,240 & 0,081 & 0,231 & 0,227 & 0,077 \\
+    OLS & --- & 0,196 & 0,240 & 0,081 & \cellcolor{colorAlim!20}0,231 & 0,227 & 0,077 \\
     \midrule
     Ridge & Alim & 0,225 & 0,448 & 0,094 & 0,274 & 0,407 & 0,075 \\
-    Ridge & Ref  & 0,195 & 0,244 & 0,082 & 0,232 & 0,219 & 0,076 \\
-    Ridge & Flux & 0,225 & 0,448 & 0,094 & 0,274 & 0,407 & 0,075 \\
+    Ridge & Ref  & 0,195 & 0,244 & 0,082 & 0,232 & \cellcolor{colorRef!20}0,219 & 0,076 \\
+    Ridge & Flux & 0,225 & 0,448 & 0,094 & 0,274 & 0,407 & \cellcolor{colorFlux!20}0,075 \\
     \midrule
-    \rowcolor{orange!10}
-    \textbf{Lasso\_Indep} & Alim & 0,197 & 0,270 & 0,082 & 0,233 & 0,235 & \textbf{0,075} \\
-    \textbf{Lasso\_Indep} & Ref  & 0,197 & 0,270 & 0,082 & 0,233 & 0,235 & \textbf{0,075} \\
-    \textbf{Lasso\_Indep} & Flux & 0,197 & 0,270 & 0,082 & 0,233 & 0,235 & \textbf{0,075} \\
+    Lasso\_Indep & Alim & 0,197 & 0,270 & 0,082 & 0,233 & 0,235 & 0,075 \\
+    Lasso\_Indep & Ref  & 0,197 & 0,270 & 0,082 & 0,233 & 0,235 & 0,075 \\
+    Lasso\_Indep & Flux & 0,197 & 0,270 & 0,082 & 0,233 & 0,235 & 0,075 \\
     \midrule
     ElasticNet & Alim & 0,364 & 0,656 & 0,126 & 0,385 & 0,649 & 0,090 \\
     ElasticNet & Ref  & 0,197 & 0,268 & 0,082 & 0,233 & 0,232 & 0,075 \\
@@ -97,10 +97,13 @@
     \bottomrule
   \end{tabular}
   \vfill
-  {\color{poliBlue}\rule{\textwidth}{0.5pt}}
+  {\color{gray}\rule{\textwidth}{0.5pt}}
   \vspace{0.1cm}
-  \scriptsize Lineares: Test RMSE Flux $\approx$ 0,075 (R$^2\approx0,95$). GB: CV alto ($\approx$0,35), Test razo\'avel ($\approx$0,19). DT e RF: desempenho inferior, n\~ao competitivos para o fluxo.
-  \note{Stage 0: modelos lineares generalizam bem entre regimes. [~1,5 min]}
+  \scriptsize
+  \textcolor{colorAlim}{$\blacksquare$} Vencedor Alim: OLS (0,231) \hspace{0.3cm}
+  \textcolor{colorRef}{$\blacksquare$} Vencedor Ref: Ridge $\alpha=1$ (0,219) \hspace{0.3cm}
+  \textcolor{colorFlux}{$\blacksquare$} Vencedor Flux: Ridge $\alpha=10$ (0,075)
+  \note{Stage 0: vencedores por alvo pelo menor Test RMSE. [~1,5 min]}
 \end{slide}
 %========================================================================
 
@@ -113,17 +116,19 @@
     \cmidrule(lr){3-5} \cmidrule(lr){6-8}
     & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
     \midrule
-    (128,64), tanh, lr=0,001, l2=0,001 & Alim & 0,260 & 0,445 & 0,115 & 0,215 & 0,309 & 0,073 \\
+    (128,64), tanh, lr=0,001, l2=0,001 & Alim & 0,260 & 0,445 & 0,115 & \cellcolor{colorRef!20}0,215 & 0,309 & 0,073 \\
     (128,64), tanh, lr=0,001, l2=0,001 & Ref  & 0,267 & 0,459 & 0,116 & 0,227 & 0,318 & 0,073 \\
-    \rowcolor{orange!10}
-    \textbf{(128,64,32), relu, lr=0,003, l2=0,0} & \textbf{Flux} & 0,222 & 0,554 & 0,081 & 0,178 & 0,369 & \textbf{0,066} \\
+    (128,64,32), relu, lr=0,003, l2=0,0 & Flux & 0,222 & 0,554 & 0,081 & 0,178 & 0,369 & \cellcolor{colorFlux!20}0,066 \\
     \bottomrule
   \end{tabular}
   \vfill
-  {\color{poliBlue}\rule{\textwidth}{0.5pt}}
+  {\color{gray}\rule{\textwidth}{0.5pt}}
   \vspace{0.1cm}
-  \scriptsize \textbf{Vencedor Stage 1:} Baseline Flux, Test RMSE = 0,066 (RMSE puro). Arquitetura maior (3 camadas) mas sem regulariza\c{c}\~ao L2.
-  \note{Três baselines Keras. Vencedor: Flux-optimized, Test Flux = 0,066. [~1 min]}
+  \scriptsize
+  Sele\c{c}\~ao por 1-SE + complexidade (mesma fam\'ilia Keras):
+  \textcolor{colorRef}{$\blacksquare$} Vencedor Ref: Alim-opt (0,309) \hspace{0.3cm}
+  \textcolor{colorFlux}{$\blacksquare$} Vencedor Flux: Flux-opt (0,066)
+  \note{Stage 1: 1-SE + complexidade. Alim-opt vence para Ref (mesma complexidade, menor erro). Flux-opt vence para Flux. [~1 min]}
 \end{slide}
 %========================================================================
 
@@ -141,9 +146,9 @@
     FrozenBaseline & Flux & 0,222 & 0,554 & 0,081 & 0,178 & 0,369 & 0,066 \\
     \midrule
     \rowcolor{green!10}
-    \textbf{ZohanResidual} & Alim & 0,275 & 0,301 & 0,060 & 0,225 & 0,222 & 0,057 \\
+    \textbf{ZohanResidual} & Alim & 0,275 & 0,301 & 0,060 & \cellcolor{colorAlim!20}0,225 & 0,222 & 0,057 \\
     \textbf{ZohanResidual} & Ref  & 0,274 & 0,305 & 0,061 & 0,224 & 0,231 & 0,058 \\
-    \textbf{ZohanResidual} & \textbf{Flux} & 0,236 & 0,346 & 0,072 & 0,183 & 0,214 & \textbf{0,054} \\
+    \textbf{ZohanResidual} & \textbf{Flux} & 0,236 & 0,346 & 0,072 & 0,183 & 0,214 & \cellcolor{colorFlux!20}\textbf{0,054} \\
     \midrule
     ZohanHRNN & Alim & 0,273 & 0,306 & 0,061 & 0,224 & 0,231 & 0,058 \\
     ZohanHRNN & Ref  & 0,275 & 0,302 & 0,061 & 0,225 & 0,230 & 0,058 \\
@@ -155,10 +160,13 @@
     \bottomrule
   \end{tabular}
   \vfill
-  {\color{poliBlue}\rule{\textwidth}{0.5pt}}
+  {\color{gray}\rule{\textwidth}{0.5pt}}
   \vspace{0.1cm}
-  \scriptsize \textbf{ZohanResidual (Flux)}: Test RMSE = 0,054 (18\% melhor que baseline 0,066; 28\% melhor que cl\'assico 0,075).
-  \note{ZohanResidual e ZohanHRNN s\~ao os melhores, com Test Flux 0,054-0,055. [~2 min]}
+  \scriptsize
+  \textcolor{colorAlim}{$\blacksquare$} Alim: ZohanResidual (0,225) \hspace{0.3cm}
+  \textcolor{colorRef}{$\blacksquare$} Ref: ZohanResidual (0,214) \hspace{0.3cm}
+  \textcolor{colorFlux}{$\blacksquare$} Flux: \textbf{ZohanResidual (0,054)} -- melhor geral
+  \note{ZohanResidual vence para os 3 alvos, com Test Flux = 0,054. [~2 min]}
 \end{slide}
 %========================================================================
 
@@ -166,23 +174,20 @@
   \centering
   \begin{tabular}{lcccc}
     \toprule
-    \textbf{Modelo} & \textbf{CV Flux} & \textbf{Test Flux} & \textbf{Test R$^2$} & \textbf{Melhoria vs 0D} \\
+    \textbf{Modelo} & \textbf{Alim} & \textbf{Ref} & \textbf{Flux} & \textbf{Melhoria vs 0D (Flux)} \\
     \midrule
-    Lasso\_Indep (melhor cl\'assico) & 0,082 & 0,075 & 0,951 & 64\% \\
-    FrozenBaseline Flux (baseline) & 0,081 & 0,066 & 0,972 & 68\% \\
+    Modelo F\'isico 0D & 1,549 & 0,851 & 0,206 & --- \\
+    Stage 0: OLS / Ridge / Ridge & 0,231 & 0,219 & 0,075 & 64\% \\
+    Stage 1: FrozenBaseline & 0,215 & 0,309 & 0,066 & 68\% \\
     \rowcolor{green!10}
-    \textbf{ZohanResidual (Flux)} & 0,072 & \textbf{0,054} & \textbf{0,979} & \textbf{74\%} \\
-    ZohanHRNN (Flux) & 0,075 & 0,055 & 0,978 & 73\% \\
-    Modelo F\'isico 0D & --- & 0,206 & 0,631 & --- \\
+    \textbf{Stage 2: ZohanResidual} & 0,225 & 0,214 & \textbf{0,054} & \textbf{74\%} \\
     \bottomrule
   \end{tabular}
   \vfill
   \centering
-  {\color{poliBlue}\rule{\textwidth}{0.5pt}}
+  {\color{gray}\rule{\textwidth}{0.5pt}}
   \vspace{0.1cm}
-  \scriptsize ZohanResidual (Flux): 74\% de redu\c{c}\~ao no RMSE em rela\c{c}\~ao ao modelo f\'isico 0D.
-  \note{O ZohanResidual (Flux) \'e o melhor modelo: Test Flux 0,054, R$^2$ = 0,979. [~1 min]}
+  \scriptsize Melhoria de 74\% no RMSE do fluxo em rela\c{c}\~ao ao modelo f\'isico 0D (0,206 $\rightarrow$ 0,054).
+  \note{Compara\c{c}\~ao final. ZohanResidual vence geral. [~1 min]}
 \end{slide}
 %========================================================================
-
-
