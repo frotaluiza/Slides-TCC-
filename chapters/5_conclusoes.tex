@@ -9,7 +9,7 @@
       \textbf{Aspecto} & \textbf{Resultado} & \textbf{Implicação} \\
       \midrule
       \textbf{Melhores modelos}
-      & ZohanResidual (Flux): Flux 0,054; Ridge (Ref): Ref 0,219
+      & PhyResidual (Flux): Flux 0,054; Ridge (Ref): Ref 0,219
       & Arquitetura residual híbrida supera modelos clássicos e baseline Keras \\
       \midrule
       \textbf{Validação}
@@ -21,8 +21,8 @@
         & Pipeline mais robusto que a literatura (hold-out simples) \\
       \midrule
       \textbf{Hibridização}
-      & 4 arquiteturas implementadas; residuais superaram regularização na perda
-      & Estratégia de correção residual é a mais promissora \\
+      & 4 arquiteturas implementadas (\emph{input}, \emph{residual}, \emph{hybrid}, \emph{loss}); residual venceu em 2 de 3 alvos
+      & Estratégia de correção residual sobre predição do modelo físico 0D se aproxima do cenário ideal de modelagem híbrida: unir conhecimento fenomenológico aos dados experimentais \\
       \midrule
       \textbf{Modelos lineares}
       & OLS: competitivo para temperaturas (Ref 0,251) mas superado pela PhyHybrid
@@ -30,7 +30,7 @@
       \bottomrule
     \end{tabular}
   }
-  \note{Conclusões principais: PhyResidual (base Alim) vence para fluxo e temperatura de alimentação; PhyHybrid (base Alim) vence para Ref. O critério 1-SE entre famílias com número de parâmetros como medida de complexidade guiou a seleção. [~1,5 min]}
+  \note{Conclusões principais: PhyResidual vence para fluxo e Talim; PhyHybrid vence para Tref. Híbridos aproximam o ideal de unir conhecimento físico a dados experimentais. [~1,5 min]}
 \end{slide}
 %========================================================================
 
@@ -41,7 +41,7 @@
       \begin{Item}
         \item Pipeline com validação cruzada agrupada por regimes (GroupKFold)
         \item 4 arquiteturas híbridas físico--dados implementadas e comparadas
-        \item Seleção por target: ZohanResidual para Flux+Alim, ZohanHRNN para Ref
+        \item Seleção por target: PhyResidual para Flux+Alim, PhyHybrid para Ref
       \end{Item}
     \end{column}
     \begin{column}{.5\linewidth}
