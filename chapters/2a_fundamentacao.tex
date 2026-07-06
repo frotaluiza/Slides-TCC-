@@ -84,11 +84,6 @@
         \item Garante que o modelo seja testado em grupos não vistos durante o treino
         \item Métrica mais conservadora e realista quando há dependência entre amostras
       \end{Item}
-      \vspace{0.3cm}
-      \centering
-      \includegraphics[width=0.85\linewidth]{tcc_images/chap04/group_k_fold_custom.png}
-      \vspace{0.05cm}
-      {\scriptsize Partição dos 3 regimes em cada fold do GroupKFold. Fonte: Elaborado pela autora.}
     \end{column}
   \end{columns}
   \note{A validação cruzada é essencial para estimar o desempenho de modelos. O KFold divide os dados em K partições e repete o treino K vezes. O GroupKFold respeita os grupos experimentais, garantindo que cada fold teste o modelo em grupos não vistos. O hold-out é uma fração separada antes de qualquer modelagem para avaliação final. [~1,5 min]}
