@@ -79,7 +79,7 @@
 
 \begin{slide}{Etapa 2.2: Preparação dos Dados — Estratégia de Validação}
   \centering
-  \vspace*{-0.3cm}
+  \resizebox{0.75\textwidth}{!}{%
   \begin{tikzpicture}[
       every node/.style={font=\footnotesize, align=center},
       box/.style={rectangle, rounded corners, draw=poliBlue, thick,
@@ -97,10 +97,11 @@
     \draw[arrow] (padrao) -- (split);
     \draw[arrow] (split) -- (kfold);
     \draw[arrow] (split.east) -- ++(0.15,0) |- (gkf.west);
-    \draw[arrow] (kfold) -- ++(0,-0.15) -| (decide.west);
+    \draw[arrow] (kfold.south) -- ++(0,-0.35) -| (decide.west);
     \draw[arrow] (gkf) -- (decide);
     \draw[arrow] (decide) -- (result);
   \end{tikzpicture}
+  }
   \vfill
   \begin{Item}
     \item Objetivo: determinar qual estratégia de validação usar (KFold ou GroupKFold)
