@@ -87,7 +87,7 @@
 
 %========================================================================
 
-\begin{slide}{Stage 0 -- Modelos Cl\'assicos}
+\begin{slide}{Stage 0 -- Modelos Lineares}
   \centering
   \scriptsize
   \begin{tabular}{llccccccccc}
@@ -112,6 +112,37 @@
     ElasticNet & Ref & 0,197 & 0,268 & 0,082 & 0,233 & 0,232 & 0,075 & +18,3\% & -13,4\% & -8,5\% \\
     \midrule
     ElasticNet & Flux & 0,281 & 0,528 & 0,109 & 0,316 & 0,481 & 0,081 & +12,5\% & -8,9\% & -25,7\% \\
+    \bottomrule
+  \end{tabular}
+  \vfill
+  {\color{poliBlue}\rule{\textwidth}{0.5pt}}
+  \vspace{0.1cm}
+  \scriptsize Todos os lineares t\^em Test RMSE Flux $\approx$ 0,075 (R$^2\approx0,95$). Diferen\c{c}a CV$\to$Test positiva para T$_{alim}$ (hold-out mais dif\'icil) e negativa para T$_{ref}$/Flux.
+  \note{Stage 0 — lineares: Ridge, Lasso e ElasticNet t\^em desempenho similar ao OLS. [~1,5 min]}
+\end{slide}
+
+%========================================================================
+
+\begin{slide}{Stage 0 -- \'Arvores de Decis\~ao}
+  \centering
+  \scriptsize
+  \begin{tabular}{llccccccccc}
+    \toprule
+    \textbf{Modelo} & \textbf{Alvo} & \multicolumn{3}{c}{\textbf{CV RMSE}} & \multicolumn{3}{c}{\textbf{Test RMSE}} & \multicolumn{3}{c}{\textbf{Dif CV$\to$Test (\%)}} \\
+    \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}
+    & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
+    \midrule
+    DT & Alim & 0,793 & 1,471 & 0,485 & 0,683 & 1,150 & 0,300 & -13,9\% & -21,8\% & -38,1\% \\
+    \midrule
+    DT & Ref & 1,059 & 1,464 & 0,504 & 0,836 & 1,197 & 0,310 & -21,0\% & -18,3\% & -38,6\% \\
+    \midrule
+    DT & Flux & 1,099 & 2,260 & 0,572 & 1,149 & 1,956 & 0,372 & +4,5\% & -13,5\% & -35,1\% \\
+    \midrule
+    RF & Alim & 0,900 & 1,455 & 0,434 & 0,829 & 1,144 & 0,292 & -7,9\% & -21,4\% & -32,7\% \\
+    \midrule
+    RF & Ref & 0,799 & 1,137 & 0,422 & 0,652 & 0,859 & 0,263 & -18,4\% & -24,4\% & -37,8\% \\
+    \midrule
+    RF & Flux & 1,019 & 2,240 & 0,419 & 0,989 & 2,042 & 0,300 & -2,9\% & -8,9\% & -28,5\% \\
     \midrule
     GB & Alim & 0,614 & 0,484 & 0,358 & 0,406 & 0,309 & 0,193 & -33,9\% & -36,2\% & -46,1\% \\
     \midrule
@@ -123,8 +154,8 @@
   \vfill
   {\color{poliBlue}\rule{\textwidth}{0.5pt}}
   \vspace{0.1cm}
-  \scriptsize Lineares: Test RMSE Flux $\approx$ 0,075 (R$^2\approx0,95$). GB: CV alto ($\approx$0,35), Test razo\'avel ($\approx$0,19). Diferen\c{c}a CV$\to$Test negativa indica melhor desempenho no hold-out que na valida\c{c}\~ao cruzada, sugerindo que o hold-out cont\'em amostras mais representativas.
-  \note{Stage 0: modelos lineares generalizam bem entre regimes (CV e Test pr\'oximos). [~1,5 min]}
+  \scriptsize \'Arvores t\^em CV alto e Test mais baixo (diferen\c{c}a negativa grande), indicando overfitting nos regimes de treino mas boa generaliza\c{c}\~ao no hold-out. O GB \'e o \'unico com CV balanceado entre alvos e o melhor Test Flux ($\approx$0,19).
+  \note{Stage 0: \'arvores — DT e RF overfitam nos regimes de treino (CV alto). GB generaliza melhor. [~1 min]}
 \end{slide}
 
 %========================================================================
