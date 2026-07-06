@@ -79,25 +79,26 @@
 
 \begin{slide}{Etapa 2.2: Preparação dos Dados — Estratégia de Validação}
   \centering
-  \resizebox{0.75\textwidth}{!}{%
+  \vspace*{-0.3cm}
+  \resizebox{0.55\textwidth}{!}{%
   \begin{tikzpicture}[
-      every node/.style={font=\footnotesize, align=center},
+      every node/.style={font=\small, align=center},
       box/.style={rectangle, rounded corners, draw=poliBlue, thick,
-                  minimum width=2.6cm, minimum height=0.7cm, fill=blue!6},
+                  minimum width=2cm, minimum height=0.6cm, fill=blue!6},
       dec/.style={rectangle, rounded corners, draw=orange!60!black, thick,
-                  minimum width=2.6cm, minimum height=0.7cm, fill=orange!6},
+                  minimum width=2cm, minimum height=0.6cm, fill=orange!6},
       arrow/.style={->, thick, >=stealth},
     ]
     \node[box] (padrao) {Padronização\\Z-score};
-    \node[box, below=0.5cm of padrao] (split) {Divisão\\80/20};
-    \node[box, below=0.5cm of split] (kfold) {KFold\\comum};
-    \node[box, right=0.5cm of kfold] (gkf) {GroupKFold\\3 regimes};
-    \node[dec, below=0.5cm of gkf] (decide) {Comparar\\RMSEs};
-    \node[box, below=0.5cm of decide] (result) {Decisão:\\GroupKFold};
+    \node[box, below=0.4cm of padrao] (split) {Divisão\\80/20};
+    \node[box, below=0.4cm of split] (kfold) {KFold\\comum};
+    \node[box, right=0.4cm of kfold] (gkf) {GroupKFold\\3 regimes};
+    \node[dec, below=0.4cm of gkf] (decide) {Comparar\\RMSEs};
+    \node[box, below=0.4cm of decide] (result) {Decisão:\\GroupKFold};
     \draw[arrow] (padrao) -- (split);
     \draw[arrow] (split) -- (kfold);
-    \draw[arrow] (split.east) -- ++(0.15,0) |- (gkf.west);
-    \draw[arrow] (kfold.south) -- ++(0,-0.35) -| (decide.west);
+    \draw[arrow] (split.east) -- ++(0.1,0) |- (gkf.west);
+    \draw[arrow] (kfold.south) -- ++(0,-0.3) -| (decide.west);
     \draw[arrow] (gkf) -- (decide);
     \draw[arrow] (decide) -- (result);
   \end{tikzpicture}
