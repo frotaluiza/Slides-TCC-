@@ -243,14 +243,24 @@
     \rowcolor{green!6}
     \textbf{Flux} & \textbf{Stage 2} & \textbf{PhyResidual (Flux)} & \textbf{0,054} & \textbf{0,979} & $-$25,0\% \\
     \midrule
-    Modelo F\'isico 0D & --- & --- & 0,206 & 0,631 & --- \\
+    \rowcolor{gray!6}
+    \multirow{3}{*}{\textbf{Modelo F\'isico 0D}}
+    & \textbf{Flux} & --- & 0,206 & 0,631 & --- \\
+    \rowcolor{gray!6}
+    & \textbf{T$_{alim,out}$} & --- & 1,549 & $-$0,404 & --- \\
+    \rowcolor{gray!6}
+    & \textbf{T$_{ref,out}$} & --- & 0,851 & 0,948 & --- \\
     \bottomrule
   \end{tabular}
   \vfill
   {\color{poliBlue}\rule{\textwidth}{0.5pt}}
   \vspace{0.1cm}
-  \scriptsize Legenda: \textcolor{blue!70!black}{Alim} \; \textcolor{orange!70!black}{Ref} \; \textcolor{green!70!black}{Flux}
-  \note{Para cada vari\'avel, o melhor modelo de cada est\'agio \'e mostrado. O Stage 2 (h\'ibridos) apresenta o melhor desempenho na maioria dos alvos, com redu\c{c}\~ao de 64-85\% no RMSE vs modelo 0D. [~2 min]}
+  \begin{Item}[0.15]
+    \item[\textcolor{blue!70!black}{T$_{alim,out}$}:] O Stage 2 (PhyResidual) apresenta Test RMSE 0,225 (R$^2$ 0,981), pr\'oximo ao Stage 1 (0,215). O ganho em R$^2$ e a redu\c{c}\~ao do RMSE em rela\c{c}\~ao ao modelo 0D (1,549) representam uma melhoria de 85\%, tornando a arquitetura h\'ibrida uma alternativa vantajosa para predi\c{c}\~ao deste par\^ametro.
+    \item[\textcolor{orange!70!black}{T$_{ref,out}$}:] A arquitetura h\'ibrida (PhyHybrid, Test RMSE 0,230) n\~ao superou a vencedora do Stage 0 (Ridge, 0,219), indicando que a abordagem fenomenol\'ogica linear j\'a captura bem a din\^amica deste par\^ametro.
+    \item[\textcolor{green!70!black}{Flux}:] A arquitetura h\'ibrida (PhyResidual, 0,054) obteve o melhor desempenho, com redu\c{c}\~ao de 74\% no RMSE em rela\c{c}\~ao ao modelo 0D (0,206) e 18\% em rela\c{c}\~ao ao Stage 1 (0,066).
+  \end{Item}
+  \note{Para cada vari\'avel, o melhor modelo de cada est\'agio \'e mostrado. O Stage 2 (h\'ibridos) apresenta o melhor desempenho na maioria dos alvos. [~2 min]}
 \end{slide}
 
 %========================================================================
