@@ -3,6 +3,6 @@
 \beamer@sectionintoc {2}{Revisão Bibliográfica}{10}{0}{2}
 \beamer@sectionintoc {3}{Fundamentação Teórica}{14}{0}{3}
 \beamer@sectionintoc {4}{Metodologia Proposta}{20}{0}{4}
-\beamer@sectionintoc {5}{Resultados}{37}{0}{5}
+\beamer@sectionintoc {5}{Resultados}{33}{0}{5}
 \beamer@sectionintoc {6}{Conclusões}{45}{0}{6}
 \beamer@sectionintoc {7}{Referências Bibliográficas}{48}{0}{7}
