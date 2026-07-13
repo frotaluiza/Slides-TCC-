@@ -1,36 +1,34 @@
 \section{Conclusões}
 
-\begin{slide}{Conclusões}
-  \small
-  \centering
-  \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.2\linewidth} p{0.35\linewidth} p{0.35\linewidth}}
-      \toprule
-      \textbf{Aspecto} & \textbf{Resultado} & \textbf{Implicação} \\
-      \midrule
-      \textbf{Melhores modelos}
-      & PhyResidual (Flux): Flux 0,054; Ridge (Ref): Ref 0,219
-      & Arquitetura residual híbrida supera modelos clássicos e baseline Keras \\
-      \midrule
-      \textbf{Validação}
-      & GroupKFold por regimes + split 80/20 hold-out
-      & Pipeline mais robusto que literatura (hold-out simples) \\
-      \midrule
-        \textbf{Validação}
-        & GroupKFold por regimes + critério 1-SE com número de parâmetros (OLS: 18; Alim/Ref: 9219; Flux: 11203; PhyInput/PhyHybrid: +384)
-        & Pipeline mais robusto que a literatura (hold-out simples) \\
-      \midrule
-      \textbf{Hibridização}
-      & 4 arquiteturas implementadas (\emph{input}, \emph{residual}, \emph{hybrid}, \emph{loss}); residual venceu em 2 de 3 alvos
-      & Estratégia de correção residual sobre predição do modelo físico 0D se aproxima do cenário ideal de modelagem híbrida: unir conhecimento fenomenológico aos dados experimentais \\
-      \midrule
-      \textbf{Modelos lineares}
-      & OLS: competitivo para temperaturas (Ref 0,251) mas superado pela PhyHybrid
-      & Comportamento térmico é parcialmente linear, mas híbridos trazem ganho adicional \\
-      \bottomrule
-    \end{tabular}
-  }
-  \note{Conclusões principais: PhyResidual vence para fluxo e Talim; PhyHybrid vence para Tref. Híbridos aproximam o ideal de unir conhecimento físico a dados experimentais. [~1,5 min]}
+\begin{slide}{Desempenho por Variável de Saída}
+  \scriptsize
+  \begin{columns}
+    \begin{column}{0.94\linewidth}
+    \begin{Item}[0.12]
+    \item[\textbf{T$_{alim,out}$}:] \textbf{PhyResidual (Alim)} com RMSE 0,225 (R$^2$ 0,981) — melhoria de 85\% vs modelo 0D. A hibridização não superou a MLP pura (0,215), pois o baixo desempenho do modelo 0D (R$^2$ $-$0,404) limitou o benefício da infusão física.
+    \item[\textbf{T$_{ref,out}$}:] \textbf{Ridge (Stage 0)} com RMSE 0,219 — modelo linear superou MLP e híbridos. Natureza linear confirmada pela análise exploratória e pela consistência entre CV e teste (Dif $-$10,2\%).
+    \item[\textbf{Flux}:] Principal demonstração mensurável da vantagem da hibridização. \textbf{PhyResidual (Alim)} reduziu o RMSE em 72\% frente ao modelo 0D (0,206$\to$0,057). Selecionado por generalização mais estável (Dif CV$\to$Test $-$5,0\% vs $-$25,0\% da rede otimizada para o fluxo). O R$^2$ passou de 0,951 (Stage 0) para 0,977, confirmando que o modelo residual não apenas ajustou melhor os dados como preservou a capacidade de generalização.
+    \item[\textbf{Resumo:}] O modelo ajustado a partir das variáveis de entrada foi capaz de explicar até 98\% da variabilidade observada nos dados (T$_{alim,out}$ R² 0,981; T$_{ref,out}$ R² 0,995; Flux R² 0,972), com destaque para a estabilidade preditiva conferida pela validação cruzada.
+    \end{Item}
+    \end{column}
+  \end{columns}
+  \note{Flux: principal demonstração da hibridização (72\% melhor que 0D). Talim: modelo 0D fraco limitou ganho. Tref: natureza linear confirmada. [~2 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Hibridização e Generalização}
+  \scriptsize
+  \begin{columns}
+    \begin{column}{0.94\linewidth}
+    \begin{Item}[0.12]
+    \item A combinação do modelo físico 0D com redes neurais aproxima o cenário ideal de modelagem híbrida: unir conhecimento fenomenológico aos dados experimentais.
+    \item A rede neural aprende correções sistemáticas que o modelo físico simplificado não captura, enquanto o modelo físico representa os acoplamentos fenomenológicos de forma interpretável.
+    \item O modelo residual PhyResidual elevou o R$^2$ do fluxo de 0,951 (Stage 0) para 0,977, mantendo a menor diferença CV$\to$Test ($-$5,0\%) entre todos os modelos neurais — contra $-$18,5\% da MLP pura. Isso indica que a arquitetura residual não apenas ajustou melhor os dados como preservou a capacidade de generalização.
+    \item Essa abordagem é válida na região operacional dos dados, sem garantia de extrapolação para condições não avaliadas experimentalmente.
+    \end{Item}
+    \end{column}
+  \end{columns}
+  \note{A hibridização aproxima o cenário ideal de unir física e dados. O modelo residual teve a generalização mais estável. [~1 min]}
 \end{slide}
 %========================================================================
 
@@ -39,20 +37,20 @@
     \begin{column}{.5\linewidth}
       \textbf{Contribuições:}
       \begin{Item}
-        \item Pipeline com validação cruzada agrupada por regimes (GroupKFold)
-        \item 4 arquiteturas híbridas físico--dados implementadas e comparadas
+        \item Identificação da ausência de validação cruzada sistemática na literatura de MD
+        \item 4 arquiteturas híbridas físico--dados implementadas e comparadas sob mesmo protocolo
         \item Seleção por target: PhyResidual para Flux+Alim, PhyHybrid para Ref
       \end{Item}
     \end{column}
     \begin{column}{.5\linewidth}
       \textbf{Trabalhos futuros:}
       \begin{Item}
-        \item PINN puramente física (EDOs) + arquitetura residual (substituir coluna phy)
-        \item PINN com EDOs + dados experimentais (comparar performances)
+        \item Substituir modelo 0D pelo modelo 2D (GITT) de \cite{Curcino2026} como referência física nas arquiteturas híbridas, aproveitando sua capacidade de capturar efeitos distribuídos
+        \item Construir PINNs a partir das EDOs do modelo GITT — tanto para substituir a coluna \texttt{phy} quanto como regularização na função de perda
         \item Novos dados experimentais em faixas operacionais ampliadas
       \end{Item}
     \end{column}
   \end{columns}
-  \note{As principais contribuições são o pipeline com GroupKFold, a comparação de 4 arquiteturas híbridas, e o critério 1-SE entre famílias com número de parâmetros. Como trabalhos futuros: duas abordagens com PINNs (puramente física + residual, e híbrida com dados). [~1,5 min]}
+  \note{Contribuições: gap de validação cruzada sistemática na literatura de MD, 4 arquiteturas híbridas comparadas. Futuros: modelo 2D GITT como referência, PINNs a partir das EDOs. [~1,5 min]}
 \end{slide}
 %========================================================================
