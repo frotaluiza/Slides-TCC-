@@ -73,9 +73,9 @@
     \begin{column}{.5\linewidth}
       \textbf{Lacunas na literatura:}
       \begin{Item}
-        \item Validação cruzada raramente usada
-        \item Seleção de hiperparâmetros não sistemática
-        \item Poucos trabalhos em MD com abordagens híbridas
+        \item[\textbf{1.}] \textbf{Ausência de validação cruzada sistemática} --- artigos em MD usam hold-out simples ou divisão arbitrária treino/validação/teste, sem considerar a estrutura de grupos dos regimes experimentais
+        \item[\textbf{2.}] \textbf{Seleção de hiperparâmetros não estruturada} --- trial-and-error predomina; Khayet \& Cojocaru (2012), Mittal et al. (2021) e outros não realizam busca exaustiva ou critério de parcimônia. A seleção é guiada apenas pelo RMSE ou R$^2$, sem considerar complexidade do modelo ou penalização por superparametrização
+        \item[\textbf{3.}] \textbf{Modelos híbridos (físico+ML) em MD são praticamente inexistentes} --- Schweidtmann et al. (2024) mostram que híbridos seriais extrapolam melhor que black-box puros, mas não há aplicação em V-AGMD
       \end{Item}
     \end{column}
     \begin{column}{.5\linewidth}
@@ -88,6 +88,6 @@
       \end{Item}
     \end{column}
   \end{columns}
-  \note{A literatura tem limitações em validação e seleção. Este trabalho contribui com validação por grupos, busca sistemática, e critério de complexidade. [~1 min]}
+  \note{Lacunas: 1) validação cruzada não usada; 2) HP search não sistemático; 3) híbridos em MD praticamente inexistentes. Contribuições: GroupKFold, busca sistemática, 1-SE, 4 arquiteturas híbridas. [~2 min]}
 \end{slide}
 %========================================================================
