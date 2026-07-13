@@ -5,7 +5,7 @@
   \begin{columns}
     \begin{column}{0.94\linewidth}
     \begin{Item}[0.12]
-    \item[\textbf{T$_{alim,out}$}:] \textbf{PhyResidual (Alim)} com RMSE 0,225 (R$^2$ 0,981) — melhoria de 85\% vs modelo 0D. A hibridização não superou a MLP pura (0,215), pois o baixo desempenho do modelo 0D (R$^2$ $-$0,404) limitou o benefício da infusão física.
+    \item[\textbf{T$_{alim,out}$}:] \textbf{Baseline Alim (Stage 1)} com RMSE 0,215 (R$^2$ 0,981). A MLP pura superou as arquiteturas híbridas, pois o baixo desempenho do modelo 0D (R$^2$ $-$0,404) limitou o benefício da infusão física.
     \item[\textbf{T$_{ref,out}$}:] \textbf{Ridge (Stage 0)} com RMSE 0,219 — modelo linear superou MLP e híbridos. Natureza linear confirmada pela análise exploratória e pela consistência entre CV e teste (Dif $-$10,2\%).
     \item[\textbf{Flux}:] Principal demonstração mensurável da vantagem da hibridização. \textbf{PhyResidual (Alim)} reduziu o RMSE em 72\% frente ao modelo 0D (0,206$\to$0,057). Selecionado por generalização mais estável (Dif CV$\to$Test $-$5,0\% vs $-$25,0\% da rede otimizada para o fluxo). O R$^2$ passou de 0,951 (Stage 0) para 0,977, confirmando que o modelo residual não apenas ajustou melhor os dados como preservou a capacidade de generalização.
     \item[\textbf{Resumo:}] O modelo ajustado a partir das variáveis de entrada foi capaz de explicar até 98\% da variabilidade observada nos dados (T$_{alim,out}$ R² 0,981; T$_{ref,out}$ R² 0,995; Flux R² 0,972), com destaque para a estabilidade preditiva conferida pela validação cruzada.
@@ -39,7 +39,7 @@
       \begin{Item}
         \item Identificação da ausência de validação cruzada sistemática na literatura de MD
         \item 4 arquiteturas híbridas físico--dados implementadas e comparadas sob mesmo protocolo
-        \item Seleção por target: PhyResidual para Flux+Alim, PhyHybrid para Ref
+        \item Seleção por target: Baseline Alim para Talim, Ridge para Tref, PhyResidual para Flux
       \end{Item}
     \end{column}
     \begin{column}{.5\linewidth}
