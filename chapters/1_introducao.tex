@@ -98,5 +98,36 @@
 \end{slide}
 %========================================================================
 
+\begin{slide}{Motivação}
+  \begin{Item}
+    \item Contexto: LabMEMS/UFRJ — cogeração sustentável de energia + água via solar térmica
+    \item Necessidade de compreender e prever o desempenho do módulo V-AGMD (espaço de ar + vácuo parcial)
+    \item Dados experimentais reais sob diferentes regimes: $T_{ent}$, vazões, salinidade, vácuo parcial
+    \item Previsão das saídas $\rightarrow$ produção de água e indicadores energéticos (SEC, GOR)
+    \item Modelo físico 0D disponível como referência comparativa (\cite{Lisboa2024})
+    \item \textcolor{poliRed}{\textbf{Desafio:}} dados experimentais limitados $\rightarrow$ avaliar ferramentas preditivas (baseadas em dados + híbridas com física)
+  \end{Item}
+  \note{A motivação nasce no contexto do LabMEMS/UFRJ, dentro do projeto de cogeração sustentável que integra energia solar térmica e dessalinização. É necessário compreender e prever o desempenho do módulo V-AGMD, que combina espaço de ar e vácuo parcial. A planta experimental fornece dados reais sob diferentes regimes operacionais — temperaturas de entrada, vazões, salinidade e nível de vácuo. A previsão do fluxo de permeado e das temperaturas de saída é relevante tanto para a produção de água quanto para indicadores energéticos como SEC e GOR. Contamos com um modelo físico 0D como referência. O desafio central é a limitação dos dados experimentais, o que motiva a avaliação de modelos baseados em dados e abordagens híbridas que incorporam conhecimento físico. [~1 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Objetivos}
+  \begin{myTitledBox}[Objetivo geral]
+    Avaliar estratégias de \textbf{modelagem baseada em dados} e \textbf{modelagem híbrida físico--dados} para predição do desempenho do sistema V-AGMD, considerando como saídas o \textcolor{poliRed}{fluxo de permeado} e as \textcolor{poliRed}{temperaturas de saída} das correntes de alimentação e resfriamento.
+  \end{myTitledBox}
+  \vspace{0.2cm}
+  \textbf{Objetivos específicos:}
+  \begin{Item}[0.15]
+    \item Estruturar a base de dados experimental (entradas, saídas, regimes operacionais)
+    \item Avaliar o modelo físico reduzido 0D como referência comparativa
+    \item Comparar famílias de regressão: lineares, árvores, redes neurais e híbridas
+    \item Aplicar validação cruzada por grupos (separação entre regimes experimentais)
+    \item Selecionar modelo final por desempenho, generalização e complexidade
+    \item Analisar o potencial da incorporação de física em modelos baseados em dados
+  \end{Item}
+  \note{O objetivo geral é avaliar estratégias de modelagem baseada em dados e híbrida físico-dados para predizer o desempenho do V-AGMD, com foco no fluxo de permeado e nas temperaturas de saída das correntes de alimentação e resfriamento. Os objetivos específicos incluem: estruturar a base de dados experimental definindo entradas, saídas e agrupamentos por regime; avaliar o modelo físico 0D como referência; comparar diferentes famílias de regressão — lineares, árvores, redes neurais e arquiteturas híbridas; aplicar validação cruzada por grupos para avaliar a capacidade de generalização; selecionar o modelo final com base em desempenho preditivo, diferença de generalização e complexidade estrutural; e analisar o potencial da incorporação de informações físicas nos modelos baseados em dados. [~1 min]}
+\end{slide}
+%========================================================================
+
 \nocite{Abid2020}
 \nocite{Lisboa2024}
