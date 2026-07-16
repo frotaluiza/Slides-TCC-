@@ -9,12 +9,12 @@
       \textbf{Abordagem} & \textbf{Tecnologia} & \textbf{Descrição} & \textbf{Vantagens} & \textbf{Limitações} \\
       \midrule
       \textbf{Física}
-      & AGMD, CFD, \textbf{V-AGMD}
-      & Modelos distribuídos (1D, CFD), reduzido 0D e balanços globais de massa e energia
+      & AGMD, 2D, \textbf{V-AGMD}
+      & Modelos distribuídos (1D, 2D), reduzido 0D e balanços globais de massa e energia
       & Interpretabilidade física
       & Alto custo; simplificações \\
       \midrule
-      \textbf{Data-driven}
+      \textbf{Dados}
       & \textbf{AGMD}, VMD
       & Redes neurais e regressão p/ predição de fluxo e temperaturas
       & Alta flexibilidade; aprox. não linear
@@ -39,9 +39,9 @@
     \toprule
     \textbf{Abordagem} & \textbf{Nº} & \textbf{Modelos} \\
     \midrule
-    \textbf{Física} & 4 & 0D, 1D, 2D/CFD \\
+    \textbf{Física} & 4 & 0D, 1D, 2D \\
     \midrule
-    \textbf{Data-driven} & 6 & RL, RNA, MLP, RF, PSO \\
+    \textbf{Dados} & 6 & RL, RNA, MLP, RF, PSO \\
     \midrule
     \textbf{Híbrida} & 4 & PINN, CFD+Surrogate, Residual \\
     \midrule
@@ -53,7 +53,7 @@
   \textbf{Legenda:}
   0D — Balanços globais \;
   1D — Modelo distribuído \;
-  2D/CFD — Fluidodinâmica \;
+  2D — Modelo distribuído bidimensional \;
   RL — Regressão Linear \;
   RNA — Rede Neural Artificial \;
   MLP — \textit{Multi-Layer Perceptron} \;
