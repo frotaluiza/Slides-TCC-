@@ -125,6 +125,7 @@
     \end{tabular}
   }
   \vfill
+  \footnotesize
   \begin{Item}[0.03]
     \item Modelos lineares: diferença pequena ($\approx$0,003) — capacidade de extrapolação para regimes não vistos é similar à interpolação dentro dos regimes conhecidos
     \item Árvores (DT, RF, GB): RMSE muito maior no GroupKFold — KFold \textbf{superestima} o desempenho ao misturar amostras do mesmo regime em treino e validação. Sem GroupKFold, a busca de hiperparâmetros prioriza configurações que interpolam bem, mas \textbf{não generalizam para regimes não conhecidos}
