@@ -64,28 +64,22 @@
   \end{columns}
   \note{O conjunto de dados tem 174 pontos experimentais obtidos em um sistema V-AGMD piloto. Foram testados 3 regimes de salinidade: 10, 40 e 70 g/L. As 5 variáveis de entrada incluem temperaturas, vazão, pressão de vácuo e concentração salina. As 3 saídas são o fluxo de permeado e as duas temperaturas de saída. [~1 min]}
 \end{slide}
-\begin{slide}{Etapa 2.1: Preparação dos Dados — Pré-processamento e Engenharia de Atributos}
+\begin{slide}{Etapa 2.1: Preparação dos Dados — Técnicas de Escalonamento}
   \small
-  \textbf{Pré-processamento:}
   \begin{Item}[0.1]
     \item \textbf{Padronização Z-score}: $z = (x - \mu) / \sigma$ $\rightarrow$ média 0, desvio 1 — \textit{adotada}
     \item \textbf{Normalização Min-Max}: $x' = (x - x_{min}) / (x_{max} - x_{min})$ $\rightarrow$ escala $[0,1]$
   \end{Item}
-  \textbf{Engenharia de Atributos:}
-  \begin{Item}[0.1]
-    \item \textbf{Discretização (Binning)}: variáveis contínuas $\rightarrow$ intervalos categóricos (avaliada, ver Etapa 2.3)
-    \item \textbf{Seleção de atributos}: busca exaustiva das $2^5$ combinações de preditores (avaliada, ver Etapa 2.3)
-  \end{Item}
   \vspace{0.15cm}
   \begin{block}{Por que Z-score foi adotado (vs Min-Max)}
     \begin{Item}[0.1]
-      \item \textbf{Sensibilidade a outliers:} Min-Max usa mínimo e máximo — \textit{outliers} distorcem a escala e comprimem os dados normais numa fração do intervalo $[0,1]$ (Raschka, 2014; Codecademy, 2025)
-      \item \textbf{Perda de dispersão:} Min-Max achata o desvio padrão, suprimindo a variância relativa entre os pontos (Raschka, 2014)
-      \item \textbf{Modelos regularizados:} Ridge e Lasso penalizam coeficientes — Z-score preserva estrutura de covariância e torna a penalização homogênea entre variáveis
-      \item \textbf{Recomendação prática:} "When in doubt, just standardize the data, it shouldn't hurt" (Raschka, 2014)
+      \item \textbf{Sensibilidade a outliers:} Min-Max usa mínimo e máximo amostrais — \textit{outliers} distorcem o denominador e comprimem os dados normais numa fração do intervalo $[0,1]$, escondendo diferenças entre pontos majoritários (Raschka, 2014; Codecademy, 2025)
+      \item \textbf{Perda de dispersão:} Min-Max achata o desvio padrão ao forçar uma escala limitada, suprimindo a variância relativa entre observações (Raschka, 2014)
+      \item \textbf{Modelos regularizados exigem centragem:} A função objetivo de Ridge, Lasso e ElasticNet penaliza a magnitude dos coeficientes — \textit{features} precisam estar centradas em zero com variância homogênea para que a penalização atue de forma equilibrada (scikit-learn docs; Larsson \& Wallin, 2025)
+      \item \textbf{Não centragem do Min-Max:} Min-Max reescala para $[0,1]$ sem centralizar em zero, o que é inadequado para modelos com termo de regularização que assume média zero (sklearn docs; Lee, 2015)
     \end{Item}
   \end{block}
-  \note{O pré-processamento inclui Z-score e Min-Max. A engenharia de atributos inclui discretização e seleção de features. O Z-score foi adotado por quatro motivos: Min-Max é muito sensível a outliers, achata a dispersão relativa, modelos regularizados exigem escala homogênea, e a recomendação da literatura é padronizar quando há dúvida. [~2 min]}
+  \note{Duas técnicas de escalonamento consideradas. Z-score foi adotado: Min-Max é sensível a outliers, achata dispersão relativa, e modelos regularizados exigem features centradas em zero com variância homogênea para que a penalização seja equilibrada. [~2 min]}
 \end{slide}
 %========================================================================
 
