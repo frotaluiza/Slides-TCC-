@@ -50,11 +50,11 @@
       & Hold-out (80/20), KFold, GroupKFold — estratégias para particionar os dados e estimar desempenho \\
       \midrule
       \textbf{Pré-processamento}
-      & Padronização Z-score \\
+      & Padronização Z-score e Normalização Min-Max \\
       \bottomrule
     \end{tabular}
   }
-  \note{Um ponto importante é o pré-processamento por padronização Z-score. As variáveis de entrada do sistema V-AGMD têm unidades físicas e ordens de grandeza muito distintas — temperatura em °C, vazão em L/h, pressão de vácuo em mbar, concentração salina em g/L. O Z-score centraliza cada variável subtraindo sua média e dividindo pelo desvio padrão. Assim, todas passam a ter média zero e desvio padrão unitário, ficando em escala comparável. Isso evita que variáveis com magnitudes maiores — como temperatura — dominem desproporcionalmente o ajuste do modelo. É especialmente importante em modelos regularizados como Ridge e Lasso, onde a penalização dos coeficientes é sensível à escala. [~1,5 min]}
+  \note{Um ponto importante é o pré-processamento. As variáveis de entrada do sistema V-AGMD têm unidades físicas e ordens de grandeza muito distintas — temperatura em °C, vazão em L/h, pressão de vácuo em mbar, concentração salina em g/L. Duas estratégias foram consideradas. O Z-score centraliza cada variável subtraindo sua média e dividindo pelo desvio padrão, resultando em média zero e desvio unitário, preservando informação sobre dispersão relativa. Já o Min-Max reescala os dados para o intervalo [0,1] usando os valores mínimo e máximo. O Z-score foi adotado por ser mais adequado para modelos regularizados como Ridge e Lasso, onde a penalização dos coeficientes é sensível à escala. [~1,5 min]}
 \end{slide}
 
 %========================================================================
