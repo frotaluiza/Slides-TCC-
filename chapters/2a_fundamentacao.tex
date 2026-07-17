@@ -30,13 +30,13 @@
 %========================================================================
 
 \begin{slide}{Fundamentos de Aprendizado de Máquinas}
-  \small
+  \footnotesize
   \textbf{Aprendizado de Máquina:} ramo da IA voltado ao desenvolvimento de modelos que aprendem a partir de dados, identificando padrões e relações para realizar previsões (\cite{Ghahramani2015}). Diferentemente de modelos físicos, aprendem relações entrada-saída diretamente dos dados, ajustando parâmetros para minimizar uma função de erro (\cite{Rai2020}).
 
   \vfill
   \centering
-  \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.2\linewidth} p{0.7\linewidth}}
+  \scriptsize
+  \begin{tabular}{p{0.18\linewidth} p{0.72\linewidth}}
       \toprule
       \textbf{Conceito} & \textbf{Definição} \\
       \midrule
@@ -59,7 +59,6 @@
       & Seleção de atributos, Discretização (Binning) \\
       \bottomrule
     \end{tabular}
-  }
   \note{Um ponto importante é o pré-processamento. As variáveis de entrada do sistema V-AGMD têm unidades físicas e ordens de grandeza muito distintas — temperatura em °C, vazão em L/h, pressão de vácuo em mbar, concentração salina em g/L. Duas estratégias foram consideradas. O Z-score centraliza cada variável subtraindo sua média e dividindo pelo desvio padrão, resultando em média zero e desvio unitário, preservando informação sobre dispersão relativa. Já o Min-Max reescala os dados para o intervalo [0,1] usando os valores mínimo e máximo. O Z-score foi adotado por ser mais adequado para modelos regularizados como Ridge e Lasso, onde a penalização dos coeficientes é sensível à escala. [~1,5 min]}
 \end{slide}
 

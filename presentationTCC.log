@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.15)  17 JUL 2026 15:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.15)  17 JUL 2026 16:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2654,33 +2654,31 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [13
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 90--90
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 91--91
 [][]  
  []
 
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 90.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 91.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 91.
 File: figures/logo/Logo_EPUFRJ_2020.png Graphic file (type png)
 <use figures/logo/Logo_EPUFRJ_2020.png>
 Package pdftex.def Info: figures/logo/Logo_EPUFRJ_2020.png  used on input line 
-90.
+91.
 (pdftex.def)             Requested size: 41.13124pt x 14.07993pt.
 File: figures/logo/eletrica.png Graphic file (type png)
 <use figures/logo/eletrica.png>
-Package pdftex.def Info: figures/logo/eletrica.png  used on input line 90.
+Package pdftex.def Info: figures/logo/eletrica.png  used on input line 91.
 (pdftex.def)             Requested size: 48.73465pt x 14.07993pt.
 
-Overfull \hbox (6.43527pt too wide) in paragraph at lines 90--90
+Overfull \hbox (6.43527pt too wide) in paragraph at lines 91--91
  [][]
- []
-
-
-Overfull \vbox (19.58636pt too high) detected at line 90
  []
 
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 90.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 91.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -2731,7 +2729,7 @@ Overfull \hbox (0.7626pt too wide) in paragraph at lines 29--29
 [][]  
  []
 
-<tcc_images/chap03/Model-of-heat-and-mass-transfer-in-the-AGMD.png, id=235, 257
+<tcc_images/chap03/Model-of-heat-and-mass-transfer-in-the-AGMD.png, id=234, 257
 .46187pt x 332.74312pt>
 File: tcc_images/chap03/Model-of-heat-and-mass-transfer-in-the-AGMD.png Graphic
  file (type png)
@@ -2769,27 +2767,32 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [16
 
  <./tcc_images/chap03/Model-of-heat-and-mass-transfer-in-the-AGMD.png>]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 61--61
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 63--63
 [][]  
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--63
+[]|\T1/lmss/bx/n/7 Divisão e Va-li-da-ção
  []
 
 File: figures/logo/Logo_EPUFRJ_2020.png Graphic file (type png)
 <use figures/logo/Logo_EPUFRJ_2020.png>
 Package pdftex.def Info: figures/logo/Logo_EPUFRJ_2020.png  used on input line 
-61.
+63.
 (pdftex.def)             Requested size: 41.13124pt x 14.07993pt.
 File: figures/logo/eletrica.png Graphic file (type png)
 <use figures/logo/eletrica.png>
-Package pdftex.def Info: figures/logo/eletrica.png  used on input line 61.
+Package pdftex.def Info: figures/logo/eletrica.png  used on input line 63.
 (pdftex.def)             Requested size: 48.73465pt x 14.07993pt.
 
-Overfull \hbox (6.43527pt too wide) in paragraph at lines 61--61
+Overfull \hbox (6.43527pt too wide) in paragraph at lines 63--63
  [][]
  []
 
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 61.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 63.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -2799,27 +2802,27 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [17
 
 {C:/Users/frota/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 92--92
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 94--94
 [][]  
  []
 
 File: figures/logo/Logo_EPUFRJ_2020.png Graphic file (type png)
 <use figures/logo/Logo_EPUFRJ_2020.png>
 Package pdftex.def Info: figures/logo/Logo_EPUFRJ_2020.png  used on input line 
-92.
+94.
 (pdftex.def)             Requested size: 41.13124pt x 14.07993pt.
 File: figures/logo/eletrica.png Graphic file (type png)
 <use figures/logo/eletrica.png>
-Package pdftex.def Info: figures/logo/eletrica.png  used on input line 92.
+Package pdftex.def Info: figures/logo/eletrica.png  used on input line 94.
 (pdftex.def)             Requested size: 48.73465pt x 14.07993pt.
 
-Overfull \hbox (6.43527pt too wide) in paragraph at lines 92--92
+Overfull \hbox (6.43527pt too wide) in paragraph at lines 94--94
  [][]
  []
 
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 92.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 94.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -2900,7 +2903,7 @@ Overfull \hbox (0.7626pt too wide) in paragraph at lines 66--66
 [][]  
  []
 
-<tcc_images/chap04/esquematizacao_regressao.png, id=288, 1497.595pt x 1057.9525
+<tcc_images/chap04/esquematizacao_regressao.png, id=289, 1497.595pt x 1057.9525
 pt>
 File: tcc_images/chap04/esquematizacao_regressao.png Graphic file (type png)
 <use tcc_images/chap04/esquematizacao_regressao.png>
@@ -2974,7 +2977,7 @@ Overfull \hbox (0.7626pt too wide) in paragraph at lines 96--96
 [][]  
  []
 
-<tcc_images/chap04/validacao_esquema.png, id=305, 1540.75626pt x 1027.84pt>
+<tcc_images/chap04/validacao_esquema.png, id=306, 1540.75626pt x 1027.84pt>
 File: tcc_images/chap04/validacao_esquema.png Graphic file (type png)
 <use tcc_images/chap04/validacao_esquema.png>
 Package pdftex.def Info: tcc_images/chap04/validacao_esquema.png  used on input
@@ -3105,10 +3108,6 @@ Overfull \hbox (0.7626pt too wide) in paragraph at lines 180--180
 [][]  
  []
 
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 180.
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 180.
 File: figures/logo/Logo_EPUFRJ_2020.png Graphic file (type png)
 <use figures/logo/Logo_EPUFRJ_2020.png>
 Package pdftex.def Info: figures/logo/Logo_EPUFRJ_2020.png  used on input line 
@@ -3262,34 +3261,38 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 17--17
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 18--18
 [][]  
  []
 
-<tcc_images/chap06/scatter_vagmd_exp_only.png, id=382, 1704.3675pt x 929.4725pt
+<tcc_images/chap06/scatter_vagmd_exp_only.png, id=383, 1704.3675pt x 929.4725pt
 >
 File: tcc_images/chap06/scatter_vagmd_exp_only.png Graphic file (type png)
 <use tcc_images/chap06/scatter_vagmd_exp_only.png>
 Package pdftex.def Info: tcc_images/chap06/scatter_vagmd_exp_only.png  used on 
-input line 17.
+input line 18.
 (pdftex.def)             Requested size: 270.01253pt x 147.24365pt.
 File: figures/logo/Logo_EPUFRJ_2020.png Graphic file (type png)
 <use figures/logo/Logo_EPUFRJ_2020.png>
 Package pdftex.def Info: figures/logo/Logo_EPUFRJ_2020.png  used on input line 
-17.
+18.
 (pdftex.def)             Requested size: 41.13124pt x 14.07993pt.
 File: figures/logo/eletrica.png Graphic file (type png)
 <use figures/logo/eletrica.png>
-Package pdftex.def Info: figures/logo/eletrica.png  used on input line 17.
+Package pdftex.def Info: figures/logo/eletrica.png  used on input line 18.
 (pdftex.def)             Requested size: 48.73465pt x 14.07993pt.
 
-Overfull \hbox (6.43527pt too wide) in paragraph at lines 17--17
+Overfull \hbox (6.43527pt too wide) in paragraph at lines 18--18
  [][]
+ []
+
+
+Overfull \vbox (15.04164pt too high) detected at line 18
  []
 
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 17.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 18.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3299,45 +3302,45 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [32
 
  <./tcc_images/chap06/scatter_vagmd_exp_only.png (PNG copy)>]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 43--43
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 44--44
 [][]  
  []
 
-<tcc_images/chap06/flux_real_vs_0d.png, id=391, 462.528pt x 346.896pt>
+<tcc_images/chap06/flux_real_vs_0d.png, id=392, 462.528pt x 346.896pt>
 File: tcc_images/chap06/flux_real_vs_0d.png Graphic file (type png)
 <use tcc_images/chap06/flux_real_vs_0d.png>
 Package pdftex.def Info: tcc_images/chap06/flux_real_vs_0d.png  used on input l
-ine 43.
+ine 44.
 (pdftex.def)             Requested size: 137.08533pt x 102.81511pt.
-<tcc_images/chap06/alim_T_out_real_vs_0d.png, id=392, 462.528pt x 346.896pt>
+<tcc_images/chap06/alim_T_out_real_vs_0d.png, id=393, 462.528pt x 346.896pt>
 File: tcc_images/chap06/alim_T_out_real_vs_0d.png Graphic file (type png)
 <use tcc_images/chap06/alim_T_out_real_vs_0d.png>
 Package pdftex.def Info: tcc_images/chap06/alim_T_out_real_vs_0d.png  used on i
-nput line 43.
+nput line 44.
 (pdftex.def)             Requested size: 137.08533pt x 102.81511pt.
-<tcc_images/chap06/ref_T_out_real_vs_0d.png, id=393, 462.528pt x 346.896pt>
+<tcc_images/chap06/ref_T_out_real_vs_0d.png, id=394, 462.528pt x 346.896pt>
 File: tcc_images/chap06/ref_T_out_real_vs_0d.png Graphic file (type png)
 <use tcc_images/chap06/ref_T_out_real_vs_0d.png>
 Package pdftex.def Info: tcc_images/chap06/ref_T_out_real_vs_0d.png  used on in
-put line 43.
+put line 44.
 (pdftex.def)             Requested size: 137.08533pt x 102.81511pt.
 File: figures/logo/Logo_EPUFRJ_2020.png Graphic file (type png)
 <use figures/logo/Logo_EPUFRJ_2020.png>
 Package pdftex.def Info: figures/logo/Logo_EPUFRJ_2020.png  used on input line 
-43.
+44.
 (pdftex.def)             Requested size: 41.13124pt x 14.07993pt.
 File: figures/logo/eletrica.png Graphic file (type png)
 <use figures/logo/eletrica.png>
-Package pdftex.def Info: figures/logo/eletrica.png  used on input line 43.
+Package pdftex.def Info: figures/logo/eletrica.png  used on input line 44.
 (pdftex.def)             Requested size: 48.73465pt x 14.07993pt.
 
-Overfull \hbox (6.43527pt too wide) in paragraph at lines 43--43
+Overfull \hbox (6.43527pt too wide) in paragraph at lines 44--44
  [][]
  []
 
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 43.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 44.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3348,27 +3351,27 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 
  <./tcc_images/chap06/flux_real_vs_0d.png> <./tcc_images/chap06/alim_T_out_real
 _vs_0d.png> <./tcc_images/chap06/ref_T_out_real_vs_0d.png>]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 73--73
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 74--74
 [][]  
  []
 
 File: figures/logo/Logo_EPUFRJ_2020.png Graphic file (type png)
 <use figures/logo/Logo_EPUFRJ_2020.png>
 Package pdftex.def Info: figures/logo/Logo_EPUFRJ_2020.png  used on input line 
-73.
+74.
 (pdftex.def)             Requested size: 41.13124pt x 14.07993pt.
 File: figures/logo/eletrica.png Graphic file (type png)
 <use figures/logo/eletrica.png>
-Package pdftex.def Info: figures/logo/eletrica.png  used on input line 73.
+Package pdftex.def Info: figures/logo/eletrica.png  used on input line 74.
 (pdftex.def)             Requested size: 48.73465pt x 14.07993pt.
 
-Overfull \hbox (6.43527pt too wide) in paragraph at lines 73--73
+Overfull \hbox (6.43527pt too wide) in paragraph at lines 74--74
  [][]
  []
 
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 73.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 74.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3378,27 +3381,27 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [34
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 105--105
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 106--106
 [][]  
  []
 
 File: figures/logo/Logo_EPUFRJ_2020.png Graphic file (type png)
 <use figures/logo/Logo_EPUFRJ_2020.png>
 Package pdftex.def Info: figures/logo/Logo_EPUFRJ_2020.png  used on input line 
-105.
+106.
 (pdftex.def)             Requested size: 41.13124pt x 14.07993pt.
 File: figures/logo/eletrica.png Graphic file (type png)
 <use figures/logo/eletrica.png>
-Package pdftex.def Info: figures/logo/eletrica.png  used on input line 105.
+Package pdftex.def Info: figures/logo/eletrica.png  used on input line 106.
 (pdftex.def)             Requested size: 48.73465pt x 14.07993pt.
 
-Overfull \hbox (6.43527pt too wide) in paragraph at lines 105--105
+Overfull \hbox (6.43527pt too wide) in paragraph at lines 106--106
  [][]
  []
 
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 105.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 106.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3408,32 +3411,32 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [35
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 123--123
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 124--124
 [][]  
  []
 
 
-Overfull \hbox (16.26526pt too wide) in paragraph at lines 123--123
+Overfull \hbox (16.26526pt too wide) in paragraph at lines 124--124
  [][] 
  []
 
 File: figures/logo/Logo_EPUFRJ_2020.png Graphic file (type png)
 <use figures/logo/Logo_EPUFRJ_2020.png>
 Package pdftex.def Info: figures/logo/Logo_EPUFRJ_2020.png  used on input line 
-123.
+124.
 (pdftex.def)             Requested size: 41.13124pt x 14.07993pt.
 File: figures/logo/eletrica.png Graphic file (type png)
 <use figures/logo/eletrica.png>
-Package pdftex.def Info: figures/logo/eletrica.png  used on input line 123.
+Package pdftex.def Info: figures/logo/eletrica.png  used on input line 124.
 (pdftex.def)             Requested size: 48.73465pt x 14.07993pt.
 
-Overfull \hbox (6.43527pt too wide) in paragraph at lines 123--123
+Overfull \hbox (6.43527pt too wide) in paragraph at lines 124--124
  [][]
  []
 
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 123.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 124.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3443,27 +3446,27 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [36
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 149--149
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 150--150
 [][]  
  []
 
 File: figures/logo/Logo_EPUFRJ_2020.png Graphic file (type png)
 <use figures/logo/Logo_EPUFRJ_2020.png>
 Package pdftex.def Info: figures/logo/Logo_EPUFRJ_2020.png  used on input line 
-149.
+150.
 (pdftex.def)             Requested size: 41.13124pt x 14.07993pt.
 File: figures/logo/eletrica.png Graphic file (type png)
 <use figures/logo/eletrica.png>
-Package pdftex.def Info: figures/logo/eletrica.png  used on input line 149.
+Package pdftex.def Info: figures/logo/eletrica.png  used on input line 150.
 (pdftex.def)             Requested size: 48.73465pt x 14.07993pt.
 
-Overfull \hbox (6.43527pt too wide) in paragraph at lines 149--149
+Overfull \hbox (6.43527pt too wide) in paragraph at lines 150--150
  [][]
  []
 
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 149.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 150.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3473,27 +3476,27 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [37
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 180--180
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 181--181
 [][]  
  []
 
 File: figures/logo/Logo_EPUFRJ_2020.png Graphic file (type png)
 <use figures/logo/Logo_EPUFRJ_2020.png>
 Package pdftex.def Info: figures/logo/Logo_EPUFRJ_2020.png  used on input line 
-180.
+181.
 (pdftex.def)             Requested size: 41.13124pt x 14.07993pt.
 File: figures/logo/eletrica.png Graphic file (type png)
 <use figures/logo/eletrica.png>
-Package pdftex.def Info: figures/logo/eletrica.png  used on input line 180.
+Package pdftex.def Info: figures/logo/eletrica.png  used on input line 181.
 (pdftex.def)             Requested size: 48.73465pt x 14.07993pt.
 
-Overfull \hbox (6.43527pt too wide) in paragraph at lines 180--180
+Overfull \hbox (6.43527pt too wide) in paragraph at lines 181--181
  [][]
  []
 
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 180.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 181.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3503,27 +3506,27 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [38
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 197--197
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 198--198
 [][]  
  []
 
 File: figures/logo/Logo_EPUFRJ_2020.png Graphic file (type png)
 <use figures/logo/Logo_EPUFRJ_2020.png>
 Package pdftex.def Info: figures/logo/Logo_EPUFRJ_2020.png  used on input line 
-197.
+198.
 (pdftex.def)             Requested size: 41.13124pt x 14.07993pt.
 File: figures/logo/eletrica.png Graphic file (type png)
 <use figures/logo/eletrica.png>
-Package pdftex.def Info: figures/logo/eletrica.png  used on input line 197.
+Package pdftex.def Info: figures/logo/eletrica.png  used on input line 198.
 (pdftex.def)             Requested size: 48.73465pt x 14.07993pt.
 
-Overfull \hbox (6.43527pt too wide) in paragraph at lines 197--197
+Overfull \hbox (6.43527pt too wide) in paragraph at lines 198--198
  [][]
  []
 
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 197.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 198.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3533,7 +3536,7 @@ Overfull \hbox (0.7626pt too wide) has occurred while \output is active
 [39
 
 ]
-Overfull \hbox (0.7626pt too wide) in paragraph at lines 223--223
+Overfull \hbox (0.7626pt too wide) in paragraph at lines 224--224
 [][]  
  []
 
@@ -3543,7 +3546,7 @@ File: tcc_images/chap06/overlay_PhyResidual_Alim_T_out.png Graphic file (type p
 ng)
 <use tcc_images/chap06/overlay_PhyResidual_Alim_T_out.png>
 Package pdftex.def Info: tcc_images/chap06/overlay_PhyResidual_Alim_T_out.png  
-used on input line 223.
+used on input line 224.
 (pdftex.def)             Requested size: 137.08533pt x 119.50677pt.
 <tcc_images/chap06/overlay_PhyResidual_Ref_T_out.png, id=452, 563.706pt x 491.4
 36pt>
@@ -3551,32 +3554,32 @@ File: tcc_images/chap06/overlay_PhyResidual_Ref_T_out.png Graphic file (type pn
 g)
 <use tcc_images/chap06/overlay_PhyResidual_Ref_T_out.png>
 Package pdftex.def Info: tcc_images/chap06/overlay_PhyResidual_Ref_T_out.png  u
-sed on input line 223.
+sed on input line 224.
 (pdftex.def)             Requested size: 137.08533pt x 119.50677pt.
 <tcc_images/chap06/overlay_PhyResidual_Flux.png, id=453, 563.706pt x 491.436pt>
 
 File: tcc_images/chap06/overlay_PhyResidual_Flux.png Graphic file (type png)
 <use tcc_images/chap06/overlay_PhyResidual_Flux.png>
 Package pdftex.def Info: tcc_images/chap06/overlay_PhyResidual_Flux.png  used o
-n input line 223.
+n input line 224.
 (pdftex.def)             Requested size: 137.08533pt x 119.50677pt.
 File: figures/logo/Logo_EPUFRJ_2020.png Graphic file (type png)
 <use figures/logo/Logo_EPUFRJ_2020.png>
 Package pdftex.def Info: figures/logo/Logo_EPUFRJ_2020.png  used on input line 
-223.
+224.
 (pdftex.def)             Requested size: 41.13124pt x 14.07993pt.
 File: figures/logo/eletrica.png Graphic file (type png)
 <use figures/logo/eletrica.png>
-Package pdftex.def Info: figures/logo/eletrica.png  used on input line 223.
+Package pdftex.def Info: figures/logo/eletrica.png  used on input line 224.
 (pdftex.def)             Requested size: 48.73465pt x 14.07993pt.
 
-Overfull \hbox (6.43527pt too wide) in paragraph at lines 223--223
+Overfull \hbox (6.43527pt too wide) in paragraph at lines 224--224
  [][]
  []
 
 File: figures/logo/bg.png Graphic file (type png)
 <use figures/logo/bg.png>
-Package pdftex.def Info: figures/logo/bg.png  used on input line 223.
+Package pdftex.def Info: figures/logo/bg.png  used on input line 224.
 (pdftex.def)             Requested size: 455.22552pt x 256.07095pt.
 
 Overfull \hbox (0.7626pt too wide) has occurred while \output is active
@@ -3835,19 +3838,15 @@ No file presentationTCC.bbl.
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `presentationTCC.out' has not changed.
 (rerunfilecheck)             Checksum: 1853F65C4A9FB5BA031EE7631D5F9C15;933.
  ) 
 Here is how much of TeX's memory you used:
- 40036 strings out of 467871
- 832170 string characters out of 5418376
- 1292813 words of memory out of 5000000
- 67839 multiletter control sequences out of 15000+600000
- 704513 words of font info for 107 fonts, out of 8000000 for 9000
+ 40027 strings out of 467871
+ 832076 string characters out of 5418376
+ 1292705 words of memory out of 5000000
+ 67831 multiletter control sequences out of 15000+600000
+ 701708 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,16n,123p,3262b,1274s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/frota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pf
@@ -3866,18 +3865,17 @@ ota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb><C:/Users/fr
 ota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss8.pfb><C:/Users/fro
 ta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss9.pfb><C:/Users/frot
 a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/fr
-ota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso10.pfb><C:/Users/f
-rota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso8.pfb><C:/Users/f
-rota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso9.pfb><C:/Users/f
-rota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/f
-rota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy5.pfb><C:/Users/fr
-ota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Users/fro
-ta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/frot
-a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/Users/frota
-/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on presentationTCC.pdf (48 pages, 6865335 bytes).
+ota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso8.pfb><C:/Users/fr
+ota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso9.pfb><C:/Users/fr
+ota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/fr
+ota/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy5.pfb><C:/Users/fro
+ta/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Users/frot
+a/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Users/frota
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb><C:/Users/frota/
+AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on presentationTCC.pdf (48 pages, 6849139 bytes).
 PDF statistics:
- 697 PDF objects out of 1000 (max. 8388607)
+ 692 PDF objects out of 1000 (max. 8388607)
  121 named destinations out of 1000 (max. 500000)
  296 words of extra memory for PDF output out of 10000 (max. 10000000)
 
