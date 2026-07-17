@@ -82,59 +82,53 @@
 %========================================================================
 
 \begin{slide}{Etapa 2.2: Preparação dos Dados — Estratégia de Validação}
-  \vspace*{-0.3cm}
-  \begin{columns}[t]
-    \begin{column}{0.28\linewidth}
-      \vspace{0pt}
-      \centering
-      \begin{tikzpicture}[
-          every node/.style={font=\footnotesize, align=center},
-          box/.style={rectangle, rounded corners, draw=poliBlue, thick,
-                      minimum width=1.1cm, minimum height=0.35cm, fill=blue!6},
-          dec/.style={rectangle, rounded corners, draw=orange!60!black, thick,
-                      minimum width=1.1cm, minimum height=0.35cm, fill=orange!6},
-          arrow/.style={->, thick, >=stealth},
-          node distance=0.25cm
-        ]
-        \node[box] (padrao) {Padronização};
-        \node[box, below=of padrao] (split) {Divisão 80/20};
-        \node[box, below=of split] (kfold) {KFold};
-        \node[box, right=0.2cm of kfold] (gkf) {GroupKFold};
-        \node[dec, below=of gkf] (decide) {Comparar};
-        \node[box, below=of decide] (result) {GroupKFold};
-        \draw[arrow] (padrao) -- (split);
-        \draw[arrow] (split) -- (kfold);
-        \draw[arrow] (kfold.east) -- (gkf.west);
-        \draw[arrow] (kfold.south) -- ++(0,-0.1) -| (decide.west);
-        \draw[arrow] (gkf) -- (decide);
-        \draw[arrow] (decide) -- (result);
-      \end{tikzpicture}
-    \end{column}
-    \hfill
-    \begin{column}{0.68\linewidth}
-      \vspace{0pt}
-      {\small\textbf{Comparação KFold vs GroupKFold --- RMSE do Fluxo}}
-      \small
-      \begin{tabular}{lcc}
-        \toprule
-        \textbf{Modelo} & \textbf{CV KFold} & \textbf{CV GroupKFold} \\
-        \midrule
-        OLS            & 0,078 & 0,081 \\
-        Ridge (Ref)    & 0,078 & 0,082 \\
-        Lasso\_Indep   & 0,079 & 0,082 \\
-        DT (Alim)      & 0,269 & \textbf{0,485} \\
-        RF (Ref)       & 0,199 & \textbf{0,422} \\
-        GB (Alim)      & 0,085 & \textbf{0,358} \\
-        \bottomrule
-      \end{tabular}
-      \vspace{0.1cm}
-      \begin{Item}[0.03]
-        \item Modelos lineares: diferença pequena entre KFold e GroupKFold ($\approx$0,003) — a capacidade de extrapolação para regimes não vistos é similar à interpolação
-        \item Árvores (DT, RF, GB): RMSE muito maior no GroupKFold — KFold \textbf{superestima} o desempenho ao misturar amostras do mesmo regime em treino e validação. Sem o GroupKFold, a busca de hiperparâmetros priorizaria configurações que interpolam bem, mas \textbf{não generalizam para regimes não conhecidos}
-        \item \textbf{Conclusão:} GroupKFold adotado — a busca de HPs é orientada pela capacidade de \textbf{extrapolação}, não apenas de ajuste aos dados vistos
-      \end{Item}
-    \end{column}
-  \end{columns}
+  \vspace*{-0.2cm}
+  \parbox[t]{0.28\textwidth}{\vspace{0pt}\centering
+    \begin{tikzpicture}[
+        every node/.style={font=\footnotesize, align=center},
+        box/.style={rectangle, rounded corners, draw=poliBlue, thick,
+                    minimum width=1.1cm, minimum height=0.35cm, fill=blue!6},
+        dec/.style={rectangle, rounded corners, draw=orange!60!black, thick,
+                    minimum width=1.1cm, minimum height=0.35cm, fill=orange!6},
+        arrow/.style={->, thick, >=stealth},
+        node distance=0.25cm
+      ]
+      \node[box] (padrao) {Padronização};
+      \node[box, below=of padrao] (split) {Divisão 80/20};
+      \node[box, below=of split] (kfold) {KFold};
+      \node[box, right=0.2cm of kfold] (gkf) {GroupKFold};
+      \node[dec, below=of gkf] (decide) {Comparar};
+      \node[box, below=of decide] (result) {GroupKFold};
+      \draw[arrow] (padrao) -- (split);
+      \draw[arrow] (split) -- (kfold);
+      \draw[arrow] (kfold.east) -- (gkf.west);
+      \draw[arrow] (kfold.south) -- ++(0,-0.1) -| (decide.west);
+      \draw[arrow] (gkf) -- (decide);
+      \draw[arrow] (decide) -- (result);
+    \end{tikzpicture}
+  }\hfill
+  \parbox[t]{0.68\textwidth}{\vspace{0pt}
+    {\small\textbf{Comparação KFold vs GroupKFold --- RMSE do Fluxo}}
+    \small
+    \begin{tabular}{lcc}
+      \toprule
+      \textbf{Modelo} & \textbf{CV KFold} & \textbf{CV GroupKFold} \\
+      \midrule
+      OLS            & 0,078 & 0,081 \\
+      Ridge (Ref)    & 0,078 & 0,082 \\
+      Lasso\_Indep   & 0,079 & 0,082 \\
+      DT (Alim)      & 0,269 & \textbf{0,485} \\
+      RF (Ref)       & 0,199 & \textbf{0,422} \\
+      GB (Alim)      & 0,085 & \textbf{0,358} \\
+      \bottomrule
+    \end{tabular}
+    \vspace{0.1cm}
+    \begin{Item}[0.03]
+      \item Modelos lineares: diferença pequena ($\approx$0,003) — a capacidade de extrapolação para regimes não vistos é similar à interpolação dentro dos regimes conhecidos
+      \item Árvores (DT, RF, GB): RMSE muito maior no GroupKFold — KFold \textbf{superestima} o desempenho ao misturar amostras do mesmo regime em treino e validação. Sem o GroupKFold, a busca de hiperparâmetros prioriza configurações que interpolam bem, mas \textbf{não generalizam para regimes não conhecidos}
+      \item \textbf{Conclusão:} GroupKFold adotado — a busca de HPs é orientada pela capacidade de \textbf{extrapolação}, não apenas de ajuste aos dados vistos
+    \end{Item}
+  }
   \note{A grande diferença nos RMSEs das árvores mostra que KFold comum superestima o desempenho — sem GroupKFold, a busca de HPs escolheria configurações que só funcionam em regimes conhecidos, sem capacidade de extrapolação. [~1,5 min]}
 \end{slide}
 %========================================================================
