@@ -66,29 +66,29 @@
   \small
   \centering
   \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.2\linewidth} p{0.35\linewidth} p{0.35\linewidth}}
+    \begin{tabular}{p{0.2\linewidth} p{0.32\linewidth} p{0.38\linewidth}}
       \toprule
-      \textbf{Família} & \textbf{Modelos} & \textbf{Papel} \\
+      \textbf{Família} & \textbf{Modelos} & \textbf{Arquitetura} \\
       \midrule
       \textbf{Lineares}
       & OLS, Ridge, Lasso, ElasticNet
-      & Referência de menor complexidade \\
+      & $\hat{y} = w^T x + b$ — coeficientes lineares. Ridge (L2), Lasso (L1), ElasticNet (L1+L2) penalizam magnitude \\
       \midrule
       \textbf{Árvores}
-      & Árvore, Random Forest, Gradient Boosting
-      & Capturam não linearidades \\
+      & DT, RF, Gradient Boosting
+      & Partições binárias recursivas do espaço de entrada. RF: ensemble com bootstrap. GB: construção sequencial corrigindo resíduos \\
       \midrule
       \textbf{Redes Neurais}
-      & MLP sklearn, KerasMLP (baseline)
-      & Alta capacidade de aproximação \\
+      & MLP sklearn, KerasMLP
+      & Camadas densas empilhadas com ativação não linear (ReLU, tanh); ajuste por retropropagação \\
       \midrule
       \textbf{Híbridos}
       & PhyResidual, PhyHybrid, PhyLoss, BaselineHibrido
-      & Física + dados p/ melhor generalização \\
+      & Rede neural que incorpora predições do modelo físico 0D: correção residual, entrada expandida ou penalização na perda \\
       \bottomrule
     \end{tabular}
   }
-  \note{Quatro famílias de modelos foram comparadas. Os modelos lineares servem como referência. As árvores capturam relações não lineares. As redes neurais têm alta flexibilidade. Os híbridos combinam física com dados. [~1,5 min]}
+  \note{Quatro famílias: lineares (pesos multiplicam features), árvores (partições binárias), neurais (camadas densas com ativação não linear), híbridos (incorporam predições do modelo 0D na arquitetura). [~1,5 min]}
 \end{slide}
 %========================================================================
 
