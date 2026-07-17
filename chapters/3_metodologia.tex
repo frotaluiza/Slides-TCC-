@@ -85,6 +85,7 @@
   \vspace*{-0.3cm}
   \begin{columns}[t]
     \begin{column}{0.28\linewidth}
+      \vspace{0pt}
       \centering
       \begin{tikzpicture}[
           every node/.style={font=\footnotesize, align=center},
@@ -109,7 +110,9 @@
         \draw[arrow] (decide) -- (result);
       \end{tikzpicture}
     \end{column}
+    \hfill
     \begin{column}{0.68\linewidth}
+      \vspace{0pt}
       {\small\textbf{Comparação KFold vs GroupKFold --- RMSE do Fluxo}}
       \small
       \begin{tabular}{lcc}
@@ -126,13 +129,13 @@
       \end{tabular}
       \vspace{0.1cm}
       \begin{Item}[0.03]
-        \item Modelos lineares: diferença pequena ($\approx$0,003) — pouco afetados pelo vazamento entre regimes
-        \item Árvores (DT, RF, GB): RMSE muito maior no GroupKFold — KFold \textbf{superestima} desempenho ao misturar amostras do mesmo regime em treino e validação
-        \item \textbf{Conclusão:} GroupKFold adotado — estimativas mais conservadoras e realistas de generalização
+        \item Modelos lineares: diferença pequena entre KFold e GroupKFold ($\approx$0,003) — a capacidade de extrapolação para regimes não vistos é similar à interpolação
+        \item Árvores (DT, RF, GB): RMSE muito maior no GroupKFold — KFold \textbf{superestima} o desempenho ao misturar amostras do mesmo regime em treino e validação. Sem o GroupKFold, a busca de hiperparâmetros priorizaria configurações que interpolam bem, mas \textbf{não generalizam para regimes não conhecidos}
+        \item \textbf{Conclusão:} GroupKFold adotado — a busca de HPs é orientada pela capacidade de \textbf{extrapolação}, não apenas de ajuste aos dados vistos
       \end{Item}
     \end{column}
   \end{columns}
-  \note{Fluxograma mostra a decisão: testamos KFold e GroupKFold no Stage 0. A tabela mostra que modelos lineares têm diferença pequena (~0,003), mas árvores têm RMSE muito maior no GroupKFold, expondo superestimativa do KFold comum. [~1,5 min]}
+  \note{A grande diferença nos RMSEs das árvores mostra que KFold comum superestima o desempenho — sem GroupKFold, a busca de HPs escolheria configurações que só funcionam em regimes conhecidos, sem capacidade de extrapolação. [~1,5 min]}
 \end{slide}
 %========================================================================
 
