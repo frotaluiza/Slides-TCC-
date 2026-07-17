@@ -72,19 +72,19 @@
       \midrule
       \textbf{Lineares}
       & OLS, Ridge, Lasso, ElasticNet
-      & $\hat{y} = w^T x + b$ — cada preditor recebe um peso que multiplica seu valor; a saída é a soma. Ridge, Lasso e ElasticNet adicionam penalidades para evitar que pesos cresçam demais (regularização), controlando overfit \\
+      & $\hat{y} = w^T x + b$ — coeficientes lineares. Ridge (L2), Lasso (L1), ElasticNet (L1+L2) penalizam magnitude \\
       \midrule
       \textbf{Árvores}
       & DT, RF, Gradient Boosting
-      & Dividem o espaço em regiões por perguntas sucessivas (\textit{se $x_1 > a$, vai para a direita; senão, esquerda}). RF faz várias árvores com dados diferentes e tira a média. GB constrói uma árvore por vez, cada nova corrigindo os erros da anterior \\
+      & Partições binárias recursivas do espaço de entrada. RF: ensemble com bootstrap. GB: construção sequencial corrigindo resíduos \\
       \midrule
       \textbf{Redes Neurais}
       & MLP sklearn, KerasMLP
-      & Camadas densas que combinam os preditores de forma não linear: cada neurônio aplica uma ponderação seguida de uma função de ativação (ReLU, tanh), permitindo capturar relações complexas sem precisar especificá-las manualmente \\
+      & Camadas densas empilhadas com ativação não linear (ReLU, tanh); ajuste por retropropagação \\
       \midrule
       \textbf{Híbridos}
       & PhyResidual, PhyHybrid, PhyLoss, BaselineHibrido
-      & Rede neural que recebe as predições do modelo físico 0D como informação extra: pode corrigir o resíduo do 0D (PhyResidual), usar suas saídas como entradas (PhyHybrid), ou penalizar predições fisicamente inconsistentes na função de perda (PhyLoss) \\
+      & Rede neural que incorpora predições do modelo físico 0D: correção residual, entrada expandida ou penalização na perda \\
       \bottomrule
     \end{tabular}
   }
