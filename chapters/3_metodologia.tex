@@ -85,11 +85,9 @@
   \small
   \begin{Item}[0.1]
     \item GroupKFold foi adotado porque, diferentemente do KFold tradicional, orienta a busca de hiperparâmetros para configurações com capacidade de \textbf{extrapolação} para regimes não observados, e não apenas de interpolação dentro dos regimes conhecidos
-    \item Modelos lineares (OLS, Ridge, Lasso): RMSE similar entre KFold e GroupKFold (diferença $\approx$0,003) — a interpolação já é suficiente para essas famílias
-    \item Árvores (DT, RF, GB): RMSE muito maior no GroupKFold — evidencia que o KFold comum superestima o desempenho e buscaria HPs que não generalizam para condições não vistas
     \item O esquema da validação adotada é apresentado no slide seguinte
   \end{Item}
-  \note{GroupKFold foi escolhido por guiar a busca de HPs pela capacidade de extrapolação, não apenas interpolação. A diferença nos RMSEs das árvores comprova que o KFold comum superestima o desempenho. [~1,5 min]}
+  \note{GroupKFold foi escolhido por guiar a busca de HPs pela capacidade de extrapolação, não apenas interpolação. [~1,5 min]}
 \end{slide}
 %========================================================================
 
@@ -123,6 +121,29 @@
     \end{column}
   \end{columns}
   \note{Tanto a seleção de atributos quanto a discretização foram avaliadas por busca exaustiva com regressão linear multialvo. Nenhuma das estratégias ofereceu ganho consistente para os 3 alvos, confirmando que a seleção física inicial dos preditores e a forma contínua das variáveis eram adequadas. [~1,5 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Resumo — Decisões da Preparação dos Dados}
+  \centering
+  \small
+  \begin{tabular}{lcp{7.5cm}}
+    \rowcolor{poliBlue!20}
+    \textbf{Etapa} & \textbf{Decisão} & \textbf{Justificativa} \\ \hline
+    \rowcolor{gray!10}
+    2.1 — Escalonamento & Z-score &
+    Preserva a distribuição original dos dados; mede em desvios-padrão, evitando a compressão artificial causada pelo Min-Max em presença de valores extremos \\
+    \rowcolor{white}
+    2.2 — Validação & GroupKFold &
+    Separa os folds por regime operacional, orientando a busca de hiperparâmetros para capacidade de \textbf{extrapolação} — diferente do KFold comum, que só avalia interpolação \\
+    \rowcolor{gray!10}
+    2.3 — \textit{Features} & Mantidos os 5 preditores &
+    Busca exaustiva (\textit{Best Subset}, $2^5$ combinações) confirmou que a seleção física inicial já era consistente — nenhuma redução melhorou o desempenho \\
+    \rowcolor{white}
+    2.3 — Discretização & Forma contínua &
+    Nenhuma das 32 configurações discretizadas (mistura Gaussiana) apresentou melhoria consistente para os 3 alvos simultaneamente \\
+  \end{tabular}
+  \note{Slide de consolidação: resume as 4 decisões de preparação dos dados e suas justificativas. [~1,5 min]}
 \end{slide}
 %========================================================================
 
@@ -183,13 +204,18 @@
 \begin{slide}{Etapa 6: Stage 0 — Modelos Clássicos}
   \footnotesize
   \centering
+  Comparação entre estratégias \textbf{lineares} e \textbf{não lineares} para avaliar a complexidade necessária ao problema:
+
+  \vspace{0.5em}
   \begin{tabular}{p{0.22\linewidth} p{0.38\linewidth} p{0.30\linewidth}}
     \toprule
-    \textbf{Família} & \textbf{Modelos} & \textbf{O que foi ajustado} \\
+    \textbf{Estratégia} & \textbf{Modelos} & \textbf{O que foi ajustado} \\
     \midrule
+    \rowcolor{green!10}
     Lineares & OLS, Ridge, Lasso, ElasticNet & $\alpha$ (regularização) e $l_1$-ratio \\
-    Árvore & DecisionTree & Profundidade, folhas, ccp\_alpha \\
-    Ensemble & RandomForest, GradientBoosting & Árvores, profundidade, learning\_rate \\
+    \midrule
+    \rowcolor{orange!10}
+    Não lineares & DecisionTree, RandomForest, GradientBoosting & Profundidade, folhas, \textit{learning\_rate} \\
     \bottomrule
   \end{tabular}
   \vfill
@@ -201,7 +227,7 @@
       \textbf{Seleção:} 1-SE + menor complexidade dentro da família
     \end{column}
   \end{columns}
-  \note{Stage 0 avalia modelos clássicos: lineares (OLS, Ridge, Lasso, ElasticNet) e baseados em árvores (DecisionTree, RandomForest, GradientBoosting). A busca usa GridSearch com validação cruzada GroupKFold. [~1 min]}
+  \note{Stage 0 compara duas estratégias: modelos lineares (OLS, Ridge, Lasso, ElasticNet) versus não lineares baseados em árvores. GridSearch com GroupKFold e critério 1-SE. [~1 min]}
 \end{slide}
 \begin{slide}{Etapa 7: Stage 1 — Baseline Keras}
   \footnotesize

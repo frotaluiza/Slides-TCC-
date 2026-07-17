@@ -2,7 +2,7 @@
 \beamer@sectionintoc {1}{Introdução}{3}{0}{1}
 \beamer@sectionintoc {2}{Revisão Bibliográfica}{11}{0}{2}
 \beamer@sectionintoc {3}{Fundamentação Teórica}{15}{0}{3}
-\beamer@sectionintoc {4}{Metodologia Proposta}{21}{0}{4}
+\beamer@sectionintoc {4}{Metodologia Proposta}{19}{0}{4}
 \beamer@sectionintoc {5}{Resultados}{34}{0}{5}
 \beamer@sectionintoc {6}{Conclusões}{44}{0}{6}
 \beamer@sectionintoc {7}{Referências Bibliográficas}{48}{0}{7}
