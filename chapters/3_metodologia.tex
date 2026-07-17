@@ -71,52 +71,51 @@
     \item \textbf{Normalização Min-Max}: $x' = (x - x_{min}) / (x_{max} - x_{min})$ $\rightarrow$ escala $[0,1]$
   \end{Item}
   \vspace{0.15cm}
-  \begin{block}{Por que Z-score foi adotado}
-    \begin{Item}[0.1]
-      \item \textbf{Modelos sensíveis à escala:} redes neurais e regressões regularizadas (Ridge, Lasso, ElasticNet) são afetadas pela magnitude relativa das variáveis — \textit{features} precisam estar centradas em zero com variância homogênea para estabilidade numérica e penalização equilibrada
-      \item \textbf{Comparação justa:} uma única estratégia de escalonamento, aplicável a todas as famílias, reduz a influência arbitrária das unidades físicas sobre o desempenho
-      \item \textbf{Ausência de outliers extremos:} Min-Max e escalonamento robusto não foram necessários — a padronização mostrou-se adequada ao comportamento estatístico dos dados experimentais
-    \end{Item}
+  \begin{block}{Intuição}
+    \centering
+    {\small Sem padronização, uma variável com números grandes (P$_{vac}$: $\sim$600\,mbar) domina o modelo sobre uma de números pequenos (C$_{NaCl}$: $\sim$40\,g/L) — \textbf{não por ser mais importante, mas por ter magnitude maior}.}
   \end{block}
   \vspace{0.1cm}
-  {\small\textit{Implementação:} o escalonamento é incorporado ao \texttt{Pipeline} do scikit-learn — em cada iteração da validação cruzada, o ajuste é feito apenas no treino, evitando vazamento de informação para a validação}
-  \note{Dois motivos principais para Z-score: (1) modelos regularizados e redes neurais são sensíveis à escala das variáveis — precisam de média zero e variância homogênea para estabilidade numérica; (2) adotou-se uma única estratégia para todas as famílias, garantindo comparação justa. Min-Max não foi usado por ausência de outliers significativos. A implementação usa Pipeline do sklearn para evitar data leakage entre folds. [~1,5 min]}
+  \begin{Item}[0.08]
+    \item \textbf{Z-score} ($\mu=0$, $\sigma=1$): todas as variáveis passam a ter o mesmo peso — o modelo decide a relevância real de cada uma
+    \item \textbf{Min-Max descartado}: não centraliza em zero (problema para Ridge/Lasso) e sensível a outliers — que não são significativos nos nossos dados
+  \end{Item}
+  \vspace{0.05cm}
+  {\small\textit{Implementação:} escalonamento dentro do \texttt{Pipeline} — ajustado só no treino de cada fold, sem vazar info para a validação}
+  \note{Analogia: é como comparar km e mm — sem padronizar, a variável com números maiores domina. Z-score coloca tudo na mesma escala. Min-Max não centraliza em zero, o que é ruim para Ridge/Lasso que penalizam coeficientes. [~1,5 min]}
 \end{slide}
 %========================================================================
 
 \begin{slide}{Etapa 2.2: Preparação dos Dados — Estratégia de Validação}
-  \centering
   \vspace*{-0.3cm}
-  \resizebox{0.3\textwidth}{!}{%
-  \begin{tikzpicture}[
-      every node/.style={font=\normalsize, align=center},
-      box/.style={rectangle, rounded corners, draw=poliBlue, thick,
-                  minimum width=1.5cm, minimum height=0.5cm, fill=blue!6},
-      dec/.style={rectangle, rounded corners, draw=orange!60!black, thick,
-                  minimum width=1.5cm, minimum height=0.5cm, fill=orange!6},
-      arrow/.style={->, thick, >=stealth},
-    ]
-    \node[box] (padrao) {Padronização};
-    \node[box, below=0.3cm of padrao] (split) {Divisão 80/20};
-    \node[box, below=0.3cm of split] (kfold) {KFold};
-    \node[box, right=0.3cm of kfold] (gkf) {GroupKFold};
-    \node[dec, below=0.3cm of gkf] (decide) {Comparar};
-    \node[box, below=0.3cm of decide] (result) {GroupKFold};
-    \draw[arrow] (padrao) -- (split);
-    \draw[arrow] (split) -- (kfold);
-    \draw[arrow] (kfold.east) -- (gkf.west);
-    \draw[arrow] (kfold.south) -- ++(0,-0.2) |- (decide.west);
-    \draw[arrow] (gkf) -- (decide);
-    \draw[arrow] (decide) -- (result);
-  \end{tikzpicture}
-  }
-  \vfill
   \begin{columns}[t]
-    \begin{column}{.48\linewidth}
+    \begin{column}{.4\linewidth}
       \centering
-      \includegraphics[width=0.85\linewidth]{tcc_images/chap04/validacao_esquema.png}
+      \resizebox{0.9\textwidth}{!}{%
+      \begin{tikzpicture}[
+          every node/.style={font=\normalsize, align=center},
+          box/.style={rectangle, rounded corners, draw=poliBlue, thick,
+                      minimum width=1.5cm, minimum height=0.5cm, fill=blue!6},
+          dec/.style={rectangle, rounded corners, draw=orange!60!black, thick,
+                      minimum width=1.5cm, minimum height=0.5cm, fill=orange!6},
+          arrow/.style={->, thick, >=stealth},
+        ]
+        \node[box] (padrao) {Padronização};
+        \node[box, below=0.3cm of padrao] (split) {Divisão 80/20};
+        \node[box, below=0.3cm of split] (kfold) {KFold};
+        \node[box, right=0.3cm of kfold] (gkf) {GroupKFold};
+        \node[dec, below=0.3cm of gkf] (decide) {Comparar};
+        \node[box, below=0.3cm of decide] (result) {GroupKFold};
+        \draw[arrow] (padrao) -- (split);
+        \draw[arrow] (split) -- (kfold);
+        \draw[arrow] (kfold.east) -- (gkf.west);
+        \draw[arrow] (kfold.south) -- ++(0,-0.2) |- (decide.west);
+        \draw[arrow] (gkf) -- (decide);
+        \draw[arrow] (decide) -- (result);
+      \end{tikzpicture}
+      }
     \end{column}
-    \begin{column}{.48\linewidth}
+    \begin{column}{.6\linewidth}
       {\small\textbf{Comparação KFold vs GroupKFold --- RMSE do Fluxo}}
       \small
       \begin{tabular}{lcc}
@@ -131,14 +130,22 @@
         GB (Alim)      & 0,085 & \textbf{0,358} \\
         \bottomrule
       \end{tabular}
-      \vspace{0.2cm}
+      \vspace{0.15cm}
       \begin{Item}[0.05]
-        \item KFold superestima desempenho de modelos flexíveis ao vazar info entre regimes
-        \item GroupKFold adotado: estimativas mais conservadoras e realistas
+        \item Modelos lineares: diferença pequena ($\approx$0,003) — pouco afetados pelo vazamento entre regimes
+        \item Árvores (DT, RF, GB): RMSE muito maior no GroupKFold — KFold \textbf{superestima} desempenho ao misturar amostras do mesmo regime em treino e validação
+        \item \textbf{Conclusão:} GroupKFold adotado — estimativas mais conservadoras e realistas de generalização
       \end{Item}
     \end{column}
   \end{columns}
-  \note{Fluxograma mostra a decisão: testamos KFold e GroupKFold no Stage 0. A tabela mostra que modelos lineares têm diferença pequena (~0,003), mas árvores têm RMSE muito maior no GroupKFold, expondo superestimativa do KFold comum. [~2 min]}
+  \note{Fluxograma mostra a decisão: testamos KFold e GroupKFold no Stage 0. A tabela mostra que modelos lineares têm diferença pequena (~0,003), mas árvores têm RMSE muito maior no GroupKFold, expondo superestimativa do KFold comum. [~1,5 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Esquema Geral da Validação Cruzada Adotada}
+  \centering
+  \includegraphics[width=0.75\linewidth]{tcc_images/chap04/validacao_esquema.png}
+  \note{O esquema mostra o fluxo completo da validação cruzada adotada: partição dos dados em 3 grupos por regime, treinamento em 2 regimes e validação no terceiro, repetindo até todos serem avaliados. [~1 min]}
 \end{slide}
 %========================================================================
 
