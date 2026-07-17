@@ -64,23 +64,28 @@
   \end{columns}
   \note{O conjunto de dados tem 174 pontos experimentais obtidos em um sistema V-AGMD piloto. Foram testados 3 regimes de salinidade: 10, 40 e 70 g/L. As 5 variáveis de entrada incluem temperaturas, vazão, pressão de vácuo e concentração salina. As 3 saídas são o fluxo de permeado e as duas temperaturas de saída. [~1 min]}
 \end{slide}
-\begin{slide}{Etapa 2.1: Preparação dos Dados — Estratégias de Pré-processamento}
+\begin{slide}{Etapa 2.1: Preparação dos Dados — Pré-processamento e Engenharia de Atributos}
   \small
+  \textbf{Pré-processamento:}
   \begin{Item}[0.1]
     \item \textbf{Padronização Z-score}: $z = (x - \mu) / \sigma$ $\rightarrow$ média 0, desvio 1 — \textit{adotada}
     \item \textbf{Normalização Min-Max}: $x' = (x - x_{min}) / (x_{max} - x_{min})$ $\rightarrow$ escala $[0,1]$
+  \end{Item}
+  \textbf{Engenharia de Atributos:}
+  \begin{Item}[0.1]
     \item \textbf{Discretização (Binning)}: variáveis contínuas $\rightarrow$ intervalos categóricos (avaliada, ver Etapa 2.3)
     \item \textbf{Seleção de atributos}: busca exaustiva das $2^5$ combinações de preditores (avaliada, ver Etapa 2.3)
   \end{Item}
   \vspace{0.15cm}
-  \begin{block}{Por que Z-score foi adotado}
+  \begin{block}{Por que Z-score foi adotado (vs Min-Max)}
     \begin{Item}[0.1]
-      \item Variáveis com unidades e ordens de grandeza distintas (ex.: temperatura em °C, vazão em L/h)
-      \item Modelos regularizados (Ridge, Lasso, ElasticNet) penalizam coeficientes — escala diferente distorce a penalização
-      \item Min-Max testado, mas Z-score preserva informação sobre dispersão relativa entre variáveis
+      \item \textbf{Sensibilidade a outliers:} Min-Max usa mínimo e máximo — \textit{outliers} distorcem a escala e comprimem os dados normais numa fração do intervalo $[0,1]$ (Raschka, 2014; Codecademy, 2025)
+      \item \textbf{Perda de dispersão:} Min-Max achata o desvio padrão, suprimindo a variância relativa entre os pontos (Raschka, 2014)
+      \item \textbf{Modelos regularizados:} Ridge e Lasso penalizam coeficientes — Z-score preserva estrutura de covariância e torna a penalização homogênea entre variáveis
+      \item \textbf{Recomendação prática:} "When in doubt, just standardize the data, it shouldn't hurt" (Raschka, 2014)
     \end{Item}
   \end{block}
-  \note{Quatro estratégias de pré-processamento foram consideradas. O Z-score foi adotado por preservar dispersão relativa e ser mais adequado para modelos regularizados. Min-Max foi testado, mas Z-score teve melhor desempenho nas validações. Discretização e seleção de features foram avaliadas experimentalmente (Etapa 2.3) sem ganho consistente. [~2 min]}
+  \note{O pré-processamento inclui Z-score e Min-Max. A engenharia de atributos inclui discretização e seleção de features. O Z-score foi adotado por quatro motivos: Min-Max é muito sensível a outliers, achata a dispersão relativa, modelos regularizados exigem escala homogênea, e a recomendação da literatura é padronizar quando há dúvida. [~2 min]}
 \end{slide}
 %========================================================================
 
