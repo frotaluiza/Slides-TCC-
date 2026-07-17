@@ -157,7 +157,7 @@
       \textbf{Discretização (\textit{Binning})}
       \begin{Item}[0.15]
         \item \textbf{Justificativa:} os experimentos seguem um planejamento fatorial, produzindo regiões de dispersão bem delimitadas para cada variável de entrada — a discretização poderia capturar essas faixas operacionais
-        \item \textbf{Método:} mistura Gaussiana unidimensional (critérios AIC/BIC) para definir os intervalos; $2^5 = 32$ configurações contínua vs discretizada avaliadas com regressão linear multialvo
+        \item \textbf{Método:} mistura Gaussiana unidimensional para identificar agrupamentos naturais e definir os intervalos de discretização; $2^5 = 32$ configurações contínua vs discretizada avaliadas com regressão linear multialvo
         \item \textbf{Resultado:} nenhuma configuração discretizada apresentou melhoria consistente para os 3 alvos simultaneamente — optou-se por manter a forma contínua original
       \end{Item}
     \end{column}
