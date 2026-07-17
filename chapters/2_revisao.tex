@@ -72,8 +72,8 @@
     \begin{column}{.5\linewidth}
       \textbf{Lacunas na literatura:}
       \begin{Item}
-        \item[\textbf{1.}] \textbf{Ausência de validação cruzada em MD} --- artigos usam hold-out ou divisão arbitrária, sem considerar a estrutura de grupos dos regimes experimentais. Risco agravado pelo volume limitado de dados em escala piloto \cite{Vabalas2019}. Em outros processos batch, \cite{Villumsen2026} mostram que validação por lotes completos é necessária para revelar fragilidades em extrapolação
-        \item[\textbf{2.}] \textbf{Seleção de hiperparâmetros não estruturada} --- trial-and-error predomina; Khayet \& Cojocaru (2012), Mittal et al. (2021) e outros não realizam busca exaustiva ou critério de parcimônia
+        \item[\textbf{1.}] \textbf{Ausência de validação cruzada em MD} --- artigos usam hold-out ou divisão arbitrária, sem considerar a estrutura de grupos dos regimes experimentais. Risco agravado pelo volume limitado de dados em escala piloto \cite{Vabalas2019}. A avaliação se restringe à interpolação, gerando métricas otimistas quanto à extrapolação para condições não vistas (\cite{Roberts2017}). Em outros processos batch, \cite{Villumsen2026} mostram que validação por lotes completos é necessária para revelar fragilidades em extrapolação
+        \item[\textbf{2.}] \textbf{RMSE puro pode selecionar modelos superparametrizados} --- a escolha guiada apenas pelo menor erro médio ignora a variabilidade estatística das estimativas. Critérios como \textit{one-standard-error} (\cite{Yates2022}) identificam modelos equivalentes com menor complexidade
         \item[\textbf{3.}] \textbf{Modelos híbridos (físico+ML) em MD são praticamente inexistentes} --- apenas Shahouni (2026) aplica PINN em DCMD; nenhum trabalho em V-AGMD
       \end{Item}
     \end{column}
@@ -81,12 +81,11 @@
       \textbf{Contribuições do trabalho:}
       \begin{Item}
         \item GroupKFold por regimes experimentais
-        \item Busca sistemática de hiperparâmetros
         \item Critério 1-SE + menor complexidade
         \item 4 arquiteturas híbridas implementadas
       \end{Item}
     \end{column}
   \end{columns}
-  \note{Lacunas: 1) validação cruzada não usada em MD; Villumsen2026 mostra abordagem correta em processo piloto análogo. 2) HP search não sistemático. 3) híbridos em MD praticamente inexistentes. Contribuições: GroupKFold, busca sistemática, 1-SE, 4 arquiteturas híbridas. [~2 min]}
+  \note{Lacunas: 1) validação por hold-out, só interpolação, métricas otimistas; Villumsen2026 como contraponto. 2) RMSE puro pode favorecer superparametrização — 1-SE como alternativa. 3) híbridos em MD praticamente inexistentes. [~2 min]}
 \end{slide}
 %========================================================================
