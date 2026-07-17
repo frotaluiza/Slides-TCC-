@@ -127,9 +127,9 @@
   \vfill
   \footnotesize
   \begin{Item}[0.03]
-    \item Modelos lineares: diferença pequena ($\approx$0,003) — capacidade de extrapolação para regimes não vistos é similar à interpolação dentro dos regimes conhecidos
-    \item Árvores (DT, RF, GB): RMSE muito maior no GroupKFold — KFold \textbf{superestima} o desempenho ao misturar amostras do mesmo regime em treino e validação. Sem GroupKFold, a busca de hiperparâmetros prioriza configurações que interpolam bem, mas \textbf{não generalizam para regimes não conhecidos}
-    \item \textbf{Conclusão:} GroupKFold adotado — a busca de HPs é orientada pela capacidade de \textbf{extrapolação}, não apenas de ajuste aos dados vistos
+    \item Modelos lineares: diferença pequena ($\approx$0,003) — a capacidade de interpolação é similar entre as estratégias
+    \item Árvores (DT, RF, GB): RMSE muito maior no GroupKFold — KFold comum superestima o desempenho e orienta a busca de HPs para configurações que \textbf{apenas interpolam} nos regimes conhecidos, sem garantir generalização para condições não vistas
+    \item \textbf{Conclusão:} GroupKFold adotado — a busca de HPs é guiada pela capacidade de \textbf{extrapolação} para regimes não observados, alinhada ao objetivo do trabalho
   \end{Item}
   \note{A grande diferença nos RMSEs das árvores mostra que KFold comum superestima o desempenho — sem GroupKFold, a busca de HPs escolheria configurações que só funcionam em regimes conhecidos, sem capacidade de extrapolação. [~1,5 min]}
 \end{slide}
