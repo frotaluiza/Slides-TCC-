@@ -72,8 +72,8 @@
     \begin{column}{.5\linewidth}
       \textbf{Lacunas na literatura:}
       \begin{Item}
-        \item[\textbf{1.}] \textbf{Ausência de validação cruzada estruturada} --- artigos usam partição única sem considerar a estrutura de grupos dos regimes experimentais, o que mascara o sobreajuste e produz estimativas otimistas da capacidade de extrapolação. Risco agravado pelo volume limitado de dados em escala piloto \cite{Vabalas2019}
-        \item[\textbf{2.}] \textbf{RMSE puro pode selecionar modelos superparametrizados} --- a escolha guiada apenas pelo menor erro médio ignora a variabilidade estatística das estimativas. Critérios de seleção parcimoniosa como \textit{one-standard-error} (\cite{Hastie2009ESL, Yates2022}) identificam modelos equivalentes com menor complexidade
+        \item[\textbf{1.}] \textbf{Ausência de validação cruzada estruturada} --- partição única ignora grupos experimentais, mascara sobreajuste e produz estimativas otimistas para extrapolação. Risco agravado pelo volume limitado de dados em escala piloto \cite{Vabalas2019}
+        \item[\textbf{2.}] \textbf{Seleção por RMSE puro favorece superparametrização} --- ignora variabilidade estatística. Critérios parcimoniosos como \textit{one-standard-error} (\cite{Hastie2009ESL, Yates2022}) identificam modelos equivalentes com menor complexidade
         \item[\textbf{3.}] \textbf{Modelos híbridos (físico+ML) em MD são praticamente inexistentes} --- apenas Shahouni (2026) aplica PINN em DCMD; nenhum trabalho em V-AGMD
       \end{Item}
     \end{column}
