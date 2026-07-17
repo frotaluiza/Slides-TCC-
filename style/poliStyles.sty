@@ -128,11 +128,13 @@
       leftskip=5ex,
       rightskip=0pt,
     ]{frametitle}%
-  \parbox[t]{\dimexpr\paperwidth-5ex-5cm\relax}{\raggedright\insertframetitle}%
+  \parbox[t]{\dimexpr\paperwidth-5ex-4cm\relax}{\raggedright\insertframetitle}%
   \hfill
-  \raisebox{-0.35ex}{\includegraphics[height=3.2ex,keepaspectratio]{figures/logo/Logo_EPUFRJ_2020.png}}%
-  \hspace{0.2em}
-  \raisebox{-0.35ex}{\includegraphics[height=3.2ex,keepaspectratio]{figures/logo/eletrica.png}}%
+  \parbox[b]{3em}{%
+    \raggedleft
+    \includegraphics[height=2.2ex,keepaspectratio]{figures/logo/Logo_EPUFRJ_2020.png}\\[0.15em]
+    \includegraphics[height=2.2ex,keepaspectratio]{figures/logo/eletrica.png}%
+  }%
   \hspace{1em}%
   \end{beamercolorbox}%
 }
