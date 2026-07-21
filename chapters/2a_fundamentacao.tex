@@ -38,7 +38,7 @@
       & $Y = f(X) + \varepsilon$ — aprender função que mapeia entradas em saídas minimizando o erro \\
       \midrule
       \textbf{Métricas}
-      & RMSE (raiz do erro quadrático médio), MAE, MAPE, R² \\
+      & RMSE (raiz do erro quadrático médio), MAE, R² \\
       \midrule
       \textbf{Correlação}
       & \textbf{Pearson} ($r$): mede relação \textit{linear} entre duas variáveis (sensível a outliers). \textbf{Spearman} ($\rho$): mede relação \textit{monotônica} por postos (robusto a outliers). Ambos variam de $-1$ a $+1$ \\
@@ -63,7 +63,7 @@
 %========================================================================
 \begin{slide}{Famílias de Modelos II — Neurais e Híbridos}
   \centering
-  \includegraphics[width=0.85\textwidth]{tcc_images/chap02a/redes_neurais.png}
+  \includegraphics[width=0.65\textwidth]{tcc_images/chap02a/redes_neurais.png}
   \vfill
   \includegraphics[width=0.85\textwidth]{tcc_images/chap02a/hibridos.png}
   \note{MLP: camadas densas com ativação não linear. Híbridos: incorporam predições do modelo 0D como entrada ou regularização. PhyResidual aprende correção residual; PhyHybrid estende a entrada; PhyLoss regulariza a perda; PhyInput usa predições como features extras. [~1 min]}
