@@ -5,7 +5,7 @@
   \begin{columns}
     \begin{column}{0.94\linewidth}
     \begin{Item}[0.12]
-    \item[\textbf{T$_{alim,out}$}:] \textbf{Baseline Alim (Stage 1)} com RMSE 0,215 (R$^2$ 0,981). A MLP pura superou as arquiteturas híbridas, pois o baixo desempenho do modelo 0D (R$^2$ $-$0,404) limitou o benefício da infusão física.
+    \item[\textbf{T$_{alim,out}$}:] \textbf{Baseline Alim (Stage 1)} com RMSE 0,215 (R$^2$ 0,981). A MLP pura superou as arquiteturas híbridas, pois o modelo 0D apresenta viés sistemático nessa variável — mesmo com correlação alta (r=0,972), o offset limita o benefício da infusão física. As arquiteturas residuais atuam como corretoras desse viés, aprendendo a função de correção a partir dos dados experimentais.
     \item[\textbf{T$_{ref,out}$}:] \textbf{Ridge (Stage 0)} com RMSE 0,219 — modelo linear superou MLP e híbridos. Natureza linear confirmada pela análise exploratória e pela consistência entre CV e teste (Dif $-$10,2\%).
     \item[\textbf{Flux}:] Principal demonstração mensurável da vantagem da hibridização. \textbf{PhyResidual (Alim)} reduziu o RMSE em 72\% frente ao modelo 0D (0,206$\to$0,057). Selecionado por generalização mais estável (Dif CV$\to$Test $-$5,0\% vs $-$25,0\% da rede otimizada para o fluxo). O R$^2$ passou de 0,951 (Stage 0) para 0,977, confirmando que o modelo residual não apenas ajustou melhor os dados como preservou a capacidade de generalização.
     \item[\textbf{Resumo:}] O modelo ajustado a partir das variáveis de entrada foi capaz de explicar até 98\% da variabilidade observada nos dados (T$_{alim,out}$ R² 0,981; T$_{ref,out}$ R² 0,995; Flux R² 0,972).
@@ -22,7 +22,7 @@
     \begin{column}{0.94\linewidth}
     \begin{Item}[0.12]
     \item A combinação do modelo físico 0D com redes neurais aproxima o cenário ideal de modelagem híbrida: unir conhecimento fenomenológico aos dados experimentais.
-    \item A rede neural aprende correções sistemáticas que o modelo físico simplificado não captura, enquanto o modelo físico representa os acoplamentos fenomenológicos de forma interpretável.
+    \item A rede neural aprende correções sistemáticas (como o viés de +1,58°C do modelo 0D em T$_{alim,out}$) que o modelo físico simplificado não captura, enquanto o modelo físico representa os acoplamentos fenomenológicos de forma interpretável. Esse papel de \textbf{corretor de viés} é a principal contribuição mensurável da arquitetura residual.
     \item O modelo residual PhyResidual elevou o R$^2$ do fluxo de 0,951 (Stage 0) para 0,977, mantendo a menor diferença CV$\to$Test ($-$5,0\%) entre todos os modelos neurais — contra $-$18,5\% da MLP pura. Isso indica que a arquitetura residual não apenas ajustou melhor os dados como preservou a capacidade de generalização.
     \item Estudos adicionais com novos pontos experimentais fora do regime de treinamento são necessários para avaliar se a arquitetura híbrida auxilia na capacidade de predição de amostras não contempladas no conjunto original.
     \end{Item}

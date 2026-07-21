@@ -1,6 +1,7 @@
 \section{Resultados}
 
 \begin{slide}{Análise Exploratória}
+  \footnotesize
   \begin{columns}
     \begin{column}{.35\linewidth}
       \begin{Item}[0.15]
@@ -18,16 +19,9 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{Modelo Físico 0D}
+\begin{slide}{Modelo Físico 0D — Referência}
   \centering
-  \begin{tabular}{lccc}
-    \toprule
-    \textbf{Métrica} & \textbf{Fluxo} & \textbf{T$_{alim,out}$} & \textbf{T$_{ref,out}$} \\
-    \midrule
-    RMSE modelo 0D & 0,206 & 1,549 & 0,851 \\
-    R$^2$ modelo 0D & 0,631 & -0,404 & 0,948 \\
-    \bottomrule
-  \end{tabular}
+  O modelo 0D serve como referência fenomenológica para as arquiteturas híbridas.
   \vfill
   \begin{columns}
     \begin{column}{.33\linewidth}
@@ -40,7 +34,9 @@
       \includegraphics[width=\linewidth]{tcc_images/chap06/ref_T_out_real_vs_0d.png}
     \end{column}
   \end{columns}
-  \note{O modelo 0D captura tendências mas com dispersão. RMSE fluxo = 0,206. [~40s]}
+  \vfill
+  {\scriptsize Predição do modelo 0D \textit{vs} experimental para cada variável de saída.}
+  \note{O modelo 0D é a referência física. As arquiteturas híbridas aprendem a corrigir sistematicamente suas predições a partir dos dados experimentais. [~30s]}
 \end{slide}
 %========================================================================
 
@@ -188,7 +184,7 @@
     \end{column}
     \begin{column}{0.90\linewidth}
     \begin{Item}[0.15]
-    \item[\textcolor{blue!70!black}{T$_{alim,out}$}:] A arquitetura híbrida (PhyResidual, Test RMSE 0,225) não apresentou melhoria em relação à vencedora MLP do Stage 1 (Baseline Alim, 0,215). Isso provavelmente decorre do baixo desempenho do modelo 0D para esta variável (RMSE 1,549, R$^2$ $-$0,404), limitando o benefício da infusão dos dados da simulação.
+    \item[\textcolor{blue!70!black}{T$_{alim,out}$}:] A arquitetura híbrida (PhyResidual, Test RMSE 0,225) não apresentou melhoria em relação à vencedora MLP do Stage 1 (Baseline Alim, 0,215). Isso provavelmente decorre do baixo desempenho do modelo 0D para esta variável, limitando o benefício da infusão dos dados da simulação física.
     \item[\textcolor{orange!70!black}{T$_{ref,out}$}:] Nem a MLP (Stage 1) nem as híbridas (Stage 2) conseguiram superar a regressão linear (Ridge, 0,219), indicando que a natureza desta variável se assemelha a de uma região linear — confirmando as análises iniciais da análise exploratória.
     \item[\textcolor{green!70!black}{Flux}:] Principal demonstração mensurável da vantagem da incorporação das informações das leis físicas na arquitetura híbrida. O modelo selecionado é o \textbf{PhyResidual (Alim)} (Test RMSE 0,057, Dif CV$\to$Test $-$5,0\%), por apresentar diferença CV$\to$Test muito menor que a rede otimizada para o fluxo ($-$25,0\%), indicando estimativas de generalização mais confiáveis. Adicionalmente, o R$^2$ passou de 0,951 (Stage 0) para 0,977, mostrando que a arquitetura residual não apenas melhorou o ajuste como preservou a capacidade de generalização.
     \end{Item}
@@ -200,26 +196,13 @@
 
 \begin{slide}{Predição vs Experimental — Modelos Selecionados}
   \centering
-  \begin{columns}
-    \begin{column}{.33\linewidth}
-      \centering
-      \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_PhyResidual_Alim_T_out.png}
-      \vspace{0.1cm}
-      {\scriptsize \textcolor{blue!70!black}{T$_{alim,out}$} — PhyResidual}
-    \end{column}
-    \begin{column}{.33\linewidth}
-      \centering
-      \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_PhyResidual_Ref_T_out.png}
-      \vspace{0.1cm}
-      {\scriptsize \textcolor{orange!70!black}{T$_{ref,out}$} — PhyResidual}
-    \end{column}
-    \begin{column}{.33\linewidth}
-      \centering
-      \includegraphics[width=\linewidth]{tcc_images/chap06/overlay_PhyResidual_Flux.png}
-      \vspace{0.1cm}
-      {\scriptsize \textcolor{green!70!black}{Flux} — PhyResidual}
-    \end{column}
-  \end{columns}
-  \note{O overlay mostra que o PhyResidual captura bem a variabilidade do fluxo no hold-out. [~1 min]}
+  \includegraphics[width=0.85\textwidth]{tcc_images/chap06/overlay_champions_panel_v2.png}
+  \vfill
+  {\scriptsize \textcolor{blue!70!black}{T$_{alim,out}$}: Baseline Alim (Stage 1) \;|\;
+   \textcolor{orange!70!black}{T$_{ref,out}$}: Ridge (Stage 0) \;|\;
+   \textcolor{green!70!black}{Flux}: PhyResidual (Stage 2)}
+  \\
+  {\scriptsize Quadrados cinza = modelo físico 0D}
+  \note{O overlay atualizado mostra os modelos selecionados para cada target: Baseline Alim para T\_alim, Ridge para T\_ref e PhyResidual para Flux. Os quadrados cinza representam o modelo 0D como referência. [~1 min]}
 \end{slide}
 %========================================================================

@@ -1,0 +1,242 @@
+\section{Material Suplementar}
+
+% --- Slides movidos da Metodologia ---
+
+\begin{slide}{Etapa 3: Critérios de Seleção e Métricas de Erro}
+  \small
+  \begin{columns}
+    \begin{column}{.5\linewidth}
+      \textbf{Critério hierárquico:}
+      \begin{Item}[0.15]
+        \item \textbf{Nível 1 — Dentro de cada família:} 1-SE + mínima complexidade para escolher hiperparâmetros
+        \item \textbf{Nível 2 — Entre famílias:} comparação direta pelo menor RMSE$_{Test}$ no fluxo
+      \end{Item}
+      \textbf{Métricas de erro}
+      \begin{Item}[0.15]
+        \item \textbf{Erro de generalização:} média do RMSE entre os 3 folds do GroupKFold — guia a busca de hiperparâmetros e seleção dentro de cada família
+        \item \textbf{Erro de teste (hold-out):} RMSE calculado no hold-out de 35 amostras — métrica final para comparar modelos selecionados
+      \end{Item}
+    \end{column}
+    \begin{column}{.5\linewidth}
+      \textbf{Seleção por target:}
+      \begin{Item}[0.15]
+        \item Cada variável de saída (Flux, T$_{alim,out}$, T$_{ref,out}$) pode ter um modelo diferente
+        \item A busca de hiperparâmetros é otimizada separadamente para cada alvo
+        \item Ao final, cada target tem seu próprio modelo selecionado pelo critério 1-SE
+      \end{Item}
+      \vspace{0.3cm}
+      \textbf{Hold-out:}
+      \begin{Item}[0.15]
+        \item 20\% dos dados (35 amostras) separado \textbf{antes} de qualquer modelagem
+        \item Contém amostras dos 3 regimes de salinidade
+        \item O RMSE no hold-out estima o desempenho em condições operacionais representativas
+      \end{Item}
+    \end{column}
+  \end{columns}
+\end{slide}
+\begin{slide}{Etapa 4: Análise Exploratória}
+  \small
+  \begin{Item}
+    \item Objetivo: identificar padrões, tendências e relações entre variáveis antes da modelagem
+    \item Visualização por gráficos de dispersão entre entradas e saídas
+    \item Análise de correlação para quantificar associações entre variáveis
+    \item Identificação de variáveis com maior influência sobre cada saída
+  \end{Item}
+\end{slide}
+\begin{slide}{Etapa 5: Modelo Físico Reduzido 0D}
+  \small
+  \begin{Item}[0.15]
+    \item \textbf{Referência física}: modelo fenomenológico do módulo V-AGMD baseado em balanços de massa e energia — serve como baseline para comparar o ganho dos modelos orientados por dados
+    \item \textbf{Fonte de informação para híbridos}: as predições do modelo 0D são incorporadas às arquiteturas híbridas (PhyInput, PhyResidual, PhyHybrid, PhyLoss) como entrada auxiliar ou termo de regularização
+    \item \textbf{Implementação}: código em C executado via script Python para cada condição experimental, gerando três colunas preditas (\texttt{phy}) na base de dados
+  \end{Item}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Etapa 6: Stage 0 — Modelos Clássicos}
+  \footnotesize
+  \centering
+  Comparação entre estratégias \textbf{lineares} e \textbf{não lineares} para avaliar a complexidade necessária ao problema:
+
+  \vspace{0.5em}
+  \begin{tabular}{p{0.22\linewidth} p{0.38\linewidth} p{0.30\linewidth}}
+    \toprule
+    \textbf{Estratégia} & \textbf{Modelos} & \textbf{O que foi ajustado} \\
+    \midrule
+    \rowcolor{green!10}
+    Lineares & OLS, Ridge, Lasso, ElasticNet & $\alpha$ (regularização) e $l_1$-ratio \\
+    \midrule
+    \rowcolor{orange!10}
+    Não lineares & DecisionTree, RandomForest, GradientBoosting & Profundidade, folhas, \textit{learning\_rate} \\
+    \bottomrule
+  \end{tabular}
+  \vfill
+  \begin{columns}
+    \begin{column}{.5\linewidth}
+      \textbf{Busca:} GridSearch com GroupKFold (3 folds)
+    \end{column}
+    \begin{column}{.5\linewidth}
+      \textbf{Seleção:} 1-SE + menor complexidade dentro da família
+    \end{column}
+  \end{columns}
+\end{slide}
+\begin{slide}{Etapa 7: Stage 1 — Baseline Keras}
+  \footnotesize
+  \centering
+  \begin{tabular}{p{0.22\linewidth} p{0.38\linewidth} p{0.30\linewidth}}
+    \toprule
+    \textbf{Modelo} & \textbf{Arquitetura} & \textbf{Busca} \\
+    \midrule
+    MLP sklearn & (32,), (64,), (64,32), (128,64) & GridSearch: L2, learning\_rate \\
+    KerasMLP baseline & (256,) a (256,128,64), ReLU/Adam & Random: L2, lr, arquitetura \\
+    \bottomrule
+  \end{tabular}
+  \vfill
+  \begin{Item}
+    \item 3 baselines independentes (Alim, Ref, Flux) — cada uma priorizando um alvo
+    \item Huber como função de perda (menos sensível a outliers)
+    \item EarlyStopping com paciência de 30 épocas
+  \end{Item}
+\end{slide}
+\begin{slide}{Etapa 8: Stage 2 — Modelos Híbridos}
+  \small
+  \centering
+  \resizebox{\textwidth}{!}{
+    \begin{tabular}{p{0.2\linewidth} p{0.3\linewidth} p{0.2\linewidth} p{0.2\linewidth}}
+      \toprule
+      \textbf{Arquitetura} & \textbf{Como integra física + dados} & \textbf{Pontos fortes} & \textbf{Limitações} \\
+      \midrule
+      \textbf{PhyInput}
+      & Entrada expandida: $[X, Y_{phy}]$ & Simples & Pode ignorar física \\
+      \midrule
+      \textbf{PhyResidual}
+      & $Y_{hat} = Y_{phy} + \Delta$ & Melhor RMSE fluxo & T$_{out}$ inferior \\
+      \midrule
+      \textbf{PhyHybrid}
+      & PhyInput + Residual combinados & Mais flexível & Maior complexidade \\
+      \midrule
+      \textbf{PhyLoss}
+      & Regularização física na perda & Consistência & Menor ganho prático \\
+      \bottomrule
+    \end{tabular}
+  }
+  \vfill
+  \textbf{Busca restrita:} apenas L2, mantendo a baseline fixa — para isolar o efeito da física
+\end{slide}
+\begin{slide}{Etapa 9: Comparação entre Modelos Selecionados}
+  \small
+  \begin{columns}
+    \begin{column}{.5\linewidth}
+      \textbf{Objetivo:}
+      \begin{Item}[0.15]
+        \item Comparar o desempenho dos modelos selecionados em cada etapa
+        \item Confrontar os resultados com o modelo físico 0D (referência fenomenológica)
+        \item Verificar se a incorporação de técnicas de ML trouxe ganhos em relação ao modelo 0D isolado
+      \end{Item}
+      \vspace{0.3cm}
+      \textbf{O que é comparado:}
+      \begin{Item}[0.15]
+        \item Modelos clássicos (OLS, árvores) \textit{vs} redes neurais (MLP)
+        \item Redes neurais puras \textit{vs} arquiteturas híbridas (PhyInput, PhyResidual, PhyHybrid, PhyLoss)
+        \item Modelos selecionados \textit{vs} modelo físico 0D
+      \end{Item}
+    \end{column}
+    \begin{column}{.5\linewidth}
+      \textbf{Métricas de comparação:}
+      \begin{Item}[0.15]
+        \item RMSE e R² calculados no hold-out para cada variável de saída
+        \item Erro de generalização (média do RMSE dos 3 folds do GroupKFold)
+      \end{Item}
+    \end{column}
+  \end{columns}
+\end{slide}
+%========================================================================
+
+% --- Slides do Apêndice A do TCC: Discretização e Seleção de Features ---
+
+\begin{slide}{Resultados — Seleção de Preditores (Best Subset)}
+  \centering
+  \scriptsize
+  Busca exaustiva das $2^5$ combinações de variáveis de entrada com regressão linear e GroupKFold.
+  \vfill
+  \centering
+  \begin{tabular}{c c c c c c c}
+    \toprule
+    $k$ & Subconjunto & RMSE$_{Flux}$ & RMSE$_{Alim}$ & RMSE$_{Ref}$ & R$^2_{Flux}$ & R$^2_{Alim}$ \\
+    \midrule
+    3 & Ref\_T\_in, Alim\_T\_in, C\_NaCl & 0,222 & 0,625 & 0,604 & 0,744 & 0,817 \\
+    4 & + Ref\_V\_in & 0,142 & 0,389 & 0,398 & 0,887 & 0,909 \\
+    5 & + P\_vacuum (todos) & \textbf{0,082} & \textbf{0,227} & \textbf{0,242} & \textbf{0,953} & \textbf{0,960} \\
+    \bottomrule
+  \end{tabular}
+  \vfill
+  {\footnotesize Conclusão: as 5 variáveis físicas originais já eram o conjunto ótimo. Fonte: Apêndice A do TCC.}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Resultados — Discretização (Binning)}
+  \centering
+  \scriptsize
+  Avaliação de 32 configurações de discretização (Gaussian Mixture) para cada variável de entrada.
+  \vfill
+  \centering
+  \begin{tabular}{lcccc}
+    \toprule
+    \textbf{Alvo} & \textbf{Rank} & \textbf{Configuração} & \textbf{RMSE} & \textbf{R$^2$} \\
+    \midrule
+    Flux & 1 & Baseline (contínuo) & 0,0821 & 0,914 \\
+    Flux & 2 & Ref\_T\_in discretizada & 0,0822 & 0,914 \\
+    \midrule
+    Alim\_T\_out & 1 & Alim\_T\_in discretizada & 0,452 & 0,966 \\
+    Alim\_T\_out & 2 & Baseline (contínuo) & 0,514 & 0,955 \\
+    \midrule
+    Ref\_T\_out & 1 & Ref\_V\_in, C\_NaCl discretizados & 0,142 & 0,996 \\
+    Ref\_T\_out & 3 & Baseline (contínuo) & 0,148 & 0,996 \\
+    \bottomrule
+  \end{tabular}
+  \vfill
+  {\footnotesize Nenhuma configuração discretizada melhorou consistentemente os 3 alvos simultaneamente. Dados mantidos contínuos. Fonte: Apêndice A do TCC.}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Resultados — Data Augmentation}
+  \centering
+  \scriptsize
+  Comparação entre modelos treinados apenas com dados experimentais reais e com dados reais + sintéticos.
+  \vfill
+  \centering
+  \begin{tabular}{llccc}
+    \toprule
+    \textbf{Alvo} & \textbf{Modelo} & \textbf{Treino} & \textbf{RMSE} & \textbf{R$^2$} \\
+    \midrule
+    Flux & Reg. Linear & Real & 0,077 & 0,965 \\
+    Flux & Reg. Linear & Real + Sintético & 0,077 & 0,965 \\
+    Flux & MLP & Real & 0,053 & 0,983 \\
+    Flux & MLP & Real + Sintético & 0,077 & 0,965 \\
+    \midrule
+    Alim\_T\_out & Reg. Linear & Real & 0,165 & 0,973 \\
+    Alim\_T\_out & MLP & Real & 0,106 & 0,989 \\
+    Alim\_T\_out & MLP & Real + Sintético & 0,287 & 0,918 \\
+    \midrule
+    Ref\_T\_out & Reg. Linear & Real & 0,170 & 0,998 \\
+    Ref\_T\_out & MLP & Real + Sintético & 0,262 & 0,995 \\
+    \bottomrule
+  \end{tabular}
+  \vfill
+  {\footnotesize Dados sintéticos não trouxeram melhoria consistente; em alguns casos degradaram o desempenho. Fonte: Apêndice A do TCC.}
+\end{slide}
+%========================================================================
+
+% --- Análise do modelo 0D ---
+
+\begin{slide}{Diagnóstico do Modelo Físico 0D}
+  \centering
+  \includegraphics[width=0.9\textwidth]{tcc_images/chap07/modelo_0d_bias_correction.png}
+  \note{O modelo 0D tem correlação alta (r=0,972) mas viés sistemático de +1,58°C em T\_alim\_out. Arquiteturas híbridas PhyResidual aprendem a corrigir esse viés a partir dos dados experimentais. [~1 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Diagnóstico do Modelo 0D — Série Temporal}
+  \centering
+  \includegraphics[width=0.9\textwidth]{tcc_images/chap07/modelo_0d_analise.png}
+\end{slide}

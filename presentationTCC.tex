@@ -186,11 +186,39 @@
 \end{frame}
 \endgroup
 %% -------------------------------------------------
-% Apêndice
+% Apêndice — Material Suplementar
 %% -------------------------------------------------
-%     \input{generalFormat/HeadAndFootAppendix}
-%     \appendix 
-%     \input{chapters/apendice1}
-% %----------------------------------------------
+\begingroup
+\usebackgroundtemplate
+{
+    \tikz\node[opacity=1]{};
+}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{}
+\begin{frame}{}
+    \begin{center}
+        \vspace{2cm}
+        \textbf{\LARGE Material Suplementar}
+    \end{center}
+\end{frame}
+\endgroup
+
+\appendix
+
+\begin{slide}{Conteúdo do Material Suplementar}
+  \large
+  \begin{Item}
+    \item Etapas detalhadas da metodologia (Etapas 3 a 9)
+    \item Resultados completos de seleção de preditores (Best Subset)
+    \item Resultados de discretização (Binning)
+    \item Resultados de Data Augmentation
+    \item Diagnóstico do modelo físico 0D
+  \end{Item}
+\end{slide}
+%========================================================================
+
+\include{chapters/6_material_suplementar}
+
+%----------------------------------------------
 \bibliography{references/bibFile}
-\end{document}\usepackage[T1]{fontenc}
+\end{document}

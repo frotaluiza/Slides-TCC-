@@ -3,20 +3,14 @@
 \begin{slide}{Princípios da Destilação por Membranas}
   \small
   \begin{columns}
-    \begin{column}{.6\linewidth}
+    \begin{column}{.58\linewidth}
       \begin{Item}
         \item Processo de separação térmico com membrana \textbf{hidrofóbica} e microporosa
         \item Força motriz: \textbf{gradiente térmico} $\rightarrow$ diferença de pressão parcial de vapor
         \item Apenas a fase vapor atravessa os poros (membrana não-molhável)
         \item Mecanismo: evaporação na interface quente $\rightarrow$ difusão nos poros $\rightarrow$ condensação no lado frio
-      \end{Item}
-      \vfill
-      \textbf{Configurações básicas:}
-      \begin{Item}
-        \item \textbf{DCMD}: contato direto — simples, mas altas perdas condutivas
-        \item \textbf{AGMD}: lacuna de ar — reduz perdas, mas resistência extra ao vapor
-        \item \textbf{VMD}: vácuo no permeado — maior fluxo, mas condensação externa
-        \item \textbf{SGMD}: gás de arraste — controle adicional necessário
+        \item Configurações variam na forma de remover/condensar o vapor — DCMD, AGMD, VMD, SGMD
+        \item \textcolor{poliRed}{\textbf{V-AGMD}}: AGMD + vácuo parcial — isola termicamente (ar) e reduz resistência ao vapor (vácuo)
       \end{Item}
     \end{column}
     \begin{column}{.4\linewidth}
@@ -25,7 +19,7 @@
       {\tiny Figura: Transporte de calor e massa na configuração AGMD. Fonte: Zheng (2017)}
     \end{column}
   \end{columns}
-  \note{A destilação por membranas é um processo térmico de separação. A água salgada é aquecida e circula por um lado de uma membrana hidrofóbica — ela não permite a passagem de líquido, mas o vapor consegue atravessar os poros. A força motriz é a diferença de temperatura: do lado quente a água evapora, o vapor migra pelos poros e condensa do lado frio, gerando água pura. Existem quatro configurações principais: DCMD, AGMD, VMD e SGMD. A V-AGMD, usada neste trabalho, combina o espaço de ar da AGMD com vácuo parcial, reduzindo a resistência ao transporte de vapor sem perder o isolamento térmico. [~2 min]}
+  \note{A destilação por membranas é um processo térmico onde a água salgada aquecida evapora na interface de uma membrana hidrofóbica, o vapor atravessa os poros e condensa do lado frio. Existem várias configurações — a V-AGMD combina o espaço de ar (isolamento) com vácuo (menos resistência ao vapor). [~1 min]}
 \end{slide}
 %========================================================================
 
@@ -53,45 +47,28 @@
       & Hold-out (80/20), KFold, GroupKFold — estratégias para particionar os dados e estimar desempenho \\
       \midrule
       \textbf{Pré-processamento}
-      & Z-score, Min-Max \\
-      \midrule
-      \textbf{Engenharia de Atributos}
-      & Seleção de atributos, Discretização (Binning) \\
+      & Z-score (padronização para média zero e variância unitária) \\
       \bottomrule
     \end{tabular}
-  \note{Um ponto importante é o pré-processamento. As variáveis de entrada do sistema V-AGMD têm unidades físicas e ordens de grandeza muito distintas — temperatura em °C, vazão em L/h, pressão de vácuo em mbar, concentração salina em g/L. Duas estratégias foram consideradas. O Z-score centraliza cada variável subtraindo sua média e dividindo pelo desvio padrão, resultando em média zero e desvio unitário, preservando informação sobre dispersão relativa. Já o Min-Max reescala os dados para o intervalo [0,1] usando os valores mínimo e máximo. O Z-score foi adotado por ser mais adequado para modelos regularizados como Ridge e Lasso, onde a penalização dos coeficientes é sensível à escala. [~1,5 min]}
+  \note{Um ponto importante é o pré-processamento. As variáveis de entrada do sistema V-AGMD têm unidades físicas e ordens de grandeza muito distintas — temperatura em °C, vazão em L/h, pressão de vácuo em mbar, concentração salina em g/L. O Z-score centraliza cada variável subtraindo sua média e dividindo pelo desvio padrão, preservando informação sobre dispersão relativa. Foi adotado por ser mais adequado para modelos regularizados como Ridge e Lasso. [~1 min]}
 \end{slide}
 
 %========================================================================
 
-\begin{slide}{Famílias de Modelos}
-  \small
+\begin{slide}{Famílias de Modelos I — Lineares e Árvores}
   \centering
-  \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.2\linewidth} p{0.32\linewidth} p{0.38\linewidth}}
-      \toprule
-      \textbf{Família} & \textbf{Modelos} & \textbf{Arquitetura} \\
-      \midrule
-      \textbf{Lineares}
-      & OLS, Ridge, Lasso, ElasticNet
-      & $\hat{y} = w^T x + b$ — coeficientes lineares. Ridge (L2), Lasso (L1), ElasticNet (L1+L2) penalizam magnitude \\
-      \midrule
-      \textbf{Árvores}
-      & DT, RF, Gradient Boosting
-      & Partições binárias recursivas do espaço de entrada. RF: ensemble com bootstrap. GB: construção sequencial corrigindo resíduos \\
-      \midrule
-      \textbf{Redes Neurais}
-      & MLP sklearn, KerasMLP
-      & Camadas densas empilhadas com ativação não linear (ReLU, tanh); ajuste por retropropagação \\
-      \midrule
-      \textbf{Híbridos}
-      & PhyResidual, PhyHybrid, PhyLoss, BaselineHibrido
-      & Rede neural que incorpora predições do modelo físico 0D: correção residual, entrada expandida ou penalização na perda \\
-      \bottomrule
-    \end{tabular}
-  }
-  \note{Quatro famílias: lineares (pesos multiplicam features), árvores (partições binárias), neurais (camadas densas com ativação não linear), híbridos (incorporam predições do modelo 0D na arquitetura). [~1,5 min]}
+  \includegraphics[width=0.85\textwidth]{tcc_images/chap02a/lineares_arvores.png}
+  \note{Lineares: pesos multiplicam as features, Ridge/Lasso penalizam a magnitude. Árvores: partições binárias, RF ensemble, GB corrige resíduos. [~45s]}
 \end{slide}
+%========================================================================
+\begin{slide}{Famílias de Modelos II — Neurais e Híbridos}
+  \centering
+  \includegraphics[width=0.85\textwidth]{tcc_images/chap02a/redes_neurais.png}
+  \vfill
+  \includegraphics[width=0.85\textwidth]{tcc_images/chap02a/hibridos.png}
+  \note{MLP: camadas densas com ativação não linear. Híbridos: incorporam predições do modelo 0D como entrada ou regularização. PhyResidual aprende correção residual; PhyHybrid estende a entrada; PhyLoss regulariza a perda; PhyInput usa predições como features extras. [~1 min]}
+\end{slide}
+%========================================================================
 %========================================================================
 
 
