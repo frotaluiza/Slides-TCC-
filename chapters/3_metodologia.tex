@@ -104,17 +104,6 @@
 \begin{slide}{Fluxo de Validação Cruzada e Seleção Parcimoniosa}
   \centering
   \includegraphics[width=0.45\linewidth]{tcc_images/chap04/criterio_selecao_esquema.png}
-  \vfill
-  \begin{minipage}{0.85\linewidth}
-  \small
-  \begin{enumerate}
-    \item \textbf{Validação Cruzada} $\rightarrow$ RMSE$_{CV}$ médio com erro padrão (desvio padrão dos 3 folds)
-    \item \textbf{Regra do 1-SE}: considerar todos os modelos com RMSE$_{CV}$ dentro de 1 erro padrão do melhor
-    \item \textbf{Seleção final}: dentre estes, escolher o modelo de \textbf{menor complexidade} (menor número de parâmetros)
-  \end{enumerate}
-  \vspace{0.1cm}
-  {\footnotesize A lógica: se a diferença entre dois modelos é menor que a própria variabilidade da avaliação (erro padrão do CV), não é possível afirmar que um é realmente melhor — portanto, fica-se com o mais simples (Navilha de Occam).}
-  \end{minipage}
-  \note{O fluxo completo: GroupKFold por regimes → RMSE$_{CV}$ médio com erro padrão → regra 1-SE → seleção do modelo mais simples dentro de 1 erro padrão do melhor. [~1 min]}
+  \note{O fluxo completo: GroupKFold por regimes $\rightarrow$ RMSE$_{CV}$ médio com erro padrão $\rightarrow$ regra 1-SE $\rightarrow$ seleção do modelo mais simples dentro de 1 erro padrão do melhor. [~1 min]}
 \end{slide}
 
