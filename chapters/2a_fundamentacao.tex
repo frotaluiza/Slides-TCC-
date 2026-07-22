@@ -67,22 +67,63 @@
 
 %========================================================================
 
-\begin{slide}{Famílias de Modelos I — Lineares e Árvores}
+\begin{slide}{Famílias de Modelos I — Regressão Linear e Regularizadas}
   \centering
-  \includegraphics[width=0.85\textwidth]{tcc_images/chap02a/lineares_arvores.png}
-  \note{Lineares: pesos multiplicam as features, Ridge/Lasso penalizam a magnitude. Árvores: partições binárias, RF ensemble, GB corrige resíduos. [~45s]}
+  \small
+  \begin{minipage}{0.85\linewidth}
+  \begin{Item}
+    \item[\textbf{OLS}:] Mínimos quadrados ordinários — minimiza a soma dos quadrados dos resíduos. Sem regularização.
+    \item[\textbf{Ridge}:] Regularização L2 — penaliza a magnitude dos coeficientes, encolhendo-os sem zerá-los.
+    \item[\textbf{Lasso}:] Regularização L1 — pode zerar coeficientes, funcionando como seleção automática de features.
+    \item[\textbf{ElasticNet}:] Combinação L1 + L2 — herda seleção (Lasso) e estabilidade (Ridge) simultaneamente.
+  \end{Item}
+  \end{minipage}
+  \note{Lineares: OLS sem regularização, Ridge penaliza L2, Lasso zera coeficientes, ElasticNet combina ambos. [~45s]}
 \end{slide}
 %========================================================================
-\begin{slide}{Famílias de Modelos II — Redes Neurais}
+\begin{slide}{Famílias de Modelos II — Árvores de Decisão}
   \centering
-  \includegraphics[width=0.40\textwidth]{tcc_images/chap02a/redes_neurais.png}
-  \note{MLP: camadas densas com ativação não linear. [~30s]}
+  \small
+  \begin{minipage}{0.85\linewidth}
+  \begin{Item}
+    \item[\textbf{Decision Tree (DT)}:] Partições binárias recursivas nos dados. Simples mas propenso a overfitting.
+    \item[\textbf{Random Forest (RF)}:] Ensemble de árvores treinadas em paralelo com bootstrap — reduz variância via bagging.
+    \item[\textbf{Gradient Boosting (GB)}:] Ensemble sequencial — cada nova árvore corrige os resíduos da combinação anterior.
+  \end{Item}
+  \end{minipage}
+  \note{Árvores: DT overfitta, RF reduz variância com bagging, GB corrige resíduos sequencialmente. [~45s]}
 \end{slide}
 %========================================================================
-\begin{slide}{Famílias de Modelos III — Arquiteturas Híbridas}
+\begin{slide}{Famílias de Modelos III — Redes Neurais (MLP)}
+  \centering
+  \includegraphics[width=0.55\textwidth]{tcc_images/chap02a/redes_neurais.png}
+  \vfill
+  \begin{minipage}{0.85\linewidth}
+  \small
+  \begin{Item}
+    \item Arquitetura \textbf{fully connected} com uma ou mais camadas ocultas e ativações não lineares (ReLU, tanh)
+    \item Ajuste por \textbf{retropropagação} (backpropagation) e gradiente descendente
+    \item Regularização via L2, Dropout e EarlyStopping
+  \end{Item}
+  \end{minipage}
+  \note{MLP: fully connected, backpropagation, ativação não linear. [~30s]}
+\end{slide}
+%========================================================================
+\begin{slide}{Famílias de Modelos IV — Arquiteturas Híbridas}
   \centering
   \includegraphics[width=0.75\textwidth]{tcc_images/chap02a/hibridos.png}
-  \note{Híbridos: incorporam predições do modelo 0D como entrada ou regularização. PhyResidual aprende correção residual; PhyHybrid estende a entrada; PhyLoss regulariza a perda; PhyInput usa predições como features extras. [~45s]}
+  \vfill
+  \begin{minipage}{0.85\linewidth}
+  \small
+  Incorporam predições do modelo físico 0D na arquitetura da rede:
+  \begin{Item}
+    \item[\textbf{PhyResidual}:] $Y_{pred} = Y_{phy} + \Delta$ — aprende correção residual ao modelo 0D
+    \item[\textbf{PhyHybrid}:] Concatena features originais + $Y_{phy}$ + residual aprendido
+    \item[\textbf{PhyLoss}:] Regularização física na função de perda (termo adicional que penaliza desvios da física)
+    \item[\textbf{PhyInput}:] $Y_{phy}$ como feature extra de entrada (abordagem mais simples)
+  \end{Item}
+  \end{minipage}
+  \note{Híbridos: usam predições do modelo 0D. PhyResidual corrige residual; PhyHybrid combina; PhyLoss regulariza perda; PhyInput estende entrada. [~45s]}
 \end{slide}
 %========================================================================
 
