@@ -182,12 +182,11 @@
 
 ---
 
-## 18. Esquema de Validação Cruzada
+## 18. Fluxo de Validação Cruzada e Seleção Parcimoniosa
 
 | Fala | Ações do Chat |
 |------|---------------|
-| O esquema geral: para cada **Fold**, você treina em **2 regimes** e testa no **terceiro**. São **3 combinações** possíveis, gerando **3 valores de RMSE**. A **média desses 3 RMSEs** com seu **erro associado** (desvio padrão) é o que define a decisão sobre os hiperparâmetros. | ✅ **Novo slide de critério de seleção adicionado** com imagem/diagrama explicando o fluxo completo: Validação Cruzada → RMSE CV médio com erro padrão → Critério 1-SE → Seleção do modelo mais simples dentro de 1 erro padrão do melhor. |
-| A partir dessa métrica média com seu erro associado, aplica-se o **critério 1-SE**: se vários modelos têm RMSE dentro de 1 erro padrão do melhor, escolhe-se o **mais simples**. | — |
+| O fluxo completo adotado: **GroupKFold** separa os folds por regime operacional → **RMSE$_{CV}$** médio com erro padrão → **regra do 1-SE** considera todos os modelos dentro de 1 erro padrão do melhor → **seleção final** pelo modelo de menor complexidade. | ✅ Slide único com diagrama unificado (validação + 1-SE + seleção). Antiigo slide "Esquema Geral da Validação Cruzada" **removido** — a imagem `valida_completo.png` (renomeada para `criterio_selecao_esquema.png`) cobre todo o fluxo. |
 
 ---
 

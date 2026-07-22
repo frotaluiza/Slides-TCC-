@@ -78,15 +78,6 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{Esquema Geral da Validação Cruzada Adotada}
-  \centering
-  \includegraphics[width=0.6\linewidth]{tcc_images/chap04/validacao_esquema.png}
-  \vfill
-  {\small Fonte: Adaptado de \cite{Villumsen2026}.}
-  \note{O esquema mostra o fluxo completo da validação cruzada adotada: partição dos dados em 3 grupos por regime, treinamento em 2 regimes e validação no terceiro, repetindo até todos serem avaliados. [~1 min]}
-\end{slide}
-%========================================================================
-
 \begin{slide}{Busca de Hiperparâmetros}
   \centering
   \small
@@ -110,7 +101,7 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{Critério de Seleção: 1-SE}
+\begin{slide}{Fluxo de Validação Cruzada e Seleção Parcimoniosa}
   \centering
   \includegraphics[width=0.7\linewidth]{tcc_images/chap04/criterio_selecao_esquema.png}
   \vfill
@@ -124,6 +115,6 @@
   \vspace{0.1cm}
   {\footnotesize A lógica: se a diferença entre dois modelos é menor que a própria variabilidade da avaliação (erro padrão do CV), não é possível afirmar que um é realmente melhor — portanto, fica-se com o mais simples (Navilha de Occam).}
   \end{minipage}
-  \note{O critério 1-SE: CV → RMSE médio com erro padrão → escolher o modelo mais simples dentro de 1 erro padrão do melhor. [~1 min]}
+  \note{O fluxo completo: GroupKFold por regimes → RMSE$_{CV}$ médio com erro padrão → regra 1-SE → seleção do modelo mais simples dentro de 1 erro padrão do melhor. [~1 min]}
 \end{slide}
 
