@@ -87,6 +87,29 @@
 \end{slide}
 %========================================================================
 
+\begin{slide}{Busca de Hiperparâmetros}
+  \centering
+  \small
+  \begin{tabular}{lcp{5.5cm}}
+    \rowcolor{poliBlue!20}
+    \textbf{Família} & \textbf{Hiperparâmetros} & \textbf{Varredura} \\
+    \midrule
+    \rowcolor{gray!10}
+    Lineares (Ridge, Lasso, ElasticNet) & $\alpha$ (regularização) & Grid: [0,001; 0,01; 0,1; 1; 10] \\
+    \rowcolor{white}
+    Árvores (DT, RF, GB) & profundidade, n estimadores, learning rate & 3--4 valores cada \\
+    \rowcolor{gray!10}
+    Redes Neurais (MLP/Keras) & camadas, neurônios, LR, L2, ativação & 54 combinações (9 arquiteturas $\times$ 2 LR $\times$ 3 L2) \\
+    \rowcolor{white}
+    Híbridos & L2 apenas (arquitetura congelada da baseline) & 3 valores de L2 \\
+    \bottomrule
+  \end{tabular}
+  \vfill
+  {\footnotesize Para cada família e cada \textbf{target} (T$_{alim,out}$, T$_{ref,out}$, Fluxo), uma busca independente foi realizada via GridSearch com GroupKFold (3 folds). Os híbridos tiveram busca restrita para isolar o efeito da incorporação da física.}
+  \note{A busca de hiperparâmetros foi organizada por família e por target. Para cada target, uma busca independente com GroupKFold. Híbridos: busca restrita (só L2) para isolar o efeito da física. [~1,5 min]}
+\end{slide}
+%========================================================================
+
 \begin{slide}{Critério de Seleção: 1-SE}
   \centering
   \includegraphics[width=0.7\linewidth]{tcc_images/chap04/criterio_selecao_esquema.png}
