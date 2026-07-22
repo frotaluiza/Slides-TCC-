@@ -11,6 +11,7 @@
         \item Mecanismo: evaporação na interface quente $\rightarrow$ difusão nos poros $\rightarrow$ condensação no lado frio
         \item Configurações variam na forma de remover/condensar o vapor — DCMD, AGMD, VMD, SGMD
         \item \textcolor{poliRed}{\textbf{V-AGMD}}: AGMD + vácuo parcial — isola termicamente (ar) e reduz resistência ao vapor (vácuo)
+        \item \textbf{Vantagens}: opera em temperaturas médias (60-80\,°C), compatível com calor residual e projetos de cogeração — ideal para integração com fontes renováveis
       \end{Item}
     \end{column}
     \begin{column}{.4\linewidth}
@@ -25,32 +26,43 @@
 
 \begin{slide}{Fundamentos de Aprendizado de Máquinas}
   \footnotesize
+  \vspace{-0.15cm}
   \textbf{Aprendizado de Máquina:} ramo da IA voltado ao desenvolvimento de modelos que aprendem a partir de dados, identificando padrões e relações para realizar previsões (\cite{Ghahramani2015}). Diferentemente de modelos físicos, aprendem relações entrada-saída diretamente dos dados, ajustando parâmetros para minimizar uma função de erro (\cite{Rai2020}).
 
   \vfill
   \centering
   \scriptsize
-  \begin{tabular}{p{0.18\linewidth} p{0.72\linewidth}}
+  \begin{tabular}{p{0.17\linewidth} p{0.38\linewidth} p{0.38\linewidth}}
       \toprule
-      \textbf{Conceito} & \textbf{Definição} \\
+      \textbf{Conceito} & \textbf{Definição} & \textbf{Propósito na Regressão} \\
       \midrule
       \textbf{Regressão}
-      & $Y = f(X) + \varepsilon$ — aprender função que mapeia entradas em saídas minimizando o erro \\
+      & $Y = f(X) + \varepsilon$ — aprender função que mapeia entradas em saídas minimizando o erro
+      & Quantificar relação entre variáveis de entrada e saída contínua \\
       \midrule
       \textbf{Métricas}
-      & RMSE (raiz do erro quadrático médio), MAE, R² \\
+      & RMSE (raiz do erro quadrático médio), R²
+      & RMSE: magnitude do erro na mesma unidade; R²: proporção da variância explicada ($\le 0$ se viés alto)
+      \\
       \midrule
-      \textbf{Correlação}
-      & \textbf{Pearson} ($r$): mede relação \textit{linear} entre duas variáveis (sensível a outliers). \textbf{Spearman} ($\rho$): mede relação \textit{monotônica} por postos (robusto a outliers). Ambos variam de $-1$ a $+1$ \\
+      \textbf{Divisão dos dados}
+      & Hold-out (80/20): separar treino, validação e teste
+      & Evitar contaminação entre ajuste e avaliação \\
       \midrule
-      \textbf{Divisão e Validação Cruzada}
-      & Hold-out (80/20), KFold, GroupKFold — estratégias para particionar os dados e estimar desempenho \\
+      \textbf{Validação Cruzada}
+      & KFold, GroupKFold: repetir a divisão múltiplas vezes
+      & Estimar estabilidade do erro entre partições \\
       \midrule
       \textbf{Pré-processamento}
-      & Z-score (padronização para média zero e variância unitária) \\
+      & Z-score (padronização para média zero e variância unitária)
+      & Colocar variáveis em escala comparável, evitando que magnitudes distintas dominem o ajuste \\
+      \midrule
+      \textbf{Correlação}
+      & \textbf{Pearson} ($r$): relação \textit{linear}. \textbf{Spearman} ($\rho$): relação \textit{monotônica}. Ambos variam de $-1$ a $+1$
+      & Identificar relaciones lineares/não lineares entre features e targets \\
       \bottomrule
     \end{tabular}
-  \note{Um ponto importante é o pré-processamento. As variáveis de entrada do sistema V-AGMD têm unidades físicas e ordens de grandeza muito distintas — temperatura em °C, vazão em L/h, pressão de vácuo em mbar, concentração salina em g/L. O Z-score centraliza cada variável subtraindo sua média e dividindo pelo desvio padrão, preservando informação sobre dispersão relativa. Foi adotado por ser mais adequado para modelos regularizados como Ridge e Lasso. [~1 min]}
+  \note{Um ponto importante é o pré-processamento. As variáveis de entrada do sistema V-AGMD têm unidades físicas e ordens de grandeza muito distintas — temperatura em °C, vazão em L/h, pressão de vácuo em mbar, concentração salina em g/L. O Z-score centraliza cada variável subtraindo sua média e dividindo pelo desvio padrão. [~1,5 min]}
 \end{slide}
 
 %========================================================================

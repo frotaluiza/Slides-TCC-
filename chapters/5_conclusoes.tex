@@ -5,14 +5,13 @@
   \begin{columns}
     \begin{column}{0.94\linewidth}
     \begin{Item}[0.12]
-    \item[\textbf{T$_{alim,out}$}:] \textbf{Baseline Alim (Stage 1)} com RMSE 0,215 (R$^2$ 0,981). A MLP pura superou as arquiteturas híbridas, pois o modelo 0D apresenta viés sistemático nessa variável — mesmo com correlação alta (r=0,972), o offset limita o benefício da infusão física. As arquiteturas residuais atuam como corretoras desse viés, aprendendo a função de correção a partir dos dados experimentais.
-    \item[\textbf{T$_{ref,out}$}:] \textbf{Ridge (Stage 0)} com RMSE 0,219 — modelo linear superou MLP e híbridos. Natureza linear confirmada pela análise exploratória e pela consistência entre CV e teste (Dif $-$10,2\%).
-    \item[\textbf{Flux}:] Principal demonstração mensurável da vantagem da hibridização. \textbf{PhyResidual (Alim)} reduziu o RMSE em 72\% frente ao modelo 0D (0,206$\to$0,057). Selecionado por generalização mais estável (Dif CV$\to$Test $-$5,0\% vs $-$25,0\% da rede otimizada para o fluxo). O R$^2$ passou de 0,951 (Stage 0) para 0,977, confirmando que o modelo residual não apenas ajustou melhor os dados como preservou a capacidade de generalização.
+    \item[\textbf{Temperaturas:}] Tanto para T$_{alim,out}$ quanto para T$_{ref,out}$, as performances entre modelos foram muito parecidas. A \textbf{Baseline Alim} (Stage 1, RMSE 0,215) venceu para T$_{alim,out}$ e o \textbf{Ridge} (Stage 0, RMSE 0,219) para T$_{ref,out}$ — diferenças sutis, com uma levemente melhor para cada target. Isso confirma a natureza aproximadamente linear dessas variáveis, já indicada pela análise exploratória.
+    \item[\textbf{Flux}:] Principal demonstração mensurável da vantagem da hibridização. \textbf{PhyResidual (Alim)} reduziu o RMSE em 72\% frente ao modelo 0D (0,206$\to$0,057). O R$^2$ passou de 0,951 (Stage 0) para 0,977, confirmando que a arquitetura residual não apenas ajustou melhor os dados como preservou a capacidade de generalização.
     \item[\textbf{Resumo:}] O modelo ajustado a partir das variáveis de entrada foi capaz de explicar até 98\% da variabilidade observada nos dados (T$_{alim,out}$ R² 0,981; T$_{ref,out}$ R² 0,995; Flux R² 0,972).
     \end{Item}
     \end{column}
   \end{columns}
-  \note{Flux: principal demonstração da hibridização (72\% melhor que 0D). Talim: modelo 0D fraco limitou ganho. Tref: natureza linear confirmada. [~2 min]}
+  \note{Flux: principal demonstração da hibridização (72\% melhor que 0D). Temperaturas: desempenhos comparáveis entre modelos, natureza linear confirmada. [~2 min]}
 \end{slide}
 %========================================================================
 
@@ -21,37 +20,21 @@
   \begin{columns}
     \begin{column}{0.94\linewidth}
     \begin{Item}[0.12]
-    \item A combinação do modelo físico 0D com redes neurais aproxima o cenário ideal de modelagem híbrida: unir conhecimento fenomenológico aos dados experimentais.
-    \item A rede neural aprende correções sistemáticas (como o viés de +1,58°C do modelo 0D em T$_{alim,out}$) que o modelo físico simplificado não captura, enquanto o modelo físico representa os acoplamentos fenomenológicos de forma interpretável. Esse papel de \textbf{corretor de viés} é a principal contribuição mensurável da arquitetura residual.
-    \item O modelo residual PhyResidual elevou o R$^2$ do fluxo de 0,951 (Stage 0) para 0,977, mantendo a menor diferença CV$\to$Test ($-$5,0\%) entre todos os modelos neurais — contra $-$18,5\% da MLP pura. Isso indica que a arquitetura residual não apenas ajustou melhor os dados como preservou a capacidade de generalização.
-    \item Estudos adicionais com novos pontos experimentais fora do regime de treinamento são necessários para avaliar se a arquitetura híbrida auxilia na capacidade de predição de amostras não contempladas no conjunto original.
+    \item A combinação do modelo físico 0D com redes neurais aproxima o cenário ideal de modelagem híbrida: unir o conhecimento da física aos dados experimentais.
+    \item A rede neural aprende correções sistemáticas (como o viés de +1,58\,°C do modelo 0D em T$_{alim,out}$) que o modelo físico simplificado não captura, enquanto o modelo físico representa os acoplamentos físicos de forma interpretável. Esse papel de \textbf{corretor de viés} é a principal contribuição mensurável da arquitetura residual.
+    \item O modelo residual PhyResidual elevou o R$^2$ do fluxo de 0,951 (Stage 0) para 0,977, confirmando que a arquitetura residual não apenas ajustou melhor os dados como preservou a capacidade de generalização.
     \end{Item}
     \end{column}
   \end{columns}
-  \note{A hibridização aproxima o cenário ideal de unir física e dados. O modelo residual teve a generalização mais estável. [~1 min]}
+  \note{A hibridização aproxima o cenário ideal de unir física e dados. [~1 min]}
 \end{slide}
 %========================================================================
 
-\begin{slide}{Contribuições e Trabalhos Futuros}
-  \begin{columns}
-    \begin{column}{.5\linewidth}
-      \textbf{Contribuições:}
-      \begin{Item}
-        \item Identificação da ausência de validação cruzada sistemática na literatura de MD
-        \item 4 arquiteturas híbridas físico--dados implementadas e comparadas sob mesmo protocolo
-        \item Seleção por target: Baseline Alim para Talim, Ridge para Tref, PhyResidual para Flux
-      \end{Item}
-    \end{column}
-    \begin{column}{.5\linewidth}
-      \textbf{Trabalhos futuros:}
-      \begin{Item}
-        \item Substituir modelo 0D pelo modelo 2D (GITT) de \cite{Curcino2026} como referência física nas arquiteturas híbridas, aproveitando sua capacidade de capturar efeitos distribuídos
-        \item Construir PINNs a partir das EDOs do modelo GITT — tanto para substituir a coluna \texttt{phy} quanto como regularização na função de perda
-        \item Correção multiplicativa inspirada em \cite{Villumsen2026}: acoplar termo linear ao modelo 0D/GITT, preservando a estrutura física e testando extrapolação entre regimes
-        \item Novos dados experimentais em faixas operacionais ampliadas
-      \end{Item}
-    \end{column}
-  \end{columns}
-  \note{Contribuições: gap de validação cruzada sistemática na literatura de MD, 4 arquiteturas híbridas comparadas. Futuros: modelo 2D GITT como referência, PINNs a partir das EDOs. [~1,5 min]}
+\begin{slide}{Trabalhos Futuros}
+  \begin{Item}
+    \item Substituir modelo 0D pelo modelo 2D (GITT) de \cite{Curcino2026} como referência física nas arquiteturas híbridas, aproveitando sua capacidade de capturar efeitos distribuídos
+    \item Construir PINNs a partir das EDOs do modelo GITT — tanto como \textbf{surrogate} (apenas física, sem dados) para aceleramento de processamento, quanto no modo que incorpora dados experimentais na função de perda
+  \end{Item}
+  \note{Trabalhos futuros: modelo 2D GITT como referência física, PINNs a partir das EDOs — como surrogate e com dados. [~1 min]}
 \end{slide}
 %========================================================================

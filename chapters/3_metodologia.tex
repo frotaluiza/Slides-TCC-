@@ -1,6 +1,6 @@
 ﻿\section{Metodologia Proposta}
 
-\begin{slide}{Visão Geral do Pipeline}
+\begin{slide}{Visão Geral dos Procedimentos}
   \centering
   \resizebox{0.9\textwidth}{!}{%
   \begin{tikzpicture}[
@@ -14,7 +14,7 @@
     % Row 1
     \node[stage] (dados)      {Dados\\Experimentais};
     \node[stage, right=0.35cm of dados] (prep)  {Preparação\\dos Dados};
-    \node[detail, below=0.1cm of prep, font=\tiny, draw=black!40, thick, minimum width=1.8cm, minimum height=0.35cm] {2.1 Z-score/Min-Max\\2.2 Validação\\2.3 Features/Binning};
+    \node[detail, below=0.1cm of prep, font=\tiny, draw=black!40, thick, minimum width=1.8cm, minimum height=0.35cm] {2.1 Z-score\\2.2 Validação};
     \node[stage, right=0.35cm of prep] (eda)    {Análise\\Exploratória};
     \node[stage, right=0.35cm of eda] (sel) {Critérios\\de Seleção};
     \draw[arrow] (dados) -- (prep);
@@ -25,26 +25,23 @@
     % Row 2
     \node[stage, below=0.9cm of sel] (fisico) {Modelo\\Físico 0D};
     \node[stage, right=0.35cm of fisico] (s0)    {Stage 0\\Clássicos};
-    \node[stage, right=0.35cm of s0] (val) {Definindo\\Validação};
-    \node[stage, right=0.35cm of val] (s1)    {Stage 1\\Baseline Keras};
+    \node[stage, right=0.35cm of s0] (s1)    {Stage 1\\Redes Neurais};
     \node[stage, right=0.35cm of s1] (s2)    {Stage 2\\Híbridos};
     \draw[arrow] (fisico) -- (s0);
-    \draw[arrow] (s0) -- (val);
-    \draw[arrow] (val) -- (s1);
+    \draw[arrow] (s0) -- (s1);
     \draw[arrow] (s1) -- (s2);
-
     % Connection Row1 -> Row2
     \draw[darrow] (sel.south) -- ++(0,-0.1) -| (fisico.north);
 
     % Row 3
-    \node[stage, below=0.9cm of s2] (final) {Selecionado /\\0D / Redes};
+    \node[stage, below=0.9cm of s2] (final) {Selecionado\\vs 0D};
     \draw[arrow] (s2) -- (final);
 
     % Connection Row2 -> Row3
     \draw[darrow] (s2.south) -- (final.north);
   \end{tikzpicture}
   }
-  \note{Visão geral do pipeline em 9 etapas: dados, preparação, análise exploratória, modelo físico 0D, Stage 0, Stage 1, Stage 2, definição das técnicas de validação, seleção pelo critério 1-SE e comparação final. [~1,5 min]}
+  \note{Visão geral dos procedimentos: dados, preparação, análise exploratória, modelo físico 0D, Stage 0 (clássicos), Stage 1 (redes neurais), Stage 2 (híbridos), seleção pelo critério 1-SE e comparação final. [~1,5 min]}
 \end{slide}
 \begin{slide}{Etapa 1: Dados Experimentais}
   \small
@@ -72,18 +69,12 @@
     \textbf{Etapa} & \textbf{Decisão} & \textbf{Justificativa} \\ \hline
     \rowcolor{gray!10}
     2.1 — Escalonamento & Z-score &
-    Preserva a distribuição original dos dados; mede em desvios-padrão, evitando a compressão artificial causada pelo Min-Max em presença de valores extremos \\
+    Preserva a distribuição original dos dados; mede cada ponto em desvios-padrão, evitando compressão artificial na presença de valores extremos \\
     \rowcolor{white}
     2.2 — Validação & GroupKFold &
     Separa os folds por regime operacional, orientando a busca de hiperparâmetros para capacidade de \textbf{extrapolação} — diferente do KFold comum, que só avalia interpolação \\
-    \rowcolor{gray!10}
-    2.3 — \textit{Features} & Mantidos os 5 preditores &
-    Busca exaustiva (\textit{Best Subset}, $2^5$ combinações) confirmou que a seleção física inicial já era consistente — nenhuma redução melhorou o desempenho \\
-    \rowcolor{white}
-    2.3 — Discretização & Forma contínua &
-    Nenhuma das 32 configurações discretizadas (mistura Gaussiana) apresentou melhoria consistente para os 3 alvos simultaneamente \\
   \end{tabular}
-  \note{Slide de consolidação: resume as 4 decisões de preparação dos dados e suas justificativas. [~1,5 min]}
+  \note{Slide de consolidação: resume as decisões de preparação dos dados e suas justificativas. [~1 min]}
 \end{slide}
 %========================================================================
 
@@ -95,4 +86,21 @@
   \note{O esquema mostra o fluxo completo da validação cruzada adotada: partição dos dados em 3 grupos por regime, treinamento em 2 regimes e validação no terceiro, repetindo até todos serem avaliados. [~1 min]}
 \end{slide}
 %========================================================================
+
+\begin{slide}{Critério de Seleção: 1-SE}
+  \centering
+  \includegraphics[width=0.7\linewidth]{tcc_images/chap04/criterio_selecao_esquema.png}
+  \vfill
+  \begin{minipage}{0.85\linewidth}
+  \small
+  \begin{enumerate}
+    \item \textbf{Validação Cruzada} $\rightarrow$ RMSE$_{CV}$ médio com erro padrão (desvio padrão dos 3 folds)
+    \item \textbf{Regra do 1-SE}: considerar todos os modelos com RMSE$_{CV}$ dentro de 1 erro padrão do melhor
+    \item \textbf{Seleção final}: dentre estes, escolher o modelo de \textbf{menor complexidade} (menor número de parâmetros)
+  \end{enumerate}
+  \vspace{0.1cm}
+  {\footnotesize A lógica: se a diferença entre dois modelos é menor que a própria variabilidade da avaliação (erro padrão do CV), não é possível afirmar que um é realmente melhor — portanto, fica-se com o mais simples (Navilha de Occam).}
+  \end{minipage}
+  \note{O critério 1-SE: CV → RMSE médio com erro padrão → escolher o modelo mais simples dentro de 1 erro padrão do melhor. [~1 min]}
+\end{slide}
 
