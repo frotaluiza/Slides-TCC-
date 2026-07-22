@@ -49,7 +49,7 @@
     \cmidrule(lr){3-5} \cmidrule(lr){6-8}
     & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
     \midrule
-    OLS & --- & 0,196 & 0,240 & 0,081 & \cellcolor{blue!10}\textbf{0,231} & 0,227 & 0,077 \\
+    OLS & --- & \textbf{0,196} & \textbf{0,240} & \textbf{0,081} & \cellcolor{blue!10}\textbf{0,231} & 0,227 & 0,077 \\
     \midrule
     Ridge & Alim & 0,225 & 0,448 & 0,094 & 0,274 & 0,407 & 0,075 \\
     \midrule
@@ -91,11 +91,11 @@
     \midrule
     RF & Flux & 1,019 & 2,240 & 0,419 & 0,989 & 2,042 & 0,300 \\
     \midrule
-    GB & Alim & 0,614 & 0,484 & 0,358 & \cellcolor{blue!10}\textbf{0,406} & \cellcolor{orange!10}\textbf{0,309} & 0,193 \\
+    GB & Alim & \textbf{0,614} & 0,484 & 0,358 & \cellcolor{blue!10}\textbf{0,406} & \cellcolor{orange!10}\textbf{0,309} & 0,193 \\
     \midrule
     GB & Ref & 0,618 & 0,468 & 0,358 & 0,417 & 0,324 & 0,198 \\
     \midrule
-    GB & Flux & 0,632 & 0,465 & 0,344 & 0,429 & 0,286 & \cellcolor{green!10}\textbf{0,190} \\
+    GB & Flux & 0,632 & \textbf{0,465} & \textbf{0,344} & 0,429 & 0,286 & \cellcolor{green!10}\textbf{0,190} \\
     \bottomrule
   \end{tabular}
   \note{Stage 0: árvores — DT e RF overfitam nos regimes de treino (CV alto). GB generaliza melhor. [~1 min]}
@@ -111,9 +111,9 @@
     \cmidrule(lr){3-5} \cmidrule(lr){6-8}
     & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
     \midrule
-    (128,64), tanh, lr=0,001, l2=0,001 & Alim & 0,260 & 0,445 & 0,115 & 0,215 & \cellcolor{orange!10}\textbf{0,309} & 0,073 \\
+    (128,64), tanh, lr=0,001, l2=0,001 & Alim & 0,260 & \textbf{0,445} & 0,115 & 0,215 & \cellcolor{orange!10}\textbf{0,309} & 0,073 \\
     (128,64), tanh, lr=0,001, l2=0,001 & Ref & 0,267 & 0,459 & 0,116 & 0,227 & 0,318 & 0,073 \\
-    (128,64,32), relu, lr=0,003, l2=0,0 & Flux & 0,222 & 0,554 & 0,081 & \cellcolor{blue!10}\textbf{0,178} & 0,369 & \cellcolor{green!10}\textbf{0,066} \\
+    (128,64,32), relu, lr=0,003, l2=0,0 & Flux & \textbf{0,222} & 0,554 & \textbf{0,081} & \cellcolor{blue!10}\textbf{0,178} & 0,369 & \cellcolor{green!10}\textbf{0,066} \\
     \bottomrule
   \end{tabular}
   \note{Três baselines de redes neurais. A otimizada para Flux tem arquitetura maior (128,64,32) mas L2=0. [~1 min]}
@@ -129,11 +129,11 @@
     \cmidrule(lr){3-5} \cmidrule(lr){6-8}
     & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
     \midrule
-    \textbf{PhyResidual} & \textbf{Alim} & 0,275 & 0,301 & 0,060 & 0,225 & \cellcolor{orange!10}\textbf{0,222} & 0,057 \\
+    \textbf{PhyResidual} & \textbf{Alim} & 0,275 & \textbf{0,301} & \textbf{0,060} & 0,225 & \cellcolor{orange!10}\textbf{0,222} & 0,057 \\
     \rowcolor{orange!6}
     \textbf{PhyResidual} & \textbf{Ref} & 0,274 & 0,305 & 0,061 & 0,224 & 0,231 & 0,058 \\
     \rowcolor{green!6}
-    \textbf{PhyResidual} & \textbf{Flux} & 0,236 & 0,346 & 0,072 & \cellcolor{blue!10}\textbf{0,183} & 0,214 & \cellcolor{green!10}\textbf{0,054} \\
+    \textbf{PhyResidual} & \textbf{Flux} & \textbf{0,236} & 0,346 & 0,072 & \cellcolor{blue!10}\textbf{0,183} & 0,214 & \cellcolor{green!10}\textbf{0,054} \\
     PhyHybrid & Alim & 0,273 & 0,306 & 0,061 & 0,224 & 0,231 & 0,058 \\
     PhyHybrid & Ref & 0,275 & 0,302 & 0,061 & 0,225 & 0,230 & 0,058 \\
     PhyHybrid & Flux & 0,284 & 0,399 & 0,075 & 0,222 & 0,239 & 0,055 \\
@@ -153,17 +153,17 @@
     \toprule
     \textbf{Variável de saída} & \textbf{Estágio} & \textbf{Modelo} & \textbf{Test RMSE} & \textbf{CV RMSE} & \textbf{Test R$^2$} \\
     \midrule
-    \textbf{T$_{alim,out}$} & Stage 0 & OLS & 0,231 & 0,196 & 0,965 \\
+    \textbf{T$_{alim,out}$} & Stage 0 & OLS & 0,231 & \textbf{0,196} & 0,965 \\
     \textbf{T$_{alim,out}$} & Stage 1 & Baseline Alim & \textbf{0,215} & 0,260 & \textbf{0,981} \\
     \textbf{T$_{alim,out}$} & Stage 2 & PhyResidual (Alim) & 0,225 & 0,275 & \cellcolor{green!10}\textbf{0,981} \\
     \midrule
-    \textbf{T$_{ref,out}$} & Stage 0 & Ridge (Ref) & \textbf{0,219} & 0,195 & \textbf{0,996} \\
+    \textbf{T$_{ref,out}$} & Stage 0 & Ridge (Ref) & \textbf{0,219} & \textbf{0,195} & \textbf{0,996} \\
     \textbf{T$_{ref,out}$} & Stage 1 & Baseline Alim & 0,309 & 0,445 & 0,989 \\
     \textbf{T$_{ref,out}$} & Stage 2 & PhyHybrid (Alim) & 0,230 & 0,302 & 0,995 \\
     \midrule
     \textbf{Flux} & Stage 0 & Lasso\_Indep & 0,075 & 0,082 & 0,951 \\
     \textbf{Flux} & Stage 1 & Baseline Flux & 0,066 & 0,081 & 0,972 \\
-    \textbf{Flux} & Stage 2 & PhyResidual (Alim) & \textbf{0,057} & 0,060 & \textbf{0,977} \\
+    \textbf{Flux} & Stage 2 & PhyResidual (Alim) & \textbf{0,057} & \textbf{0,060} & \textbf{0,977} \\
     \midrule
     \rowcolor{gray!6}
     \textbf{Flux} & \multirow{3}{*}{\textbf{Modelo 0D}} & --- & 0,206 & --- & 0,631 \\
