@@ -150,8 +150,10 @@
 
 | Fala | Ações do Chat |
 |------|---------------|
-| **Quatro famílias** de modelos foram comparadas. **Modelos lineares** servem como referência — incluem OLS, Ridge, Lasso e ElasticNet. **Árvores de decisão** — Random Forest e Gradient Boosting — capturam relações não lineares. | — |
-| **Redes neurais** — MLP do sklearn e KerasMLP — têm alta flexibilidade. E os **híbridos** combinam física com dados: PhyInput, PhyResidual, PhyHybrid e PhyLoss. | — |
+| **Quatro famílias** de modelos foram comparadas. Vou explicar rapidamente cada uma, começando pelos **modelos lineares**. O **OLS** é a regressão linear clássica — minimiza a soma dos quadrados dos resíduos, sem nenhuma regularização. O **Ridge** adiciona penalização L2: encolhe os coeficientes sem zerá-los, útil quando há multicolinearidade. O **Lasso** usa penalização L1: pode zerar coeficientes, funcionando como seleção automática de features. E o **ElasticNet** combina L1 e L2 — herda a seleção do Lasso e a estabilidade do Ridge simultaneamente. | — |
+| **Segunda família: árvores de decisão.** A **Decision Tree** simples faz partições binárias recursivas nos dados. É intuitiva mas muito propensa a overfitting — se deixar crescer demais, decora os dados de treino. O **Random Forest** treina várias árvores em paralelo com bootstrap (bagging) — a média delas reduz a variância, evitando overfitting. E o **Gradient Boosting** treina árvores em sequência: cada nova árvore corrige os resíduos da combinação anterior, melhorando iterativamente. | — |
+| **Terceira família: redes neurais.** Trabalhamos com MLPs: redes fully connected com ativação não linear entre as camadas — ReLU ou tanh — que permitem aprender relações complexas. O ajuste é por backpropagation com gradiente descendente. Os hiperparâmetros que ajustamos foram: número de camadas ocultas e neurônios, função de ativação, taxa de aprendizado, regularização L2 e early stopping para evitar overfitting por convergência. | — |
+| **Quarta e última família: arquiteturas híbridas**, que incorporam o modelo físico 0D de quatro formas diferentes. O **PhyInput** simplesmente adiciona as predições do modelo 0D como features extras de entrada. O **PhyResidual** — que foi o grande vencedor para o Flux — aprende o resíduo: a saída é Y_físico + Δ, ou seja, a rede só precisa corrigir o desvio do modelo físico. O **PhyHybrid** combina as duas abordagens. E o **PhyLoss** usa a física como regularização na função de perda, penalizando desvios das leis físicas. | — |
 
 ---
 

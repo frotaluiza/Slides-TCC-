@@ -69,73 +69,33 @@
 
 \begin{slide}{Famílias de Modelos I — Regressão Linear e Regularizadas}
   \centering
-  \small
-  \begin{minipage}{0.85\linewidth}
-  \begin{Item}
-    \item[\textbf{OLS}:] Mínimos quadrados ordinários — minimiza a soma dos quadrados dos resíduos. Sem regularização.
-    \item[\textbf{Ridge}:] Regularização L2 — penaliza a magnitude dos coeficientes, encolhendo-os sem zerá-los.
-    \item[\textbf{Lasso}:] Regularização L1 — pode zerar coeficientes, funcionando como seleção automática de features.
-    \item[\textbf{ElasticNet}:] Combinação L1 + L2 — herda seleção (Lasso) e estabilidade (Ridge) simultaneamente.
-  \end{Item}
-  \end{minipage}
+  \includegraphics[width=0.85\textwidth]{tcc_images/chap02a/regressao.png}
+  \vfill
+  {\scriptsize Fonte: a autora}
   \note{Lineares: OLS sem regularização, Ridge penaliza L2, Lasso zera coeficientes, ElasticNet combina ambos. [~45s]}
 \end{slide}
 %========================================================================
 \begin{slide}{Famílias de Modelos II — Árvores de Decisão}
   \centering
-  \small
-  \begin{columns}[t]
-    \begin{column}{.45\linewidth}
-      \vspace{0pt}
-      \includegraphics[width=\linewidth]{tcc_images/chap02a/decision_tree.png}
-    \end{column}
-    \begin{column}{.5\linewidth}
-      \vspace{0pt}
-      \raggedright
-      \begin{Item}
-        \item[\textbf{Decision Tree (DT)}:] Partições binárias recursivas nos dados. Simples mas propenso a overfitting.
-        \item[\textbf{Random Forest (RF)}:] Ensemble de árvores treinadas em paralelo com bootstrap — reduz variância via bagging.
-        \item[\textbf{Gradient Boosting (GB)}:] Ensemble sequencial — cada nova árvore corrige os resíduos da combinação anterior.
-      \end{Item}
-    \end{column}
-  \end{columns}
+  \includegraphics[width=0.85\textwidth]{tcc_images/chap02a/arvores.png}
+  \vfill
+  {\scriptsize Fonte: a autora}
   \note{Árvores: DT overfitta, RF reduz variância com bagging, GB corrige resíduos sequencialmente. [~45s]}
 \end{slide}
 %========================================================================
 \begin{slide}{Famílias de Modelos III — Redes Neurais}
   \centering
-  \small
-  \begin{columns}[t]
-    \begin{column}{.45\linewidth}
-      \vspace{0pt}
-      \includegraphics[width=\linewidth]{tcc_images/chap02a/redes_neurais.png}
-    \end{column}
-    \begin{column}{.5\linewidth}
-      \vspace{0pt}
-      \raggedright
-      \textbf{Arquitetura:}
-      \begin{Item}
-        \item Camadas \textbf{fully connected}: cada neurônio de uma camada conecta-se a todos da seguinte
-        \item Ativação \textbf{não linear} (ReLU, tanh) entre camadas — permite aprender relações complexas
-        \item Ajuste por \textbf{retropropagação} (backpropagation) + gradiente descendente
-      \end{Item}
-      \vspace{0.2cm}
-      \textbf{Hiperparâmetros ajustáveis:}
-      \begin{Item}
-        \item Nº de camadas ocultas e neurônios por camada
-        \item Função de ativação (ReLU, tanh, sigmoid)
-        \item Taxa de aprendizado (\textit{learning rate})
-        \item Regularização L2 e \textit{Dropout}
-        \item \textit{Early Stopping} (parada por convergência)
-      \end{Item}
-    \end{column}
-  \end{columns}
+  \includegraphics[width=0.85\textwidth]{tcc_images/chap02a/redes_neurais.png}
+  \vfill
+  {\scriptsize Fonte: a autora}
   \note{MLP: fully connected, backpropagation, ativação não linear. Hiperparâmetros: camadas, neurônios, ativação, lr, L2, dropout. [~45s]}
 \end{slide}
 %========================================================================
 \begin{slide}{Famílias de Modelos IV — Arquiteturas Híbridas}
   \centering
-  \includegraphics[width=0.8\textwidth]{tcc_images/chap02a/hibridos.png}
+  \includegraphics[width=0.85\textwidth]{tcc_images/chap02a/hibridos-slides.png}
+  \vfill
+  {\scriptsize Fonte: a autora}
   \note{Híbridos: quatro arquiteturas que incorporam o modelo físico 0D. [~30s]}
 \end{slide}
 %========================================================================
