@@ -96,8 +96,8 @@
     \bottomrule
   \end{tabular}
   \vfill
-  {\footnotesize Para cada família e cada \textbf{target} (T$_{alim,out}$, T$_{ref,out}$, Fluxo), uma busca independente foi realizada via GridSearch com GroupKFold (3 folds). Os híbridos tiveram busca restrita para isolar o efeito da incorporação da física.}
-  \note{A busca de hiperparâmetros foi organizada por família e por target. Para cada target, uma busca independente com GroupKFold. Híbridos: busca restrita (só L2) para isolar o efeito da física. [~1,5 min]}
+  {\footnotesize Para cada família e cada \textbf{target}, uma busca independente foi realizada via \textbf{GridSearchCV} (busca exaustiva sobre a grade) com GroupKFold (3 folds). Os híbridos tiveram busca restrita (apenas L2) para isolar o efeito da incorporação da física.}
+  \note{A busca de hiperparâmetros foi organizada por família e por target usando GridSearchCV com GroupKFold. Híbridos: busca restrita (só L2). [~1,5 min]}
 \end{slide}
 %========================================================================
 

@@ -1,7 +1,7 @@
 \section{Fundamentação Teórica}
 
 \begin{slide}{Princípios da Destilação por Membranas}
-  \small
+  \footnotesize
   \begin{columns}
     \begin{column}{.58\linewidth}
       \begin{Item}
@@ -84,46 +84,55 @@
 \begin{slide}{Famílias de Modelos II — Árvores de Decisão}
   \centering
   \small
-  \begin{minipage}{0.85\linewidth}
-  \begin{Item}
-    \item[\textbf{Decision Tree (DT)}:] Partições binárias recursivas nos dados. Simples mas propenso a overfitting.
-    \item[\textbf{Random Forest (RF)}:] Ensemble de árvores treinadas em paralelo com bootstrap — reduz variância via bagging.
-    \item[\textbf{Gradient Boosting (GB)}:] Ensemble sequencial — cada nova árvore corrige os resíduos da combinação anterior.
-  \end{Item}
-  \end{minipage}
+  \begin{columns}[t]
+    \begin{column}{.45\linewidth}
+      \includegraphics[width=\linewidth]{tcc_images/chap02a/lineares_arvores.png}
+    \end{column}
+    \begin{column}{.5\linewidth}
+      \raggedright
+      \begin{Item}
+        \item[\textbf{Decision Tree (DT)}:] Partições binárias recursivas nos dados. Simples mas propenso a overfitting.
+        \item[\textbf{Random Forest (RF)}:] Ensemble de árvores treinadas em paralelo com bootstrap — reduz variância via bagging.
+        \item[\textbf{Gradient Boosting (GB)}:] Ensemble sequencial — cada nova árvore corrige os resíduos da combinação anterior.
+      \end{Item}
+    \end{column}
+  \end{columns}
   \note{Árvores: DT overfitta, RF reduz variância com bagging, GB corrige resíduos sequencialmente. [~45s]}
 \end{slide}
 %========================================================================
-\begin{slide}{Famílias de Modelos III — Redes Neurais (MLP)}
+\begin{slide}{Famílias de Modelos III — Redes Neurais}
   \centering
-  \includegraphics[width=0.55\textwidth]{tcc_images/chap02a/redes_neurais.png}
-  \vfill
-  \begin{minipage}{0.85\linewidth}
   \small
-  \begin{Item}
-    \item Arquitetura \textbf{fully connected} com uma ou mais camadas ocultas e ativações não lineares (ReLU, tanh)
-    \item Ajuste por \textbf{retropropagação} (backpropagation) e gradiente descendente
-    \item Regularização via L2, Dropout e EarlyStopping
-  \end{Item}
-  \end{minipage}
-  \note{MLP: fully connected, backpropagation, ativação não linear. [~30s]}
+  \begin{columns}[t]
+    \begin{column}{.45\linewidth}
+      \includegraphics[width=\linewidth]{tcc_images/chap02a/redes_neurais.png}
+    \end{column}
+    \begin{column}{.5\linewidth}
+      \raggedright
+      \textbf{Arquitetura:}
+      \begin{Item}
+        \item Camadas \textbf{fully connected}: cada neurônio de uma camada conecta-se a todos da seguinte
+        \item Ativação \textbf{não linear} (ReLU, tanh) entre camadas — permite aprender relações complexas
+        \item Ajuste por \textbf{retropropagação} (backpropagation) + gradiente descendente
+      \end{Item}
+      \vspace{0.2cm}
+      \textbf{Hiperparâmetros ajustáveis:}
+      \begin{Item}
+        \item Nº de camadas ocultas e neurônios por camada
+        \item Função de ativação (ReLU, tanh, sigmoid)
+        \item Taxa de aprendizado (\textit{learning rate})
+        \item Regularização L2 e \textit{Dropout}
+        \item \textit{Early Stopping} (parada por convergência)
+      \end{Item}
+    \end{column}
+  \end{columns}
+  \note{MLP: fully connected, backpropagation, ativação não linear. Hiperparâmetros: camadas, neurônios, ativação, lr, L2, dropout. [~45s]}
 \end{slide}
 %========================================================================
 \begin{slide}{Famílias de Modelos IV — Arquiteturas Híbridas}
   \centering
-  \includegraphics[width=0.75\textwidth]{tcc_images/chap02a/hibridos.png}
-  \vfill
-  \begin{minipage}{0.85\linewidth}
-  \small
-  Incorporam predições do modelo físico 0D na arquitetura da rede:
-  \begin{Item}
-    \item[\textbf{PhyResidual}:] $Y_{pred} = Y_{phy} + \Delta$ — aprende correção residual ao modelo 0D
-    \item[\textbf{PhyHybrid}:] Concatena features originais + $Y_{phy}$ + residual aprendido
-    \item[\textbf{PhyLoss}:] Regularização física na função de perda (termo adicional que penaliza desvios da física)
-    \item[\textbf{PhyInput}:] $Y_{phy}$ como feature extra de entrada (abordagem mais simples)
-  \end{Item}
-  \end{minipage}
-  \note{Híbridos: usam predições do modelo 0D. PhyResidual corrige residual; PhyHybrid combina; PhyLoss regulariza perda; PhyInput estende entrada. [~45s]}
+  \includegraphics[width=0.8\textwidth]{tcc_images/chap02a/hibridos.png}
+  \note{Híbridos: quatro arquiteturas que incorporam o modelo físico 0D. [~30s]}
 \end{slide}
 %========================================================================
 
