@@ -152,6 +152,50 @@
 \end{slide}
 %========================================================================
 
+\begin{slide}{Resultados — Busca de Hiperparâmetros (Tabela Completa)}
+  \centering
+  \footnotesize
+  \renewcommand{\arraystretch}{0.95}
+  \begin{longtable}{p{3.2cm} p{8.8cm}}
+    \rowcolor{poliBlue!20}
+    \textbf{Família/modelo} & \textbf{Espaço de busca avaliado} \\
+    \hline
+    \endhead
+    OLS & Sem hiperparâmetros. Utilizado como referência linear sem regularização. \\
+    \rowcolor{gray!5}
+    Ridge & $\alpha \in \{10^{-3},10^{-2},10^{-1},1,10,100\}$. \\
+    Lasso MultiTask & $\alpha \in \{10^{-4},10^{-3},10^{-2},10^{-1},1\}$. \\
+    \rowcolor{gray!5}
+    ElasticNet MultiTask & $\alpha \in \{10^{-4},10^{-3},10^{-2},10^{-1},1\}$; $l_1\text{-ratio} \in \{0{,}1,0{,}3,0{,}5,0{,}7,0{,}9\}$. \\
+    Lasso independente & $\alpha \in \{10^{-4},10^{-3},10^{-2},10^{-1},1\}$. Implementado por estimadores independentes para cada saída. \\
+    \rowcolor{gray!5}
+    ElasticNet independente & $\alpha \in \{10^{-4},10^{-3},10^{-2},10^{-1},1\}$; $l_1\text{-ratio} \in \{0{,}1,0{,}3,0{,}5,0{,}7,0{,}9\}$. Implementado por estimadores independentes para cada saída. \\
+    \midrule
+    \rowcolor{orange!6}
+    Árvore de decisão & $\texttt{max\_depth} \in \{2,3,4,5,6,\texttt{None}\}$; $\texttt{min\_samples\_leaf} \in \{1,2,5,8,10\}$; $\texttt{min\_samples\_split} \in \{2,5,10,15\}$; $\texttt{ccp\_alpha} \in \{0,10^{-4},10^{-3},10^{-2}\}$. \\
+    \rowcolor{orange!6}
+    Random Forest & $\texttt{n\_estimators} \in \{200,400,600\}$; $\texttt{max\_depth} \in \{2,3,4,5,\texttt{None}\}$; $\texttt{min\_samples\_leaf} \in \{1,2,5,8,10\}$; $\texttt{min\_samples\_split} \in \{2,5,10\}$; $\texttt{max\_features} \in \{0{,}5,0{,}8,1{,}0\}$. \\
+    \rowcolor{orange!6}
+    Gradient Boosting & $\texttt{n\_estimators} \in \{50,100,200,400\}$; $\texttt{learning\_rate} \in \{0{,}01,0{,}03,0{,}05,0{,}1\}$; $\texttt{max\_depth} \in \{1,2,3\}$; $\texttt{min\_samples\_leaf} \in \{1,2,5,10\}$; $\texttt{subsample} \in \{0{,}6,0{,}8,1{,}0\}$. \\
+    \midrule
+    \rowcolor{blue!6}
+    KerasMLP baseline & Arquitetura MLP multi-output. $\texttt{hidden\_layer\_sizes} \in \{(32,), (64,), (128,), (256,), (512,), (64,32), (128,64), (256,128), (512,256), (128,64,32), (256,128,64), (512,256,128)\}$; $\texttt{activation} \in \{\texttt{relu},\texttt{tanh}\}$; $\texttt{learning\_rate} \in \{10^{-4},3\times10^{-4},10^{-3},3\times10^{-3}\}$; $\texttt{l2} \in \{0,10^{-6},10^{-5},10^{-4},10^{-3}\}$; $\texttt{batch\_size} \in \{16,32,64\}$; $\texttt{optimizer} \in \{\texttt{adam},\texttt{adamw}\}$. Busca aleatória (30--80 combos), GroupKFold 3 folds, Huber loss, ES (pac. 12), LR red. (pac. 4), 200 ép. máx. \\
+    \midrule
+    \rowcolor{green!6}
+    PhyLoss Restricted & Busca em dois estágios: (1) $\omega \in \{0{,}0,0{,}1,0{,}3,0{,}5,0{,}7,0{,}9,1{,}0\}$ com L2 fixo; (2) $\texttt{l2} \in \{\texttt{l2}_{base},0,10^{-6},10^{-5},10^{-4},10^{-3}\}$ com melhor $\omega$. \\
+    \rowcolor{green!6}
+    PhyInput Restricted & $\texttt{l2} \in \{\texttt{l2}_{base},0,10^{-6},10^{-5},10^{-4}\}$. \\
+    \rowcolor{green!6}
+    PhyResidual Restricted & $\texttt{l2} \in \{\texttt{l2}_{base},0,10^{-6},10^{-5},10^{-4}\}$. \\
+    \rowcolor{green!6}
+    PhyHybrid Restricted & $\texttt{l2} \in \{\texttt{l2}_{base},0,10^{-6},10^{-5},10^{-4}\}$. \\
+    \bottomrule
+  \end{longtable}
+  \vfill
+  {\scriptsize Fonte: elaborado pela autora.}
+\end{slide}
+%========================================================================
+
 % --- Slides do Apêndice A do TCC: Discretização e Seleção de Features ---
 
 \begin{slide}{Resultados — Seleção de Preditores (Best Subset)}
