@@ -127,6 +127,7 @@
 \bibitem{Vabalas2019} Vabalas, A. et al. ``Machine learning algorithm validation with a limited sample size''. \textit{PLOS ONE}, 2019.
 \bibitem{Yates2022} Yates, A.; Aandahl, Z. ``Cross-validation for model selection: A review with applications''. \textit{Statistical Methods}, 2022.
 \bibitem{Villumsen2026} Villumsen, S. et al. ``Evaluating Extrapolation of Modular Hybrid Process Models for Pilot-Scale Batch Separation Processes''. \textit{Systems and Control Transactions}, 2026.
+\bibitem{sklearn_r2} {\sc scikit-learn} developers. ``R² score''. \texttt{sklearn.metrics.r2\_score}. Documenta\c{c}\~{a}o online: \url{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2\_score.html}. Acesso em jul. 2026.
 \end{thebibliography}
 \end{slideWithFrameBreaks}
 
@@ -204,6 +205,35 @@
 \endgroup
 
 \appendix
+
+\begin{slide}{Validação Cruzada vs.\ Teste — Generalização em Cenários de Interpolação e Extrapolação}
+
+\centering
+\vfill
+
+\rowcolors{2}{gray!8}{white}
+\begin{tabular}{p{0.28\textwidth} p{0.30\textwidth} p{0.30\textwidth}}
+\toprule
+\textbf{Aspecto} & \textbf{Validação Cruzada (CV)} & \textbf{Teste (\emph{Hold-out})} \\
+\midrule
+\textbf{Particiona} & 3 folds por experimento & 20\% final dos dados \\
+\textbf{Dados de treino} & Fold-1 do mesmo experimento & Dados até corte temporal \\
+\textbf{Dados de avaliação} & Fold-2 do mesmo experimento & Dados após corte temporal \\
+\textbf{Sobreposição temporal} & \textbf{Sim} — folds do mesmo grupo &
+\textbf{Não} — corte rígido \\
+\textbf{Melhor em} & \textbf{Interpolação} (mesmo regime) & \textbf{Extrapolação} (novas condições) \\
+\bottomrule
+\end{tabular}
+
+\vfill
+
+{\footnotesize
+\textbf{Observação:} a CV mede o erro de \textbf{interpolação} (folds de grupos experimentais conhecidos), enquanto o hold-out testa \textbf{extrapolação} (ponto de corte fixo). Modelos híbridos podem extrapolar melhor mesmo com CV estável. Esse comportamento se alinha com Villumsen~\cite{Villumsen2026}, que observa modularidade em modelos de processos em batelada.
+}
+
+\vfill
+
+\end{slide}
 
 \begin{slide}{Conteúdo do Material Suplementar}
   \large

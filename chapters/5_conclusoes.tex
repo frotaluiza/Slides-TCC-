@@ -5,8 +5,8 @@
   \begin{columns}
     \begin{column}{0.94\linewidth}
     \begin{Item}[0.12]
-    \item[\textbf{Temperaturas:}] Tanto para T$_{alim,out}$ quanto para T$_{ref,out}$, as performances entre modelos foram muito parecidas. A \textbf{Baseline Alim} (Stage 1, RMSE 0,215) venceu para T$_{alim,out}$ e o \textbf{Ridge} (Stage 0, RMSE 0,219) para T$_{ref,out}$ — diferenças sutis, com uma levemente melhor para cada target. Isso confirma a natureza aproximadamente linear dessas variáveis, já indicada pela análise exploratória.
-    \item[\textbf{Flux}:] Principal demonstração mensurável da vantagem da hibridização. \textbf{PhyResidual (Alim)} reduziu o RMSE em 72\% frente ao modelo 0D (0,206$\to$0,057). O R$^2$ passou de 0,951 (Stage 0) para 0,977, confirmando que a arquitetura residual não apenas ajustou melhor os dados como preservou a capacidade de generalização.
+    \item[\textbf{Temperaturas:}] Tanto para T$_{alim,out}$ quanto para T$_{ref,out}$, as performances entre modelos foram muito parecidas. A \textbf{Baseline Alim} (Stage 1, RMSE 0,215) performou melhor para T$_{alim,out}$ e o \textbf{Ridge} (Stage 0, RMSE 0,219) para T$_{ref,out}$ — diferenças sutis, com uma levemente melhor para cada target. Isso confirma a natureza aproximadamente linear dessas variáveis, já indicada pela análise exploratória.
+    \item[\textbf{Flux}:] Principal demonstração mensurável da vantagem da hibridização. \textbf{PhyResidual (Flux)} reduziu o RMSE em 74\% frente ao modelo 0D (0,206$\to$0,054). O R$^2$ passou de 0,951 (Stage 0) para 0,979, confirmando que a arquitetura residual extraiu maior poder preditivo ao incorporar a física como informação auxiliar.
     \item[\textbf{Resumo:}] O modelo ajustado a partir das variáveis de entrada foi capaz de explicar até 98\% da variabilidade observada nos dados (T$_{alim,out}$ R² 0,981; T$_{ref,out}$ R² 0,995; Flux R² 0,972).
     \end{Item}
     \end{column}
@@ -16,17 +16,18 @@
 %========================================================================
 
 \begin{slide}{Hibridização e Generalização}
-  \scriptsize
+  \footnotesize
   \begin{columns}
     \begin{column}{0.94\linewidth}
     \begin{Item}[0.12]
     \item A combinação do modelo físico 0D com redes neurais aproxima o cenário ideal de modelagem híbrida: unir o conhecimento da física aos dados experimentais.
-    \item A rede neural aprende correções sistemáticas (como o viés de +1,58\,°C do modelo 0D em T$_{alim,out}$) que o modelo físico simplificado não captura, enquanto o modelo físico representa os acoplamentos físicos de forma interpretável. Esse papel de \textbf{corretor de viés} é a principal contribuição mensurável da arquitetura residual.
-    \item O modelo residual PhyResidual elevou o R$^2$ do fluxo de 0,951 (Stage 0) para 0,977, confirmando que a arquitetura residual não apenas ajustou melhor os dados como preservou a capacidade de generalização.
+    \item A arquitetura residual (PhyResidual) aprende o \textbf{viés} do modelo 0D (ex.: o erro sistemático de +1,58\,°C em T$_{alim,out}$) e calcula \textbf{apenas a correção residual}. Isso permite que a rede se concentre em ajustar o desvio entre a física simplificada e o comportamento real, sem precisar reaprender as relações físicas que o modelo 0D já representa adequadamente.
+    \item Consequentemente, o PhyResidual preserva o \textbf{comportamento físico} do modelo 0D nas regiões onde sua variação está correta, e corrige apenas as discrepâncias para as características reais do sistema. Esse papel de \textbf{corretor de viés} é a principal contribuição mensurável da arquitetura residual para o fluxo de permeado: o RMSE caiu de 0,206 (0D) para 0,054 (PhyResidual), com R$^2$ de 0,979.
+    \item Adicionalmente, o PhyResidual (Flux) apresentou CV RMSE (0,072) comparável ao desempenho de regressões lineares (Lasso\_Indep, 0,082), indicando que o modelo híbrido manteve estabilidade preditiva mesmo com uma arquitetura mais complexa.
     \end{Item}
     \end{column}
   \end{columns}
-  \note{A hibridização aproxima o cenário ideal de unir física e dados. [~1 min]}
+  \note{Hibridização: residual aprende viés, preserva física, corrige dados reais. Flux: 0,206$\to$0,054 (74\% melhor). [~1,5 min]}
 \end{slide}
 %========================================================================
 

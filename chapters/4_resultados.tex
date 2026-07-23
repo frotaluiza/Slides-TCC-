@@ -140,9 +140,13 @@
     PhyInput & Alim & 0,273 & 0,325 & 0,098 & 0,213 & 0,250 & 0,064 \\
     PhyInput & Ref & 0,275 & 0,432 & 0,106 & 0,216 & 0,269 & 0,066 \\
     PhyInput & Flux & 0,260 & 0,625 & 0,104 & 0,213 & 0,426 & 0,063 \\
+    \midrule
+    PhyLoss ($\omega{=}0{,}0$) & Alim & 0,180 & 0,348 & 0,067 & 0,188 & 0,350 & 0,068 \\
+    PhyLoss ($\omega{=}0{,}7$) & Ref  & 0,310 & 0,276 & 0,192 & 0,340 & 0,286 & 0,220 \\
+    PhyLoss ($\omega{=}0{,}0$) & Flux & 0,203 & 0,422 & 0,066 & 0,226 & 0,438 & 0,069 \\
     \bottomrule
   \end{tabular}
-  \note{PhyResidual vence para Alim e Flux; PhyHybrid vence para Ref. Test Flux 0,054. [~2 min]}
+  \note{PhyResidual performou melhor para Alim e Flux; PhyHybrid para Ref. Flux Test 0,054. [~2 min]}
 \end{slide}
 %========================================================================
 
@@ -155,7 +159,7 @@
     \midrule
     \textbf{T$_{alim,out}$} & Stage 0 & OLS & 0,231 & \textbf{0,196} & 0,965 \\
     \textbf{T$_{alim,out}$} & Stage 1 & Baseline Alim & \textbf{0,215} & 0,260 & \textbf{0,981} \\
-    \textbf{T$_{alim,out}$} & Stage 2 & PhyResidual (Alim) & 0,225 & 0,275 & \cellcolor{green!10}\textbf{0,981} \\
+    \textbf{T$_{alim,out}$} & Stage 2 & PhyResidual (Alim) & 0,225 & 0,275 & 0,981 \\
     \midrule
     \textbf{T$_{ref,out}$} & Stage 0 & Ridge (Ref) & \textbf{0,219} & \textbf{0,195} & \textbf{0,996} \\
     \textbf{T$_{ref,out}$} & Stage 1 & Baseline Alim & 0,309 & 0,445 & 0,989 \\
@@ -163,7 +167,7 @@
     \midrule
     \textbf{Flux} & Stage 0 & Lasso\_Indep & 0,075 & 0,082 & 0,951 \\
     \textbf{Flux} & Stage 1 & Baseline Flux & 0,066 & 0,081 & 0,972 \\
-    \textbf{Flux} & Stage 2 & PhyResidual (Alim) & \textbf{0,057} & \textbf{0,060} & \textbf{0,977} \\
+    \textbf{Flux} & Stage 2 & PhyResidual (Flux) & \textbf{0,054} & \textbf{0,072} & \textbf{0,979} \\
     \midrule
     \rowcolor{gray!6}
     \textbf{Flux} & \multirow{3}{*}{\textbf{Modelo 0D}} & --- & 0,206 & --- & 0,631 \\
@@ -184,9 +188,9 @@
     \end{column}
     \begin{column}{0.90\linewidth}
     \begin{Item}[0.15]
-    \item[\textcolor{blue!70!black}{T$_{alim,out}$}:] A arquitetura híbrida (PhyResidual, Test RMSE 0,225) não apresentou melhoria em relação à vencedora MLP do Stage 1 (Baseline Alim, 0,215). Isso provavelmente decorre do baixo desempenho do modelo 0D para esta variável (R² negativo), limitando o benefício da infusão da física.
+    \item[\textcolor{blue!70!black}{T$_{alim,out}$}:] A arquitetura híbrida (PhyResidual, Test RMSE 0,225) não apresentou melhoria em relação à MLP do Stage 1 (Baseline Alim, 0,215), que performou melhor. Isso provavelmente decorre do baixo desempenho do modelo 0D para esta variável (R² negativo), limitando o benefício da infusão da física.
     \item[\textcolor{orange!70!black}{T$_{ref,out}$}:] Nem a MLP (Stage 1) nem as híbridas (Stage 2) conseguiram superar a regressão linear (Ridge, 0,219), confirmando as análises iniciais da análise exploratória de que esta variável tem natureza essencialmente linear.
-    \item[\textcolor{green!70!black}{Flux}:] Principal demonstração mensurável da vantagem da incorporação da física na arquitetura híbrida. O modelo selecionado é o \textbf{PhyResidual (Alim)} (Test RMSE 0,057, CV RMSE 0,060), que apresentou a melhor performance tanto em validação cruzada quanto no teste, com o R$^2$ passando de 0,951 (Stage 0) para 0,977.
+    \item[\textcolor{green!70!black}{Flux}:] Principal demonstração mensurável da vantagem da incorporação da física na arquitetura híbrida. O modelo selecionado é o \textbf{PhyResidual (Flux)} (Test RMSE 0,054, CV RMSE 0,072), que apresentou o menor Test RMSE entre todos os modelos, com o R$^2$ passando de 0,951 (Stage 0) para 0,979. O CV RMSE (0,072) é comparável ao das regressões lineares do Stage 0 (Lasso\_Indep, 0,082).
     \end{Item}
     \end{column}
   \end{columns}
@@ -198,9 +202,9 @@
   \centering
   \includegraphics[width=0.85\textwidth]{tcc_images/chap06/overlay_champions_panel_v2.png}
   \vfill
-  {\scriptsize \textcolor{blue!70!black}{T$_{alim,out}$}: Baseline Alim (Stage 1) \;|\;
-   \textcolor{orange!70!black}{T$_{ref,out}$}: Ridge (Stage 0) \;|\;
-   \textcolor{green!70!black}{Flux}: PhyResidual (Stage 2)}
+   {\scriptsize \textcolor{blue!70!black}{T$_{alim,out}$}: Baseline Alim (Stage 1) \;|\;
+    \textcolor{orange!70!black}{T$_{ref,out}$}: Ridge (Stage 0) \;|\;
+    \textcolor{green!70!black}{Flux}: PhyResidual^{Flux} (Stage 2)}
   \\
   {\scriptsize Quadrados cinza = modelo físico 0D}
   \note{O overlay atualizado mostra os modelos selecionados para cada target: Baseline Alim para T\_alim, Ridge para T\_ref e PhyResidual para Flux. Os quadrados cinza representam o modelo 0D como referência. [~1 min]}

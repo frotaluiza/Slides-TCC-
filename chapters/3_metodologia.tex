@@ -86,17 +86,19 @@
     \textbf{Família} & \textbf{Hiperparâmetros} & \textbf{Varredura} \\
     \midrule
     \rowcolor{gray!10}
-    Lineares (Ridge, Lasso, ElasticNet) & $\alpha$ (regularização) & Grid: [0,001; 0,01; 0,1; 1; 10] \\
+    Lineares & $\alpha$ (regularização) & Grid: [0,001; 0,01; 0,1; 1; 10] \\
     \rowcolor{white}
-    Árvores (DT, RF, GB) & profundidade, n estimadores, learning rate & 3--4 valores cada \\
+    Árvores & profundidade, n estimadores, learning rate & 3--4 valores cada \\
     \rowcolor{gray!10}
-    Redes Neurais (MLP/Keras) & camadas, neurônios, LR, L2, ativação & 54 combinações (9 arquiteturas $\times$ 2 LR $\times$ 3 L2) \\
+    \makecell{Redes Neurais\\(MLP/Keras)} & \makecell{camadas, neurônios,\\LR, L2, ativação} & \makecell{54 combinações\\(9 arq. × 2 LR × 3 L2)} \\
     \rowcolor{white}
-    Híbridos & L2 apenas (arquitetura congelada da baseline) & 3 valores de L2 \\
+    \makecell{PhyResidual\\PhyHybrid\\PhyInput} & \makecell{L2 apenas\\(arquitetura congelada)} & 3 valores de L2 \\
+    \rowcolor{gray!10}
+    PhyLoss & \makecell{$\omega$ (ponderação\\da perda física) + L2} & \makecell{$\omega$: 7 valores [0;1]\\+ L2: 5 valores} \\
     \bottomrule
   \end{tabular}
   \vfill
-  {\footnotesize Para cada família e cada \textbf{target}, uma busca independente foi realizada via \textbf{GridSearchCV} (busca exaustiva sobre a grade) com GroupKFold (3 folds). Os híbridos tiveram busca restrita (apenas L2) para isolar o efeito da incorporação da física.}
+  {\footnotesize Para cada família e cada \textbf{target}, uma busca independente foi realizada via \textbf{GridSearchCV} (busca exaustiva sobre a grade) com GroupKFold (3 folds). Os híbridos residuais tiveram busca restrita (apenas L2) para isolar o efeito da incorporação da física. O PhyLoss teve busca em dois estágios: primeiro $\omega$, depois L2.}
   \note{A busca de hiperparâmetros foi organizada por família e por target usando GridSearchCV com GroupKFold. Híbridos: busca restrita (só L2). [~1,5 min]}
 \end{slide}
 %========================================================================
