@@ -7,8 +7,8 @@
     \end{column}
     \begin{column}{0.90\linewidth}
     \begin{Item}[0.15]
-    \item[\textcolor{blue!70!black}{T$_{alim,out}$}:] Pelo menor Test RMSE, a Baseline Flux (Stage 1) foi selecionada (0,178) — 2,7\% melhor que o PhyResidual (Flux) de Stage 2 (0,183) e 89,0\% melhor que o modelo 0D (1,613).
-    \item[\textcolor{orange!70!black}{T$_{ref,out}$}:] Pelo menor Test RMSE, o PhyResidual (base Flux) foi selecionado (0,214) — diferença marginal de 2,3\% sobre Ridge (Stage 0, 0,219) e 76,9\% melhor que o modelo 0D (0,927). Ridge tem CV RMSE 0,244 vs 0,346, indicando melhor extrapolação.
+    \item[\textcolor{blue!70!black}{T$_{alim,out}$}:] Pelo menor Test RMSE, a Baseline Flux (Stage 1) foi selecionada (0,178) — 22,9\% melhor que o OLS (Stage 0, 0,231), 2,7\% melhor que o PhyResidual (Flux) de Stage 2 (0,183) e 89,0\% melhor que o modelo 0D (1,613).
+    \item[\textcolor{orange!70!black}{T$_{ref,out}$}:] Pelo menor Test RMSE, o PhyResidual (base Flux) foi selecionado (0,214) — diferença marginal de 2,3\% sobre Ridge (Stage 0, 0,219), 30,7\% melhor que a Baseline Alim (Stage 1, 0,309) e 76,9\% melhor que o modelo 0D (0,927). Ridge tem CV RMSE 0,244 vs 0,346, indicando melhor extrapolação.
     \item[\textcolor{green!70!black}{Flux}:] O PhyResidual (base Flux) foi selecionado (0,054) — 18,2\% melhor que Baseline Flux (0,066), 28,0\% melhor que Lasso\_Indep (0,075) e 73,8\% melhor que o modelo 0D (0,206). O Flux foi a única saída onde o menor Test RMSE e o menor CV RMSE (0,072) pertencem ao mesmo modelo.
     \end{Item}
     \end{column}
@@ -24,8 +24,8 @@
     \begin{Item}[0.10]
     \item A combinação do modelo físico 0D com redes neurais aproxima o cenário ideal de modelagem híbrida: unir o conhecimento da física aos dados experimentais.
     \item A arquitetura residual (PhyResidual) aprende o \textbf{viés} do modelo 0D e calcula \textbf{apenas a correção residual}. Isso permite que a rede se concentre em ajustar o desvio entre a física simplificada e o comportamento real, sem precisar reaprender as relações físicas que o modelo 0D já representa adequadamente.
-    \item A busca de hiperparâmetros guiada pelo RMSE de cada target não garantiu consistência: o modelo otimizado para T$_{alim}$ (Baseline Alim) não venceu para T$_{alim}$. Além disso, a hibridização não beneficiou T$_{alim}$ — coerente com a pior performance do modelo 0D nessa variável (R$^2$ $-0{,}404$), que torna a correção residual menos eficaz.
     \item Consequentemente, o PhyResidual preserva o \textbf{comportamento físico} do modelo 0D nas regiões onde sua variação está correta, e corrige apenas as discrepâncias para as características reais do sistema. Esse papel de \textbf{corretor de viés} é a principal contribuição mensurável da arquitetura residual para o fluxo de permeado: o RMSE caiu de 0,206 (0D) para 0,054 (PhyResidual), com R$^2$ de 0,979.
+    \item A busca de hiperparâmetros guiada pelo RMSE de cada target não garantiu consistência: o modelo otimizado para T$_{alim}$ (Baseline Alim) teve performance inferior (0,215 vs 0,178 da Baseline Flux). Além disso, a hibridização não beneficiou T$_{alim}$ — coerente com a pior performance do modelo 0D nessa variável (R$^2$ $-0{,}404$), que torna a correção residual menos eficaz.
     \item Adicionalmente, o PhyResidual (Flux) manteve um erro estável sob regimes não vistos, com valores de CV RMSE comparáveis aos das regressões lineares para Flux (0,072 contra 0,082 do Lasso\_Indep). Para as temperaturas, observa-se um contraste entre Test e CV: embora o PhyResidual tenha liderado no Test para T$_{ref,out}$ (0,214 vs 0,219 do Ridge), os modelos lineares apresentaram melhor CV RMSE (Ridge 0,244, OLS 0,196 para T$_{alim,out}$), indicando maior capacidade de extrapolação para regimes não vistos.
     \end{Item}
     \end{column}
