@@ -215,11 +215,11 @@ Não foram melhores para nenhum target. Restaram: regressão linear, rede neural
 
 ## 21. Resultados — Análise por Variável de Saída
 
-**T_alim_out:** Pelo menor Test RMSE, **PhyResidual (base Flux)** venceu (0,183) — 14,9% melhor que Baseline Alim (0,215) e 20,8% melhor que OLS (0,231).
+**T_alim_out:** Pelo menor Test RMSE, a **Baseline Flux (Stage 1)** foi selecionada (0,178) — 17,2% melhor que Baseline Alim (0,215), superando até os híbridos (PhyResidual Flux 0,183).
 
-**T_ref_out:** Pelo menor Test RMSE, **PhyResidual (base Flux)** venceu (0,214) — diferença marginal de 2,3% sobre Ridge (0,219) e 30,7% sobre Baseline Alim (0,309). Ridge tem CV RMSE 0,195 vs 0,346, indicando melhor extrapolação para regimes não vistos. Redes lineares são mais robustas para extrapolação.
+**T_ref_out:** Pelo menor Test RMSE, o **PhyResidual (base Flux)** foi selecionado (0,214) — diferença marginal de 2,3% sobre Ridge (0,219). Ridge tem CV RMSE 0,244 vs 0,346, indicando melhor extrapolação.
 
-**Fluxo:** Principal demonstração da hibridização. **PhyResidual (base Flux)** obteve Test RMSE 0,054 — 18,2% melhor que Baseline Flux (0,066), 28% melhor que Lasso_Indep (0,075) e 73,8% melhor que o modelo 0D (0,206). R² passou de 0,951 (Stage 0) para 0,979.
+**Fluxo:** O **PhyResidual (base Flux)** foi selecionado (0,054) — 18,2% melhor que Baseline Flux (0,066), 28% melhor que Lasso_Indep (0,075) e 73,8% melhor que o modelo 0D (0,206). O Flux foi a única variável onde o modelo com menor Test RMSE também teve o menor CV RMSE.
 
 ---
 
@@ -233,12 +233,12 @@ Este papel de **corretor de viés** é a principal contribuição mensurável da
 
 ## 23. Comparação Final
 
-**PhyResidual (base Flux)** foi o melhor modelo para **todos os alvos** pelo critério de menor Test RMSE: T_alim (0,183), T_ref (0,214) e Fluxo (0,054). Para T_ref, a diferença sobre o Ridge é marginal (2,3%), e o Ridge tem melhor CV RMSE — indicando que modelos lineares generalizam melhor para regimes não vistos. Considerando o critério 1-SE, que penaliza complexidade, modelos distintos seriam selecionados: Baseline Alim para T_alim, Ridge para T_ref, PhyResidual Flux para Fluxo.
+**Baseline Flux (Stage 1)** foi selecionado para T_alim (0,178). **PhyResidual (base Flux, Stage 2)** foi selecionado para T_ref (0,214) e Fluxo (0,054). Para T_ref, a diferença sobre o Ridge é marginal (2,3%), e o Ridge tem melhor CV RMSE — indicando que modelos lineares generalizam melhor para regimes não vistos. O Flux foi a única saída onde o menor Test RMSE e o menor CV RMSE pertencem ao mesmo modelo.
 
 ---
 
 ## 24. Conclusões
 
-Conclusões principais: pelo critério puro de Test RMSE, o **PhyResidual (base Flux)** foi o melhor modelo para **todos os alvos**. Para o fluxo, o ganho da hibridização foi expressivo (73,8% sobre o modelo 0D). Para T_ref, a diferença sobre o Ridge é marginal e modelos lineares têm melhor generalização (CV RMSE 0,195 vs 0,346). Para T_alim, o PhyResidual superou as alternativas lineares em 14,9-20,8%.
+Conclusões principais: pelo critério de menor Test RMSE, a **Baseline Flux** foi selecionada para T_alim, o **PhyResidual (base Flux)** para T_ref e Fluxo. Para o fluxo, o ganho da hibridização foi expressivo (73,8% sobre o modelo 0D). Para T_ref, a diferença sobre o Ridge é marginal e modelos lineares têm melhor generalização (CV RMSE 0,244 vs 0,346). O Flux foi a única variável onde o melhor Test RMSE coincidiu com o melhor CV RMSE.
 
-**Trabalhos futuros:** substituir o modelo 0D pelo modelo 2D como referência física; construir PINNs a partir das EDOs do modelo 2D; investigar estratégias de correção linear multiplicativa (Villumsen) como alternativa para melhor extrapolação.
+**Trabalhos futuros:** substituir o modelo 0D pelo modelo 2D como referência física; construir PINNs a partir das EDOs do modelo 2D.

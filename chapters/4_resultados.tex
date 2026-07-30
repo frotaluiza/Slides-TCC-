@@ -158,10 +158,10 @@
     \textbf{Variável de saída} & \textbf{Estágio} & \textbf{Modelo} & \textbf{Test RMSE} & \textbf{CV RMSE} & \textbf{Test R$^2$} \\
     \midrule
     \textbf{T$_{alim,out}$} & Stage 0 & OLS & 0,231 & \textbf{0,196} & 0,965 \\
-    \textbf{T$_{alim,out}$} & Stage 1 & Baseline Alim & 0,215 & 0,260 & 0,981 \\
-    \textbf{T$_{alim,out}$} & Stage 2 & PhyResidual (Flux) & \textbf{0,183} & 0,275 & \textbf{0,981} \\
+    \textbf{T$_{alim,out}$} & Stage 1 & Baseline Flux & \textbf{0,178} & 0,081 & 0,981 \\
+    \textbf{T$_{alim,out}$} & Stage 2 & PhyResidual (Flux) & 0,183 & 0,275 & 0,981 \\
     \midrule
-    \textbf{T$_{ref,out}$} & Stage 0 & Ridge (Ref) & \textbf{0,219} & \textbf{0,195} & \textbf{0,996} \\
+    \textbf{T$_{ref,out}$} & Stage 0 & Ridge (Ref) & 0,219 & 0,244 & 0,996 \\
     \textbf{T$_{ref,out}$} & Stage 1 & Baseline Alim & 0,309 & 0,445 & 0,989 \\
     \textbf{T$_{ref,out}$} & Stage 2 & PhyResidual (Flux) & \textbf{0,214} & 0,346 & \textbf{0,996} \\
     \midrule
@@ -177,7 +177,7 @@
     \textbf{T$_{ref,out}$} & & --- & 0,851 & --- & 0,948 \\
     \bottomrule
   \end{tabular}
-  \note{Test RMSE em negrito = menor erro por variável; CV RMSE em negrito = melhor generalização. Para T$_{alim}$ e T$_{ref}$, o melhor Test é do híbrido mas o melhor CV é do linear — evidenciando o trade-off entre precisão em teste e extrapolação. [~2 min]}
+  \note{Test RMSE em negrito = menor erro por variável; CV RMSE em negrito = melhor generalização. O Flux foi a única saída onde o menor Test RMSE e o menor CV RMSE pertencem ao mesmo modelo. [~2 min]}
 \end{slide}
 %========================================================================
 
@@ -185,11 +185,11 @@
   \centering
   \includegraphics[width=0.85\textwidth]{tcc_images/chap06/model_selection/overlay_champions_panel_v2.png} b
   \vfill
-    {\scriptsize \textcolor{blue!70!black}{T$_{alim,out}$}: PhyResidual$^{Flux}$ (Stage 2) \;|\;
+    {\scriptsize \textcolor{blue!70!black}{T$_{alim,out}$}: Baseline Flux (Stage 1) \;|\;
     \textcolor{orange!70!black}{T$_{ref,out}$}: PhyResidual$^{Flux}$ (Stage 2) \;|\;
     \textcolor{green!70!black}{Flux}: PhyResidual$^{Flux}$ (Stage 2)}
   \\
   {\scriptsize Quadrados cinza = modelo físico 0D}
-  \note{O overlay atualizado mostra os modelos selecionados para cada target: PhyResidual (base Flux) para os tr\^{e}s. Os quadrados cinza representam o modelo 0D como referência. [~1 min]}
+  \note{Overlay com os modelos selecionados: Baseline Flux para T\_alim (Stage 1), PhyResidual (base Flux) para T\_ref e Flux (Stage 2). Quadrados cinza = modelo 0D. [~1 min]}
 \end{slide}
 %========================================================================
