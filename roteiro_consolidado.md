@@ -138,39 +138,24 @@ O aprendizado de máquina é voltado ao **aprendizado a partir dos dados**, iden
 
 **Primeira: modelos lineares.** Regressão linear busca a reta (ou hiperplano) que melhor se ajusta aos dados, minimizando o erro quadrático entre valores reais e previstos.
 
-- **OLS (Ordinary Least Squares):** a regressão linear clássica. Ajusta os coeficientes para minimizar a soma dos quadrados dos resíduos. É simples e interpretável, mas **não tem regularização** — qualquer ruído nos dados vira inclinação na reta, o que pode levar a overfitting.
-- **Ridge:** adiciona uma penalidade **L2** à regressão linear. A penalidade L2 **encolhe os coeficientes** proporcionalmente ao seu valor, mas sem zerá-los — todos continuam contribuindo um pouco. É como se o modelo fosse "puxado para baixo" para não dar respostas exageradas. A força dessa penalidade é controlada pelo hiperparâmetro **alpha**: alpha = 0 é OLS puro; alpha alto = coeficientes quase zero.
-- **Lasso:** adiciona uma penalidade **L1**, que pode **zerar coeficientes** irrelevantes. Funciona como **seleção automática de features**: se uma variável não ajuda, o Lasso simplesmente ignora ela (coeficiente = 0). A força é controlada pelo mesmo **alpha**.
-- **ElasticNet:** combina **L1 + L2**, com um segundo hiperparâmetro **l1_ratio** que controla a mistura. l1_ratio = 1 é Lasso puro; = 0 é Ridge puro. Útil quando há muitas features correlacionadas.
+- **OLS (Ordinary Least Squares):** a regressão linear clássica. Ajusta os coeficientes para minimizar a soma dos quadrados dos resíduos nos dados de treino. É simples e interpretável, mas não tem regularização — qualquer ruído vira inclinação na reta, podendo causar overfitting.
+- **Ridge:** adiciona uma penalidade L2 ao OLS. Ele piora intencionalmente o ajuste aos dados de treino para generalizar melhor, e o alpha (escolhido na validação cruzada) controla esse afastamento.
+- **Lasso:** adiciona uma penalidade L1 — pode zerar coeficientes irrelevantes, funcionando como seleção automática de features. Também piora o ajuste nos dados de treino em troca de melhor generalização.
+- **ElasticNet:** combina L1 + L2, com o parâmetro l1_ratio controlando a mistura.
+- **Intuição:** OLS dá o melhor ajuste possível aos dados de treino. Ridge, Lasso e ElasticNet propositalmente se afastam desse ajuste — aceitam erros maiores no treino para errar menos no teste.
 
-A intuição da regularização: imagine que os dados têm ruído. Sem regularização (OLS), o modelo pode se ajustar demais a pontos específicos. Com regularização (Ridge/Lasso), o modelo "segura a mão" — não deixa os coeficientes crescerem demais, forçando uma resposta mais suave e generalizável.
+**Segunda: árvores de decisão e ensemble.** Diferente dos lineares, esses modelos não assumem uma forma funcional fixa — eles particionam o espaço em regiões.
 
-**Segunda: árvores de decisão e ensemble.** Diferente dos lineares, esses modelos **não assumem uma forma funcional fixa** — eles particionam o espaço em regiões.
+- **Decision Tree:** é um modelo em forma de fluxograma que ajuda a fazer escolhas ou prever resultados usando regras simples do tipo "sim ou não". Ela é formada por um nó raiz, ramos com caminhos lógicos e nós finais (folhas) que mostram o resultado.
+- **Random Forest:** cria centenas de árvores, cada uma treinada com um subconjunto diferente dos dados e das variáveis. A média de todas cancela os erros individuais — é o mais robusto da família e difícil de overfittar.
+- **Gradient Boosting (GBoost):** treina árvores em sequência, cada uma corrigindo o erro da anterior. O learning rate controla a contribuição de cada nova árvore.
 
-- **Decision Tree (Árvore de Decisão):** faz **perguntas binárias** sobre os dados (ex: "T_alimentação > 70°C?"). Cada resposta leva a um novo nó, até chegar a uma **folha** que contém os pontos mais parecidos entre si. A previsão é a **média** dos valores na folha. É intuitiva e fácil de visualizar, mas **overfitta facilmente**: se a árvore for funda demais, ela decora os pontos de treino.
-- **Random Forest:** treina **muitas árvores em paralelo**, cada uma com uma amostra **bootstrap** (com reposição) dos dados e um subconjunto aleatório de variáveis. A previsão final é a **média** de todas as árvores. O segredo: árvores individuais têm alta variância (cada uma overfitta de um jeito), mas a **média cancela os erros** — reduz variância sem aumentar viés. Mais árvores = mais estável.
-- **Gradient Boosting (GBoost):** treina árvores **em sequência**, cada uma **corrigindo o erro da anterior**. A primeira árvore faz uma previsão; a segunda aprende o **resíduo** (erro) da primeira; a terceira aprende o resíduo da soma das duas primeiras, e assim por diante. O hiperparâmetro **learning rate** controla a contribuição de cada nova árvore: taxas baixas (ex: 0,01) exigem mais árvores, mas geralmente generalizam melhor.
+**Terceira: redes neurais (MLPs).** São camadas de neurônios conectados, onde cada conexão tem um peso ajustado durante o treinamento. A ativação não linear (ReLU ou tanh) é o que permite aprender relações complexas. O treinamento usa backpropagation: calcula o erro da saída, propaga para trás e ajusta os pesos. Hiperparâmetros principais: arquitetura (camadas e neurônios), learning rate, L2 (weight decay) e ativação.
 
-A diferença prática: Random Forest é mais robusto e difícil de overfittar (basta muitas árvores). Gradient Boosting, bem ajustado, costuma ter desempenho superior, mas é mais sensível a hiperparâmetros.
-
-**Terceira: redes neurais (MLPs).** Redes neurais são estruturas inspiradas no cérebro: **camadas de neurônios** conectados, onde cada conexão tem um **peso** que é ajustado durante o treinamento.
-
-Imagine uma **camada oculta**: cada neurônio recebe os valores de entrada, multiplica cada um por um peso, soma tudo, e passa o resultado por uma **função de ativação não linear** (como ReLU ou tanh). Essa não linearidade é o que permite à rede aprender **relações complexas** — sem ela, a rede seria equivalente a uma regressão linear.
-
-O treinamento usa **backpropagation**: calcula o erro da saída, propaga esse erro para trás, e ajusta os pesos para reduzir o erro. O **learning rate** controla o tamanho do passo: alto demais = oscila e diverge; baixo demais = demora ou fica preso em mínimo local.
-
-Quando temos **múltiplas camadas**, a rede consegue aprender **hierarquias**: a primeira camada detecta padrões simples; a segunda combina esses padrões em estruturas mais abstratas. Por isso arquiteturas como **(128,64)** = duas camadas com 128 e 64 neurônios.
-
-**Hiperparâmetros principais:**
-- **Arquitetura:** número de camadas e neurônios por camada
-- **LR (learning rate):** taxa de aprendizado — controla o passo da descida do gradiente
-- **L2 (weight decay):** regularização — equivalente ao Ridge para redes neurais. Penaliza pesos grandes, evitando overfitting
-- **Ativação: tanh** (sat entre -1 e 1) ou **ReLU** (zera valores negativos). ReLU é mais comum em redes profundas
-
-**Quarta: arquiteturas híbridas.**
-- **PhyInput**: adiciona predições do modelo 0D como features extras
-- **PhyResidual**: aprende o resíduo — saída = Y_físico + ε. A rede só precisa corrigir o desvio do modelo físico
-- **PhyHybrid**: combina PhyInput + PhyResidual
+**Quarta: arquiteturas híbridas.** Combinam o modelo físico 0D com redes neurais.
+- **PhyInput:** adiciona predições do modelo 0D como features extras de entrada.
+- **PhyResidual:** aprende o resíduo — saída = Y_físico + ε. A rede só precisa corrigir o desvio do modelo físico.
+- **PhyHybrid:** combina PhyInput + PhyResidual simultaneamente.
 - **PhyLoss**: incorpora a física na função de perda como regularização, penalizando desvios das leis físicas
 
 ---

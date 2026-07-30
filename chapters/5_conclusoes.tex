@@ -17,27 +17,41 @@
 \end{slide}
 %========================================================================
 
-\begin{slide}{Comentários Finais}
+\begin{slide}{Comentários Finais (1/2)}
+  \footnotesize
+  \begin{columns}
+    \begin{column}{0.94\linewidth}
+    \begin{Item}[0.10]
+    \item Dentre as famílias de modelos avaliadas, as redes neurais híbridas (PhyResidual) se destacaram com as melhores performances em relação ao Test RMSE para duas das três variáveis (Flux e T$_{ref}$). Os valores absolutos, no entanto, são próximos aos dos melhores modelos das outras famílias — a diferença percentual relativa foi de 18,2\% sobre a Baseline Flux para o Flux (0,054 vs 0,066), 2,3\% sobre o Ridge para T$_{ref}$ (0,214 vs 0,219) e 2,7\% inferior à Baseline Flux para T$_{alim}$ (0,183 vs 0,178).
+    \item A arquitetura residual PhyResidual atua como \textbf{corretor de viés} do modelo físico 0D: a rede neural aprende a discrepância entre as predições do modelo físico reduzido e os dados experimentais, preservando o comportamento físico onde ele está correto. O RMSE do Flux caiu de 0,206 (0D) para 0,054 (PhyResidual) — redução de 73,8\% — e o R$^2$ atingiu 0,979. O modelo 0D, embora limitado (correlação alta de r=0,972 mas viés sistemático de +1,58°C em T$_{alim}$), fornece uma referência fenomenológica que a arquitetura residual consegue corrigir.
+    \end{Item}
+    \end{column}
+  \end{columns}
+  \note{Híbridos: melhores no Test, mas valores absolutos próximos aos clássicos — diferença percentual relevante. PhyResidual como corretor de viés: Flux 0,206→0,054. [~1.5 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Comentários Finais (2/2)}
   \footnotesize
   \begin{columns}
     \begin{column}{0.94\linewidth}
     \begin{Item}[0.10]
     \item A busca de hiperparâmetros guiada pelo RMSE de cada variável não garantiu que o modelo otimizado para uma variável fosse o melhor para aquela variável: para T$_{alim}$, a Baseline Flux (otimizada para o Flux, 0,178) superou a Baseline Alim (otimizada para T$_{alim}$, 0,215); para T$_{ref}$, o PhyResidual (base Flux, 0,214) superou o PhyResidual Ref (otimizado para T$_{ref}$, 0,231). Apenas para o Flux o modelo otimizado para a variável foi o vencedor.
-    \item A arquitetura residual PhyResidual atua como \textbf{corretor de viés}: aprende a discrepância entre o modelo 0D e os dados reais, preservando a física onde está correta. Esse papel foi bem-sucedido para o fluxo de permeado (RMSE de 0,206 para 0,054, R$^2$ 0,979) e para T$_{ref}$ (0,214), comprovando a eficácia da hibridização nessas variáveis.
     \item T$_{alim}$ foi a única variável onde o PhyResidual não foi o melhor modelo — a Baseline Flux (Stage 1), puramente \textit{data-driven}, o superou (0,178 vs 0,183). Esse resultado é coerente com a pior performance do modelo 0D para T$_{alim}$ (R$^2$ de $-0{,}404$), que tornou a correção residual menos eficaz quando a referência física tinha baixa qualidade.
-    \item Adicionalmente, o PhyResidual (Flux) manteve erro estável na CV para o Flux (0,072 contra 0,082 do Lasso\_Indep). Para as temperaturas, observa-se contraste entre Test e CV: embora o PhyResidual tenha liderado no Test para T$_{ref}$ (0,214 vs 0,219 do Ridge), os modelos lineares tiveram melhor CV (Ridge 0,244 vs 0,346 do PhyResidual para T$_{ref}$; OLS 0,196 vs 0,236 do PhyResidual para T$_{alim}$), indicando maior capacidade de extrapolação.
+    \item Observa-se contraste entre Test e CV para as temperaturas: embora o PhyResidual tenha liderado no Test para T$_{ref}$ (0,214 vs 0,219 do Ridge), os modelos lineares tiveram melhor CV (Ridge 0,244 vs 0,346 para T$_{ref}$; OLS 0,196 vs 0,236 para T$_{alim}$), indicando maior capacidade de extrapolação. Para o Flux, o PhyResidual foi superior em ambas as métricas.
     \end{Item}
     \end{column}
   \end{columns}
-  \note{Inconsistência: modelo otimizado p/ X não foi o melhor p/ X — exceto Flux. PhyResidual: corretor de viés bem-sucedido no Flux e T\_ref. T\_alim: única exceção (0D R² -0,404). Temperaturas: contraste Test vs CV. [~2 min]}
+  \note{Inconsistência: modelo otimizado p/ X não foi o melhor p/ X — exceto Flux. T\_alim exceção (0D R² -0,404). Contraste Test vs CV: lineares extrapolam melhor. [~1.5 min]}
 \end{slide}
 %========================================================================
 
 \begin{slide}{Trabalhos Futuros}
   \begin{Item}
+    \item Avaliar os modelos selecionados sobre dados de novas rodadas experimentais que explorem regiões não contempladas no treinamento, permitindo verificar a real capacidade de generalização das arquiteturas híbridas
     \item Substituir modelo 0D pelo modelo 2D (GITT) de \cite{Curcino2026} como referência física nas arquiteturas híbridas, aproveitando sua capacidade de capturar efeitos distribuídos
     \item Construir PINNs a partir das EDOs do modelo GITT — tanto como \textbf{surrogate} (apenas física, sem dados) para aceleramento de processamento, quanto no modo que incorpora dados experimentais na função de perda
   \end{Item}
-  \note{Trabalhos futuros: modelo 2D GITT como referência física, PINNs a partir das EDOs — como surrogate e com dados. [~1 min]}
+  \note{Trabalhos futuros: novos dados experimentais para validar generalização; modelo 2D GITT como referência; PINNs a partir das EDOs. [~1 min]}
 \end{slide}
 %========================================================================
