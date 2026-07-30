@@ -24,7 +24,7 @@
       \begin{Item}
         \item 2026: ano desafiador — chuvas abaixo da média; Cantareira $\approx$ 30\% (\textcolor{poliRed}{ANA} — Agência Nacional de Águas; \textcolor{poliRed}{CNN Brasil} — canal de notícias)
         \item Nordeste: 4 meses de chuva e 8 meses de seca extrema (ANA)
-        \item Dessalinização reduz custo da água em até 10$\times$: R\$ 2,63 a R\$ 4,21/m³ (CNI)
+        \item Dessalinização reduz custo da água em até 10$\times$: R\$ 2,63 a R\$ 4,21/m³ (Confederação Nacional da Indústria — CNI)
         \item Maior planta do Brasil (ES): atende demanda de 80 mil pessoas (CNI)
         \item 8.500 km de costa $\rightarrow$ enorme potencial para expandir (IBGE)
       \end{Item}
@@ -70,7 +70,7 @@
         \item Foco em comunidades remotas/off-grid (Semiárido, ilhas, O\&G, áreas de desastre)
         \item Em articulação com o \textcolor{poliRed}{\textbf{Projeto Água Doce}}: programa do governo federal que expande o acesso à água potável no Semiárido nordestino por meio de sistemas de dessalinização, atendendo comunidades não cobertas pelo abastecimento convencional
   \end{Item}
-  \vfill\hfill{\scriptsize Fontes: COPPE/UFRJ, 2022; LISBOA et al., 2024}
+  \vfill\hfill{\scriptsize Fontes: COPPE/UFRJ, 2022; LISBOA et al., 2024; NAVEIRA-COTTA et al. [s.d.]}
   \note{A Ilha de Policogeração Sustentável da COPPE, inaugurada em 2022, é o projeto que abriga este trabalho. É um sistema que integra painéis solares de alta concentração com um dessalinizador V-AGMD, produzindo eletricidade para 25 residências e água para mais de 100 pessoas por dia. O foco são comunidades remotas. O projeto atende aos ODS 6, 7 e 13. [~1 min]}
 \end{slide}
 %========================================================================
@@ -81,20 +81,20 @@
     \includegraphics[width=0.9\textwidth, height=0.8\textheight, keepaspectratio]{tcc_images/instalacao_ips.png}
   \end{center}
   \vspace*{\fill}
-  \vfill\hfill{\scriptsize Fonte: SEIXO, 2024}
+  \vfill\hfill{\scriptsize Fonte: NAVEIRA-COTTA et al. [s.d.]}
 \end{slide}
 %========================================================================
 
 \begin{slide}{Motivação e Objetivos}
   \footnotesize
   \begin{myTitledBox}[Motivação]
-    Necessidade de prever desempenho do V-AGMD com dados experimentais (174 pontos, 3 regimes de salinidade). Modelo físico 0D disponível como referência para modelagem híbrida.
+    Prever o desempenho do módulo V-AGMD (fluxo de permeado e temperaturas de saída) a partir de dados experimentais (174 pontos, 3 regimes de salinidade). Um modelo físico 0D já publicado pelo laboratório (LISBOA et al., 2024) serve como referência para o sistema.
   \end{myTitledBox}
   \vspace{0.1cm}
   \begin{myTitledBox}[Objetivo geral]
-    Avaliar estratégias de \textbf{modelagem baseada em dados} e \textbf{modelagem híbrida físico--dados} para predição de fluxo de permeado e temperaturas de saída do V-AGMD.
+    Avaliar e selecionar modelos de regressão supervisionada para predição do desempenho do V-AGMD, combinando aprendizado a partir de dados com informação física proveniente do modelo reduzido 0D.
   \end{myTitledBox}
-  \note{Motivação e objetivo geral fundidos: dados limitados (174 pontos), modelo 0D como referência. Objetivo: avaliar modelagem data-driven e híbrida. [~1 min]}
+  \note{Motivação: prever V-AGMD com 174 pontos experimentais + modelo 0D como referência. Objetivo: avaliar modelos data-driven e híbridos. [~1 min]}
 \end{slide}
 %========================================================================
 

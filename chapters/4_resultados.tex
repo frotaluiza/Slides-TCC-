@@ -146,7 +146,7 @@
     PhyLoss ($\omega{=}0{,}0$) & Flux & 0,203 & 0,422 & 0,066 & 0,226 & 0,438 & 0,069 \\
     \bottomrule
   \end{tabular}
-  \note{PhyResidual performou melhor para Alim e Flux; PhyHybrid para Ref. Flux Test 0,054. [~2 min]}
+  \note{PhyResidual performou melhor para todos os alvos: base Flux para T\_alim e Flux, base Alim para T\_ref. Flux Test 0,054. [~2 min]}
 \end{slide}
 %========================================================================
 
@@ -159,11 +159,11 @@
     \midrule
     \textbf{T$_{alim,out}$} & Stage 0 & OLS & 0,231 & \textbf{0,196} & 0,965 \\
     \textbf{T$_{alim,out}$} & Stage 1 & Baseline Alim & \textbf{0,215} & 0,260 & \textbf{0,981} \\
-    \textbf{T$_{alim,out}$} & Stage 2 & PhyResidual (Alim) & 0,225 & 0,275 & 0,981 \\
+    \textbf{T$_{alim,out}$} & Stage 2 & PhyResidual (Flux) & 0,183 & 0,275 & \textbf{0,981} \\
     \midrule
     \textbf{T$_{ref,out}$} & Stage 0 & Ridge (Ref) & \textbf{0,219} & \textbf{0,195} & \textbf{0,996} \\
     \textbf{T$_{ref,out}$} & Stage 1 & Baseline Alim & 0,309 & 0,445 & 0,989 \\
-    \textbf{T$_{ref,out}$} & Stage 2 & PhyHybrid (Alim) & 0,230 & 0,302 & 0,995 \\
+    \textbf{T$_{ref,out}$} & Stage 2 & PhyResidual (Alim) & 0,222 & 0,301 & 0,995 \\
     \midrule
     \textbf{Flux} & Stage 0 & Lasso\_Indep & 0,075 & 0,082 & 0,951 \\
     \textbf{Flux} & Stage 1 & Baseline Flux & 0,066 & 0,081 & 0,972 \\
@@ -188,7 +188,7 @@
     \end{column}
     \begin{column}{0.90\linewidth}
     \begin{Item}[0.15]
-    \item[\textcolor{blue!70!black}{T$_{alim,out}$}:] A arquitetura híbrida (PhyResidual, Test RMSE 0,225) não apresentou melhoria em relação à MLP do Stage 1 (Baseline Alim, 0,215), que performou melhor. Isso provavelmente decorre do baixo desempenho do modelo 0D para esta variável (R² negativo), limitando o benefício da infusão da física.
+    \item[\textcolor{blue!70!black}{T$_{alim,out}$}:] Entre as híbridas, a melhor foi a PhyResidual (base Flux) com Test RMSE 0,183 — superando inclusive a Baseline Alim (Stage 1, 0,215). O modelo 0D tem R² negativo (-0,404), sugerindo que o viés sistemático foi mais bem corrigido pela arquitetura residual treinada na baseline Flux.
     \item[\textcolor{orange!70!black}{T$_{ref,out}$}:] Nem a MLP (Stage 1) nem as híbridas (Stage 2) conseguiram superar a regressão linear (Ridge, 0,219), confirmando as análises iniciais da análise exploratória de que esta variável tem natureza essencialmente linear.
     \item[\textcolor{green!70!black}{Flux}:] Principal demonstração mensurável da vantagem da incorporação da física na arquitetura híbrida. O modelo selecionado é o \textbf{PhyResidual (Flux)} (Test RMSE 0,054, CV RMSE 0,072), que apresentou o menor Test RMSE entre todos os modelos, com o R$^2$ passando de 0,951 (Stage 0) para 0,979. O CV RMSE (0,072) é comparável ao das regressões lineares do Stage 0 (Lasso\_Indep, 0,082).
     \end{Item}
