@@ -201,7 +201,33 @@ GroupKFold → RMSE médio com erro padrão → regra 1-SE → modelo de menor c
 
 ---
 
-## 18. Busca de Hiperparâmetros
+## 18. Glossário — O que cada hiperparâmetro significa
+
+Referência rápida para o slide da tabela de hiperparâmetros:
+
+**α (alpha):** controla a força da regularização em Ridge, Lasso e ElasticNet. α = 0 é OLS (sem regularização). α alto = coeficientes mais próximos de zero, modelo menos flexível.
+
+**Profundidade (max_depth):** número máximo de níveis de uma árvore de decisão. Profundidade 1 = só uma pergunta (stump). Profundidade alta = árvore mais complexa, propensa a overfitting.
+
+**n_estimadores:** número de árvores no Random Forest ou Gradient Boosting. Mais árvores = predição mais estável (menos variância), mas maior custo computacional.
+
+**Learning rate (taxa de aprendizado):** controla quanto cada nova árvore do GBoost contribui para a predição final. Taxa baixa (ex: 0,01) = aprendizado lento, precisa de mais árvores, mas geralmente generaliza melhor.
+
+**Camadas e neurônios (arquitetura da rede):** define a estrutura da MLP. Ex: (128, 64) = primeira camada oculta com 128 neurônios, segunda com 64. Mais camadas = rede mais profunda, capaz de aprender hierarquias mais complexas.
+
+**LR (learning rate da rede):** taxa de aprendizado do otimizador (Adam). Controla o tamanho do passo na descida do gradiente. Muito alto = oscila e diverge; muito baixo = converge lentamente ou fica preso.
+
+**L2 (weight decay):** regularização aplicada aos pesos da rede neural. Equivalente ao Ridge: penaliza pesos grandes para evitar overfitting. O mesmo conceito do alpha nos lineares, mas aplicado aos pesos da rede.
+
+**Ativação:** função não linear entre as camadas da rede. **ReLU** zera valores negativos (comum em redes profundas). **tanh** comprime entre -1 e 1 (adequada para dados normalizados).
+
+**L2 congelado (híbridos):** para isolar o efeito da arquitetura híbrida, o L2 encontrado na MLP baseline (Stage 1) é mantido fixo — só a estrutura muda.
+
+**ω (omega, PhyLoss):** ponderação entre perda dos dados e perda física: `Loss = (1-ω)·Loss_dados + ω·Loss_física`. ω = 0 = MLP pura; ω = 1 = apenas física.
+
+---
+
+## 19. Busca de Hiperparâmetros
 
 A busca foi personalizada por target — três fits independentes por alvo. Cada família tem seus próprios hiperparâmetros:
 
