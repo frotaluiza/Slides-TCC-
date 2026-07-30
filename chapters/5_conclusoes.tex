@@ -5,13 +5,13 @@
   \begin{columns}
     \begin{column}{0.94\linewidth}
     \begin{Item}[0.12]
-    \item[\textbf{Temperaturas:}] Tanto para T$_{alim,out}$ quanto para T$_{ref,out}$, as performances entre modelos foram muito parecidas. A \textbf{Baseline Alim} (Stage 1, RMSE 0,215) performou melhor para T$_{alim,out}$ e o \textbf{Ridge} (Stage 0, RMSE 0,219) para T$_{ref,out}$ — diferenças sutis, com uma levemente melhor para cada target. Isso confirma a natureza aproximadamente linear dessas variáveis, já indicada pela análise exploratória.
-    \item[\textbf{Flux}:] Principal demonstração mensurável da vantagem da hibridização. \textbf{PhyResidual (Flux)} reduziu o RMSE em 74\% frente ao modelo 0D (0,206$\to$0,054). O R$^2$ passou de 0,951 (Stage 0) para 0,979, confirmando que a arquitetura residual extraiu maior poder preditivo ao incorporar a física como informação auxiliar.
-    \item[\textbf{Resumo:}] O modelo ajustado a partir das variáveis de entrada foi capaz de explicar até 98\% da variabilidade observada nos dados (T$_{alim,out}$ R² 0,981; T$_{ref,out}$ R² 0,995; Flux R² 0,972).
+    \item[\textbf{Temperaturas:}] Tanto para T$_{alim,out}$ quanto para T$_{ref,out}$, o \textbf{PhyResidual (Flux)} (Stage 2) obteve o menor Test RMSE (0,183 e 0,214, respectivamente). Para T$_{ref,out}$, a diferença sobre o Ridge (0,219) é marginal (2,3\%), mas o Ridge apresenta CV RMSE (0,195) muito inferior ao PhyResidual (0,346), indicando melhor generalização para regimes não vistos.
+    \item[\textbf{Flux}:] Principal demonstração mensurável da vantagem da hibridização. \textbf{PhyResidual (Flux)} reduziu o RMSE em 73,8\% frente ao modelo 0D (0,206$\to$0,054). O R$^2$ passou de 0,951 (Stage 0) para 0,979, confirmando que a arquitetura residual extraiu maior poder preditivo ao incorporar a física como informação auxiliar.
+    \item[\textbf{Resumo:}] Pelo critério puro de Test RMSE, o PhyResidual (base Flux) foi o melhor modelo para todas as três saídas. Para T$_{ref,out}$, modelos lineares são alternativas mais robustas para extrapolação, conectando-se com estratégias de correção linear multiplicativa na literatura.
     \end{Item}
     \end{column}
   \end{columns}
-  \note{Flux: principal demonstração da hibridização (72\% melhor que 0D). Temperaturas: desempenhos comparáveis entre modelos, natureza linear confirmada. [~2 min]}
+  \note{Flux: principal demonstração da hibridização (73,8\% melhor que 0D). Temperaturas: PhyResidual vence por Test RMSE, lineares têm melhor CV. [~2 min]}
 \end{slide}
 %========================================================================
 
@@ -23,7 +23,7 @@
     \item A combinação do modelo físico 0D com redes neurais aproxima o cenário ideal de modelagem híbrida: unir o conhecimento da física aos dados experimentais.
     \item A arquitetura residual (PhyResidual) aprende o \textbf{viés} do modelo 0D (ex.: o erro sistemático de +1,58\,°C em T$_{alim,out}$) e calcula \textbf{apenas a correção residual}. Isso permite que a rede se concentre em ajustar o desvio entre a física simplificada e o comportamento real, sem precisar reaprender as relações físicas que o modelo 0D já representa adequadamente.
     \item Consequentemente, o PhyResidual preserva o \textbf{comportamento físico} do modelo 0D nas regiões onde sua variação está correta, e corrige apenas as discrepâncias para as características reais do sistema. Esse papel de \textbf{corretor de viés} é a principal contribuição mensurável da arquitetura residual para o fluxo de permeado: o RMSE caiu de 0,206 (0D) para 0,054 (PhyResidual), com R$^2$ de 0,979.
-    \item Adicionalmente, o PhyResidual (Flux) manteve um erro estável sob regimes não vistos, com bom desempenho em relação às outras arquiteturas, tendo valores de CV RMSE comparáveis aos das regressões lineares (0,072 contra 0,082 do Lasso\_Indep).
+    \item Adicionalmente, o PhyResidual (Flux) manteve um erro estável sob regimes não vistos, com bom desempenho em relação às outras arquiteturas, tendo valores de CV RMSE comparáveis aos das regressões lineares para Flux (0,072 contra 0,082 do Lasso\_Indep). Para as temperaturas, no entanto, os modelos lineares apresentaram melhor CV RMSE (Ridge 0,195 para T$_{ref,out}$, OLS 0,196 para T$_{alim,out}$), sugerindo maior capacidade de extrapolação — direção que motiva a investigação de estratégias híbridas de correção linear multiplicativa (\cite{Villumsen2026}).
     \end{Item}
     \end{column}
   \end{columns}
@@ -35,7 +35,8 @@
   \begin{Item}
     \item Substituir modelo 0D pelo modelo 2D (GITT) de \cite{Curcino2026} como referência física nas arquiteturas híbridas, aproveitando sua capacidade de capturar efeitos distribuídos
     \item Construir PINNs a partir das EDOs do modelo GITT — tanto como \textbf{surrogate} (apenas física, sem dados) para aceleramento de processamento, quanto no modo que incorpora dados experimentais na função de perda
+    \item Investigar estratégias de correção linear multiplicativa (\cite{Villumsen2026}) como alternativa para melhor extrapolação: aplicar termo de correção linear sobre o modelo 0D/GITT, preservando consistência física mesmo sob regimes não vistos
   \end{Item}
-  \note{Trabalhos futuros: modelo 2D GITT como referência física, PINNs a partir das EDOs — como surrogate e com dados. [~1 min]}
+  \note{Trabalhos futuros: modelo 2D GITT como referência física, PINNs a partir das EDOs, correção linear multiplicativa (Villumsen) para extrapolação. [~1,5 min]}
 \end{slide}
 %========================================================================
