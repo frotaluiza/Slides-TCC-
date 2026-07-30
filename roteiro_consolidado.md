@@ -178,7 +178,26 @@ GroupKFold → RMSE médio com erro padrão → regra 1-SE → modelo de menor c
 
 ## 18. Busca de Hiperparâmetros
 
-Busca personalizada por target (3 fits por modelo). Famílias: Lineares (alpha), Árvores (profundidade, estimadores, LR), Redes Neurais (arquitetura, LR, L2, ativação), Híbridos (L2 congelados ou ω + L2 para PhyLoss).
+A busca foi personalizada por target — três fits independentes por alvo. Cada família tem seus próprios hiperparâmetros:
+
+**Modelos Lineares:**
+- **alpha (Ridge, Lasso, ElasticNet)**: controla a intensidade da regularização. Quanto maior o alpha, menor a flexibilidade do modelo, reduzindo o risco de overfitting. Alpha = 0 equivale a OLS (sem regularização).
+- **l1_ratio (ElasticNet)**: proporção entre penalidades L1 e L2. l1_ratio = 1 é Lasso puro; = 0 é Ridge puro.
+
+**Árvores:**
+- **profundidade máxima**: limita o número de níveis da árvore. Profundidade alta = modelo mais complexo e propenso a overfitting.
+- **n_estimadores (RF/GB)**: número de árvores no ensemble. Mais árvores reduzem variância, mas aumentam custo computacional.
+- **learning rate (GB)**: controla a contribuição de cada nova árvore. Taxas baixas exigem mais árvores mas podem generalizar melhor.
+
+**Redes Neurais (MLPs):**
+- **arquitetura**: número de camadas ocultas e neurônios por camada. Ex: (128, 64) = duas camadas com 128 e 64 neurônios.
+- **LR (learning rate)**: taxa de aprendizado — controla o tamanho do passo na descida do gradiente. LR muito alta diverge; muito baixa converge lentamente.
+- **L2 (weight decay)**: regularização L2 aplicada aos pesos da rede, equivalente ao Ridge em redes neurais. Penaliza pesos grandes para evitar overfitting.
+- **ativação**: função não linear entre camadas. **tanh**: satura entre -1 e 1, adequada para valores normalizados. **ReLU**: zera valores negativos, comum em redes profundas.
+
+**Modelos Híbridos:**
+- **L2 congelado**: toma-se o L2 encontrado na MLP baseline (Stage 1) e mantém-se fixo, avaliando apenas o efeito da arquitetura híbrida isoladamente.
+- **ω (PhyLoss)**: peso da regularização física na função de perda combinada: `Loss = (1-ω) * Loss_dados + ω * Loss_física`. ω = 0 é MLP pura; ω = 1 é apenas física.
 
 ---
 
@@ -196,17 +215,17 @@ Não foram melhores para nenhum target. Restaram: regressão linear, rede neural
 
 ## 21. Resultados — Análise por Variável de Saída
 
-**T_alim_out:** Entre as híbridas, a melhor foi a **PhyResidual (base Flux)** com Test RMSE 0,183 — superando a Baseline Alim (0,215). O modelo 0D tem R² negativo para esta variável, mas a arquitetura residual com baseline Flux conseguiu corrigir parte do viés.
+**T_alim_out:** Pelo menor Test RMSE, **PhyResidual (base Flux)** venceu (0,183) — 14,9% melhor que Baseline Alim (0,215) e 20,8% melhor que OLS (0,231).
 
-**T_ref_out:** Nenhum modelo superou a regressão linear (**Ridge**, 0,219). Entre as híbridas, a melhor foi a PhyResidual (base Alim), mas ainda acima do Ridge.
+**T_ref_out:** Pelo menor Test RMSE, **PhyResidual (base Flux)** venceu (0,214) — diferença marginal de 2,3% sobre Ridge (0,219) e 30,7% sobre Baseline Alim (0,309). Ridge tem CV RMSE 0,195 vs 0,346, indicando melhor extrapolação para regimes não vistos. Redes lineares são mais robustas para extrapolação.
 
-**Fluxo:** Principal demonstração da hibridização. **PhyResidual (base Flux)** obteve Test RMSE 0,054 — o menor entre todos os modelos — elevando o R² de 0,951 (Stage 0) para 0,979.
+**Fluxo:** Principal demonstração da hibridização. **PhyResidual (base Flux)** obteve Test RMSE 0,054 — 18,2% melhor que Baseline Flux (0,066), 28% melhor que Lasso_Indep (0,075) e 73,8% melhor que o modelo 0D (0,206). R² passou de 0,951 (Stage 0) para 0,979.
 
 ---
 
 ## 22. Arquiteturas Híbridas — Explicação
 
-Combinam o modelo físico 0D com redes neurais. A rede aprende correções sistemáticas — como o viés de aproximadamente 1,58°C que o modelo 0D tem para T_alim. O modelo físico representa o conhecimento da física, e a rede corrige o que o modelo simplificado não captura.
+Combinam o modelo físico 0D com redes neurais. A rede aprende correções sistemáticas dos desvios do modelo 0D em relação aos dados experimentais. O modelo físico representa o conhecimento da física, e a rede corrige o que o modelo simplificado não captura.
 
 Este papel de **corretor de viés** é a principal contribuição mensurável da arquitetura residual.
 
@@ -214,12 +233,12 @@ Este papel de **corretor de viés** é a principal contribuição mensurável da
 
 ## 23. Comparação Final
 
-**PhyResidual (base Flux)** foi o melhor híbrido para **Fluxo** e **T_alim_out**. **PhyResidual (base Alim)** foi o melhor híbrido para **T_ref_out**. Considerando todos os estágios, a seleção final pelo critério 1-SE foi: Baseline Alim para T_alim (Stage 1), Ridge para T_ref (Stage 0), PhyResidual Flux para Fluxo (Stage 2).
+**PhyResidual (base Flux)** foi o melhor modelo para **todos os alvos** pelo critério de menor Test RMSE: T_alim (0,183), T_ref (0,214) e Fluxo (0,054). Para T_ref, a diferença sobre o Ridge é marginal (2,3%), e o Ridge tem melhor CV RMSE — indicando que modelos lineares generalizam melhor para regimes não vistos. Considerando o critério 1-SE, que penaliza complexidade, modelos distintos seriam selecionados: Baseline Alim para T_alim, Ridge para T_ref, PhyResidual Flux para Fluxo.
 
 ---
 
 ## 24. Conclusões
 
-Conclusões principais: a hibridização **demonstrou ganho mensurável para o fluxo** (PhyResidual, RMSE 0,054). Para as temperaturas, modelos mais simples (regressão linear e rede neural) tiveram performance comparável ou superior às híbridas.
+Conclusões principais: pelo critério puro de Test RMSE, o **PhyResidual (base Flux)** foi o melhor modelo para **todos os alvos**. Para o fluxo, o ganho da hibridização foi expressivo (73,8% sobre o modelo 0D). Para T_ref, a diferença sobre o Ridge é marginal e modelos lineares têm melhor generalização (CV RMSE 0,195 vs 0,346). Para T_alim, o PhyResidual superou as alternativas lineares em 14,9-20,8%.
 
-**Trabalhos futuros:** substituir o modelo 0D pelo modelo 2D como referência física; construir PINNs a partir das EDOs do modelo 2D.
+**Trabalhos futuros:** substituir o modelo 0D pelo modelo 2D como referência física; construir PINNs a partir das EDOs do modelo 2D; investigar estratégias de correção linear multiplicativa (Villumsen) como alternativa para melhor extrapolação.
