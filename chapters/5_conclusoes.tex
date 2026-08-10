@@ -1,40 +1,51 @@
 \section{Conclusões}
 
-\begin{slide}{Conclusões}
+\begin{slide}{Análise por Variável de Saída}
+  \centering
   \scriptsize
-  \begin{columns}
-    \begin{column}{0.94\linewidth}
-    \begin{Item}[0.12]
-    \item[\textbf{Flux:}] Principal demonstração mensurável da vantagem da hibridização. \textbf{PhyResidual (Alim)} reduziu o RMSE em 72\% frente ao modelo 0D (0,206→0,057). Selecionado por generalização mais estável (Dif CV→Test $-$5,0\% vs $-$25,0\% da rede otimizada para o fluxo).
-    \item[\textbf{T$_{alim,out}$}:] \textbf{PhyResidual (Alim)} com RMSE 0,225 (R$^2$ 0,981) — melhoria de 85\% vs modelo 0D. A hibridização não superou a MLP pura (0,215), pois o baixo desempenho do modelo 0D (R$^2$ $-$0,404) limitou o benefício da infusão física.
-    \item[\textbf{T$_{ref,out}$}:] \textbf{Ridge (Stage 0)} com RMSE 0,219 — modelo linear superou MLP e híbridos. Natureza linear confirmada pela análise exploratória e pela consistência entre CV e teste (Dif $-$10,2\%).
-    \item[\textbf{Hibridização}:] A combinação do modelo físico 0D com redes neurais aproxima o cenário ideal de modelagem híbrida: unir conhecimento fenomenológico aos dados experimentais. A rede neural aprende correções sistemáticas que o modelo físico simplificado não captura, enquanto o modelo físico representa os acoplamentos fenomenológicos de forma interpretável — abordagem válida na região operacional dos dados, sem garantia de extrapolação.
+  \begin{tabular}{lcccc}
+    \toprule
+    \textbf{Variável} & \textbf{Modelo Selecionado} & \textbf{Test RMSE} & \textbf{vs 0D} & \textbf{vs 2º melhor} \\
+    \midrule
+    \textcolor{blue!70!black}{T$_{alim,out}$} & Baseline Flux (Stage 1) & \textbf{0,178} & $-89,0\%$ & $-2,7\%$ vs PhyResidual \\
+    \textcolor{orange!70!black}{T$_{ref,out}$} & PhyResidual (Flux) (Stage 2) & \textbf{0,214} & $-74,9\%$ & $-2,3\%$ vs Ridge \\
+    \textcolor{green!70!black}{Flux} & PhyResidual (Flux) (Stage 2) & \textbf{0,054} & $-73,8\%$ & $-18,2\%$ vs Baseline Flux \\
+    \bottomrule
+  \end{tabular}
+  \vfill
+  \begin{Item}[0.10]
+    \item \textcolor{blue!70!black}{T$_{alim,out}$}: o modelo puramente \textit{data-driven} apresentou a melhor performance — o modelo 0D tem R$^2$ = $-0{,}404$ para esta variável, tornando a correção residual menos eficaz.
+    \item \textcolor{orange!70!black}{T$_{ref,out}$}: diferença marginal (2,3\%) sobre Ridge; Ridge tem melhor CV (0,244 vs 0,346), indicando melhor extrapolação.
+    \item \textcolor{green!70!black}{Flux}: única variável onde o mesmo modelo apresentou o menor Test \textbf{e} o menor CV (0,072) — PhyResidual aprendeu a corrigir o viés do 0D (R$^2$ 0,631 $\rightarrow$ 0,979).
   \end{Item}
-    \end{column}
-  \end{columns}
-  \note{Flux: principal demonstração da hibridização (72\% melhor que 0D). Talim: modelo 0D fraco limitou ganho. Tref: natureza linear confirmada. Hibridização aproxima cenário ideal de unir física e dados. [~2 min]}
+  \vfill
+  {\scriptsize Nota: R$^2$ pode assumir valores negativos quando o modelo é pior que a média dos dados (\cite{sklearn_r2}).}
+  \note{Análise por variável: Tabela com quantitativas (RMSE, percentuais). Texto com qualitativas (data-driven vs híbrido, extrapolação, correção de viés). [~2 min]}
 \end{slide}
 %========================================================================
 
-\begin{slide}{Contribuições e Trabalhos Futuros}
+\begin{slide}{Comentários Finais}
+  \footnotesize
   \begin{columns}
-    \begin{column}{.5\linewidth}
-      \textbf{Contribuições:}
-      \begin{Item}
-        \item Pipeline com validação cruzada agrupada por regimes (GroupKFold)
-        \item 4 arquiteturas híbridas físico--dados implementadas e comparadas
-        \item Seleção por target: PhyResidual para Flux+Alim, PhyHybrid para Ref
-      \end{Item}
-    \end{column}
-    \begin{column}{.5\linewidth}
-      \textbf{Trabalhos futuros:}
-      \begin{Item}
-        \item PINN puramente física (EDOs) + arquitetura residual (substituir coluna phy)
-        \item PINN com EDOs + dados experimentais (comparar performances)
-        \item Novos dados experimentais em faixas operacionais ampliadas
-      \end{Item}
+    \begin{column}{0.94\linewidth}
+    \begin{Item}[0.10]
+    \item As redes neurais híbridas (PhyResidual) apresentaram as melhores performances em Test RMSE para duas das três variáveis (Flux e T$_{ref}$), com melhora de \textbf{até 89\%} sobre o modelo 0D (89,0\% em T$_{alim}$ com a Baseline Flux; 73,8\% no Flux com PhyResidual).
+    \item A arquitetura residual atua como \textbf{corretor de viés} do modelo físico 0D: aprende a discrepância entre as predições físicas e os dados, preservando o comportamento físico onde ele está correto.
+    \item Em capacidade de generalização (CV), o PhyResidual apresentou os menores erros de CV \textbf{para o Flux} (0,060--0,072, dominando os primeiros lugares). Para as temperaturas, os modelos lineares (OLS/Ridge) tiveram CV menor, indicando melhor extrapolação nessas variáveis.
+    \item A \textbf{seleção de hiperparâmetros por alvo} não garantiu a melhor performance para aquele alvo — os modelos otimizados para T$_{alim}$ e T$_{ref}$ ficaram levemente acima do melhor (deltas de +0,012 a +0,104 no Test RMSE); apenas no Flux o otimizado para a variável apresentou a melhor performance.
+    \end{Item}
     \end{column}
   \end{columns}
-  \note{As principais contribuições são o pipeline com GroupKFold, a comparação de 4 arquiteturas híbridas, e o critério 1-SE entre famílias com número de parâmetros. Como trabalhos futuros: duas abordagens com PINNs (puramente física + residual, e híbrida com dados). [~1,5 min]}
+  \note{Comentários finais: híbridos melhores no Test (até 89\% vs 0D); PhyResidual como corretor de viés; PhyResidual domina CV no Flux, lineares nas temperaturas; seleção de hiperparâmetros por alvo não garante melhor performance (deltas pequenos). [~2 min]}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Trabalhos Futuros}
+  \begin{Item}
+    \item Avaliar os modelos selecionados sobre dados de novas rodadas experimentais que explorem regiões não contempladas no treinamento, permitindo verificar a real capacidade de generalização das arquiteturas híbridas
+    \item Substituir modelo 0D pelo modelo 2D (GITT) de \cite{Curcino2026} como referência física nas arquiteturas híbridas, aproveitando sua capacidade de capturar efeitos distribuídos
+    \item Construir PINNs a partir das EDOs do modelo GITT — tanto como \textbf{surrogate} (apenas física, sem dados) para aceleramento de processamento, quanto no modo que incorpora dados experimentais na função de perda
+  \end{Item}
+  \note{Trabalhos futuros: novos dados experimentais para validar generalização; modelo 2D GITT como referência; PINNs a partir das EDOs. [~1 min]}
 \end{slide}
 %========================================================================

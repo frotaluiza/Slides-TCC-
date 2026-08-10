@@ -1,0 +1,280 @@
+# Roteiro Consolidado — Apresentação TCC V-AGMD
+
+---
+
+## Abrir / Slide de Título
+
+Boa tarde. Este é o meu projeto final de graduação, cujo título é **"Modelagem Híbrida com Regularização Física e Seleção de Modelos para Predição de Desempenho em Destilação por Membranas"**.
+
+---
+
+## Sumário
+
+Este é o sumário do TCC: vamos começar com a **introdução**, depois **revisão bibliográfica**, **fundamentação teórica**, **metodologia proposta**, seguindo para **resultados**, **conclusões** e **referências**.
+
+---
+
+## 1. A Crise Global da Água
+
+A crise global da água é tanto de quantidade quanto de qualidade. **4 bilhões** de pessoas enfrentam escassez severa de água, sendo que **2,2 bilhões** não têm acesso a água potável segura. A demanda global deve superar a oferta em **40% até 2030**.
+
+---
+
+## 2. O Problema no Brasil
+
+No Brasil, 2026 foi um ano desafiador, com chuvas abaixo da média. O **Sistema Cantareira** operou a aproximadamente **30%** da sua capacidade. No Nordeste, um cenário de **4 meses de chuva para 8 meses de seca extrema**.
+
+A dessalinização pode reduzir o custo da água em até **10 vezes** — de R$ 2,63 a R$ 4,21/m³, segundo a Confederação Nacional da Indústria (CNI). Para referência, tarifas industriais no RJ chegam a R$ 43,29/m³. O ganho vem do fato de a indústria deixar de depender da concessionária e tratar a água bruta por conta própria. A maior planta do Brasil (ES) atende **80 mil pessoas**. Com **8.500 km de costa**, o potencial de expansão é enorme.
+
+---
+
+## 3. Dessalinização — Contexto Global
+
+A dessalinização já é uma realidade consolidada globalmente. Mais de **150 países** usam a tecnologia. Na Arábia Saudita, responde por **86%** do abastecimento; em Israel, **80%**.
+
+---
+
+## 4. V-AGMD no Contexto da Dessalinização
+
+Nesse sentido, este trabalho estuda uma configuração específica de tecnologia de dessalinização, que se divide em duas grandes famílias: processos **térmicos** (destilação convencional) e processos de **membrana** (osmose inversa, MD). A **Destilação por Membrana (MD)** é um processo híbrido termo-membrana: uma membrana hidrofóbica separa o vapor d'água da salmoura aquecida.
+
+A configuração **V-AGMD** combina um **espaço de ar** (que funciona como isolante térmico) com **vácuo parcial** (que reduz a resistência ao transporte de vapor). O ar impede a troca de calor entre os lados quente e frio, tornando o sistema energeticamente eficiente. O vácuo compensa o impedimento ao transporte de massa causado pelo air gap. É uma tecnologia particularmente adequada para águas de alta salinidade, pois — diferentemente da osmose inversa — não é limitada pelo aumento da pressão osmótica.
+
+---
+
+## 5. Ilha de Policogeração Sustentável
+
+Este trabalho está inserido no projeto **CT2 — Ilha de Policogeração Sustentável**, do LabMEMS, COPPE/UFRJ, inaugurado em 2022. É um protótipo pioneiro que une **geração de água potável** com **energia solar térmica**.
+
+O sistema produz cerca de **5 kWₑ** — suficiente para aproximadamente **25 residências** — e mais **8 kWₜ** recuperáveis em micro-trocadores. O dessalinizador V-AGMD produz **1.000 L/dia** de água destilada, o que pode prover água para **mais de 100 pessoas/dia**.
+
+O foco são **comunidades remotas** do Semiárido nordestino, em articulação com o **Projeto Água Doce** — programa do governo federal que expande acesso à água potável no Semiárido nordestino por meio de dessalinização, atendendo comunidades remotas não cobertas pelo sistema tradicional de abastecimento.
+
+---
+
+## 6. Imagem da Instalação
+
+(Slide apenas para mostrar a instalação física do protótipo V-AGMD na Ilha de Policogeração, do artigo de Naveira-Cotta et al.)
+
+---
+
+## 7. Motivação e Objetivos
+
+Prever o desempenho do módulo V-AGMD é importante por dois motivos principais: permite **avaliar a produção de água dessalinizada** (fluxo de permeado) e **estimar indicadores energéticos** associados ao processo (temperaturas de saída). Ter um modelo confiável ajuda a simular e otimizar a operação, projetar sistemas mais eficientes e tomar decisões sem depender exclusivamente de medições experimentais contínuas.
+
+Temos **dados experimentais** de aproximadamente **174 pontos** em **3 regimes de salinidade**. Além disso, já existe um **modelo físico reduzido 0D** disponível na literatura, publicado pelo laboratório (LISBOA et al., 2024), que serve como referência para o sistema.
+
+O **objetivo geral** é avaliar e selecionar modelos de regressão supervisionada para predição do desempenho do V-AGMD, combinando aprendizado a partir de dados com a informação física proveniente do modelo reduzido.
+
+---
+
+## 8. Revisão Bibliográfica — Abordagens de Modelagem
+
+Existem **três principais abordagens** de modelagem em destilação por membranas. A **abordagem física** usa princípios e leis físicas para modelar o sistema. A **abordagem data-driven** usa apenas dados experimentais para aprender a função que mapeia entradas e saídas.
+
+E as **abordagens híbridas**, que combinam conhecimento físico com aprendizado de máquina, usando a física como regularizador para restringir o espaço de busca e melhorar a generalização com poucos dados. Existem diferentes estratégias: **PINNs** (Redes Neurais Integradas à Física), **modelos residuais** (a rede aprende o resíduo — Y_físico + Y_residual) e **regularização na função de perda** (PhyLoss), que penaliza desvios das leis físicas durante o treinamento.
+
+Dentro dos modelos físicos, temos modelos **distribuídos** (1D, 2D) e modelos **reduzidos de 0 dimensões**, que é o utilizado neste trabalho.
+
+---
+
+## 9. Panorama de Publicações — Lacunas e Contribuições
+
+Neste panorama, encontrei aproximadamente **4 publicações** usando abordagem física para V-AGMD/AGMD. A abordagem **data-driven** foi mais comum: redes neurais, regressões lineares, árvores de decisão.
+
+Especificamente em V-AGMD com air gap, abordagens **híbridas** eu só encontrei **uma** — uma PINN. Neste trabalho, trabalhei com **todas essas arquiteturas**, incluindo **4 arquiteturas híbridas**.
+
+**Lacunas identificadas:**
+1. **Ausência de validação cruzada** — a maioria usa partição única, ignorando a estrutura dos grupos experimentais
+2. **Seleção por métrica absoluta** — baseada apenas em RMSE, sem considerar a variabilidade estatística, favorecendo modelos complexos desnecessários
+3. **Híbridos praticamente inexistentes** em V-AGMD com air gap
+
+**Contribuições:** validação cruzada estruturada por regime de salinidade, critério de seleção 1-SE, e experimentação inédita de 4 arquiteturas híbridas no V-AGMD.
+
+---
+
+## 10. Sumário da Apresentação / Transição
+
+A apresentação está dividida em **5 blocos**. Vamos agora para a **fundamentação teórica**.
+
+---
+
+## 11. Princípios da Destilação por Membranas
+
+Aqui estão os princípios que regem a destilação por membranas. Você tem **dois fluxos principais**: um fluxo de **água quente** e um fluxo de **água fria**, separados por uma **membrana** e um **air gap**.
+
+A membrana é **hidrofóbica** — ela só permite a passagem de **vapor**. A diferença de temperatura entre os dois lados gera um **gradiente térmico**, que aumenta a pressão de vapor do lado quente, fazendo com que as moléculas de água evaporem e atravessem a membrana.
+
+O **air gap** funciona como **isolante térmico** — o ar é um ótimo isolante, então impede a troca de calor entre os dois lados, tornando o sistema energeticamente eficiente.
+
+O **vácuo parcial** é aplicado para compensar o impedimento ao transporte de massa causado pelo air gap, incentivando o fluxo de vapor.
+
+**Vantagens:** opera em temperaturas médias (60-80°C), compatível com calor residual e cogeração, e tem elevada tolerância à salinidade — é adequada para soluções de alta concentração onde a osmose inversa é limitada pelo aumento da pressão osmótica.
+
+---
+
+## 12. Fundamentos de Aprendizado de Máquinas
+
+O aprendizado de máquina é voltado ao **aprendizado a partir dos dados**, identificando padrões e relações. Se divide em **regressão** e **classificação**. Em **regressão**, aproximamos Y ≈ f(X) minimizando o erro.
+
+**Métricas:**
+- **RMSE**: raiz do erro quadrático médio — penaliza erros maiores
+- **R²**: coeficiente de determinação — no scikit-learn pode ser **negativo** quando o modelo tem viés elevado. O cálculo é `1 - (S_res / S_tot)`: se o modelo é pior que a média (como o modelo 0D para temperaturas), S_res > S_tot e R² fica negativo
+
+**Divisão dos dados:** treino (ajusta parâmetros) + validação (escolhe hiperparâmetros) + teste (avalia final).
+
+**Pré-processamento — Z-score:** transforma cada variável subtraindo sua média e dividindo pelo desvio padrão. O resultado é uma variável com média 0 e desvio 1. Por exemplo, se a temperatura de alimentação varia entre 60 e 80°C com média 70°C e desvio 5°C, um valor de 75°C vira (75-70)/5 = +1 (um desvio acima da média). Isso coloca todas as variáveis na **mesma escala**, evitando que uma grandeza como temperatura (dezenas de °C) domine o modelo sobre outra como concentração salina (unidades de g/L).
+
+**Correlação — Pearson vs Spearman:**
+- **Pearson (r)**: mede a **relação linear** entre duas variáveis. Se o gráfico de dispersão forma uma reta, o Pearson captura bem.
+- **Spearman (ρ)**: mede a **relação monotônica** — se uma variável aumenta quando a outra aumenta, mesmo que não seja linear (ex: exponencial), o Spearman captura.
+- Ambos variam de -1 a +1. Usamos os dois na análise exploratória porque relações no sistema V-AGMD podem ser não lineares.
+
+---
+
+## 13. Famílias de Modelos
+
+**Quatro famílias** de modelos foram comparadas.
+
+**Primeira: modelos lineares.** Regressão linear busca a reta (ou hiperplano) que melhor se ajusta aos dados, minimizando o erro quadrático entre valores reais e previstos.
+
+- **OLS (Ordinary Least Squares):** a regressão linear clássica. Ajusta os coeficientes para minimizar a soma dos quadrados dos resíduos nos dados de treino. É simples e interpretável, mas não tem regularização — qualquer ruído vira inclinação na reta, podendo causar overfitting.
+- **Ridge:** adiciona uma penalidade L2 ao OLS. Ele piora intencionalmente o ajuste aos dados de treino para generalizar melhor, e o alpha (escolhido na validação cruzada) controla esse afastamento.
+- **Lasso:** adiciona uma penalidade L1 — pode zerar coeficientes irrelevantes, funcionando como seleção automática de features. Também piora o ajuste nos dados de treino em troca de melhor generalização.
+- **ElasticNet:** combina L1 + L2, com o parâmetro l1_ratio controlando a mistura.
+- **Intuição:** OLS dá o melhor ajuste possível aos dados de treino. Ridge, Lasso e ElasticNet propositalmente se afastam desse ajuste — aceitam erros maiores no treino para errar menos no teste.
+
+**Segunda: árvores de decisão e ensemble.** Diferente dos lineares, esses modelos não assumem uma forma funcional fixa — eles particionam o espaço em regiões.
+
+- **Decision Tree:** é um modelo em forma de fluxograma que ajuda a fazer escolhas ou prever resultados usando regras simples do tipo "sim ou não". Ela é formada por um nó raiz, ramos com caminhos lógicos e nós finais (folhas) que mostram o resultado.
+- **Random Forest:** cria centenas de árvores, cada uma treinada com um subconjunto diferente dos dados e das variáveis. A média de todas cancela os erros individuais — é o mais robusto da família e difícil de overfittar.
+- **Gradient Boosting (GBoost):** treina árvores em sequência, cada uma corrigindo o erro da anterior. O learning rate controla a contribuição de cada nova árvore.
+
+**Terceira: redes neurais (MLPs).** São camadas de neurônios conectados, onde cada conexão tem um peso ajustado durante o treinamento. A ativação não linear (ReLU ou tanh) é o que permite aprender relações complexas. O treinamento usa backpropagation: calcula o erro da saída, propaga para trás e ajusta os pesos. Hiperparâmetros principais: arquitetura (camadas e neurônios), learning rate, L2 (weight decay) e ativação.
+
+**Quarta: arquiteturas híbridas.** Combinam o modelo físico 0D com redes neurais.
+- **PhyInput:** adiciona predições do modelo 0D como features extras de entrada.
+- **PhyResidual:** aprende o resíduo — saída = Y_físico + ε. A rede só precisa corrigir o desvio do modelo físico.
+- **PhyHybrid:** combina PhyInput + PhyResidual simultaneamente.
+- **PhyLoss**: incorpora a física na função de perda como regularização, penalizando desvios das leis físicas
+
+---
+
+## 14. Visão Geral dos Procedimentos
+
+Começo com os **dados experimentais**, preparação (padronização, análise de correlações). A modelagem segue **3 estágios**: Stage 0 (clássicos), Stage 1 (redes neurais), Stage 2 (híbridos). Finalmente, o modelo selecionado é comparado com o **modelo 0D**.
+
+---
+
+## 15. Dados Experimentais
+
+174 pontos, 3 regimes de salinidade (10, 40, 70 g/L). 5 entradas, 3 saídas.
+
+---
+
+## 16. Decisões da Preparação dos Dados
+
+**Escalonamento: Z-score** — preserva a distribuição original, cada ponto medido em desvios-padrão da média.
+
+**Validação: GroupKFold** — separa folds por regime operacional, orientando a busca para extrapolação.
+
+---
+
+## 17. Fluxo de Validação Cruzada e Seleção
+
+GroupKFold → RMSE médio com erro padrão → regra 1-SE → modelo de menor complexidade.
+
+---
+
+## 18. Glossário — O que cada hiperparâmetro significa
+
+Referência rápida para o slide da tabela de hiperparâmetros:
+
+**α (alpha):** controla a força da regularização em Ridge, Lasso e ElasticNet. α = 0 é OLS (sem regularização). α alto = coeficientes mais próximos de zero, modelo menos flexível.
+
+**Profundidade (max_depth):** número máximo de níveis de uma árvore de decisão. Profundidade 1 = só uma pergunta (stump). Profundidade alta = árvore mais complexa, propensa a overfitting.
+
+**n_estimadores:** número de árvores no Random Forest ou Gradient Boosting. Mais árvores = predição mais estável (menos variância), mas maior custo computacional.
+
+**Learning rate (taxa de aprendizado):** controla quanto cada nova árvore do GBoost contribui para a predição final. Taxa baixa (ex: 0,01) = aprendizado lento, precisa de mais árvores, mas geralmente generaliza melhor.
+
+**Camadas e neurônios (arquitetura da rede):** define a estrutura da MLP. Ex: (128, 64) = primeira camada oculta com 128 neurônios, segunda com 64. Mais camadas = rede mais profunda, capaz de aprender hierarquias mais complexas.
+
+**LR (learning rate da rede):** taxa de aprendizado do otimizador (Adam). Controla o tamanho do passo na descida do gradiente. Muito alto = oscila e diverge; muito baixo = converge lentamente ou fica preso.
+
+**L2 (weight decay):** regularização aplicada aos pesos da rede neural. Equivalente ao Ridge: penaliza pesos grandes para evitar overfitting. O mesmo conceito do alpha nos lineares, mas aplicado aos pesos da rede.
+
+**Ativação:** função não linear entre as camadas da rede. **ReLU** zera valores negativos (comum em redes profundas). **tanh** comprime entre -1 e 1 (adequada para dados normalizados).
+
+**L2 congelado (híbridos):** para isolar o efeito da arquitetura híbrida, o L2 encontrado na MLP baseline (Stage 1) é mantido fixo — só a estrutura muda.
+
+**ω (omega, PhyLoss):** ponderação entre perda dos dados e perda física: `Loss = (1-ω)·Loss_dados + ω·Loss_física`. ω = 0 = MLP pura; ω = 1 = apenas física.
+
+---
+
+## 19. Busca de Hiperparâmetros
+
+A busca foi personalizada por target — três fits independentes por alvo. Cada família tem seus próprios hiperparâmetros:
+
+**Modelos Lineares:**
+- **alpha (Ridge, Lasso, ElasticNet)**: controla a intensidade da regularização. Quanto maior o alpha, menor a flexibilidade do modelo, reduzindo o risco de overfitting. Alpha = 0 equivale a OLS (sem regularização).
+- **l1_ratio (ElasticNet)**: proporção entre penalidades L1 e L2. l1_ratio = 1 é Lasso puro; = 0 é Ridge puro.
+
+**Árvores:**
+- **profundidade máxima**: limita o número de níveis da árvore. Profundidade alta = modelo mais complexo e propenso a overfitting.
+- **n_estimadores (RF/GB)**: número de árvores no ensemble. Mais árvores reduzem variância, mas aumentam custo computacional.
+- **learning rate (GB)**: controla a contribuição de cada nova árvore. Taxas baixas exigem mais árvores mas podem generalizar melhor.
+
+**Redes Neurais (MLPs):**
+- **arquitetura**: número de camadas ocultas e neurônios por camada. Ex: (128, 64) = duas camadas com 128 e 64 neurônios.
+- **LR (learning rate)**: taxa de aprendizado — controla o tamanho do passo na descida do gradiente. LR muito alta diverge; muito baixa converge lentamente.
+- **L2 (weight decay)**: regularização L2 aplicada aos pesos da rede, equivalente ao Ridge em redes neurais. Penaliza pesos grandes para evitar overfitting.
+- **ativação**: função não linear entre camadas. **tanh**: satura entre -1 e 1, adequada para valores normalizados. **ReLU**: zera valores negativos, comum em redes profundas.
+
+**Modelos Híbridos:**
+- **L2 congelado**: toma-se o L2 encontrado na MLP baseline (Stage 1) e mantém-se fixo, avaliando apenas o efeito da arquitetura híbrida isoladamente.
+- **ω (PhyLoss)**: peso da regularização física na função de perda combinada: `Loss = (1-ω) * Loss_dados + ω * Loss_física`. ω = 0 é MLP pura; ω = 1 é apenas física.
+
+---
+
+## 19. Resultados — Modelos Lineares
+
+Para cada target, RMSE de validação cruzada e de teste.
+
+---
+
+## 20. Árvores de Decisão — Eliminadas
+
+Não foram melhores para nenhum target. Restaram: regressão linear, rede neural, híbridos.
+
+---
+
+## 21. Resultados — Análise por Variável de Saída
+
+**T_alim_out:** Pelo menor Test RMSE, a **Baseline Flux (Stage 1)** foi selecionada (0,178) — 2,7% melhor que o PhyResidual (Flux) de Stage 2 (0,183) e 22,9% melhor que o OLS (Stage 0, 0,231).
+
+**T_ref_out:** Pelo menor Test RMSE, o **PhyResidual (base Flux)** foi selecionado (0,214) — diferença marginal de 2,3% sobre Ridge (0,219). Ridge tem CV RMSE 0,244 vs 0,346, indicando melhor extrapolação.
+
+**Fluxo:** O **PhyResidual (base Flux)** foi selecionado (0,054) — 18,2% melhor que Baseline Flux (0,066), 28% melhor que Lasso_Indep (0,075) e 73,8% melhor que o modelo 0D (0,206). O Flux foi a única variável onde o modelo com menor Test RMSE também teve o menor CV RMSE.
+
+---
+
+## 22. Arquiteturas Híbridas — Explicação
+
+Combinam o modelo físico 0D com redes neurais. A rede aprende correções sistemáticas dos desvios do modelo 0D em relação aos dados experimentais. O modelo físico representa o conhecimento da física, e a rede corrige o que o modelo simplificado não captura.
+
+Este papel de **corretor de viés** é a principal contribuição mensurável da arquitetura residual.
+
+---
+
+## 23. Comparação Final
+
+**Baseline Flux (Stage 1)** foi selecionado para T_alim (0,178). **PhyResidual (base Flux, Stage 2)** foi selecionado para T_ref (0,214) e Fluxo (0,054). Para T_ref, a diferença sobre o Ridge é marginal (2,3%), e o Ridge tem melhor CV RMSE — indicando que modelos lineares generalizam melhor para regimes não vistos. O Flux foi a única saída onde o menor Test RMSE e o menor CV RMSE pertencem ao mesmo modelo.
+
+---
+
+## 24. Conclusões
+
+Conclusões principais: pelo critério de menor Test RMSE, a **Baseline Flux** foi selecionada para T_alim, o **PhyResidual (base Flux)** para T_ref e Fluxo. Para o fluxo, o ganho da hibridização foi expressivo (73,8% sobre o modelo 0D). Para T_ref, a diferença sobre o Ridge é marginal e modelos lineares têm melhor generalização (CV RMSE 0,244 vs 0,346). O Flux foi a única variável onde o melhor Test RMSE coincidiu com o melhor CV RMSE.
+
+**Trabalhos futuros:** substituir o modelo 0D pelo modelo 2D como referência física; construir PINNs a partir das EDOs do modelo 2D.

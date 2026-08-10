@@ -9,21 +9,21 @@
       \textbf{Abordagem} & \textbf{Tecnologia} & \textbf{Descrição} & \textbf{Vantagens} & \textbf{Limitações} \\
       \midrule
       \textbf{Física}
-      & AGMD, CFD, \textbf{V-AGMD}
-      & Modelos distribuídos (1D, CFD), reduzido 0D e balanços globais de massa e energia
+      & AGMD, 2D, \textbf{V-AGMD}
+      & Modelos 0D, 1D, 2D
       & Interpretabilidade física
       & Alto custo; simplificações \\
       \midrule
-      \textbf{Data-driven}
+      \textbf{Dados}
       & \textbf{AGMD}, VMD
       & Redes neurais e regressão p/ predição de fluxo e temperaturas
       & Alta flexibilidade; aprox. não linear
       & Generalização limitada \\
       \midrule
       \textbf{Híbridos (físico + dados)}
-      & AGMD, VMD, \textbf{V-AGMD}
-      & PINNs, CFD + surrogate e modelos residuais com correção física
-      & Combina física + dados
+      & DCMD, \textbf{V-AGMD}
+      & PINNs (Redes Neurais Integradas à Física), modelos residuais — a rede aprende o \textbf{resíduo} em relação ao modelo físico — e regularização por perda física (PhyLoss), que incorpora a física na função de perda
+      & Combina física + dados; regulariza o espaço de busca
       & Complexidade de implementação \\
       \bottomrule
     \end{tabular}
@@ -39,11 +39,11 @@
     \toprule
     \textbf{Abordagem} & \textbf{Nº} & \textbf{Modelos} \\
     \midrule
-    \textbf{Física} & 4 & 0D, 1D, 2D/CFD \\
+    \textbf{Física} & 4 & 0D, 1D, 2D \\
     \midrule
-    \textbf{Data-driven} & 6 & RL, RNA, MLP, RF, PSO \\
+    \textbf{Dados} & 5 & RL, RNA, MLP, RF \\
     \midrule
-    \textbf{Híbrida} & 4 & PINN, CFD+Surrogate, Residual \\
+    \textbf{Híbrida} & 1 & PINN \\
     \midrule
     \textbf{Este trabalho} & -- & RL, DT, GB, RF, MLP, Residual, PhyLoss \\
     \bottomrule
@@ -53,41 +53,40 @@
   \textbf{Legenda:}
   0D — Balanços globais \;
   1D — Modelo distribuído \;
-  2D/CFD — Fluidodinâmica \;
+  2D — Modelo distribuído bidimensional \;
   RL — Regressão Linear \;
   RNA — Rede Neural Artificial \;
   MLP — \textit{Multi-Layer Perceptron} \;
   DT — Árvore de Decisão \;
   GB — \textit{Gradient Boosting} \;
   RF — \textit{Random Forest} \;
-  PSO — \textit{Particle Swarm Optimisation} \;
   PINN — \textit{Physics-Informed Neural Network} \;
-  Residual — Correção da saída física \;
+  Residual — Modelo residual: Y = Y$_{físico}$ + Y$_{residual}$ \;
   PhyLoss — Perda regularizada pela física
-  \note{Panorama consolidado das publicações. A maioria dos trabalhos usa modelos puramente físicos ou data-driven. Apenas 5 trabalhos (incluindo este) exploram abordagens híbridas — e este é o único focado em V-AGMD. [~1,5 min]}
+  \note{Panorama consolidado das publicações. A maioria dos trabalhos usa modelos puramente físicos ou data-driven. Apenas 1 trabalho na literatura de MD explora abordagem híbrida (PINN em DCMD) --- e este é o único focado em V-AGMD. [~1,5 min]}
 \end{slide}
 %========================================================================
 
 \begin{slide}{Lacunas e Contribuições}
+  \scriptsize
   \begin{columns}
     \begin{column}{.5\linewidth}
       \textbf{Lacunas na literatura:}
       \begin{Item}
-        \item[\textbf{1.}] \textbf{Ausência de validação cruzada sistemática} --- artigos em MD usam hold-out simples ou divisão arbitrária treino/validação/teste, sem considerar a estrutura de grupos dos regimes experimentais
-        \item[\textbf{2.}] \textbf{Seleção de hiperparâmetros não estruturada} --- trial-and-error predomina; Khayet \& Cojocaru (2012), Mittal et al. (2021) e outros não realizam busca exaustiva ou critério de parcimônia. A seleção é guiada apenas pelo RMSE ou R$^2$, sem considerar complexidade do modelo ou penalização por superparametrização
-        \item[\textbf{3.}] \textbf{Modelos híbridos (físico+ML) em MD são praticamente inexistentes} --- Schweidtmann et al. (2024) mostram que híbridos seriais extrapolam melhor que black-box puros, mas não há aplicação em V-AGMD
+        \item[\textbf{1.}] \textbf{Ausência de validação cruzada em geral} --- partição única ignora grupos experimentais, mascara sobreajuste e produz estimativas otimistas. Risco agravado pelo volume limitado de dados em escala piloto \cite{Vabalas2019}
+        \item[\textbf{2.}] \textbf{Seleção por RMSE puro favorece superparametrização} --- ignora variabilidade estatística. Critérios como a regra do \textit{one-standard-error} (\cite{Hastie2009, Yates2022}) identificam modelos equivalentes com menor complexidade
+        \item[\textbf{3.}] \textbf{Modelos híbridos (físico+ML) em MD são praticamente inexistentes} --- apenas Shahouni (2026) aplica PINN em DCMD; nenhum trabalho em V-AGMD
       \end{Item}
     \end{column}
     \begin{column}{.5\linewidth}
       \textbf{Contribuições do trabalho:}
       \begin{Item}
-        \item GroupKFold por regimes experimentais
-        \item Busca sistemática de hiperparâmetros
-        \item Critério 1-SE + menor complexidade
+        \item Validação cruzada por grupos (regimes experimentais)
+        \item Critério 1-SE + menor complexidade (mais simples dentro de 1 erro padrão)
         \item 4 arquiteturas híbridas implementadas
       \end{Item}
     \end{column}
   \end{columns}
-  \note{Lacunas: 1) validação cruzada não usada; 2) HP search não sistemático; 3) híbridos em MD praticamente inexistentes. Contribuições: GroupKFold, busca sistemática, 1-SE, 4 arquiteturas híbridas. [~2 min]}
+  \note{Lacunas: 1) validação por partição única, sem CV agrupada — métricas otimistas para extrapolação, risco de sobreajuste. 2) seleção por RMSE puro ignora variabilidade — 1-SE como alternativa parcimoniosa: escolhe o modelo mais simples cujo erro está dentro de 1 erro padrão do melhor. 3) híbridos em MD praticamente inexistentes. [~2 min]}
 \end{slide}
 %========================================================================

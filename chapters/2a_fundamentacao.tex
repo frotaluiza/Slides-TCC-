@@ -1,22 +1,15 @@
 \section{Fundamentação Teórica}
 
 \begin{slide}{Princípios da Destilação por Membranas}
-  \small
+  \footnotesize
   \begin{columns}
-    \begin{column}{.6\linewidth}
+    \begin{column}{.58\linewidth}
       \begin{Item}
-        \item Processo de separação térmico com membrana \textbf{hidrofóbica} e microporosa
+        \item Processo de separação térmico com membrana \textbf{hidrofóbica} e \textbf{porosa}
         \item Força motriz: \textbf{gradiente térmico} $\rightarrow$ diferença de pressão parcial de vapor
-        \item Apenas a fase vapor atravessa os poros (membrana não-molhável)
+        \item Apenas a fase vapor atravessa os poros da membrana
         \item Mecanismo: evaporação na interface quente $\rightarrow$ difusão nos poros $\rightarrow$ condensação no lado frio
-      \end{Item}
-      \vfill
-      \textbf{Configurações básicas:}
-      \begin{Item}
-        \item \textbf{DCMD}: contato direto — simples, mas altas perdas condutivas
-        \item \textbf{AGMD}: lacuna de ar — reduz perdas, mas resistência extra ao vapor
-        \item \textbf{VMD}: vácuo no permeado — maior fluxo, mas condensação externa
-        \item \textbf{SGMD}: gás de arraste — controle adicional necessário
+        \item \textbf{Vantagens do processo MD}: opera em temperaturas médias (60--80\,°C), compatível com calor residual e projetos de cogeração; elevada tolerância à salinidade — adequada para soluções de alta concentração onde a osmose inversa é limitada pela pressão osmótica
       \end{Item}
     \end{column}
     \begin{column}{.4\linewidth}
@@ -25,129 +18,78 @@
       {\tiny Figura: Transporte de calor e massa na configuração AGMD. Fonte: Zheng (2017)}
     \end{column}
   \end{columns}
-  \note{A destilação por membranas é um processo térmico de separação. A água salgada é aquecida e circula por um lado de uma membrana hidrofóbica — ela não permite a passagem de líquido, mas o vapor consegue atravessar os poros. A força motriz é a diferença de temperatura: do lado quente a água evapora, o vapor migra pelos poros e condensa do lado frio, gerando água pura. Existem quatro configurações principais: DCMD, AGMD, VMD e SGMD. A V-AGMD, usada neste trabalho, combina o espaço de ar da AGMD com vácuo parcial, reduzindo a resistência ao transporte de vapor sem perder o isolamento térmico. [~2 min]}
+  \note{A destilação por membranas é um processo térmico onde a água salgada aquecida evapora na interface de uma membrana hidrofóbica e microporosa, o vapor atravessa os poros e condensa do lado frio. Não é filtração — a membrana não é molhada. As vantagens são do processo MD em geral. [~1 min]}
 \end{slide}
 %========================================================================
 
 \begin{slide}{Fundamentos de Aprendizado de Máquinas}
-  \small
-  \textbf{Aprendizado de Máquina:} ramo da IA voltado ao desenvolvimento de modelos que aprendem a partir de dados, identificando padrões e relações para realizar previsões (\cite{Ghahramani2015}). Diferentemente de modelos físicos, aprendem relações entrada-saída diretamente dos dados, ajustando parâmetros para minimizar uma função de erro (\cite{Rai2020}).
-
-  \vfill
+  \footnotesize
+  \vspace{-0.15cm}
   \centering
-  \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.2\linewidth} p{0.7\linewidth}}
+  \scriptsize
+  \begin{tabular}{p{0.17\linewidth} p{0.38\linewidth} p{0.38\linewidth}}
       \toprule
-      \textbf{Conceito} & \textbf{Definição} \\
-      \midrule
-      \textbf{Regressão}
-      & $Y = f(X) + \varepsilon$ — aprender função que mapeia entradas em saídas minimizando o erro \\
+      \textbf{Conceito} & \textbf{Definição} & \textbf{Propósito na Regressão} \\
       \midrule
       \textbf{Métricas}
-      & RMSE (raiz do erro quadrático médio), MAE, MAPE, R² \\
+      & RMSE (raiz do erro quadrático médio), R²
+      & RMSE: magnitude do erro na mesma unidade; R²: proporção da variância explicada
+      \\
       \midrule
-      \textbf{Divisão e Validação Cruzada}
-      & Hold-out (80/20), KFold, GroupKFold — estratégias para particionar os dados e estimar desempenho \\
+      \textbf{Divisão dos dados}
+      & Hold-out (80/20): separar treino, validação e teste
+      & Evitar contaminação entre ajuste e avaliação \\
+      \midrule
+      \textbf{Validação Cruzada}
+      & Repetir a divisão múltiplas vezes, agrupando por regimes experimentais
+      & Estimar estabilidade do erro entre partições e capacidade de extrapolação \\
       \midrule
       \textbf{Pré-processamento}
-      & Padronização Z-score \\
+      & Z-score (padronização para média zero e variância unitária)
+      & Colocar variáveis em escala comparável, evitando que magnitudes distintas dominem o ajuste \\
+      \midrule
+      \textbf{Correlação}
+      & \textbf{Pearson} ($r$): relação \textit{linear}. \textbf{Spearman} ($\rho$): relação \textit{monotônica}
+      & Identificar relações lineares/não lineares entre entradas e saídas \\
       \bottomrule
     \end{tabular}
-  }
-  \note{Um ponto importante é o pré-processamento por padronização Z-score. As variáveis de entrada do sistema V-AGMD têm unidades físicas e ordens de grandeza muito distintas — temperatura em °C, vazão em L/h, pressão de vácuo em mbar, concentração salina em g/L. O Z-score centraliza cada variável subtraindo sua média e dividindo pelo desvio padrão. Assim, todas passam a ter média zero e desvio padrão unitário, ficando em escala comparável. Isso evita que variáveis com magnitudes maiores — como temperatura — dominem desproporcionalmente o ajuste do modelo. É especialmente importante em modelos regularizados como Ridge e Lasso, onde a penalização dos coeficientes é sensível à escala. [~1,5 min]}
+  \note{Este trabalho se enquadra no campo da regressão supervisionada: dado um conjunto de variáveis de entrada (condições operacionais do V-AGMD), queremos prever variáveis de saída contínuas (fluxo e temperaturas). A tarefa exige atenção a três aspectos: como medir o erro, como dividir os dados para avaliação justa, e como preparar as variáveis para que modelos diferentes possam ser comparados. Ordem lógica da tabela: 1) métricas (como medir erro), 2) divisão dos dados (como avaliar), 3) validação cruzada (estabilidade), 4) pré-processamento (comparabilidade), 5) correlação (relações entre variáveis). [~1,5 min]}
 \end{slide}
 
 %========================================================================
 
-\begin{slide}{Estratégias de Validação Cruzada}
-  \small
-  \begin{columns}
-    \begin{column}{.5\linewidth}
-      \textbf{KFold}
-      \begin{Item}[0.15]
-        \item Divide os dados em $K$ partições de mesmo tamanho
-        \item A cada iteração: $K-1$ partições p/ treino, 1 p/ validação
-        \item Processo repetido até que todas as partições tenham sido validadas
-      \end{Item}
-      \vspace{0.3cm}
-      \textbf{Hold-out}
-      \begin{Item}[0.15]
-        \item Separa uma fração fixa dos dados para teste final
-        \item Não participa de nenhuma etapa de treino ou validação
-      \end{Item}
-    \end{column}
-    \begin{column}{.5\linewidth}
-      \textbf{GroupKFold}
-      \begin{Item}[0.15]
-        \item Partições respeitam grupos definidos (ex.: regimes experimentais)
-        \item Todas as amostras de um mesmo grupo ficam juntas na mesma partição
-        \item Garante que o modelo seja testado em grupos não vistos durante o treino
-        \item Métrica mais conservadora e realista quando há dependência entre amostras
-      \end{Item}
-    \end{column}
-  \end{columns}
-  \note{A validação cruzada é essencial para estimar o desempenho de modelos. O KFold divide os dados em K partições e repete o treino K vezes. O GroupKFold respeita os grupos experimentais, garantindo que cada fold teste o modelo em grupos não vistos. O hold-out é uma fração separada antes de qualquer modelagem para avaliação final. [~1,5 min]}
-\end{slide}
-
-%========================================================================
-
-\begin{slide}{Seleção de Atributos e Discretização}
-  \small
-  \begin{columns}
-    \begin{column}{.5\linewidth}
-      \textbf{Seleção de Atributos (\textit{Feature Selection})}
-      \begin{Item}[0.15]
-        \item Identificar subconjunto relevante de preditores
-        \item 3 categorias (\cite{Sarkar2018PML}):
-        \begin{Item}[0.1]
-          \item \textbf{Filtro}: baseado em estatísticas (correlação, $\chi^2$)
-          \item \textbf{Wrapper}: avalia subconjuntos por desempenho do modelo
-          \item \textbf{Embutido}: seleção durante o treino (Lasso, árvores)
-        \end{Item}
-        \item Reduz complexidade, overfitting e redundância
-      \end{Item}
-    \end{column}
-    \begin{column}{.5\linewidth}
-      \textbf{Discretização (\textit{Binning})}
-      \begin{Item}[0.15]
-        \item Transforma variável contínua em intervalos discretos
-        \item Largura fixa (\textit{fixed-width}) ou adaptativa (quantis)
-        \item Pode capturar relações não lineares de forma simplificada
-        \item \textbf{Limitação:} perda de informação ao substituir valor contínuo por intervalo
-      \end{Item}
-    \end{column}
-  \end{columns}
-  \note{A seleção de atributos visa identificar o subconjunto mais relevante de variáveis de entrada para melhorar a capacidade preditiva e reduzir overfitting. A discretização transforma variáveis contínuas em intervalos, o que pode ajudar a capturar não linearidades, mas implica perda de informação. No contexto de MD, essas técnicas foram avaliadas durante a preparação dos dados. [~2 min]}
-\end{slide}
-%========================================================================
-
-\begin{slide}{Famílias de Modelos}
-  \small
+\begin{slide}{Famílias de Modelos I — Regressão Linear e Regularizadas}
   \centering
-  \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.2\linewidth} p{0.35\linewidth} p{0.35\linewidth}}
-      \toprule
-      \textbf{Família} & \textbf{Modelos} & \textbf{Papel} \\
-      \midrule
-      \textbf{Lineares}
-      & OLS, Ridge, Lasso, ElasticNet
-      & Referência de menor complexidade \\
-      \midrule
-      \textbf{Árvores}
-      & Árvore, Random Forest, Gradient Boosting
-      & Capturam não linearidades \\
-      \midrule
-      \textbf{Redes Neurais}
-      & MLP sklearn, KerasMLP (baseline)
-      & Alta capacidade de aproximação \\
-      \midrule
-      \textbf{Híbridos}
-      & PhyResidual, PhyHybrid, PhyLoss, BaselineHibrido
-      & Física + dados p/ melhor generalização \\
-      \bottomrule
-    \end{tabular}
-  }
-  \note{Quatro famílias de modelos foram comparadas. Os modelos lineares servem como referência. As árvores capturam relações não lineares. As redes neurais têm alta flexibilidade. Os híbridos combinam física com dados. [~1,5 min]}
+  \includegraphics[width=0.72\textwidth]{tcc_images/chap02a/regressao.png}
+  \vfill
+  {\scriptsize \textbf{L1} (Lasso): penaliza $\sum|\beta_j|$ — zera coeficientes irrelevantes (seleção de variáveis). \textbf{L2} (Ridge): penaliza $\sum\beta_j^2$ — encolhe coeficientes sem zerar. ElasticNet combina ambos.}
+  \vfill
+  {\scriptsize Fonte: Autor}
+  \note{Lineares: OLS sem regularização, Ridge penaliza L2 (encolhe coeficientes), Lasso penaliza L1 (zera coeficientes — seleção de variáveis), ElasticNet combina ambos. [~45s]}
+\end{slide}
+%========================================================================
+\begin{slide}{Famílias de Modelos II — Árvores de Decisão}
+  \centering
+  \includegraphics[width=0.78\textwidth]{tcc_images/chap02a/arvores.png}
+  \vfill
+  {\scriptsize Fonte: Autor}
+  \note{Árvores: DT overfitta, RF reduz variância com bagging, GB corrige resíduos sequencialmente. [~45s]}
+\end{slide}
+%========================================================================
+\begin{slide}{Famílias de Modelos III — Redes Neurais}
+  \centering
+  \includegraphics[width=0.78\textwidth]{tcc_images/chap02a/redes_neurais.png}
+  \vfill
+  {\scriptsize Fonte: Autor}
+  \note{MLP: fully connected, backpropagation, ativação não linear. Hiperparâmetros: camadas, neurônios, ativação, lr, L2, dropout. [~45s]}
+\end{slide}
+%========================================================================
+\begin{slide}{Famílias de Modelos IV — Arquiteturas Híbridas}
+  \centering
+  \includegraphics[width=0.78\textwidth]{tcc_images/chap02a/hibridos-slides.png}
+  \vfill
+  {\scriptsize Fonte: Autor}
+  \note{Híbridos: quatro arquiteturas que incorporam o modelo físico 0D. [~30s]}
 \end{slide}
 %========================================================================
 
