@@ -48,18 +48,20 @@
   \begin{columns}
     \begin{column}{.35\linewidth}
       \begin{Item}
-        \item 174 pontos experimentais do sistema V-AGMD piloto (LabMEMS/COPPE)
+        \item 174 pontos experimentais do sistema V-AGMD piloto (LabMEMS/COPPE) \cite{Lisboa2024}
         \item 3 regimes de salinidade: 10, 40 e 70 g/L de NaCl
         \item 5 entradas: T$_{in,alim}$, T$_{in,ref}$, vazão$_{ref}$, P$_{vac}$, C$_{NaCl}$
         \item 3 saídas: Fluxo de permeado, T$_{out,alim}$, T$_{out,ref}$
       \end{Item}
+      \vfill
+      {\scriptsize Fonte dos dados: \cite{Lisboa2024}}
     \end{column}
     \begin{column}{.65\linewidth}
       \centering
       \includegraphics[width=\linewidth]{tcc_images/chap04/esquematizacao_regressao.png}
     \end{column}
   \end{columns}
-  \note{O conjunto de dados tem 174 pontos experimentais obtidos em um sistema V-AGMD piloto. Foram testados 3 regimes de salinidade: 10, 40 e 70 g/L. As 5 variáveis de entrada incluem temperaturas, vazão, pressão de vácuo e concentração salina. As 3 saídas são o fluxo de permeado e as duas temperaturas de saída. [~1 min]}
+  \note{O conjunto de dados tem 174 pontos experimentais obtidos em um sistema V-AGMD piloto, disponibilizado por Lisboa et al. (2024). Foram testados 3 regimes de salinidade: 10, 40 e 70 g/L. As 5 variáveis de entrada incluem temperaturas, vazão, pressão de vácuo e concentração salina. As 3 saídas são o fluxo de permeado e as duas temperaturas de saída. [~1 min]}
 \end{slide}
 \begin{slide}{Resumo — Decisões da Preparação dos Dados}
   \centering
@@ -101,6 +103,8 @@
   \end{tabular}
   \vfill
   {\footnotesize Para cada família e cada \textbf{target}, uma busca independente foi realizada via \textbf{GridSearchCV} (busca exaustiva sobre a grade) com GroupKFold (3 folds). Os híbridos residuais tiveram busca restrita (apenas L2) para isolar o efeito da incorporação da física. O PhyLoss teve busca em dois estágios: primeiro $\omega$, depois L2.}
+  \vfill
+  {\scriptsize \textbf{Legenda de cores:} \textcolor{blue!70!black}{azul} = modelos lineares \; \textcolor{green!70!black}{verde} = árvores de decisão \; \textcolor{orange!70!black}{laranja} = redes neurais \; \textcolor{red!70!black}{vermelho} = modelos híbridos (física + dados)}
   \note{A busca de hiperparâmetros foi organizada por família e por target usando GridSearchCV com GroupKFold. Híbridos: busca restrita (só L2). [~1,5 min]}
 \end{slide}
 %========================================================================

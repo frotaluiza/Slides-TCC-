@@ -5,11 +5,11 @@
   \begin{columns}
     \begin{column}{.58\linewidth}
       \begin{Item}
-        \item Processo de separação térmico com membrana \textbf{hidrofóbica} e microporosa
+        \item Processo de separação térmico com membrana \textbf{hidrofóbica} e \textbf{microporosa}
         \item Força motriz: \textbf{gradiente térmico} $\rightarrow$ diferença de pressão parcial de vapor
-        \item Apenas a fase vapor atravessa os poros (membrana não-molhável)
+        \item Apenas a fase vapor atravessa os poros da membrana (não há filtração — a membrana não é molhada)
         \item Mecanismo: evaporação na interface quente $\rightarrow$ difusão nos poros $\rightarrow$ condensação no lado frio
-        \item \textbf{Vantagens}: opera em temperaturas médias (60-80\,°C), compatível com calor residual e projetos de cogeração; elevada tolerância à salinidade — adequada para soluções de alta concentração onde a osmose inversa é limitada pela pressão osmótica
+        \item \textbf{Vantagens do processo MD}: opera em temperaturas médias (60--80\,°C), compatível com calor residual e projetos de cogeração; elevada tolerância à salinidade — adequada para soluções de alta concentração onde a osmose inversa é limitada pela pressão osmótica
       \end{Item}
     \end{column}
     \begin{column}{.4\linewidth}
@@ -18,7 +18,7 @@
       {\tiny Figura: Transporte de calor e massa na configuração AGMD. Fonte: Zheng (2017)}
     \end{column}
   \end{columns}
-  \note{A destilação por membranas é um processo térmico onde a água salgada aquecida evapora na interface de uma membrana hidrofóbica, o vapor atravessa os poros e condensa do lado frio. Existem várias configurações — a V-AGMD combina o espaço de ar (isolamento) com vácuo (menos resistência ao vapor). [~1 min]}
+  \note{A destilação por membranas é um processo térmico onde a água salgada aquecida evapora na interface de uma membrana hidrofóbica e microporosa, o vapor atravessa os poros e condensa do lado frio. Não é filtração — a membrana não é molhada. As vantagens são do processo MD em geral. [~1 min]}
 \end{slide}
 %========================================================================
 
@@ -67,10 +67,12 @@
 
 \begin{slide}{Famílias de Modelos I — Regressão Linear e Regularizadas}
   \centering
-  \includegraphics[width=0.78\textwidth]{tcc_images/chap02a/regressao.png}
+  \includegraphics[width=0.72\textwidth]{tcc_images/chap02a/regressao.png}
+  \vfill
+  {\scriptsize \textbf{L1} (Lasso): penaliza $\sum|\beta_j|$ — zera coeficientes irrelevantes (seleção de variáveis). \textbf{L2} (Ridge): penaliza $\sum\beta_j^2$ — encolhe coeficientes sem zerar. ElasticNet combina ambos.}
   \vfill
   {\scriptsize Fonte: Autor}
-  \note{Lineares: OLS sem regularização, Ridge penaliza L2, Lasso zera coeficientes, ElasticNet combina ambos. [~45s]}
+  \note{Lineares: OLS sem regularização, Ridge penaliza L2 (encolhe coeficientes), Lasso penaliza L1 (zera coeficientes — seleção de variáveis), ElasticNet combina ambos. [~45s]}
 \end{slide}
 %========================================================================
 \begin{slide}{Famílias de Modelos II — Árvores de Decisão}

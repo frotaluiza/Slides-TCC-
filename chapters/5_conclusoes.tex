@@ -11,9 +11,11 @@
     \item[\textcolor{orange!70!black}{T$_{ref,out}$}:] Pelo menor Test RMSE, o PhyResidual (base Flux) foi selecionado (0,214) — diferença marginal de 2,3\% sobre Ridge (Stage 0, 0,219), 30,7\% melhor que a Baseline Alim (Stage 1, 0,309) e 76,9\% melhor que o modelo 0D (0,927). Ridge tem CV RMSE 0,244 vs 0,346, indicando melhor extrapolação.
     \item[\textcolor{green!70!black}{Flux}:] O PhyResidual (base Flux) foi selecionado (0,054) — 18,2\% melhor que Baseline Flux (0,066), 28,0\% melhor que Lasso (0,075) e 73,8\% melhor que o modelo 0D (0,206). O Flux foi a única saída onde o menor Test RMSE e o menor CV RMSE (0,072) pertencem ao mesmo modelo.
     \end{Item}
+    \vfill
+    {\scriptsize Nota: R$^2$ pode assumir valores negativos quando o modelo é pior que a média dos dados (\cite{sklearn_r2}). O modelo 0D apresenta R$^2$ = $-0{,}404$ para T$_{alim}$, indicando viés sistemático que a arquitetura residual corrige.}
     \end{column}
   \end{columns}
-  \note{Talim: Baseline Flux (Stage 1) superou até os híbridos (0,178). Tref: PhyResidual selecionado, Ridge melhor CV. Flux: único modelo com menor Test e CV simultaneamente. [~2 min]}
+  \note{Talim: Baseline Flux (Stage 1) superou até os híbridos (0,178). Tref: PhyResidual selecionado, Ridge melhor CV. Flux: único modelo com menor Test e CV simultaneamente. R² negativo: modelo pior que a média (sklearn\_r2). [~2 min]}
 \end{slide}
 %========================================================================
 
@@ -23,7 +25,7 @@
     \begin{column}{0.94\linewidth}
     \begin{Item}[0.10]
     \item Dentre as famílias de modelos avaliadas, as redes neurais híbridas (PhyResidual) se destacaram com as melhores performances em relação ao Test RMSE para duas das três variáveis (Flux e T$_{ref}$). Os valores absolutos, no entanto, são próximos aos dos melhores modelos das outras famílias — a diferença percentual relativa foi de 18,2\% sobre a Baseline Flux para o Flux (0,054 vs 0,066), 2,3\% sobre o Ridge para T$_{ref}$ (0,214 vs 0,219) e 2,7\% inferior à Baseline Flux para T$_{alim}$ (0,183 vs 0,178).
-    \item A arquitetura residual PhyResidual atua como \textbf{corretor de viés} do modelo físico 0D: a rede neural aprende a discrepância entre as predições do modelo físico reduzido e os dados experimentais, preservando o comportamento físico onde ele está correto. O RMSE do Flux caiu de 0,206 (0D) para 0,054 (PhyResidual) — redução de 73,8\% — e o R$^2$ atingiu 0,979. O modelo 0D, embora limitado (correlação alta de r=0,972 mas viés sistemático de +1,58°C em T$_{alim}$), fornece uma referência fenomenológica que a arquitetura residual consegue corrigir.
+    \item A arquitetura residual PhyResidual atua como \textbf{corretor de viés} do modelo físico 0D: a rede neural aprende a discrepância entre as predições do modelo físico reduzido e os dados experimentais, preservando o comportamento físico onde ele está correto. O RMSE do Flux caiu de 0,206 (0D) para 0,054 (PhyResidual) — redução de 73,8\% — e o R$^2$ atingiu 0,979. O modelo 0D, embora com viés sistemático em algumas variáveis (ex.: T$_{alim}$, R$^2$ = $-0{,}404$), fornece uma referência fenomenológica que a arquitetura residual consegue corrigir.
     \end{Item}
     \end{column}
   \end{columns}

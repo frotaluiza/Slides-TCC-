@@ -21,7 +21,7 @@
 
 \begin{slide}{Modelo Físico 0D — Referência}
   \centering
-  O modelo 0D serve como referência fenomenológica para as arquiteturas híbridas.
+  O modelo 0D de \cite{Lisboa2024} serve como referência fenomenológica para as arquiteturas híbridas. Não é um modelo desenvolvido neste trabalho.
   \vfill
   \begin{columns}
     \begin{column}{.33\linewidth}
@@ -35,75 +35,32 @@
     \end{column}
   \end{columns}
   \vfill
-  {\scriptsize Predição do modelo 0D \textit{vs} experimental para cada variável de saída.}
-  \note{O modelo 0D é a referência física. As arquiteturas híbridas aprendem a corrigir sistematicamente suas predições a partir dos dados experimentais. [~30s]}
+  {\scriptsize Predição do modelo 0D \textit{vs} experimental para cada variável de saída. Modelo 0D: \cite{Lisboa2024}}
+  \note{O modelo 0D de Lisboa et al. (2024) é a referência física — não é um modelo desenvolvido neste trabalho. As arquiteturas híbridas aprendem a corrigir sistematicamente suas predições a partir dos dados experimentais. [~30s]}
 \end{slide}
 %========================================================================
 
-\begin{slide}{Stage 0 — Modelos Lineares}
+% Tabela detalhada removida a pedido da orientadora (S30-S34): manter apenas a tabela consolidada
+% \begin{slide}{Stage 0 — Modelos Lineares}
+%   ... (conteúdo movido para o material suplementar)
+% \end{slide}
+
+\begin{slide}{Stage 0 — Modelos Lineares e Árvores}
   \centering
-  \scriptsize
-  \begin{tabular}{llcccccc}
-    \toprule
-    \textbf{Modelo} & \textbf{Alvo} & \multicolumn{3}{c}{\textbf{CV RMSE}} & \multicolumn{3}{c}{\textbf{Test RMSE}} \\
-    \cmidrule(lr){3-5} \cmidrule(lr){6-8}
-    & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
-    \midrule
-    OLS & --- & \textbf{0,196} & \textbf{0,240} & \textbf{0,081} & \cellcolor{blue!10}\textbf{0,231} & 0,227 & 0,077 \\
-    \midrule
-    Ridge & Alim & 0,225 & 0,448 & 0,094 & 0,274 & 0,407 & 0,075 \\
-    \midrule
-    Ridge & Ref & 0,195 & \cellcolor{yellow!15}0,244 & 0,082 & 0,232 & \cellcolor{orange!10}\textbf{0,219} & 0,076 \\
-    \midrule
-    Ridge & Flux & 0,225 & 0,448 & 0,094 & 0,274 & 0,407 & 0,075 \\
-    \midrule
-    Lasso & Alim & 0,197 & 0,275 & 0,084 & 0,233 & 0,240 & 0,077 \\
-    \midrule
-    Lasso & Ref & 0,200 & 0,270 & 0,084 & 0,236 & 0,235 & 0,077 \\
-    \midrule
-    Lasso & Flux & 0,200 & 0,275 & 0,082 & 0,236 & 0,240 & \cellcolor{green!10}\textbf{0,075} \\
-    \midrule
-    ElasticNet & Alim & 0,364 & 0,656 & 0,126 & 0,385 & 0,649 & 0,090 \\
-    \midrule
-    ElasticNet & Ref & 0,197 & 0,268 & 0,082 & 0,233 & 0,232 & 0,075 \\
-    \midrule
-    ElasticNet & Flux & 0,281 & 0,528 & 0,109 & 0,316 & 0,481 & 0,081 \\
-    \bottomrule
-  \end{tabular}
-  \note{Stage 0 — lineares: Ridge, Lasso e ElasticNet têm desempenho similar ao OLS. [~1,5 min]}
+  \small
+  \textbf{Modelos lineares} (OLS, Ridge, Lasso, ElasticNet): desempenho similar entre si; regularização não trouxe ganho significativo sobre OLS.
+  \vfill
+  \textbf{Árvores de decisão} (DT, RF, GB): DT e RF overfitam nos regimes de treino (CV alto); GB generaliza melhor, mas ainda inferior aos lineares.
+  \vfill
+  {\scriptsize Detalhes das tabelas de Stage 0 no material suplementar.}
+  \note{Stage 0: lineares — OLS, Ridge, Lasso, ElasticNet têm desempenho similar. Árvores — DT e RF overfitam; GB generaliza melhor mas inferior aos lineares. [~1 min]}
 \end{slide}
 %========================================================================
 
-\begin{slide}{Stage 0 — Árvores de Decisão}
-  \centering
-  \scriptsize
-  \begin{tabular}{llcccccc}
-    \toprule
-    \textbf{Modelo} & \textbf{Alvo} & \multicolumn{3}{c}{\textbf{CV RMSE}} & \multicolumn{3}{c}{\textbf{Test RMSE}} \\
-    \cmidrule(lr){3-5} \cmidrule(lr){6-8}
-    & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
-    \midrule
-    DT & Alim & 0,793 & 1,471 & 0,485 & 0,683 & 1,150 & 0,300 \\
-    \midrule
-    DT & Ref & 1,059 & 1,464 & 0,504 & 0,836 & 1,197 & 0,310 \\
-    \midrule
-    DT & Flux & 1,099 & 2,260 & 0,572 & 1,149 & 1,956 & 0,372 \\
-    \midrule
-    RF & Alim & 0,900 & 1,455 & 0,434 & 0,829 & 1,144 & 0,292 \\
-    \midrule
-    RF & Ref & 0,799 & 1,137 & 0,422 & 0,652 & 0,859 & 0,263 \\
-    \midrule
-    RF & Flux & 1,019 & 2,240 & 0,419 & 0,989 & 2,042 & 0,300 \\
-    \midrule
-    GB & Alim & \textbf{0,614} & 0,484 & 0,358 & \cellcolor{blue!10}\textbf{0,406} & \cellcolor{orange!10}\textbf{0,309} & 0,193 \\
-    \midrule
-    GB & Ref & 0,618 & 0,468 & 0,358 & 0,417 & 0,324 & 0,198 \\
-    \midrule
-    GB & Flux & 0,632 & \textbf{0,465} & \textbf{0,344} & 0,429 & 0,286 & \cellcolor{green!10}\textbf{0,190} \\
-    \bottomrule
-  \end{tabular}
-  \note{Stage 0: árvores — DT e RF overfitam nos regimes de treino (CV alto). GB generaliza melhor. [~1 min]}
-\end{slide}
+% Tabela detalhada removida a pedido da orientadora (S30-S34): manter apenas a tabela consolidada
+% \begin{slide}{Stage 0 — Árvores de Decisão}
+%   ... (conteúdo movido para o material suplementar)
+% \end{slide}
 %========================================================================
 
 \begin{slide}{Stage 1 — Redes Neurais}
