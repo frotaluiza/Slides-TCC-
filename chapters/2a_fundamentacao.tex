@@ -5,9 +5,9 @@
   \begin{columns}
     \begin{column}{.58\linewidth}
       \begin{Item}
-        \item Processo de separação térmico com membrana \textbf{hidrofóbica} e \textbf{microporosa}
+        \item Processo de separação térmico com membrana \textbf{hidrofóbica} e \textbf{porosa}
         \item Força motriz: \textbf{gradiente térmico} $\rightarrow$ diferença de pressão parcial de vapor
-        \item Apenas a fase vapor atravessa os poros da membrana (não há filtração — a membrana não é molhada)
+        \item Apenas a fase vapor atravessa os poros da membrana
         \item Mecanismo: evaporação na interface quente $\rightarrow$ difusão nos poros $\rightarrow$ condensação no lado frio
         \item \textbf{Vantagens do processo MD}: opera em temperaturas médias (60--80\,°C), compatível com calor residual e projetos de cogeração; elevada tolerância à salinidade — adequada para soluções de alta concentração onde a osmose inversa é limitada pela pressão osmótica
       \end{Item}
@@ -25,7 +25,7 @@
 \begin{slide}{Fundamentos de Aprendizado de Máquinas}
   \footnotesize
   \vspace{-0.15cm}
-  \textbf{Aprendizado de Máquina:} ramo da IA voltado ao desenvolvimento de modelos que aprendem a partir de dados, identificando padrões e relações para realizar previsões (\cite{Ghahramani2015}). Diferentemente de modelos físicos, aprendem relações entrada-saída diretamente dos dados, ajustando parâmetros para minimizar uma função de erro (\cite{Rai2020}).
+  Este trabalho se enquadra no campo da \textbf{regressão supervisionada}: dado um conjunto de variáveis de entrada (condições operacionais do V-AGMD), queremos prever variáveis de saída contínuas (fluxo e temperaturas). A tarefa exige atenção a três aspectos: \textbf{como medir o erro}, \textbf{como dividir os dados} para avaliação justa, e \textbf{como preparar as variáveis} para que modelos diferentes possam ser comparados.
 
   \vfill
   \centering
@@ -33,10 +33,6 @@
   \begin{tabular}{p{0.17\linewidth} p{0.38\linewidth} p{0.38\linewidth}}
       \toprule
       \textbf{Conceito} & \textbf{Definição} & \textbf{Propósito na Regressão} \\
-      \midrule
-      \textbf{Regressão}
-      & $Y = f(X) + \varepsilon$ — aprender função que mapeia entradas em saídas minimizando o erro
-      & Quantificar relação entre variáveis de entrada e saída contínua \\
       \midrule
       \textbf{Métricas}
       & RMSE (raiz do erro quadrático médio), R²
@@ -48,19 +44,19 @@
       & Evitar contaminação entre ajuste e avaliação \\
       \midrule
       \textbf{Validação Cruzada}
-      & KFold, GroupKFold: repetir a divisão múltiplas vezes
-      & Estimar estabilidade do erro entre partições \\
+      & Repetir a divisão múltiplas vezes, agrupando por regimes experimentais
+      & Estimar estabilidade do erro entre partições e capacidade de extrapolação \\
       \midrule
       \textbf{Pré-processamento}
       & Z-score (padronização para média zero e variância unitária)
       & Colocar variáveis em escala comparável, evitando que magnitudes distintas dominem o ajuste \\
       \midrule
       \textbf{Correlação}
-      & \textbf{Pearson} ($r$): relação \textit{linear}. \textbf{Spearman} ($\rho$): relação \textit{monotônica}. Ambos variam de $-1$ a $+1$
-      & Identificar relaciones lineares/não lineares entre features e targets \\
+      & \textbf{Pearson} ($r$): relação \textit{linear}. \textbf{Spearman} ($\rho$): relação \textit{monotônica}
+      & Identificar relações lineares/não lineares entre entradas e saídas \\
       \bottomrule
     \end{tabular}
-  \note{Um ponto importante é o pré-processamento. As variáveis de entrada do sistema V-AGMD têm unidades físicas e ordens de grandeza muito distintas — temperatura em °C, vazão em L/h, pressão de vácuo em mbar, concentração salina em g/L. O Z-score centraliza cada variável subtraindo sua média e dividindo pelo desvio padrão. [~1,5 min]}
+  \note{Este trabalho é regressão supervisionada: prever fluxo e temperaturas a partir de condições operacionais. Ordem lógica: 1) métricas (como medir erro), 2) divisão dos dados (como avaliar), 3) validação cruzada (estabilidade), 4) pré-processamento (comparabilidade), 5) correlação (relações entre variáveis). [~1,5 min]}
 \end{slide}
 
 %========================================================================

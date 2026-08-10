@@ -10,7 +10,7 @@
       \midrule
       \textbf{Física}
       & AGMD, 2D, \textbf{V-AGMD}
-      & Modelos distribuídos (1D, 2D), reduzido 0D
+      & Modelos 0D, 1D, 2D
       & Interpretabilidade física
       & Alto custo; simplificações \\
       \midrule
@@ -43,7 +43,7 @@
     \midrule
     \textbf{Dados} & 5 & RL, RNA, MLP, RF \\
     \midrule
-    \textbf{Híbrida} & 1 & PINN \cite{Shahouni2026} \\
+    \textbf{Híbrida} & 1 & PINN \\
     \midrule
     \textbf{Este trabalho} & -- & RL, DT, GB, RF, MLP, Residual, PhyLoss \\
     \bottomrule
@@ -81,12 +81,12 @@
     \begin{column}{.5\linewidth}
       \textbf{Contribuições do trabalho:}
       \begin{Item}
-        \item GroupKFold por regimes experimentais
-        \item Critério 1-SE + menor complexidade
+        \item Validação cruzada por grupos (regimes experimentais)
+        \item Critério 1-SE + menor complexidade (mais simples dentro de 1 erro padrão)
         \item 4 arquiteturas híbridas implementadas
       \end{Item}
     \end{column}
   \end{columns}
-  \note{Lacunas: 1) validação por partição única, sem CV agrupada — métricas otimistas para extrapolação, risco de sobreajuste. 2) seleção por RMSE puro ignora variabilidade — 1-SE como alternativa parcimoniosa. 3) híbridos em MD praticamente inexistentes. [~2 min]}
+  \note{Lacunas: 1) validação por partição única, sem CV agrupada — métricas otimistas para extrapolação, risco de sobreajuste. 2) seleção por RMSE puro ignora variabilidade — 1-SE como alternativa parcimoniosa: escolhe o modelo mais simples cujo erro está dentro de 1 erro padrão do melhor. 3) híbridos em MD praticamente inexistentes. [~2 min]}
 \end{slide}
 %========================================================================
