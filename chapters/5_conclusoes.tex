@@ -29,7 +29,7 @@
     \begin{Item}[0.10]
     \item As redes neurais híbridas (PhyResidual) apresentaram as melhores performances em Test RMSE para duas das três variáveis (Flux e T$_{ref}$), com melhora de \textbf{até 89\%} sobre o modelo 0D — obtida pela Baseline Flux em T$_{alim,out}$.
     \item A arquitetura residual atua como \textbf{corretor de viés} do modelo físico 0D: aprende a discrepância entre as predições físicas e os dados, preservando o comportamento físico onde ele está correto.
-    \item Em capacidade de generalização (CV), o PhyResidual apresentou os menores erros de CV \textbf{para o Flux}. Para as temperaturas, os modelos lineares (OLS/Ridge) tiveram CV menor — embora a diferença entre eles e o híbrido no Test RMSE tenha sido muito pequena.
+    \item Em capacidade de generalização (CV), o PhyResidual apresentou os menores erros de CV \textbf{para o Flux}. Para $T_{ref}$, o modelo linear (Ridge) obteve menor erro de CV (0,244 vs 0,346), mas o PhyResidual alcançou excelente performance no teste (0,214). Para $T_{alim}$, a Baseline Flux obteve robusto desempenho em CV e teste, indicando boa capacidade de generalização.
     \item A \textbf{seleção de hiperparâmetros por alvo} não garantiu a melhor performance para aquele alvo — os modelos otimizados para T$_{alim}$ e T$_{ref}$ ficaram levemente acima do melhor (deltas de +0,012 a +0,104 no Test RMSE); apenas no Flux o otimizado para a variável apresentou a melhor performance.
     \item O procedimento desenvolvido pode ser estendido a \textbf{outros processos físicos} do laboratório, com perspectiva de ganhos adicionais pela incorporação de modelos de referência mais complexos já disponíveis (ex.: modelo 2D via GITT).
     \end{Item}
