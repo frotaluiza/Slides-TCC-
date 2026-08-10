@@ -18,8 +18,6 @@
     \item \textcolor{orange!70!black}{T$_{ref,out}$}: diferença marginal (2,3\%) sobre Ridge; Ridge tem melhor CV (0,244 vs 0,346), indicando melhor extrapolação.
     \item \textcolor{green!70!black}{Flux}: única variável onde o mesmo modelo apresentou o menor Test \textbf{e} o menor CV (0,072) — PhyResidual aprendeu a corrigir o viés do 0D (R$^2$ 0,631 $\rightarrow$ 0,979).
   \end{Item}
-  \vfill
-  {\scriptsize Nota: R$^2$ pode assumir valores negativos quando o modelo é pior que a média dos dados (\cite{sklearn_r2}).}
   \note{Análise por variável: Tabela com quantitativas (RMSE, percentuais). Texto com qualitativas (data-driven vs híbrido, extrapolação, correção de viés). [~2 min]}
 \end{slide}
 %========================================================================
@@ -29,14 +27,15 @@
   \begin{columns}
     \begin{column}{0.94\linewidth}
     \begin{Item}[0.10]
-    \item As redes neurais híbridas (PhyResidual) apresentaram as melhores performances em Test RMSE para duas das três variáveis (Flux e T$_{ref}$), com melhora de \textbf{até 89\%} sobre o modelo 0D (89,0\% em T$_{alim}$ com a Baseline Flux; 73,8\% no Flux com PhyResidual).
+    \item As redes neurais híbridas (PhyResidual) apresentaram as melhores performances em Test RMSE para duas das três variáveis (Flux e T$_{ref}$), com melhora de \textbf{até 89\%} sobre o modelo 0D — obtida pela Baseline Flux em T$_{alim,out}$.
     \item A arquitetura residual atua como \textbf{corretor de viés} do modelo físico 0D: aprende a discrepância entre as predições físicas e os dados, preservando o comportamento físico onde ele está correto.
-    \item Em capacidade de generalização (CV), o PhyResidual apresentou os menores erros de CV \textbf{para o Flux} (0,060--0,072, dominando os primeiros lugares). Para as temperaturas, os modelos lineares (OLS/Ridge) tiveram CV menor, indicando melhor extrapolação nessas variáveis.
+    \item Em capacidade de generalização (CV), o PhyResidual apresentou os menores erros de CV \textbf{para o Flux}. Para as temperaturas, os modelos lineares (OLS/Ridge) tiveram CV menor — embora a diferença entre eles e o híbrido no Test RMSE tenha sido muito pequena.
     \item A \textbf{seleção de hiperparâmetros por alvo} não garantiu a melhor performance para aquele alvo — os modelos otimizados para T$_{alim}$ e T$_{ref}$ ficaram levemente acima do melhor (deltas de +0,012 a +0,104 no Test RMSE); apenas no Flux o otimizado para a variável apresentou a melhor performance.
+    \item O procedimento desenvolvido pode ser estendido a \textbf{outros processos físicos} do laboratório, com perspectiva de ganhos adicionais pela incorporação de modelos de referência mais complexos já disponíveis (ex.: modelo 2D via GITT).
     \end{Item}
     \end{column}
   \end{columns}
-  \note{Comentários finais: híbridos melhores no Test (até 89\% vs 0D); PhyResidual como corretor de viés; PhyResidual domina CV no Flux, lineares nas temperaturas; seleção de hiperparâmetros por alvo não garante melhor performance (deltas pequenos). [~2 min]}
+  \note{Comentários finais: híbridos melhores no Test (até 89\% vs 0D — Baseline Flux em Talim); PhyResidual como corretor de viés; PhyResidual domina CV no Flux, lineares nas temperaturas mas com diferença pequena no Test; seleção de hiperparâmetros por alvo não garante melhor performance; procedimento extensível a outros processos com modelos de referência mais complexos. [~2 min]}
 \end{slide}
 %========================================================================
 
