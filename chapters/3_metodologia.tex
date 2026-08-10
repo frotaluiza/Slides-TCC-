@@ -72,11 +72,8 @@
     \rowcolor{gray!10}
     2.1 — Escalonamento & Z-score &
     Preserva a distribuição original dos dados; mede cada ponto em desvios-padrão, evitando compressão artificial na presença de valores extremos \\
-    \rowcolor{white}
-    2.2 — Validação & GroupKFold &
-    Separa os folds por regime operacional, orientando a busca de hiperparâmetros para capacidade de \textbf{extrapolação} — diferente do KFold comum, que só avalia interpolação \\
   \end{tabular}
-  \note{Slide de consolidação: resume as decisões de preparação dos dados e suas justificativas. [~1 min]}
+  \note{Escalonamento por Z-score: preserva distribuicao e evita compressao artificial. A validacao (GroupKFold) e apresentada em slide proprio. [~1 min]}
 \end{slide}
 %========================================================================
 
@@ -85,13 +82,13 @@
   \small
   \begin{Item}
     \item Para cada família de modelos e cada \textbf{variável de saída} (target), foi realizado um ajuste independente de hiperparâmetros
-    \item \textbf{Redes Neurais (MLP/Keras)}: \textbf{Random Search} (amostragem aleatória da grade) — maior espaço de busca (arquitetura, taxa de aprendizado, regularização)
-    \item \textbf{Demais famílias} (lineares, árvores, híbridos): \textbf{busca exaustiva} (GridSearchCV) — espaço menor de hiperparâmetros
-    \item Híbridos residuais: busca restrita (apenas regularização L2) para isolar o efeito da incorporação da física
+    \item \textbf{Variáveis ajustadas por família}: lineares ($\alpha$), árvores (profundidade, nº estimadores, learning rate), redes neurais (arquitetura, LR, L2, ativação), híbridos residuais (apenas L2)
+    \item \textbf{Redes Neurais (MLP/Keras)}: \textbf{Random Search} (amostragem aleatória da grade) — maior espaço de busca
+    \item \textbf{Demais famílias}: \textbf{busca exaustiva} (GridSearchCV) — espaço menor de hiperparâmetros
   \end{Item}
   \vfill
   {\scriptsize \textbf{Legenda de cores:} \textcolor{blue!70!black}{azul} = modelos lineares \; \textcolor{green!70!black}{verde} = árvores de decisão \; \textcolor{orange!70!black}{laranja} = redes neurais \; \textcolor{red!70!black}{vermelho} = modelos híbridos (física + dados)}
-  \note{A busca de hiperparâmetros foi feita por família e por target. Redes neurais usaram Random Search (espaço maior); as demais famílias usaram busca exaustiva. Híbridos residuais tiveram busca restrita (só L2). [~1,5 min]}
+  \note{Busca por familia e por target. Variaveis: lineares (alpha), arvores (profundidade, estimadores, lr), redes (arquitetura, lr, l2, ativacao), hibridos (so L2). Redes usaram Random Search; demais usaram GridSearchCV. [~1,5 min]}
 \end{slide}
 %========================================================================
 

@@ -40,73 +40,20 @@
 \end{slide}
 %========================================================================
 
-% Tabela detalhada removida a pedido da orientadora (S30-S34): manter apenas a tabela consolidada
-% \begin{slide}{Stage 0 — Modelos Lineares}
-%   ... (conteúdo movido para o material suplementar)
-% \end{slide}
+% Tabelas detalhadas de cada familia movidas para o anexo (material suplementar)
+% Mantemos aqui apenas uma sintese textual e a tabela consolidada final.
 
-\begin{slide}{Stage 0 — Modelos Lineares e Árvores}
+\begin{slide}{Síntese dos Estágios de Modelagem}
   \centering
   \small
-  \textbf{Modelos lineares} (OLS, Ridge, Lasso, ElasticNet): desempenho similar entre si; regularização não trouxe ganho significativo sobre OLS.
+  \begin{Item}
+    \item \textbf{Stage 0 (lineares e árvores)}: modelos lineares (OLS, Ridge, Lasso, ElasticNet) apresentaram desempenho similar entre si; as árvores (DT, RF) sobreajustaram nos regimes de treino.
+    \item \textbf{Stage 1 (redes neurais)}: as baselines MLP melhoraram o Test RMSE em relação aos clássicos, com destaque para a arquitetura otimizada para o Flux.
+    \item \textbf{Stage 2 (híbridos)}: o PhyResidual apresentou as menores perdas, corrigindo o viés do modelo 0D.
+  \end{Item}
   \vfill
-  \textbf{Árvores de decisão} (DT, RF, GB): DT e RF overfitam nos regimes de treino (CV alto); GB generaliza melhor, mas ainda inferior aos lineares.
-  \vfill
-  {\scriptsize Detalhes das tabelas de Stage 0 no material suplementar.}
-  \note{Stage 0: lineares — OLS, Ridge, Lasso, ElasticNet têm desempenho similar. Árvores — DT e RF overfitam; GB generaliza melhor mas inferior aos lineares. [~1 min]}
-\end{slide}
-%========================================================================
-
-% Tabela detalhada removida a pedido da orientadora (S30-S34): manter apenas a tabela consolidada
-% \begin{slide}{Stage 0 — Árvores de Decisão}
-%   ... (conteúdo movido para o material suplementar)
-% \end{slide}
-%========================================================================
-
-\begin{slide}{Stage 1 — Redes Neurais}
-  \centering
-  \scriptsize
-  \begin{tabular}{llcccccc}
-    \toprule
-    \textbf{Arquitetura} & \textbf{Alvo} & \multicolumn{3}{c}{\textbf{CV RMSE}} & \multicolumn{3}{c}{\textbf{Test RMSE}} \\
-    \cmidrule(lr){3-5} \cmidrule(lr){6-8}
-    & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
-    \midrule
-    (128,64), tanh, lr=0,001, l2=0,001 & Alim & 0,260 & \textbf{0,445} & 0,115 & 0,215 & \cellcolor{orange!10}\textbf{0,309} & 0,073 \\
-    (128,64), tanh, lr=0,001, l2=0,001 & Ref & 0,267 & 0,459 & 0,116 & 0,227 & 0,318 & 0,073 \\
-    (128,64,32), relu, lr=0,003, l2=0,0 & Flux & \textbf{0,222} & 0,554 & \textbf{0,081} & \cellcolor{blue!10}\textbf{0,178} & 0,369 & \cellcolor{green!10}\textbf{0,066} \\
-    \bottomrule
-  \end{tabular}
-  \note{Três baselines de redes neurais. A otimizada para Flux tem arquitetura maior (128,64,32) mas L2=0. [~1 min]}
-\end{slide}
-%========================================================================
-
-\begin{slide}{Stage 2 — Modelos Híbridos}
-  \centering
-  \scriptsize
-  \begin{tabular}{llcccccc}
-    \toprule
-    \textbf{Modelo} & \textbf{Alvo} & \multicolumn{3}{c}{\textbf{CV RMSE}} & \multicolumn{3}{c}{\textbf{Test RMSE}} \\
-    \cmidrule(lr){3-5} \cmidrule(lr){6-8}
-    & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
-    \midrule
-    \textbf{PhyResidual} & \textbf{Alim} & 0,275 & \textbf{0,301} & \textbf{0,060} & 0,225 & 0,222 & 0,057 \\
-    \textbf{PhyResidual} & \textbf{Ref} & 0,274 & 0,305 & 0,061 & 0,224 & 0,231 & 0,058 \\
-    \rowcolor{green!6}
-    \textbf{PhyResidual} & \textbf{Flux} & \textbf{0,236} & 0,346 & 0,072 & \cellcolor{blue!10}\textbf{0,183} & \cellcolor{orange!10}\textbf{0,214} & \cellcolor{green!10}\textbf{0,054} \\
-    PhyHybrid & Alim & 0,273 & 0,306 & 0,061 & 0,224 & 0,231 & 0,058 \\
-    PhyHybrid & Ref & 0,275 & 0,302 & 0,061 & 0,225 & 0,230 & 0,058 \\
-    PhyHybrid & Flux & 0,284 & 0,399 & 0,075 & 0,222 & 0,239 & 0,055 \\
-    PhyInput & Alim & 0,273 & 0,325 & 0,098 & 0,213 & 0,250 & 0,064 \\
-    PhyInput & Ref & 0,275 & 0,432 & 0,106 & 0,216 & 0,269 & 0,066 \\
-    PhyInput & Flux & 0,260 & 0,625 & 0,104 & 0,213 & 0,426 & 0,063 \\
-    \midrule
-    PhyLoss ($\omega{=}0{,}0$) & Alim & 0,180 & 0,348 & 0,067 & 0,188 & 0,350 & 0,068 \\
-    PhyLoss ($\omega{=}0{,}7$) & Ref  & 0,310 & 0,276 & 0,192 & 0,340 & 0,286 & 0,220 \\
-    PhyLoss ($\omega{=}0{,}0$) & Flux & 0,203 & 0,422 & 0,066 & 0,226 & 0,438 & 0,069 \\
-    \bottomrule
-  \end{tabular}
-  \note{PhyResidual (base Flux) teve o menor Test RMSE nos três alvos entre os híbridos. Para T\_ref, diferença sobre Ridge é marginal (2,3\%); Ridge tem melhor CV (extrapolação). [~2 min]}
+  {\scriptsize Tabelas detalhadas de cada estágio no material suplementar.}
+  \note{Sintese dos tres estagios. Detalhes no anexo. [~1 min]}
 \end{slide}
 %========================================================================
 
