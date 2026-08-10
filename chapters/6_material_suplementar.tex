@@ -1,199 +1,36 @@
 \section{Material Suplementar}
 
-% --- Slides movidos da Metodologia ---
-
-\begin{slide}{Etapa 3: Critérios de Seleção e Métricas de Erro}
-  \small
-  \begin{columns}
-    \begin{column}{.5\linewidth}
-      \textbf{Critério hierárquico:}
-      \begin{Item}[0.15]
-        \item \textbf{Nível 1 — Dentro de cada família:} 1-SE + mínima complexidade para escolher hiperparâmetros
-        \item \textbf{Nível 2 — Entre famílias:} comparação direta pelo menor RMSE$_{Test}$ no fluxo
-      \end{Item}
-      \textbf{Métricas de erro}
-      \begin{Item}[0.15]
-        \item \textbf{Erro de generalização:} média do RMSE entre os 3 folds do GroupKFold — guia a busca de hiperparâmetros e seleção dentro de cada família
-        \item \textbf{Erro de teste (hold-out):} RMSE calculado no hold-out de 35 amostras — métrica final para comparar modelos selecionados
-      \end{Item}
-    \end{column}
-    \begin{column}{.5\linewidth}
-      \textbf{Seleção por target:}
-      \begin{Item}[0.15]
-        \item Cada variável de saída (Flux, T$_{alim,out}$, T$_{ref,out}$) pode ter um modelo diferente
-        \item A busca de hiperparâmetros é otimizada separadamente para cada alvo
-        \item Ao final, cada target tem seu próprio modelo selecionado pelo critério 1-SE
-      \end{Item}
-      \vspace{0.3cm}
-      \textbf{Hold-out:}
-      \begin{Item}[0.15]
-        \item 20\% dos dados (35 amostras) separado \textbf{antes} de qualquer modelagem
-        \item Contém amostras dos 3 regimes de salinidade
-        \item O RMSE no hold-out estima o desempenho em condições operacionais representativas
-      \end{Item}
-    \end{column}
-  \end{columns}
-\end{slide}
-\begin{slide}{Etapa 4: Análise Exploratória}
-  \small
-  \begin{Item}
-    \item Objetivo: identificar padrões, tendências e relações entre variáveis antes da modelagem
-    \item Visualização por gráficos de dispersão entre entradas e saídas
-    \item Análise de correlação para quantificar associações entre variáveis
-    \item Identificação de variáveis com maior influência sobre cada saída
-  \end{Item}
-\end{slide}
-\begin{slide}{Etapa 5: Modelo Físico Reduzido 0D}
-  \small
-  \begin{Item}[0.15]
-    \item \textbf{Referência física}: modelo fenomenológico do módulo V-AGMD baseado em balanços de massa e energia — serve como baseline para comparar o ganho dos modelos orientados por dados
-    \item \textbf{Fonte de informação para híbridos}: as predições do modelo 0D são incorporadas às arquiteturas híbridas (PhyInput, PhyResidual, PhyHybrid, PhyLoss) como entrada auxiliar ou termo de regularização
-    \item \textbf{Implementação}: código em C executado via script Python para cada condição experimental, gerando três colunas preditas (\texttt{phy}) na base de dados
-  \end{Item}
-\end{slide}
-%========================================================================
-
-\begin{slide}{Etapa 6: Stage 0 — Modelos Clássicos}
-  \footnotesize
-  \centering
-  Comparação entre estratégias \textbf{lineares} e \textbf{não lineares} para avaliar a complexidade necessária ao problema:
-
-  \vspace{0.5em}
-  \begin{tabular}{p{0.22\linewidth} p{0.38\linewidth} p{0.30\linewidth}}
-    \toprule
-    \textbf{Estratégia} & \textbf{Modelos} & \textbf{O que foi ajustado} \\
-    \midrule
-    \rowcolor{green!10}
-    Lineares & OLS, Ridge, Lasso, ElasticNet & $\alpha$ (regularização) e $l_1$-ratio \\
-    \midrule
-    \rowcolor{orange!10}
-    Não lineares & DecisionTree, RandomForest, GradientBoosting & Profundidade, folhas, \textit{learning\_rate} \\
-    \bottomrule
-  \end{tabular}
-  \vfill
-  \begin{columns}
-    \begin{column}{.5\linewidth}
-      \textbf{Busca:} GridSearch com GroupKFold (3 folds)
-    \end{column}
-    \begin{column}{.5\linewidth}
-      \textbf{Seleção:} 1-SE + menor complexidade dentro da família
-    \end{column}
-  \end{columns}
-\end{slide}
-\begin{slide}{Etapa 7: Stage 1 — Baseline Keras}
-  \footnotesize
-  \centering
-  \begin{tabular}{p{0.22\linewidth} p{0.38\linewidth} p{0.30\linewidth}}
-    \toprule
-    \textbf{Modelo} & \textbf{Arquitetura} & \textbf{Busca} \\
-    \midrule
-    MLP sklearn & (32,), (64,), (64,32), (128,64) & GridSearch: L2, learning\_rate \\
-    KerasMLP baseline & (256,) a (256,128,64), ReLU/Adam & Random: L2, lr, arquitetura \\
-    \bottomrule
-  \end{tabular}
-  \vfill
-  \begin{Item}
-    \item 3 baselines independentes (Alim, Ref, Flux) — cada uma priorizando um alvo
-    \item Huber como função de perda (menos sensível a outliers)
-    \item EarlyStopping com paciência de 30 épocas
-  \end{Item}
-\end{slide}
-\begin{slide}{Etapa 8: Stage 2 — Modelos Híbridos}
-  \small
-  \centering
-  \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.2\linewidth} p{0.3\linewidth} p{0.2\linewidth} p{0.2\linewidth}}
-      \toprule
-      \textbf{Arquitetura} & \textbf{Como integra física + dados} & \textbf{Pontos fortes} & \textbf{Limitações} \\
-      \midrule
-      \textbf{PhyInput}
-      & Entrada expandida: $[X, Y_{phy}]$ & Simples & Pode ignorar física \\
-      \midrule
-      \textbf{PhyResidual}
-      & $Y_{hat} = Y_{phy} + \Delta$ & Melhor RMSE fluxo & T$_{out}$ inferior \\
-      \midrule
-      \textbf{PhyHybrid}
-      & PhyInput + Residual combinados & Mais flexível & Maior complexidade \\
-      \midrule
-      \textbf{PhyLoss}
-      & Regularização física na perda & Consistência & Menor ganho prático \\
-      \bottomrule
-    \end{tabular}
-  }
-  \vfill
-  \textbf{Busca restrita:} apenas L2, mantendo a baseline fixa — para isolar o efeito da física
-\end{slide}
-\begin{slide}{Etapa 9: Comparação entre Modelos Selecionados}
-  \small
-  \begin{columns}
-    \begin{column}{.5\linewidth}
-      \textbf{Objetivo:}
-      \begin{Item}[0.15]
-        \item Comparar o desempenho dos modelos selecionados em cada etapa
-        \item Confrontar os resultados com o modelo físico 0D (referência fenomenológica)
-        \item Verificar se a incorporação de técnicas de ML trouxe ganhos em relação ao modelo 0D isolado
-      \end{Item}
-      \vspace{0.3cm}
-      \textbf{O que é comparado:}
-      \begin{Item}[0.15]
-        \item Modelos clássicos (OLS, árvores) \textit{vs} redes neurais (MLP)
-        \item Redes neurais puras \textit{vs} arquiteturas híbridas (PhyInput, PhyResidual, PhyHybrid, PhyLoss)
-        \item Modelos selecionados \textit{vs} modelo físico 0D
-      \end{Item}
-    \end{column}
-    \begin{column}{.5\linewidth}
-      \textbf{Métricas de comparação:}
-      \begin{Item}[0.15]
-        \item RMSE e R² calculados no hold-out para cada variável de saída
-        \item Erro de generalização (média do RMSE dos 3 folds do GroupKFold)
-      \end{Item}
-    \end{column}
-  \end{columns}
-\end{slide}
-%========================================================================
-
 \begin{slide}{Resultados — Busca de Hiperparâmetros (Tabela Completa)}
   \centering
-  \footnotesize
-  \renewcommand{\arraystretch}{0.95}
-  \begin{longtable}{p{3.2cm} p{8.8cm}}
+  \scriptsize
+  \renewcommand{\arraystretch}{0.85}
+  \resizebox{0.98\textwidth}{!}{%
+  \begin{tabular}{p{2.8cm} p{9.5cm}}
     \rowcolor{poliBlue!20}
     \textbf{Família/modelo} & \textbf{Espaço de busca avaliado} \\
     \hline
-    \endhead
-    OLS & Sem hiperparâmetros. Utilizado como referência linear sem regularização. \\
+    OLS & Sem hiperparâmetros (referência linear). \\
     \rowcolor{gray!5}
     Ridge & $\alpha \in \{10^{-3},10^{-2},10^{-1},1,10,100\}$. \\
     Lasso & $\alpha \in \{10^{-4},10^{-3},10^{-2},10^{-1},1\}$. \\
     \rowcolor{gray!5}
-    ElasticNet & $\alpha \in \{10^{-4},10^{-3},10^{-2},10^{-1},1\}$; $l_1\text{-ratio} \in \{0{,}1,0{,}3,0{,}5,0{,}7,0{,}9\}$. \\
+    ElasticNet & $\alpha \in \{10^{-4},\ldots,1\}$; $l_1\text{-ratio} \in \{0{,}1,\ldots,0{,}9\}$. \\
     \midrule
     \rowcolor{orange!6}
-    Árvore de decisão & $\texttt{max\_depth} \in \{2,3,4,5,6,\texttt{None}\}$; $\texttt{min\_samples\_leaf} \in \{1,2,5,8,10\}$; $\texttt{min\_samples\_split} \in \{2,5,10,15\}$; $\texttt{ccp\_alpha} \in \{0,10^{-4},10^{-3},10^{-2}\}$. \\
-    \rowcolor{orange!6}
-    Random Forest & $\texttt{n\_estimators} \in \{200,400,600\}$; $\texttt{max\_depth} \in \{2,3,4,5,\texttt{None}\}$; $\texttt{min\_samples\_leaf} \in \{1,2,5,8,10\}$; $\texttt{min\_samples\_split} \in \{2,5,10\}$; $\texttt{max\_features} \in \{0{,}5,0{,}8,1{,}0\}$. \\
-    \rowcolor{orange!6}
-    Gradient Boosting & $\texttt{n\_estimators} \in \{50,100,200,400\}$; $\texttt{learning\_rate} \in \{0{,}01,0{,}03,0{,}05,0{,}1\}$; $\texttt{max\_depth} \in \{1,2,3\}$; $\texttt{min\_samples\_leaf} \in \{1,2,5,10\}$; $\texttt{subsample} \in \{0{,}6,0{,}8,1{,}0\}$. \\
+    DT / RF / GB & Profundidade, folhas, nº estimadores, learning rate (grades discretas). \\
     \midrule
     \rowcolor{blue!6}
-    KerasMLP baseline & Arquitetura MLP multi-output. $\texttt{hidden\_layer\_sizes} \in \{(32,), (64,), (128,), (256,), (512,), (64,32), (128,64), (256,128), (512,256), (128,64,32), (256,128,64), (512,256,128)\}$; $\texttt{activation} \in \{\texttt{relu},\texttt{tanh}\}$; $\texttt{learning\_rate} \in \{10^{-4},3\times10^{-4},10^{-3},3\times10^{-3}\}$; $\texttt{l2} \in \{0,10^{-6},10^{-5},10^{-4},10^{-3}\}$; $\texttt{batch\_size} \in \{16,32,64\}$; $\texttt{optimizer} \in \{\texttt{adam},\texttt{adamw}\}$. Busca aleatória (30--80 combos), GroupKFold 3 folds, Huber loss, ES (pac. 12), LR red. (pac. 4), 200 ép. máx. \\
+    KerasMLP & Arquiteturas $(32,)$ a $(512,256,128)$; ativação, LR, L2, batch; Random Search. \\
     \midrule
     \rowcolor{green!6}
-    PhyLoss Restricted & Busca em dois estágios: (1) $\omega \in \{0{,}0,0{,}1,0{,}3,0{,}5,0{,}7,0{,}9,1{,}0\}$ com L2 fixo; (2) $\texttt{l2} \in \{\texttt{l2}_{base},0,10^{-6},10^{-5},10^{-4},10^{-3}\}$ com melhor $\omega$. \\
-    \rowcolor{green!6}
-    PhyInput Restricted & $\texttt{l2} \in \{\texttt{l2}_{base},0,10^{-6},10^{-5},10^{-4}\}$. \\
-    \rowcolor{green!6}
-    PhyResidual Restricted & $\texttt{l2} \in \{\texttt{l2}_{base},0,10^{-6},10^{-5},10^{-4}\}$. \\
-    \rowcolor{green!6}
-    PhyHybrid Restricted & $\texttt{l2} \in \{\texttt{l2}_{base},0,10^{-6},10^{-5},10^{-4}\}$. \\
+    Híbridos (Phy*) & Busca restrita em L2 (e $\omega$ no PhyLoss); arquitetura baseline fixa. \\
     \bottomrule
-  \end{longtable}
+  \end{tabular}%
+  }
   \vfill
   {\scriptsize Fonte: elaborado pela autora.}
 \end{slide}
 %========================================================================
-
-% --- Slides do Apêndice A do TCC: Discretização e Seleção de Features ---
 
 \begin{slide}{Resultados — Seleção de Preditores (Best Subset)}
   \centering
@@ -268,66 +105,6 @@
 \end{slide}
 %========================================================================
 
-% --- Análise do modelo 0D ---
-
-\begin{slide}{Diagnóstico do Modelo Físico 0D}
-  \centering
-  \includegraphics[width=0.9\textwidth]{tcc_images/chap07/modelo_0d_bias_correction.png}
-  \note{O modelo 0D tem correlação alta (r=0,972) mas viés sistemático de +1,58°C em T\_alim\_out. Arquiteturas híbridas PhyResidual aprendem a corrigir esse viés a partir dos dados experimentais. [~1 min]}
-\end{slide}
-%========================================================================
-
-\begin{slide}{Diagnóstico do Modelo 0D — Série Temporal}
-  \centering
-  \includegraphics[width=0.9\textwidth]{tcc_images/chap07/modelo_0d_analise.png}
-\end{slide}
-%========================================================================
-% --- Apêndice: Imagens do Capítulo de Resultados ---
-
-\begin{slide}{Apêndice — Análise Exploratória (Resultados)}
-  \centering
-  \includegraphics[width=0.7\textwidth]{tcc_images/chap06/scatter_vagmd_exp_only.png}
-\end{slide}
-%========================================================================
-
-\begin{slide}{Apêndice — Modelo Físico 0D vs Experimental}
-  \centering
-  \begin{columns}
-    \begin{column}{.33\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/flux_real_vs_0d.png}
-    \end{column}
-    \begin{column}{.33\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/alim_T_out_real_vs_0d.png}
-    \end{column}
-    \begin{column}{.33\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/ref_T_out_real_vs_0d.png}
-    \end{column}
-  \end{columns}
-\end{slide}
-%========================================================================
-
-\begin{slide}{Apêndice — Predição vs Experimental (Modelos Selecionados)}
-  \centering
-  \includegraphics[width=0.85\textwidth]{tcc_images/chap06/overlay_champions_panel_v2.png}
-\end{slide}
-%========================================================================
-\begin{slide}{Apêndice — Fluxograma de Resultados}
-  \centering
-  \includegraphics[width=0.9\textwidth]{tcc_images/chap06/fluxograma_resultados.png}
-\end{slide}
-%========================================================================
-\begin{slide}{Apêndice — Mapas de Calor (Correlação Features-Targets)}
-  \centering
-  \begin{columns}
-    \begin{column}{.48\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/heatmap_pearson_features_targets.png}
-    \end{column}
-    \begin{column}{.48\linewidth}
-      \includegraphics[width=\linewidth]{tcc_images/chap06/heatmap_spearman_features_targets.png}
-    \end{column}
-  \end{columns}
-\end{slide}
-%========================================================================
 \begin{slide}{Apêndice — RMSE por Target (Agrupado)}
   \centering
   \includegraphics[width=0.75\textwidth]{tcc_images/chap06/model_selection/rmse_by_target_grouped_n.png}
@@ -462,7 +239,7 @@
     PhyInput & Flux & 0,260 & 0,625 & 0,104 & 0,213 & 0,426 & 0,063 \\
     \midrule
     PhyLoss ($\omega{=}0{,}0$) & Alim & 0,180 & 0,348 & 0,067 & 0,188 & 0,350 & 0,068 \\
-    PhyLoss ($\omega{=}0{,}7$) & Ref  & 0,310 & 0,276 & 0,192 & 0,340 & 0,286 & 0,220 \\
+    PhyLoss ($\omega{=}0{,}7$) & Ref  & 0,310 & 0,250 & 0,192 & 0,340 & 0,286 & 0,220 \\
     PhyLoss ($\omega{=}0{,}0$) & Flux & 0,203 & 0,422 & 0,066 & 0,226 & 0,438 & 0,069 \\
     \bottomrule
   \end{tabular}

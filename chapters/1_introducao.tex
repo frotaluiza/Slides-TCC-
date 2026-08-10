@@ -25,8 +25,8 @@
       \begin{Item}
         \item 2026: ano desafiador — chuvas abaixo da média; Cantareira $\approx$ 30\% (\textcolor{poliRed}{ANA} — Agência Nacional de Águas)
         \item Nordeste: 4 meses de chuva e 8 meses de seca extrema (ANA)
-        \item Dessalinização: custo de R\$ 2,63--4,21/m³, competitivo com tarifas industriais (estudo \textcolor{poliRed}{CNI}, 2024)
-        \item Maior planta do Brasil (ES): atende demanda de 80 mil pessoas (CNI)
+        \item Dessalinização: custo de R\$ 2,63--4,21/m³, competitivo com tarifas industriais (estudo \textcolor{poliRed}{CNI}, 2026 \cite{CNI2026})
+        \item Maior planta do Brasil (ES): atende demanda de 80 mil pessoas \cite{CNI2026}
         \item 8.500 km de costa $\rightarrow$ enorme potencial para expandir (IBGE)
       \end{Item}
     \end{column}
@@ -34,7 +34,7 @@
       \includegraphics[width=\linewidth]{tcc_images/artebrasillet.jpg}
     \end{column}
   \end{columns}
-  \vfill\hfill{\scriptsize Fontes: ANA, 2026; CNI, 2026; IBGE; Imagem: CNI, 2026}
+  \vfill\hfill{\scriptsize Fontes: ANA, 2026; CNI, 2026 \cite{CNI2026}; IBGE; Imagem: CNI, 2026}
   \note{No Brasil, 2026 é desafiante para a gestão de água. O Cantareira está pouco acima de 30\%. No Nordeste, 4 meses de chuva contra 8 de seca extrema. A dessalinização pode reduzir o custo da água em até 10 vezes: de R\$ 2,63 a R\$ 4,21/m³ segundo estudo da CNI. A maior planta do Brasil, no ES, atende 80 mil pessoas. Com 8.500 km de costa, o potencial de expansão é enorme. [~1 min]}
 \end{slide}
 %========================================================================
@@ -95,15 +95,12 @@
 % \end{slide}
 %========================================================================
 
-\begin{slide}{Motivação e Objetivos}
+\begin{slide}{Objetivos}
   \footnotesize
-  \begin{myTitledBox}[Motivação e Objetivos]
-    \textbf{Motivação:} prever o desempenho do módulo V-AGMD (fluxo de permeado e temperaturas de saída) a partir de dados experimentais (174 pontos, 3 regimes de salinidade). Um modelo físico 0D já publicado pelo laboratório (LISBOA et al., 2024) serve como referência para o sistema.
-    \vspace{0.15cm}
-
-    \textbf{Objetivo geral:} avaliar e selecionar modelos de regressão supervisionada para predição do desempenho do V-AGMD, combinando aprendizado a partir de dados com informação física proveniente do modelo reduzido 0D.
+  \begin{myTitledBox}[Objetivos]
+    \textbf{Objetivo geral:} avaliar e selecionar modelos de regressão supervisionada para predição do desempenho do módulo V-AGMD (fluxo de permeado e temperaturas de saída), combinando aprendizado a partir de dados experimentais (174 pontos, 3 regimes de salinidade) com informação física proveniente de um modelo reduzido 0D já publicado pelo laboratório (LISBOA et al., 2024).
   \end{myTitledBox}
-  \note{Motivação: prever V-AGMD com 174 pontos experimentais + modelo 0D como referência. Objetivo: avaliar modelos data-driven e híbridos. [~1 min]}
+  \note{Objetivo geral: avaliar e selecionar modelos de regressão supervisionada para predição do desempenho do V-AGMD, combinando dados experimentais (174 pontos, 3 regimes) com o modelo físico 0D do laboratório como referência. [~1 min]}
 \end{slide}
 %========================================================================
 

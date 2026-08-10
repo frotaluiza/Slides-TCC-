@@ -47,13 +47,11 @@
   \centering
   \small
   \begin{Item}
-    \item \textbf{Stage 0 (lineares e árvores)}: modelos lineares (OLS, Ridge, Lasso, ElasticNet) apresentaram desempenho similar entre si; as árvores (DT, RF) sobreajustaram nos regimes de treino.
-    \item \textbf{Stage 1 (redes neurais)}: as baselines MLP melhoraram o Test RMSE em relação aos clássicos, com destaque para a arquitetura otimizada para o Flux.
+    \item \textbf{Stage 0 (regressões lineares e árvores de decisão)}: as regressões lineares (OLS, Ridge, Lasso, ElasticNet) apresentaram desempenho similar entre si; as árvores (DT, RF) sobreajustaram nos regimes de treino.
+    \item \textbf{Stage 1 (redes neurais)}: as baselines MLP melhoraram o Test RMSE em relação às regressões e árvores, com destaque para a arquitetura otimizada para o Flux.
     \item \textbf{Stage 2 (híbridos)}: o PhyResidual apresentou as menores perdas, corrigindo o viés do modelo 0D.
   \end{Item}
-  \vfill
-  {\scriptsize Tabelas detalhadas de cada estágio no material suplementar.}
-  \note{Sintese dos tres estagios. Detalhes no anexo. [~1 min]}
+  \note{Sintese dos tres estagios: regressoes lineares e arvores no Stage 0, redes neurais no Stage 1, hibridos no Stage 2. [~1 min]}
 \end{slide}
 %========================================================================
 

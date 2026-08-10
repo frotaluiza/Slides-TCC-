@@ -191,63 +191,10 @@
 %% -------------------------------------------------
 % Apêndice — Material Suplementar
 %% -------------------------------------------------
-\begingroup
-\usebackgroundtemplate
-{
-    \tikz\node[opacity=1]{};
-}
-\setbeamertemplate{headline}{}
-\setbeamertemplate{footline}{}
-\begin{frame}{}
-    \begin{center}
-        \vspace{2cm}
-        \textbf{\LARGE Material Suplementar}
-    \end{center}
-\end{frame}
-\endgroup
+% Desativa o slide automático "Plano da Apresentação" para a seção do anexo
+\AtBeginSection[]{}
 
 \appendix
-
-\begin{slide}{Validação Cruzada vs.\ Teste — Generalização em Cenários de Interpolação e Extrapolação}
-
-\centering
-\vfill
-
-\rowcolors{2}{gray!8}{white}
-\begin{tabular}{p{0.28\textwidth} p{0.30\textwidth} p{0.30\textwidth}}
-\toprule
-\textbf{Aspecto} & \textbf{Validação Cruzada (CV)} & \textbf{Teste (\emph{Hold-out})} \\
-\midrule
-\textbf{Particiona} & 3 folds por experimento & 20\% final dos dados \\
-\textbf{Dados de treino} & Fold-1 do mesmo experimento & Dados até corte temporal \\
-\textbf{Dados de avaliação} & Fold-2 do mesmo experimento & Dados após corte temporal \\
-\textbf{Sobreposição temporal} & \textbf{Sim} — folds do mesmo grupo &
-\textbf{Não} — corte rígido \\
-\textbf{Melhor em} & \textbf{Interpolação} (mesmo regime) & \textbf{Extrapolação} (novas condições) \\
-\bottomrule
-\end{tabular}
-
-\vfill
-
-{\footnotesize
-\textbf{Observação:} a CV mede o erro de \textbf{interpolação} (folds de grupos experimentais conhecidos), enquanto o hold-out testa \textbf{extrapolação} (ponto de corte fixo). Modelos híbridos podem extrapolar melhor mesmo com CV estável. Esse comportamento se alinha com Villumsen~\cite{Villumsen2026}, que observa modularidade em modelos de processos em batelada.
-}
-
-\vfill
-
-\end{slide}
-
-\begin{slide}{Conteúdo do Material Suplementar}
-  \large
-  \begin{Item}
-    \item Etapas detalhadas da metodologia (Etapas 3 a 9)
-    \item Resultados completos — seleção de preditores, discretização, Data Augmentation
-    \item Diagnóstico do modelo físico 0D (viés e série temporal)
-    \item Imagens dos resultados — fluxograma, heatmaps, RMSE por target, ranking, sweep
-    \item Curvas de aprendizado, seleção de hiperparâmetros e comparação Stage 0--2
-  \end{Item}
-\end{slide}
-%========================================================================
 
 \include{chapters/6_material_suplementar}
 
