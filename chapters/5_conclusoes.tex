@@ -28,7 +28,7 @@
     \begin{column}{0.94\linewidth}
     \begin{Item}[0.10]
     \item A hibridização entre modelos orientados a dados e o modelo físico reduzido demonstrou ser uma estratégia eficaz, superando abordagens puramente empíricas ou puramente físicas em termos de desempenho preditivo.
-    \item A arquitetura residual atua com sucesso como \textbf{corretor de viés}: a rede neural aprende a discrepância sistemática entre as predições físicas e os dados reais, preservando a consistência fenomenológica onde o modelo físico é confiável.
+    \item A arquitetura residual atua com sucesso como \textbf{corretor de viés}, ajustando a saída do modelo reduzido com base nos resíduos observados nos dados experimentais.
     \item O procedimento metodológico desenvolvido é modular e apresenta forte potencial de extensão para \textbf{outros processos físicos}, abrindo perspectivas para a incorporação de modelos de referência mais complexos (como formulações bidimensionais).
     \end{Item}
     \end{column}
@@ -40,9 +40,9 @@
 \begin{slide}{Trabalhos Futuros}
   \begin{Item}
     \item Avaliar os modelos selecionados sobre dados de novas rodadas experimentais que explorem regiões não contempladas no treinamento, permitindo verificar a real capacidade de generalização das arquiteturas híbridas
-    \item Substituir modelo 0D pelo modelo 2D (GITT) de \cite{Curcino2026} como referência física nas arquiteturas híbridas, aproveitando sua capacidade de capturar efeitos distribuídos
+    \item Substituir modelo 0D pelo modelo distribuído (GITT) de \cite{Curcino2026} como referência física nas arquiteturas híbridas, aproveitando sua capacidade de capturar efeitos ao longo do comprimento do módulo
     \item Construir PINNs a partir das EDOs do modelo GITT — tanto como \textbf{surrogate} (apenas física, sem dados) para aceleramento de processamento, quanto no modo que incorpora dados experimentais na função de perda
   \end{Item}
-  \note{Trabalhos futuros: novos dados experimentais para validar generalização; modelo 2D GITT como referência; PINNs a partir das EDOs. [~1 min]}
+  \note{Trabalhos futuros: novos dados experimentais para validar generalização; modelo distribuído GITT como referência; PINNs a partir das EDOs. [~1 min]}
 \end{slide}
 %========================================================================
