@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCC V-AGMD — Material Completo</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #2d3748;
+        }
+        h1 {
+            color: #1a365d;
+            border-bottom: 3px solid #1a365d;
+            padding-bottom: 15px;
+            margin-top: 40px;
+            font-size: 1.8em;
+        }
+        h2 {
+            color: #2c5282;
+            margin-top: 35px;
+            padding-left: 10px;
+            border-left: 4px solid #4299e1;
+            font-size: 1.4em;
+        }
+        h3 {
+            color: #2d3748;
+            margin-top: 25px;
+            font-size: 1.2em;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            font-size: 0.95em;
+        }
+        th, td {
+            border: 1px solid #cbd5e0;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #2c5282;
+            color: white;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #edf2f7;
+        }
+        tr:hover {
+            background-color: #e2e8f0;
+        }
+        blockquote {
+            background: linear-gradient(135deg, #e6fffa 0%, #f0fff4 100%);
+            border-left: 5px solid #38b2ac;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        code {
+            background: #edf2f7;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #cbd5e0;
+            margin: 40px 0;
+        }
+        strong { color: #c53030; font-weight: 600; }
+        .secao {
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .indice {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .indice h2 { color: white; border-left-color: white; margin-top: 0; }
+        .indice a { color: #ffd700; text-decoration: none; }
+        .indice a:hover { text-decoration: underline; }
+        .indice ul { list-style: none; padding-left: 0; }
+        .indice li { padding: 5px 0; }
+        .indice li:before { content: '> '; color: #ffd700; }
+        .tempo {
+            display: inline-block;
+            background: #48bb78;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        @media print {
+            body { max-width: 100%; background: white; }
+            .secao { box-shadow: none; border: 1px solid #ddd; page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center; padding: 30px 0; background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%); color: white; border-radius: 10px; margin-bottom: 30px;">
+        <h1 style="color: white; border: none; margin: 0; padding: 0;">TCC V-AGMD</h1>
+        <p style="font-size: 1.2em; margin: 10px 0 0 0;">Material Completo para Apresentacao</p>
+        <p style="opacity: 0.9;">Modelagem Hibrida com Regularizacao Fisica</p>
+    </div>
+
+    <div class="indice">
+        <h2>Indice do Documento</h2>
+        <ul>
+            <li><a href="#roteiro_treino_completo">1. Roteiro de Treino Completo</a> — Texto dos slides + explicacoes expandidas</li>
+            <li><a href="#guia_modelos_hiperparametros">2. Guia de Modelos e Hiperparametros</a> — Definicoes detalhadas</li>
+            <li><a href="#roteiro_final_orientadora">3. Checklist de Alteracoes</a> — Orientadora (30/07/26)</li>
+        </ul>
+    </div>
+<div class="secao" id="roteiro_treino_completo"><h1>Roteiro de Treino Completo</h1><h1>Roteiro Completo para Treino — TCC V-AGMD</h1>
+<h2>Texto dos Slides + Explicações Expandidas</h2>
+<hr />
+<h2>INTRODUÇÃO AOS CONCEITOS DE MACHINE LEARNING</h2>
+<h3>O que é Machine Learning?</h3>
+<p><strong>Machine Learning (Aprendizado de Máquina)</strong> é uma subárea da Inteligência Artificial que desenvolve algoritmos capazes de <strong>aprender padrões a partir de dados</strong>, sem serem explicitamente programados para cada regra específica.</p>
+<blockquote>
+<p><strong>Definição formal (Mitchell, 1997):</strong> "Um programa aprende com a experiência E em relação a uma tarefa T e uma medida de desempenho P, se seu desempenho em T, medido por P, melhora com a experiência E."</p>
+</blockquote>
+<h3>Tipos de Problemas em ML</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+<th>Saída</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Classificação</strong></td>
+<td>Prever categoria/classe</td>
+<td>Email spam ou não</td>
+<td>Discreta (0, 1, 2...)</td>
+</tr>
+<tr>
+<td><strong>Regressão</strong></td>
+<td>Prever valor contínuo</td>
+<td>Preço de imóvel, temperatura</td>
+<td>Contínua (R)</td>
+</tr>
+<tr>
+<td><strong>Clustering</strong></td>
+<td>Agrupar sem rótulos</td>
+<td>Segmentação de clientes</td>
+<td>Grupos não supervisionados</td>
+</tr>
+</tbody>
+</table>
+<h3>Por que este TCC é um Problema de Regressão?</h3>
+<p><strong>Nosso problema:</strong>
+- <strong>Entradas (X):</strong> Temperatura de alimentação (60-80°C), Temperatura de refrigeração (20-35°C), Vazão (20-80 L/h), Pressão de vácuo (-600 a -400 mbar), Concentração salina (10-70 g/L)
+- <strong>Saídas (Y):</strong> Fluxo de permeado (L/h), Temperatura de saída da alimentação (°C), Temperatura de saída da refrigeração (°C)</p>
+<p><strong>Por que regressão?</strong>
+1. As saídas são <strong>valores contínuos</strong> (não categorias)
+2. Queremos prever <strong>quantidades físicas</strong> mensuráveis
+3. O erro é medido em <strong>unidades físicas</strong> (°C, L/h)</p>
+<blockquote>
+<p><strong>Na apresentação, dizer:</strong> "Este trabalho se enquadra no campo da <strong>regressão supervisionada</strong>: dado um conjunto de variáveis de entrada — as condições operacionais do V-AGMD — queremos prever variáveis de saída contínuas — o fluxo de permeado e as temperaturas de saída."</p>
+</blockquote>
+<hr />
+<h2>SLIDE 1 — Título</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>Modelagem Híbrida com Regularização Física e Seleção de Modelos para Predição de Desempenho em Destilação por Membranas</p>
+</blockquote>
+<p><strong>Fala:</strong>
+"Boa tarde. Este é o meu projeto final de graduação, cujo título é 'Modelagem Híbrida com Regularização Física e Seleção de Modelos para Predição de Desempenho em Destilação por Membranas'."</p>
+<p><strong>Tempo:</strong> ~30 segundos</p>
+<hr />
+<h2>SLIDE 2 — Sumário</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>Introdução, Revisão Bibliográfica, Fundamentação Teórica, Metodologia Proposta, Resultados, Conclusões, Referências</p>
+</blockquote>
+<p><strong>Fala:</strong>
+"Este é o sumário do TCC: vamos começar com a introdução, depois revisão bibliográfica, fundamentação teórica, metodologia proposta, seguindo para resultados, conclusões e referências."</p>
+<p><strong>Tempo:</strong> ~30 segundos</p>
+<hr />
+<h2>SLIDE 3 — A Crise Global da Água</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<ul>
+<li>4 bilhões de pessoas enfrentam escassez severa ≥1 mês/ano (Mekonnen &amp; Hoekstra, 2016)</li>
+<li>2,2 bilhões sem acesso a água potável segura (WHO, 2023)</li>
+<li>Demanda global deve superar oferta em 40% até 2030 (IDRA, 2026)</li>
+</ul>
+</blockquote>
+<p><strong>Fala:</strong>
+"A crise global da água é tanto de quantidade quanto de qualidade. 4 bilhões de pessoas enfrentam escassez severa de água — apontar o número no slide. 2,2 bilhões não têm acesso a água potável segura. E a demanda global deve superar a oferta em 40% até 2030."</p>
+<p><strong>Tempo:</strong> ~1 minuto</p>
+<hr />
+<h2>SLIDE 4 — O Problema no Brasil</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<ul>
+<li>2026: ano desafiador — chuvas abaixo da média; Cantareira ≈ 30% (ANA — Agência Nacional de Águas)</li>
+<li>Nordeste: 4 meses de chuva e 8 meses de seca extrema (ANA)</li>
+<li>Dessalinização: custo de R$ 2,63–4,21/m³, competitivo com tarifas industriais (estudo CNI, 2026)</li>
+<li>Maior planta do Brasil (ES): atende demanda de 80 mil pessoas</li>
+<li>8.500 km de costa → enorme potencial para expandir (IBGE)</li>
+</ul>
+</blockquote>
+<p><strong>Fala:</strong>
+"No Brasil, 2026 foi um ano desafiador. O Sistema Cantareira operou a aproximadamente 30% da capacidade — apontar o dado. No Nordeste, são 4 meses de chuva para 8 meses de seca extrema. A dessalinização pode reduzir o custo da água em até 10 vezes, de R$ 2,63 a R$ 4,21 por metro cúbico, segundo estudo da CNI — Confederação Nacional da Indústria. A maior planta do Brasil, no Espírito Santo, atende 80 mil pessoas. Com 8.500 km de costa, o potencial de expansão é enorme."</p>
+<p><strong>✅ ALTERAÇÃO DA ORIENTADORA:</strong> Dados referenciados como CNI (fonte oficial), não apenas "notícias".</p>
+<p><strong>Tempo:</strong> ~1 minuto</p>
+<hr />
+<h2>SLIDE 5 — O V-AGMD no Contexto da Dessalinização</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<ul>
+<li>Dessalinização divide-se em: Processos térmicos (destilação convencional) / Processos de membrana (osmose inversa, MD)</li>
+<li>Destilação por Membrana (MD): processo híbrido termo-membrana — membrana hidrofóbica separa vapor d'água da salmoura aquecida</li>
+<li>V-AGMD: configuração que combina espaço de ar (isolamento térmico) com vácuo parcial (→ menor resistência à transferência de massa do vapor, acelerando o transporte)</li>
+</ul>
+</blockquote>
+<p><strong>Fala:</strong>
+"A dessalinização se divide em duas grandes tecnologias: processos térmicos — como a destilação convencional — e processos de membrana — como a osmose inversa e a destilação por membrana. A MD é um processo híbrido: é térmico, mas usa membrana. O V-AGMD, que é o foco deste trabalho, combina um espaço de ar — que funciona como isolante térmico — com vácuo parcial. O vácuo parcial reduz a resistência à transferência de massa do vapor, acelerando o transporte."</p>
+<p><strong>✅ ALTERAÇÃO DA ORIENTADORA:</strong> "Vácuo parcial reduz resistência à transferência de massa" — não "vácuo de ar".</p>
+<p><strong>Tempo:</strong> ~45 segundos</p>
+<hr />
+<h2>SLIDE 6 — Ilha de Policogeração Sustentável</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<ul>
+<li>Protótipo pioneiro COPPE/UFRJ (2022): água potável + energia via solar térmica</li>
+<li>5 kWₑ (≈ 25 residências) + 8 kWₜ recuperáveis em micro-trocadores</li>
+<li>Dessalinizador V-AGMD: produz 1.000 L/dia de água destilada (&gt; 100 pessoas/dia)</li>
+<li>Foco em comunidades remotas/off-grid (Semiárido, ilhas, O&amp;G, áreas de desastre)</li>
+<li>Potencial complementar a projetos existentes de dessalinização em locais de escassez, como o Projeto Água Doce</li>
+</ul>
+</blockquote>
+<p><strong>Fala:</strong>
+"A Ilha de Policogeração Sustentável da COPPE, inaugurada em 2022, é o projeto que abriga este trabalho. É um sistema que integra painéis solares de alta concentração com um dessalinizador V-AGMD, produzindo eletricidade para 25 residências e água para mais de 100 pessoas por dia. O foco são comunidades remotas — apontar. O projeto tem potencial complementar ao Projeto Água Doce, programa federal para o Semiárido nordestino."</p>
+<p><strong>Tempo:</strong> ~1 minuto</p>
+<hr />
+<h2>SLIDE 7 — Objetivos</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>Objetivo geral: avaliar e selecionar modelos de regressão supervisionada para predição do desempenho do módulo V-AGMD (fluxo de permeado e temperaturas de saída), combinando aprendizado a partir de dados experimentais (174 pontos, 3 regimes de salinidade) com informação física proveniente de um modelo reduzido 0D já publicado pelo laboratório (LISBOA et al., 2024).</p>
+</blockquote>
+<p><strong>Fala:</strong>
+"O objetivo geral é avaliar e selecionar modelos de regressão supervisionada para predição do desempenho do módulo V-AGMD — fluxo de permeado e temperaturas de saída — combinando dados experimentais — 174 pontos em 3 regimes de salinidade — com informação física de um modelo reduzido 0D já publicado pelo laboratório."</p>
+<p><strong>✅ ALTERAÇÃO DA ORIENTADORA:</strong> Motivação = o que você apresenta (prever desempenho).</p>
+<p><strong>Tempo:</strong> ~1 minuto</p>
+<hr />
+<h2>SLIDE 8 — Abordagens de Modelagem em MD</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>Tabela: Física (AGMD, 2D, V-AGMD) / Dados (AGMD, VMD) / Híbridos (DCMD, V-AGMD)</p>
+</blockquote>
+<p><strong>Fala:</strong>
+"A revisão mostra três grandes abordagens para modelagem em MD. A abordagem física usa princípios e leis físicas — é interpretável mas cara computacionalmente. A abordagem data-driven usa apenas dados experimentais — é flexível mas dependente da qualidade dos dados. E as abordagens híbridas combinam o melhor dos dois mundos: conhecimento físico com aprendizado de máquina."</p>
+<p><strong>✅ ALTERAÇÃO DA ORIENTADORA:</strong> Deixar claro que existem modelos com dados em outras configurações (V-AGMD, PGMD), não apenas "modelos de dados".</p>
+<p><strong>Tempo:</strong> ~1,5 minutos</p>
+<hr />
+<h2>SLIDE 9 — Panorama de Publicações</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>Tabela: Física (4), Dados (5), Híbrida (1 - PINN), Este trabalho (RL, DT, GB, RF, MLP, Residual, PhyLoss)</p>
+</blockquote>
+<p><strong>Fala:</strong>
+"Panorama consolidado das publicações. Encontrei 4 publicações usando abordagem física, 5 usando dados — redes neurais, regressões, árvores — e apenas 1 trabalho híbrido na literatura de MD: uma PINN aplicada a DCMD. Este trabalho é o único focado em V-AGMD, testando todas essas arquiteturas."</p>
+<p><strong>Tempo:</strong> ~1,5 minutos</p>
+<hr />
+<h2>SLIDE 10 — Lacunas e Contribuições</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p><strong>Lacunas:</strong> 1) Ausência de validação cruzada em geral 2) Seleção por RMSE puro favorece superparametrização 3) Híbridos em MD praticamente inexistentes
+<strong>Contribuições:</strong> 1) Validação cruzada por grupos 2) Critério 1-SE + menor complexidade 3) 4 arquiteturas híbridas implementadas</p>
+</blockquote>
+<p><strong>Fala:</strong>
+"Identifiquei três lacunas principais na literatura. Primeira: ausência de validação cruzada em geral — a maioria usa partição única, ignorando a estrutura dos grupos experimentais. Segunda: seleção por RMSE puro, que favorece modelos desnecessariamente complexos. Terceira: modelos híbridos em MD são praticamente inexistentes. As contribuições deste trabalho respondem a essas lacunas: validação cruzada por grupos, critério 1-SE para seleção parcimoniosa, e 4 arquiteturas híbridas implementadas."</p>
+<p><strong>Tempo:</strong> ~2 minutos</p>
+<hr />
+<h2>SLIDE 11 — Princípios da Destilação por Membranas</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<ul>
+<li>Processo de separação térmico com membrana hidrofóbica e porosa</li>
+<li>Força motriz: gradiente térmico → diferença de pressão parcial de vapor</li>
+<li>Apenas a fase vapor atravessa os poros da membrana</li>
+<li>Mecanismo: evaporação na interface quente → difusão nos poros → condensação no lado frio</li>
+<li>Vantagens do processo MD: temperaturas médias (60-80°C), calor residual, cogeração, tolerância à salinidade</li>
+</ul>
+</blockquote>
+<p><strong>Fala:</strong>
+"A destilação por membranas é um processo térmico de separação. A membrana é hidrofóbica e porosa — não é filtração, a membrana não é molhada. A força motriz é o gradiente térmico: a diferença de temperatura gera diferença de pressão parcial de vapor. O mecanismo é: evaporação na interface quente — apontar —, difusão pelos poros — apontar —, e condensação no lado frio — apontar. As vantagens são do processo MD em geral: opera em temperaturas médias, compatível com calor residual e cogeração, e tem alta tolerância à salinidade."</p>
+<p><strong>✅ ALTERAÇÕES DA ORIENTADORA:</strong>
+- "Filtrar" → "membrana hidrofóbica e porosa"
+- Vantagens atribuídas ao <strong>processo MD</strong>, não à configuração específica</p>
+<p><strong>Tempo:</strong> ~1 minuto</p>
+<hr />
+<h2>SLIDE 12 — Fundamentos de Aprendizado de Máquinas</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>Tabela: Métricas (RMSE, R²) / Divisão dos dados / Validação Cruzada / Pré-processamento (Z-score) / Correlação (Pearson, Spearman)</p>
+</blockquote>
+<p><strong>Fala expandida:</strong>
+"Machine Learning é uma subárea da IA que aprende padrões a partir de dados. Dentro do ML, temos problemas de <strong>classificação</strong> — prever categorias — e <strong>regressão</strong> — prever valores contínuos. Este trabalho é um problema de <strong>regressão supervisionada</strong>: queremos prever fluxo e temperaturas, que são valores contínuos, não categorias.</p>
+<p>A tabela mostra os fundamentos. As <strong>métricas</strong>: RMSE mede o erro na mesma unidade dos dados; R² mede a proporção da variância explicada — e pode ser negativo quando o modelo é pior que a média. A <strong>divisão dos dados</strong> separa treino, validação e teste. A <strong>validação cruzada</strong> repete essa divisão múltiplas vezes para estimar estabilidade. O <strong>pré-processamento</strong> por Z-score coloca todas as variáveis na mesma escala. E a <strong>correlação</strong> de Pearson mede relações lineares, enquanto Spearman captura relações monotônicas."</p>
+<p><strong>Tempo:</strong> ~1,5 minutos</p>
+<hr />
+<h2>SLIDE 13 — Famílias de Modelos I — Regressão Linear</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>Figura: Regressão linear e regularizações (OLS, Ridge, Lasso, ElasticNet)</p>
+</blockquote>
+<p><strong>Fala expandida:</strong>
+"Os modelos lineares partem do OLS — Ordinary Least Squares — que é a regressão clássica. Ela minimiza a soma dos quadrados dos erros, sem nenhuma restrição. O problema é que, com muitas variáveis ou ruído, o OLS pode superajustar.</p>
+<p>O <strong>Ridge</strong> adiciona uma penalização L2 — apontar na figura o termo λΣβ². Isso encolhe os coeficientes em direção a zero, mas sem zerá-los completamente. É útil quando há multicolinearidade.</p>
+<p>O <strong>Lasso</strong> usa penalização L1 — apontar λΣ|β|. A diferença crucial é que o L1 pode zerar coeficientes, funcionando como seleção automática de variáveis. Se uma variável não é importante, seu coeficiente vira zero.</p>
+<p>O <strong>ElasticNet</strong> combina L1 e L2 — apontar os dois termos. Herda a seleção de features do Lasso e a estabilidade do Ridge. O hiperparâmetro l1_ratio controla a mistura: 1 é Lasso puro, 0 é Ridge puro."</p>
+<p><strong>✅ ALTERAÇÃO DA ORIENTADORA:</strong> Ao falar de L1/L2, apontar explicitamente na figura.</p>
+<p><strong>Tempo:</strong> ~45 segundos a 1 minuto</p>
+<hr />
+<h2>SLIDE 14 — Famílias de Modelos II — Árvores de Decisão</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>Figura: Árvores de decisão (DT, RF, GB)</p>
+</blockquote>
+<p><strong>Fala expandida:</strong>
+"A <strong>Decision Tree</strong> faz partições binárias recursivas — apontar o nó raiz e as folhas. É intuitiva, mas muito propensa a overfitting: se deixar crescer demais, decora os dados de treino.</p>
+<p>O <strong>Random Forest</strong> resolve isso treinando N árvores em paralelo — apontar múltiplas árvores. Cada uma vê um subconjunto aleatório dos dados — bootstrap — e das features. A predição final é a média de todas. Isso reduz a variância e evita overfitting.</p>
+<p>O <strong>Gradient Boosting</strong> trabalha em sequência — apontar as setas. Cada nova árvore é treinada para corrigir os erros — os resíduos — da combinação anterior. O learning rate controla quanto cada árvore contribui. É mais poderoso que o RF, mas mais sensível a overfitting."</p>
+<p><strong>Tempo:</strong> ~45 segundos</p>
+<hr />
+<h2>SLIDE 15 — Famílias de Modelos III — Redes Neurais</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>Figura: Rede neural MLP (camadas, neurônios, ativação)</p>
+</blockquote>
+<p><strong>Fala expandida:</strong>
+"A <strong>MLP</strong> — Multi-Layer Perceptron — é uma rede neural fully connected. Temos a camada de entrada — apontar —, camadas ocultas — apontar —, e a camada de saída — apontar.</p>
+<p>Cada neurônio faz duas operações: uma soma ponderada das entradas — apontar os pesos — seguida de uma função de ativação não linear — apontar a função. As ativações comuns são ReLU — que zera valores negativos — e tanh — que comprime entre -1 e 1, adequada para dados normalizados.</p>
+<p>O aprendizado ajusta os pesos por <strong>backpropagation</strong>: calcula o erro na saída, propaga para trás, e ajusta os pesos na direção que reduz o erro. Os principais hiperparâmetros são: número de camadas e neurônios — apontar a arquitetura —, taxa de aprendizado, e regularização L2 nos pesos."</p>
+<p><strong>Tempo:</strong> ~45 segundos a 1 minuto</p>
+<hr />
+<h2>SLIDE 16 — Famílias de Modelos IV — Arquiteturas Híbridas</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>Figura: 4 arquiteturas híbridas (PhyInput, PhyResidual, PhyHybrid, PhyLoss)</p>
+</blockquote>
+<p><strong>Fala expandida:</strong>
+"As quatro arquiteturas híbridas incorporam o modelo físico 0D de formas diferentes — apontar cada uma.</p>
+<p>O <strong>PhyInput</strong> — apontar — simplesmente adiciona as predições do modelo 0D como features extras de entrada. A rede pode usar ou ignorar essa informação.</p>
+<p>O <strong>PhyResidual</strong> — apontar — aprende o resíduo: a saída é Y_físico mais delta. A rede só precisa corrigir o desvio do modelo físico, não aprender o comportamento inteiro do zero.</p>
+<p>O <strong>PhyHybrid</strong> — apontar — combina as duas: usa a física como entrada E produz uma correção residual.</p>
+<p>O <strong>PhyLoss</strong> — apontar a função de perda — não altera a arquitetura. Em vez disso, modifica a função de perda: penaliza desvios da física durante o treinamento. O hiperparâmetro ômega controla o compromisso entre ajuste aos dados e fidelidade à física."</p>
+<p><strong>Tempo:</strong> ~30 a 45 segundos</p>
+<hr />
+<h2>SLIDE 17 — Visão Geral dos Procedimentos</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>Fluxograma: Dados → Preparação → Análise Exploratória → Validação e Seleção → Stage 0 → Stage 1 → Stage 2 → Selecionado vs 0D</p>
+</blockquote>
+<p><strong>Fala:</strong>
+"Visão geral dos procedimentos: começo com os dados experimentais, realizo a preparação — padronização Z-score —, análise exploratória, e depois a modelagem em 3 estágios: Stage 0 com modelos clássicos, Stage 1 com redes neurais, Stage 2 com híbridos. Finalmente, o modelo selecionado é comparado com o modelo físico 0D."</p>
+<p><strong>Tempo:</strong> ~1,5 minutos</p>
+<hr />
+<h2>SLIDE 18 — Dados Experimentais</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>174 pontos, 3 regimes (10, 40, 70 g/L), 5 entradas, 3 saídas</p>
+</blockquote>
+<p><strong>Fala:</strong>
+"O conjunto de dados tem 174 pontos experimentais do sistema V-AGMD piloto, disponibilizado pela tese de Curcino (2025) e Lisboa et al. (2024). Foram testados 3 regimes de salinidade: 10, 40 e 70 g/L. As 5 variáveis de entrada incluem temperaturas, vazão, pressão de vácuo e concentração salina. As 3 saídas são o fluxo de permeado e as duas temperaturas de saída."</p>
+<p><strong>✅ ALTERAÇÃO DA ORIENTADORA:</strong> Citada a fonte dos dados explicitamente.</p>
+<p><strong>Tempo:</strong> ~1 minuto</p>
+<hr />
+<h2>SLIDE 19 — Decisões da Preparação dos Dados</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>Z-score: preserva distribuição original, mede em desvios-padrão</p>
+</blockquote>
+<p><strong>Fala:</strong>
+"Escalonamento por Z-score: preserva a distribuição original dos dados e mede cada ponto em desvios-padrão da média, evitando compressão artificial na presença de valores extremos."</p>
+<p><strong>Tempo:</strong> ~1 minuto</p>
+<hr />
+<h2>SLIDE 20 — Busca de Hiperparâmetros</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>Busca por família e por target</p>
+</blockquote>
+<p><strong>Fala expandida:</strong>
+"A busca de hiperparâmetros foi feita por família e por variável de saída — são 3 fits independentes por modelo.</p>
+<p>Para os <strong>lineares</strong> — Ridge, Lasso, ElasticNet — o hiperparâmetro principal é o <strong>alpha</strong>, que controla a força da regularização. Alpha igual a zero equivale a OLS; alpha alto torna o modelo mais simples.</p>
+<p>Para as <strong>árvores</strong>, controlamos a <strong>profundidade máxima</strong> — que limita a complexidade —, o <strong>número de estimadores</strong> no Random Forest e Gradient Boosting, e o <strong>learning rate</strong> no GB.</p>
+<p>Para as <strong>redes neurais</strong>, a busca envolve <strong>arquitetura</strong> — número de camadas e neurônios —, <strong>taxa de aprendizado</strong>, <strong>regularização L2</strong> e <strong>função de ativação</strong>.</p>
+<p>Para os <strong>híbridos</strong>, o L2 foi <strong>congelado</strong> da baseline — para isolar o efeito da arquitetura híbrida. O PhyLoss tem o <strong>ômega</strong>, que pondera física versus dados na função de perda.</p>
+<p>Redes usaram <strong>Random Search</strong> — amostragem aleatória da grade — porque o espaço de busca é grande. As demais famílias usaram <strong>GridSearchCV</strong> — busca exaustiva — porque o espaço é menor."</p>
+<p><strong>Tempo:</strong> ~1,5 a 2 minutos</p>
+<hr />
+<h2>SLIDE 21 — Fluxo de Validação Cruzada e Seleção</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>GroupKFold → RMSE_CV → 1-SE → modelo mais simples</p>
+</blockquote>
+<p><strong>Fala:</strong>
+"O fluxo completo: GroupKFold separa os folds por regime operacional — apontar. Calculamos o RMSE médio de validação cruzada com erro padrão. A regra do 1-SE considera todos os modelos dentro de 1 erro padrão do melhor. Entre esses, selecionamos o mais simples — o de menor complexidade."</p>
+<p><strong>Tempo:</strong> ~1 minuto</p>
+<hr />
+<h2>SLIDE 22 — Análise Exploratória</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>Dispersão: T_out correlacionada com entradas térmicas; fluxo com múltiplas variáveis
+Pearson: T_out |r|&gt;0,9; fluxo |r|≈0,7
+Spearman: próximo a Pearson → relações aproximadamente lineares</p>
+</blockquote>
+<p><strong>Fala:</strong>
+"Análise exploratória: as temperaturas de saída têm forte correlação linear com as entradas térmicas — |r| maior que 0,9. O fluxo é mais complexo, com correlações moderadas e distribuídas — |r| em torno de 0,7. Pearson e Spearman próximos indicam que as relações dominantes são aproximadamente lineares, o que justifica a modelagem multivariada."</p>
+<p><strong>Tempo:</strong> ~1 minuto</p>
+<hr />
+<h2>SLIDE 23 — Modelo Físico 0D — Referência</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>Modelo 0D de Lisboa et al. (2024) — referência fenomenológica. Não é modelo deste trabalho.</p>
+</blockquote>
+<p><strong>Fala:</strong>
+"O modelo 0D de Lisboa et al. (2024) serve como referência fenomenológica para as arquiteturas híbridas. É importante deixar claro: <strong>não é um modelo desenvolvido neste trabalho</strong>. As arquiteturas híbridas aprendem a corrigir sistematicamente suas predições a partir dos dados experimentais."</p>
+<p><strong>✅ ALTERAÇÃO DA ORIENTADORA:</strong> Citado explicitamente que o modelo 0D é de Lisboa et al. (2024), não é trabalho seu.</p>
+<p><strong>Tempo:</strong> ~30 segundos</p>
+<hr />
+<h2>SLIDE 24 — Síntese dos Estágios de Modelagem</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>Stage 0: lineares similares, árvores sobreajustaram
+Stage 1: MLP melhorou Test RMSE
+Stage 2: PhyResidual menores perdas</p>
+</blockquote>
+<p><strong>Fala:</strong>
+"Síntese dos três estágios: no Stage 0, as regressões lineares apresentaram desempenho similar entre si; as árvores de decisão sobreajustaram nos regimes de treino. No Stage 1, as baselines MLP melhoraram o Test RMSE em relação às regressões e árvores. No Stage 2, o PhyResidual apresentou as menores perdas, corrigindo o viés do modelo 0D."</p>
+<p><strong>Tempo:</strong> ~1 minuto</p>
+<hr />
+<h2>SLIDE 25 — Comparação Final</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>Tabela: T_alim (Baseline Flux 0,178), T_ref (PhyResidual 0,214), Flux (PhyResidual 0,054), 0D (1,549 / 0,851 / 0,206)</p>
+</blockquote>
+<p><strong>Fala:</strong>
+"Comparação final: para T_alim_out, a Baseline Flux foi selecionada com Test RMSE de 0,178. Para T_ref_out, o PhyResidual com 0,214. Para o Flux, o PhyResidual com 0,054 — uma melhora de 73,8% sobre o modelo 0D. Note que o modelo 0D tem R² negativo para T_alim — apontar -0,404 — o que significa que ele é pior que simplesmente prever a média."</p>
+<p><strong>Tempo:</strong> ~2 minutos</p>
+<hr />
+<h2>SLIDE 26 — Predição vs Experimental</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>Overlay: Baseline Flux (T_alim), PhyResidual (T_ref, Flux). Quadrados cinza = modelo 0D</p>
+</blockquote>
+<p><strong>Fala:</strong>
+"Overlay com os modelos selecionados: Baseline Flux para T_alim — apontar azul —, PhyResidual para T_ref — apontar laranja — e Flux — apontar verde. Os quadrados cinza representam o modelo físico 0D. Vejam como os modelos híbridos se aproximam da linha y=x — apontar — enquanto o modelo 0D apresenta dispersão, especialmente para as temperaturas."</p>
+<p><strong>Tempo:</strong> ~1 minuto</p>
+<hr />
+<h2>SLIDE 27 — Análise por Variável de Saída</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>Tabela: T_alim (-89,0% vs 0D), T_ref (-74,9%), Flux (-73,8%)</p>
+</blockquote>
+<p><strong>Fala:</strong>
+"Análise por variável: para T_alim_out, o modelo data-driven puro foi melhor — o modelo 0D tem R² de -0,404, tornando a correção residual menos eficaz. Para T_ref_out, a diferença sobre o Ridge é marginal — 2,3% — mas o Ridge tem melhor CV, indicando melhor extrapolação. Para o Flux, o PhyResidual apresentou o menor Test e o menor CV — foi a única variável onde isso aconteceu — mostrando que aprendeu a corrigir o viés do 0D."</p>
+<p><strong>Tempo:</strong> ~2 minutos</p>
+<hr />
+<h2>SLIDE 28 — Comentários Finais</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>1) Híbridos melhores em 2/3 variáveis (até 89% vs 0D)
+2) Residual = corretor de viés
+3) CV: PhyResidual no Flux; lineares nas temperaturas
+4) Seleção por alvo não garante melhor performance
+5) Extensível a outros processos</p>
+</blockquote>
+<p><strong>Fala:</strong>
+"Comentários finais: as redes híbridas PhyResidual apresentaram as melhores performances para Flux e T_ref, com melhora de até 89% sobre o modelo 0D. A arquitetura residual atua como corretor de viés do modelo físico. Em capacidade de generalização, o PhyResidual domina no Flux, enquanto os lineares têm CV menor nas temperaturas — mas a diferença no Test é pequena. A seleção de hiperparâmetros por alvo não garantiu a melhor performance para aquele alvo. E o procedimento é extensível a outros processos físicos do laboratório."</p>
+<p><strong>Tempo:</strong> ~1,5 minutos</p>
+<hr />
+<h2>SLIDE 29 — Trabalhos Futuros</h2>
+<p><strong>Texto do slide:</strong></p>
+<blockquote>
+<p>1) Novos dados experimentais
+2) Modelo 2D GITT como referência
+3) PINNs a partir das EDOs (surrogate + híbrido)</p>
+</blockquote>
+<p><strong>Fala:</strong>
+"Trabalhos futuros: primeiro, avaliar os modelos selecionados sobre novas rodadas experimentais que explorem regiões não contempladas no treinamento. Segundo, substituir o modelo 0D pelo modelo 2D GITT — de Curcino (2026) — como referência física. Terceiro, construir PINNs a partir das EDOs do modelo GITT — tanto como surrogate, apenas física, quanto no modo híbrido que incorpora dados experimentais na função de perda."</p>
+<p><strong>Tempo:</strong> ~1 minuto</p>
+<hr />
+<h2>RESUMO — TEMPO TOTAL</h2>
+<table>
+<thead>
+<tr>
+<th>Seção</th>
+<th>Slides</th>
+<th>Tempo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Introdução</td>
+<td>1-7</td>
+<td>~6 min</td>
+</tr>
+<tr>
+<td>Revisão</td>
+<td>8-10</td>
+<td>~4 min</td>
+</tr>
+<tr>
+<td>Fundamentação</td>
+<td>11-16</td>
+<td>~5 min</td>
+</tr>
+<tr>
+<td>Metodologia</td>
+<td>17-21</td>
+<td>~6 min</td>
+</tr>
+<tr>
+<td>Resultados</td>
+<td>22-26</td>
+<td>~7 min</td>
+</tr>
+<tr>
+<td>Conclusões</td>
+<td>27-29</td>
+<td>~4 min</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td>29</td>
+<td><strong>~32 min</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>DICAS DE APRESENTAÇÃO</h2>
+<h3>Sempre apontar nos slides:</h3>
+<ul>
+<li>Slide 4: número 30% (Cantareira)</li>
+<li>Slide 5: "vácuo parcial" e "resistência à transferência de massa"</li>
+<li>Slide 11: mecanismo (evaporação → difusão → condensação)</li>
+<li>Slide 13: termos L1 e L2 na figura</li>
+<li>Slide 16: cada uma das 4 arquiteturas</li>
+<li>Slide 25: valores de RMSE e R² negativo</li>
+<li>Slide 26: cores dos modelos e linha y=x</li>
+</ul>
+<h3>Termos corrigidos:</h3>
+<table>
+<thead>
+<tr>
+<th>❌ Errado</th>
+<th>✅ Correto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Filtrar</td>
+<td>Membrana hidrofóbica porosa</td>
+</tr>
+<tr>
+<td>Vácuo de ar</td>
+<td>Vácuo parcial</td>
+</tr>
+<tr>
+<td>Dados de notícias</td>
+<td>Dados CNI (fonte oficial)</td>
+</tr>
+<tr>
+<td>Meu modelo 0D</td>
+<td>Modelo 0D de Lisboa et al. (2024)</td>
+</tr>
+</tbody>
+</table>
+<h3>Tempo a evitar:</h3>
+<ul>
+<li>Não gastar mais de 1 minuto no Slide 11 (Princípios MD)</li>
+<li>Não explicar detalhadamente a figura rica do Slide 26</li>
+</ul></div>
+<div class="secao" id="guia_modelos_hiperparametros"><h1>Guia de Modelos e Hiperparâmetros</h1><h1>Guia Detalhado — Modelos e Hiperparâmetros</h1>
+<h2>Material de Apoio para Apresentação TCC V-AGMD</h2>
+<hr />
+<h2>1. MODELOS LINEARES</h2>
+<h3>1.1 OLS (Ordinary Least Squares) — Regressão Linear Clássica</h3>
+<p><strong>O que faz:</strong> Encontra a reta (ou hiperplano) que minimiza a soma dos quadrados das diferenças entre valores reais e previstos.</p>
+<p><strong>Fórmula:</strong> min Σ(yᵢ - ŷᵢ)²</p>
+<p><strong>Vantagens:</strong>
+- Simples e interpretável
+- Solução analítica (não iterativa)
+- Base para entender modelos mais complexos</p>
+<p><strong>Limitações:</strong>
+- Sem regularização → overfitting com muitas variáveis
+- Assume relação linear entre variáveis
+- Sensível a outliers</p>
+<hr />
+<h3>1.2 Ridge Regression (L2)</h3>
+<p><strong>O que faz:</strong> OLS + penalidade L2 nos coeficientes. Encolhe os coeficientes em direção a zero, mas sem zerá-los completamente.</p>
+<p><strong>Fórmula:</strong> min [Σ(yᵢ - ŷᵢ)² + α·Σ(βⱼ²)]</p>
+<p><strong>Hiperparâmetro:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Valores Testados</th>
+<th>Efeito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>alpha (α)</strong></td>
+<td>Força da regularização L2</td>
+<td>[0.001, 0.01, 0.1, 1, 10, 100]</td>
+<td>α=0 → OLS; α↑ → coeficientes menores, modelo mais simples</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quando usar:</strong> Multicolinearidade entre variáveis (coeficientes instáveis).</p>
+<hr />
+<h3>1.3 Lasso Regression (L1)</h3>
+<p><strong>O que faz:</strong> OLS + penalidade L1. Pode zerar coeficientes de variáveis irrelevantes — funciona como seleção automática de features.</p>
+<p><strong>Fórmula:</strong> min [Σ(yᵢ - ŷᵢ)² + α·Σ|βⱼ|]</p>
+<p><strong>Hiperparâmetro:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Valores Testados</th>
+<th>Efeito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>alpha (α)</strong></td>
+<td>Força da regularização L1</td>
+<td>[0.001, 0.01, 0.1, 1, 10, 100]</td>
+<td>α=0 → OLS; α↑ → mais coeficientes zerados</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quando usar:</strong> Suspeita de que muitas variáveis são irrelevantes.</p>
+<hr />
+<h3>1.4 ElasticNet</h3>
+<p><strong>O que faz:</strong> Combina penalidades L1 e L2. Herda a seleção de features do Lasso e a estabilidade do Ridge.</p>
+<p><strong>Fórmula:</strong> min [Σ(yᵢ - ŷᵢ)² + α·ρ·Σ|βⱼ| + α·(1-ρ)/2·Σ(βⱼ²)]</p>
+<p><strong>Hiperparâmetros:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Valores Testados</th>
+<th>Efeito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>alpha (α)</strong></td>
+<td>Força total da regularização</td>
+<td>[0.001, 0.01, 0.1, 1, 10]</td>
+<td>Controla intensidade geral</td>
+</tr>
+<tr>
+<td><strong>l1_ratio (ρ)</strong></td>
+<td>Proporção L1 vs L2</td>
+<td>[0.1, 0.3, 0.5, 0.7, 0.9]</td>
+<td>ρ=1 → Lasso puro; ρ=0 → Ridge puro</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quando usar:</strong> Variáveis correlacionadas + necessidade de seleção de features.</p>
+<hr />
+<h2>2. ÁRVORES DE DECISÃO E ENSEMBLES</h2>
+<h3>2.1 Decision Tree (DT)</h3>
+<p><strong>O que faz:</strong> Particiona o espaço de features em regiões retangulares, criando regras do tipo "se X &gt; valor, então...". Estrutura de fluxograma.</p>
+<p><strong>Hiperparâmetros:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Valores Testados</th>
+<th>Efeito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>max_depth</strong></td>
+<td>Profundidade máxima da árvore</td>
+<td>[3, 5, 7, 10, None]</td>
+<td>Limita complexidade; None = sem limite</td>
+</tr>
+<tr>
+<td><strong>min_samples_split</strong></td>
+<td>Mínimo de amostras para dividir nó</td>
+<td>[2, 5, 10]</td>
+<td>Evita divisões com poucos dados</td>
+</tr>
+<tr>
+<td><strong>min_samples_leaf</strong></td>
+<td>Mínimo de amostras em folha</td>
+<td>[1, 2, 4]</td>
+<td>Controla granularidade das folhas</td>
+</tr>
+<tr>
+<td><strong>max_features</strong></td>
+<td>Features consideradas por divisão</td>
+<td>['sqrt', 'log2', None]</td>
+<td>Introduz aleatoriedade</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vantagens:</strong> Interpretável, não assume distribuição, captura não-linearidades.</p>
+<p><strong>Limitações:</strong> Overfitting fácil, instável (pequenas mudanças nos dados → árvore muito diferente).</p>
+<hr />
+<h3>2.2 Random Forest (RF)</h3>
+<p><strong>O que faz:</strong> Treina N árvores em paralelo, cada uma com subconjunto aleatório dos dados (bootstrap) e das features. Predição = média das árvores.</p>
+<p><strong>Hiperparâmetros:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Valores Testados</th>
+<th>Efeito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>n_estimators</strong></td>
+<td>Número de árvores</td>
+<td>[50, 100, 200, 300]</td>
+<td>Mais árvores = mais estável, mais custo</td>
+</tr>
+<tr>
+<td><strong>max_depth</strong></td>
+<td>Profundidade máxima</td>
+<td>[3, 5, 7, 10, None]</td>
+<td>Controla complexidade individual</td>
+</tr>
+<tr>
+<td><strong>min_samples_split</strong></td>
+<td>Mínimo para dividir</td>
+<td>[2, 5, 10]</td>
+<td>Regularização</td>
+</tr>
+<tr>
+<td><strong>max_features</strong></td>
+<td>Features por árvore</td>
+<td>['sqrt', 'log2']</td>
+<td>Diversidade entre árvores</td>
+</tr>
+<tr>
+<td><strong>bootstrap</strong></td>
+<td>Amostragem com reposição</td>
+<td>[True, False]</td>
+<td>True = bagging tradicional</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vantagens:</strong> Robusto, reduz overfitting da DT única, importância de features.</p>
+<p><strong>Limitações:</strong> Menos interpretável que DT única, pode ser lento com muitas árvores.</p>
+<hr />
+<h3>2.3 Gradient Boosting (GB)</h3>
+<p><strong>O que faz:</strong> Treina árvores sequencialmente. Cada nova árvore corrige os erros (resíduos) da combinação anterior.</p>
+<p><strong>Fórmula:</strong> Fₘ(x) = Fₘ₋₁(x) + ν·hₘ(x), onde ν = learning rate</p>
+<p><strong>Hiperparâmetros:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Valores Testados</th>
+<th>Efeito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>n_estimators</strong></td>
+<td>Número de árvores (estágios)</td>
+<td>[50, 100, 200]</td>
+<td>Mais estágios = mais capacidade, risco overfitting</td>
+</tr>
+<tr>
+<td><strong>learning_rate (ν)</strong></td>
+<td>Taxa de aprendizado</td>
+<td>[0.01, 0.05, 0.1, 0.2]</td>
+<td>Controla contribuição de cada árvore; ν↓ precisa mais árvores</td>
+</tr>
+<tr>
+<td><strong>max_depth</strong></td>
+<td>Profundidade de cada árvore</td>
+<td>[3, 5, 7]</td>
+<td>Árvores rasas (3-5) funcionam bem</td>
+</tr>
+<tr>
+<td><strong>subsample</strong></td>
+<td>Fração de dados por árvore</td>
+<td>[0.8, 0.9, 1.0]</td>
+<td>&lt;1.0 introduz aleatoriedade (Stochastic GB)</td>
+</tr>
+<tr>
+<td><strong>min_samples_split</strong></td>
+<td>Mínimo para dividir nó</td>
+<td>[2, 5, 10]</td>
+<td>Regularização</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vantagens:</strong> Estado da arte em dados tabulares, alta capacidade preditiva.</p>
+<p><strong>Limitações:</strong> Mais sensível a overfitting que RF, mais hiperparâmetros para ajustar.</p>
+<hr />
+<h2>3. REDES NEURAIS (MLP)</h2>
+<h3>3.1 MLP (Multi-Layer Perceptron)</h3>
+<p><strong>O que faz:</strong> Camadas de neurônios conectados. Cada neurônio: soma ponderada das entradas + ativação não linear. Aprende por backpropagation.</p>
+<p><strong>Arquitetura:</strong></p>
+<pre><code>Entrada → [Camada Oculta 1] → [Camada Oculta 2] → ... → Saída
+</code></pre>
+<p><strong>Hiperparâmetros:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Valores Testados</th>
+<th>Efeito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>hidden_layer_sizes</strong></td>
+<td>Neurônios por camada</td>
+<td>[(64,), (128,), (256,), (128,64), (256,128), (256,128,64)]</td>
+<td>Mais neurônios = mais capacidade; mais camadas = hierarquia</td>
+</tr>
+<tr>
+<td><strong>activation</strong></td>
+<td>Função de ativação</td>
+<td>['relu', 'tanh', 'logistic']</td>
+<td>ReLU: zera negativos; tanh: [-1,1]; logistic: [0,1]</td>
+</tr>
+<tr>
+<td><strong>alpha (L2)</strong></td>
+<td>Regularização L2 nos pesos</td>
+<td>[0.0001, 0.001, 0.01, 0.1]</td>
+<td>Penaliza pesos grandes, evita overfitting</td>
+</tr>
+<tr>
+<td><strong>learning_rate_init</strong></td>
+<td>Taxa de aprendizado inicial</td>
+<td>[0.0001, 0.001, 0.01]</td>
+<td>Tamanho do passo na descida do gradiente</td>
+</tr>
+<tr>
+<td><strong>batch_size</strong></td>
+<td>Tamanho do batch</td>
+<td>[16, 32, 64, 'auto']</td>
+<td>Amostras por atualização de peso</td>
+</tr>
+<tr>
+<td><strong>max_iter</strong></td>
+<td>Máximo de épocas</td>
+<td>[500, 1000, 2000]</td>
+<td>Limite de iterações</td>
+</tr>
+<tr>
+<td><strong>early_stopping</strong></td>
+<td>Parada antecipada</td>
+<td>[True, False]</td>
+<td>Interrompe se validação não melhora</td>
+</tr>
+<tr>
+<td><strong>validation_fraction</strong></td>
+<td>Fração para validação</td>
+<td>[0.1, 0.2]</td>
+<td>Dados usados para early stopping</td>
+</tr>
+<tr>
+<td><strong>n_iter_no_change</strong></td>
+<td>Paciência do early stopping</td>
+<td>[10, 20]</td>
+<td>Épocas sem melhoria para parar</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Funções de Ativação:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Função</th>
+<th>Fórmula</th>
+<th>Intervalo</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ReLU</strong></td>
+<td>max(0, x)</td>
+<td>[0, ∞)</td>
+<td>Padrão em redes profundas</td>
+</tr>
+<tr>
+<td><strong>tanh</strong></td>
+<td>(eˣ - e⁻ˣ)/(eˣ + e⁻ˣ)</td>
+<td>(-1, 1)</td>
+<td>Dados normalizados, gradientes mais suaves</td>
+</tr>
+<tr>
+<td><strong>logistic (sigmoid)</strong></td>
+<td>1/(1 + e⁻ˣ)</td>
+<td>(0, 1)</td>
+<td>Saídas binárias</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. ARQUITETURAS HÍBRIDAS</h2>
+<h3>4.1 PhyInput (Hybrid Physics Data)</h3>
+<p><strong>Ideia:</strong> Concatena predições do modelo físico como features extras.</p>
+<p><strong>Arquitetura:</strong></p>
+<pre><code>Entrada: [X, Y_phy] → MLP → Ŷ
+</code></pre>
+<p><strong>Hiperparâmetros:</strong> Mesmos da MLP baseline (L2 congelado).</p>
+<hr />
+<h3>4.2 PhyResidual (Residual)</h3>
+<p><strong>Ideia:</strong> Aprende a correção do modelo físico.</p>
+<p><strong>Arquitetura:</strong></p>
+<pre><code>Entrada: X → MLP → ε
+Saída: Ŷ = Y_phy + ε
+</code></pre>
+<p><strong>Hiperparâmetros:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Valores</th>
+<th>Efeito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>L2 (congelado)</strong></td>
+<td>Regularização da baseline</td>
+<td>Valor da MLP baseline</td>
+<td>Isola efeito da arquitetura híbrida</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>4.3 PhyHybrid</h3>
+<p><strong>Ideia:</strong> Combina PhyInput + PhyResidual.</p>
+<p><strong>Arquitetura:</strong></p>
+<pre><code>Entrada: [X, Y_phy] → MLP → ε
+Saída: Ŷ = Y_phy + ε
+</code></pre>
+<hr />
+<h3>4.4 PhyLoss</h3>
+<p><strong>Ideia:</strong> Regularização física na função de perda.</p>
+<p><strong>Função de Perda:</strong></p>
+<pre><code>Loss = (1-ω) · MSE_dados + ω · MSE_física
+</code></pre>
+<p><strong>Hiperparâmetro:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Valores Testados</th>
+<th>Efeito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ω (omega)</strong></td>
+<td>Peso da física na perda</td>
+<td>[0.0, 0.1, 0.3, 0.5, 0.7]</td>
+<td>ω=0: MLP pura; ω=1: apenas física; 0&lt;ω&lt;1: balanço</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. HIPERPARÂMETROS DE VALIDAÇÃO</h2>
+<h3>5.1 GroupKFold</h3>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>n_splits</strong></td>
+<td>Número de folds</td>
+<td>3 (um por regime: 10, 40, 70 g/L)</td>
+</tr>
+<tr>
+<td><strong>groups</strong></td>
+<td>Variável de agrupamento</td>
+<td>Regime de salinidade</td>
+</tr>
+</tbody>
+</table>
+<h3>5.2 Critério 1-SE</h3>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SE (Standard Error)</strong></td>
+<td>Desvio padrão do RMSE entre folds / √n_folds</td>
+</tr>
+<tr>
+<td><strong>Regra</strong></td>
+<td>Selecionar modelo mais simples com RMSE ≤ (melhor RMSE + 1 SE)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. RESUMO — BUSCA DE HIPERPARÂMETROS POR FAMÍLIA</h2>
+<table>
+<thead>
+<tr>
+<th>Família</th>
+<th>Hiperparâmetros</th>
+<th>Método</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ridge</strong></td>
+<td>α</td>
+<td>GridSearchCV</td>
+</tr>
+<tr>
+<td><strong>Lasso</strong></td>
+<td>α</td>
+<td>GridSearchCV</td>
+</tr>
+<tr>
+<td><strong>ElasticNet</strong></td>
+<td>α, l1_ratio</td>
+<td>GridSearchCV</td>
+</tr>
+<tr>
+<td><strong>Decision Tree</strong></td>
+<td>max_depth, min_samples_split, min_samples_leaf</td>
+<td>GridSearchCV</td>
+</tr>
+<tr>
+<td><strong>Random Forest</strong></td>
+<td>n_estimators, max_depth, min_samples_split, max_features</td>
+<td>GridSearchCV</td>
+</tr>
+<tr>
+<td><strong>Gradient Boosting</strong></td>
+<td>n_estimators, learning_rate, max_depth, subsample</td>
+<td>GridSearchCV</td>
+</tr>
+<tr>
+<td><strong>MLP</strong></td>
+<td>hidden_layer_sizes, activation, α, learning_rate_init, batch_size</td>
+<td>Random Search</td>
+</tr>
+<tr>
+<td><strong>Híbridos</strong></td>
+<td>L2 (congelado), ω (PhyLoss)</td>
+<td>GridSearchCV (limitado)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>7. COMO EXPLICAR NA APRESENTAÇÃO</h2>
+<h3>Slide 13 — Modelos Lineares</h3>
+<p><strong>Fala:</strong> "Os modelos lineares partem do OLS, que é a regressão clássica. O Ridge adiciona uma penalização L2 — apontar na figura — que encolhe os coeficientes sem zerá-los. O Lasso usa L1 — apontar — que pode zerar coeficientes, fazendo seleção automática de variáveis. O ElasticNet combina os dois."</p>
+<p><strong>Tempo:</strong> ~45 segundos</p>
+<h3>Slide 14 — Árvores</h3>
+<p><strong>Fala:</strong> "A Decision Tree faz perguntas binárias — apontar nó raiz e folhas. O Random Forest treina várias árvores em paralelo com amostras diferentes — apontar múltiplas árvores — e faz a média. O Gradient Boosting treina em sequência, cada uma corrigindo o erro da anterior — apontar setas sequenciais."</p>
+<p><strong>Tempo:</strong> ~45 segundos</p>
+<h3>Slide 15 — Redes Neurais</h3>
+<p><strong>Fala:</strong> "A MLP tem camadas de neurônios — apontar camadas. Cada neurônio faz uma soma ponderada seguida de ativação não linear — apontar função. O aprendizado ajusta os pesos por backpropagation. Os principais hiperparâmetros são: número de camadas e neurônios — apontar arquitetura —, taxa de aprendizado, e regularização L2."</p>
+<p><strong>Tempo:</strong> ~45 segundos</p>
+<h3>Slide 16 — Híbridos</h3>
+<p><strong>Fala:</strong> "As quatro arquiteturas híbridas incorporam o modelo físico de formas diferentes. O PhyInput adiciona a predição física como entrada — apontar seta do modelo 0D. O PhyResidual aprende a correção — apontar soma Y_phy + ε. O PhyHybrid combina as duas. O PhyLoss — apontar função de perda — penaliza desvios da física durante o treinamento."</p>
+<p><strong>Tempo:</strong> ~30 segundos</p></div>
+<div class="secao" id="roteiro_final_orientadora"><h1>Checklist de Alterações</h1><h1>Roteiro Consolidado — Apresentação TCC V-AGMD</h1>
+<h2>Versão Final — Alinhada com os Slides Atuais + Alterações da Orientadora (30/07/26)</h2>
+<hr />
+<h2>ESTRUTURA REAL DOS SLIDES (29 slides)</h2>
+<table>
+<thead>
+<tr>
+<th>Seção</th>
+<th>Slides</th>
+<th>Tempo Estimado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Introdução</td>
+<td>1-7</td>
+<td>~7 min</td>
+</tr>
+<tr>
+<td>Revisão</td>
+<td>8-10</td>
+<td>~4 min</td>
+</tr>
+<tr>
+<td>Fundamentação</td>
+<td>11-16</td>
+<td>~5 min</td>
+</tr>
+<tr>
+<td>Metodologia</td>
+<td>17-21</td>
+<td>~5 min</td>
+</tr>
+<tr>
+<td>Resultados</td>
+<td>22-26</td>
+<td>~6 min</td>
+</tr>
+<tr>
+<td>Conclusões</td>
+<td>27-29</td>
+<td>~3 min</td>
+</tr>
+<tr>
+<td>Referências</td>
+<td>30</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>~30 min</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>SLIDE 1 — Título</h2>
+<p>Boa tarde. Este é o meu projeto final de graduação, cujo título é <strong>"Modelagem Híbrida com Regularização Física e Seleção de Modelos para Predição de Desempenho em Destilação por Membranas"</strong>.</p>
+<hr />
+<h2>SLIDE 2 — Sumário</h2>
+<p>Este é o sumário do TCC: vamos começar com a <strong>introdução</strong>, depois <strong>revisão bibliográfica</strong>, <strong>fundamentação teórica</strong>, <strong>metodologia proposta</strong>, seguindo para <strong>resultados</strong>, <strong>conclusões</strong> e <strong>referências</strong>.</p>
+<hr />
+<h2>SLIDE 3 — A Crise Global da Água</h2>
+<p>A crise global da água é tanto de quantidade quanto de qualidade. <strong>4 bilhões</strong> de pessoas enfrentam escassez severa de água, sendo que <strong>2,2 bilhões</strong> não têm acesso a água potável segura. A demanda global deve superar a oferta em <strong>40% até 2030</strong>.</p>
+<blockquote>
+<p><strong>Fontes:</strong> Mekonnen &amp; Hoekstra (2016), WHO (2023), IDRA (2026)</p>
+</blockquote>
+<hr />
+<h2>SLIDE 4 — O Problema no Brasil</h2>
+<p>No Brasil, 2026 foi um ano desafiador, com chuvas abaixo da média. O <strong>Sistema Cantareira</strong> operou a aproximadamente <strong>30%</strong> da sua capacidade (ANA — Agência Nacional de Águas). No Nordeste, um cenário de <strong>4 meses de chuva para 8 meses de seca extrema</strong>.</p>
+<p>A dessalinização pode reduzir o custo da água em até <strong>10 vezes</strong> — de R$ 2,63 a R$ 4,21/m³, segundo estudo da <strong>CNI (Confederação Nacional da Indústria, 2026)</strong>. A maior planta do Brasil (ES) atende <strong>80 mil pessoas</strong>. Com <strong>8.500 km de costa</strong>, o potencial de expansão é enorme.</p>
+<blockquote>
+<p><strong>✅ ALTERAÇÃO IMPLEMENTADA:</strong> Dados referenciados como CNI (fonte oficial), não apenas "notícias".</p>
+</blockquote>
+<hr />
+<h2>SLIDE 5 — O V-AGMD no Contexto da Dessalinização</h2>
+<p>A dessalinização divide-se em duas grandes tecnologias: processos <strong>térmicos</strong> (destilação convencional) e processos de <strong>membrana</strong> (osmose inversa, MD).</p>
+<p>A <strong>Destilação por Membrana (MD)</strong> é um processo híbrido termo-membrana: uma membrana hidrofóbica separa o vapor d'água da salmoura aquecida.</p>
+<p>A configuração <strong>V-AGMD</strong> combina <strong>espaço de ar</strong> (isolamento térmico) com <strong>vácuo parcial</strong>, que reduz a <strong>resistência à transferência de massa do vapor</strong>, acelerando o transporte.</p>
+<blockquote>
+<p><strong>✅ ALTERAÇÃO IMPLEMENTADA:</strong> "Vácuo parcial" + "reduz resistência à transferência de massa do vapor" — não "vácuo de ar".</p>
+</blockquote>
+<hr />
+<h2>SLIDE 6 — Ilha de Policogeração Sustentável (LabMEMS/COPPE)</h2>
+<p>Este trabalho está inserido no projeto <strong>CT2 — Ilha de Policogeração Sustentável</strong>, da COPPE/UFRJ (2022). É um protótipo pioneiro que une <strong>geração de água potável</strong> com <strong>energia solar térmica</strong>.</p>
+<p>O sistema produz cerca de <strong>5 kWₑ</strong> (~25 residências) e mais <strong>8 kWₜ</strong> recuperáveis. O dessalinizador V-AGMD produz <strong>1.000 L/dia</strong> de água destilada (&gt;100 pessoas/dia).</p>
+<p>O foco são <strong>comunidades remotas</strong> (Semiárido, ilhas, O&amp;G), com potencial complementar ao <strong>Projeto Água Doce</strong> (programa federal para o Semiárido nordestino).</p>
+<hr />
+<h2>SLIDE 7 — Objetivos</h2>
+<p><strong>Objetivo geral:</strong> avaliar e selecionar modelos de regressão supervisionada para predição do desempenho do módulo V-AGMD (fluxo de permeado e temperaturas de saída), combinando aprendizado a partir de dados experimentais (174 pontos, 3 regimes de salinidade) com informação física proveniente de um modelo reduzido 0D já publicado pelo laboratório (LISBOA et al., 2024).</p>
+<blockquote>
+<p><strong>✅ ALTERAÇÃO IMPLEMENTADA:</strong> Motivação = o que você apresenta (prever desempenho).</p>
+</blockquote>
+<hr />
+<h2>SLIDE 8 — Abordagens de Modelagem em MD</h2>
+<p>Existem <strong>três principais abordagens</strong> de modelagem em destilação por membranas:</p>
+<table>
+<thead>
+<tr>
+<th>Abordagem</th>
+<th>Tecnologia</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Física</strong></td>
+<td>AGMD, 2D, <strong>V-AGMD</strong></td>
+<td>Modelos 0D, 1D, 2D</td>
+</tr>
+<tr>
+<td><strong>Dados</strong></td>
+<td><strong>AGMD</strong>, VMD</td>
+<td>Redes neurais e regressão</td>
+</tr>
+<tr>
+<td><strong>Híbridos</strong></td>
+<td>DCMD, <strong>V-AGMD</strong></td>
+<td>PINNs, modelos residuais, PhyLoss</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>✅ ALTERAÇÃO IMPLEMENTADA:</strong> Deixar claro que existem modelos com dados em outras configurações (V-AGMD, PGMD), não apenas "modelos de dados".</p>
+</blockquote>
+<hr />
+<h2>SLIDE 9 — Panorama de Publicações em MD</h2>
+<table>
+<thead>
+<tr>
+<th>Abordagem</th>
+<th>Nº</th>
+<th>Modelos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Física</strong></td>
+<td>4</td>
+<td>0D, 1D, 2D</td>
+</tr>
+<tr>
+<td><strong>Dados</strong></td>
+<td>5</td>
+<td>RL, RNA, MLP, RF</td>
+</tr>
+<tr>
+<td><strong>Híbrida</strong></td>
+<td>1</td>
+<td>PINN</td>
+</tr>
+<tr>
+<td><strong>Este trabalho</strong></td>
+<td>—</td>
+<td>RL, DT, GB, RF, MLP, Residual, PhyLoss</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Nota:</strong> Apenas 1 trabalho na literatura de MD explora abordagem híbrida (PINN em DCMD) — e este é o único focado em V-AGMD.</p>
+</blockquote>
+<hr />
+<h2>SLIDE 10 — Lacunas e Contribuições</h2>
+<p><strong>Lacunas na literatura:</strong></p>
+<ol>
+<li><strong>Ausência de validação cruzada em geral</strong> — partição única ignora grupos experimentais</li>
+<li><strong>Seleção por RMSE puro</strong> favorece superparametrização — ignora variabilidade estatística</li>
+<li><strong>Modelos híbridos em MD praticamente inexistentes</strong> — apenas Shahouni (2026) aplica PINN em DCMD; nenhum em V-AGMD</li>
+</ol>
+<p><strong>Contribuições deste trabalho:</strong></p>
+<ol>
+<li>Validação cruzada por grupos (regimes experimentais)</li>
+<li>Critério 1-SE + menor complexidade</li>
+<li>4 arquiteturas híbridas implementadas</li>
+</ol>
+<blockquote>
+<p><strong>✅ ALTERAÇÃO IMPLEMENTADA:</strong> Lacunas e contribuições agora separadas em colunas no mesmo slide (não há redundância).</p>
+</blockquote>
+<hr />
+<h2>SLIDE 11 — Princípios da Destilação por Membranas</h2>
+<p>A destilação por membranas é um processo térmico de separação com membrana <strong>hidrofóbica</strong> e <strong>porosa</strong>. A força motriz é o <strong>gradiente térmico</strong> (diferença de pressão parcial de vapor).</p>
+<p><strong>Mecanismo:</strong> evaporação na interface quente → difusão nos poros → condensação no lado frio.</p>
+<p><strong>Vantagens do processo MD:</strong>
+- Opera em temperaturas médias (60-80°C)
+- Compatível com calor residual e cogeração
+- Elevada tolerância à salinidade — adequada onde a osmose inversa é limitada</p>
+<blockquote>
+<p><strong>✅ ALTERAÇÕES IMPLEMENTADAS:</strong>
+- "Filtrar" → "membrana hidrofóbica e porosa"
+- Vantagens atribuídas ao <strong>processo MD</strong>, não à configuração específica</p>
+</blockquote>
+<hr />
+<h2>SLIDE 12 — Fundamentos de Aprendizado de Máquinas</h2>
+<table>
+<thead>
+<tr>
+<th>Conceito</th>
+<th>Definição</th>
+<th>Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Métricas</strong></td>
+<td>RMSE, R²</td>
+<td>RMSE: magnitude do erro; R²: variância explicada</td>
+</tr>
+<tr>
+<td><strong>Divisão dos dados</strong></td>
+<td>Hold-out (80/20)</td>
+<td>Evitar contaminação treino/teste</td>
+</tr>
+<tr>
+<td><strong>Validação Cruzada</strong></td>
+<td>Repetir divisão, agrupando por regimes</td>
+<td>Estimar estabilidade e extrapolação</td>
+</tr>
+<tr>
+<td><strong>Pré-processamento</strong></td>
+<td>Z-score</td>
+<td>Colocar variáveis em escala comparável</td>
+</tr>
+<tr>
+<td><strong>Correlação</strong></td>
+<td>Pearson (linear), Spearman (monotônica)</td>
+<td>Identificar relações entre variáveis</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>✅ ALTERAÇÃO IMPLEMENTADA:</strong> Tabela organizada com propósito de cada conceito.</p>
+</blockquote>
+<hr />
+<h2>SLIDE 13 — Famílias de Modelos I — Regressão Linear</h2>
+<p><strong>OLS:</strong> sem regularização — minimiza erro quadrado.</p>
+<p><strong>Ridge:</strong> penaliza L2 — encolhe coeficientes sem zerá-los.</p>
+<p><strong>Lasso:</strong> penaliza L1 — pode zerar coeficientes (seleção de features).</p>
+<p><strong>ElasticNet:</strong> combina L1 + L2.</p>
+<blockquote>
+<p><strong>✅ ALTERAÇÃO IMPLEMENTADA:</strong> Ao falar de L1/L2, apontar explicitamente na figura.</p>
+</blockquote>
+<hr />
+<h2>SLIDE 14 — Famílias de Modelos II — Árvores de Decisão</h2>
+<p><strong>Decision Tree:</strong> partições binárias recursivas — propensa a overfitting.</p>
+<p><strong>Random Forest:</strong> várias árvores em paralelo (bagging) — reduz variância.</p>
+<p><strong>Gradient Boosting:</strong> árvores em sequência — cada uma corrige resíduos da anterior.</p>
+<hr />
+<h2>SLIDE 15 — Famílias de Modelos III — Redes Neurais</h2>
+<p><strong>MLP:</strong> camadas fully connected, ativação não linear (ReLU/tanh), backpropagation.</p>
+<p><strong>Hiperparâmetros:</strong> camadas, neurônios, ativação, learning rate, L2, dropout.</p>
+<hr />
+<h2>SLIDE 16 — Famílias de Modelos IV — Arquiteturas Híbridas</h2>
+<p><strong>4 arquiteturas</strong> que incorporam o modelo físico 0D:</p>
+<ul>
+<li><strong>PhyInput:</strong> adiciona predições do 0D como features extras</li>
+<li><strong>PhyResidual:</strong> aprende o resíduo — saída = Y_físico + Δ</li>
+<li><strong>PhyHybrid:</strong> combina PhyInput + PhyResidual</li>
+<li><strong>PhyLoss:</strong> física na função de perda (regularização)</li>
+</ul>
+<blockquote>
+<p><strong>Ação:</strong> Apontar cada arquitetura na figura enquanto fala.</p>
+</blockquote>
+<hr />
+<h2>SLIDE 17 — Visão Geral dos Procedimentos</h2>
+<p><strong>Fluxo:</strong> Dados Experimentais → Preparação (Z-score) → Análise Exploratória → Validação e Seleção → Stage 0 (Clássicos) → Stage 1 (Redes Neurais) → Stage 2 (Híbridos) → Selecionado vs 0D</p>
+<hr />
+<h2>SLIDE 18 — Dados Experimentais</h2>
+<p><strong>Fonte:</strong> Tese de Curcino (2025) e Lisboa et al. (2024) — LabMEMS/COPPE</p>
+<ul>
+<li><strong>174 pontos</strong>, <strong>3 regimes de salinidade</strong> (10, 40, 70 g/L NaCl)</li>
+<li><strong>5 entradas:</strong> T_in_alim, T_in_ref, vazão_ref, P_vac, C_NaCl</li>
+<li><strong>3 saídas:</strong> Fluxo de permeado, T_out_alim, T_out_ref</li>
+</ul>
+<blockquote>
+<p><strong>✅ ALTERAÇÃO IMPLEMENTADA:</strong> Fonte dos dados citada explicitamente.</p>
+</blockquote>
+<hr />
+<h2>SLIDE 19 — Decisões da Preparação dos Dados</h2>
+<table>
+<thead>
+<tr>
+<th>Etapa</th>
+<th>Decisão</th>
+<th>Justificativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Escalonamento</strong></td>
+<td>Z-score</td>
+<td>Preserva distribuição original; mede em desvios-padrão</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>SLIDE 20 — Busca de Hiperparâmetros</h2>
+<p>Para cada família e cada <strong>variável de saída</strong>, ajuste independente:</p>
+<table>
+<thead>
+<tr>
+<th>Família</th>
+<th>Hiperparâmetros</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lineares</td>
+<td>α (Ridge/Lasso/ElasticNet), l1_ratio</td>
+</tr>
+<tr>
+<td>Árvores</td>
+<td>profundidade, n_estimadores, learning_rate</td>
+</tr>
+<tr>
+<td>Redes</td>
+<td>arquitetura, LR, L2, ativação</td>
+</tr>
+<tr>
+<td>Híbridos</td>
+<td>L2 congelado (da baseline), ω (PhyLoss)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Métodos:</strong> Random Search (redes neurais) vs GridSearchCV (demais).</p>
+<hr />
+<h2>SLIDE 21 — Fluxo de Validação Cruzada e Seleção</h2>
+<p><strong>GroupKFold</strong> por regimes → RMSE_CV médio com erro padrão → <strong>regra 1-SE</strong> → seleção do modelo mais simples dentro de 1 erro padrão do melhor.</p>
+<hr />
+<h2>SLIDE 22 — Análise Exploratória</h2>
+<ul>
+<li><strong>Temperaturas de saída:</strong> forte correlação linear com entradas térmicas (|r| &gt; 0,9)</li>
+<li><strong>Fluxo:</strong> correlações moderadas e distribuídas — justifica modelagem multivariada</li>
+<li><strong>Pearson ≈ Spearman:</strong> relações dominantes são aproximadamente lineares</li>
+</ul>
+<hr />
+<h2>SLIDE 23 — Modelo Físico 0D — Referência</h2>
+<p>O modelo 0D de <strong>Lisboa et al. (2024)</strong> serve como referência fenomenológica para as arquiteturas híbridas. <strong>Não é um modelo desenvolvido neste trabalho.</strong></p>
+<p><em>(Gráficos: predição do modelo 0D vs experimental para cada variável)</em></p>
+<blockquote>
+<p><strong>✅ ALTERAÇÃO IMPLEMENTADA:</strong> Citado explicitamente que o modelo 0D é de Lisboa et al. (2024), não é trabalho seu.</p>
+</blockquote>
+<hr />
+<h2>SLIDE 24 — Síntese dos Estágios de Modelagem</h2>
+<ul>
+<li><strong>Stage 0 (lineares e árvores):</strong> regressões lineares similares entre si; árvores sobreajustaram</li>
+<li><strong>Stage 1 (redes neurais):</strong> baselines MLP melhoraram Test RMSE</li>
+<li><strong>Stage 2 (híbridos):</strong> PhyResidual apresentou menores perdas, corrigindo viés do 0D</li>
+</ul>
+<hr />
+<h2>SLIDE 25 — Comparação Final — Consolidado</h2>
+<table>
+<thead>
+<tr>
+<th>Variável</th>
+<th>Estágio</th>
+<th>Modelo</th>
+<th>Test RMSE</th>
+<th>CV RMSE</th>
+<th>Test R²</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T_alim,out</strong></td>
+<td>Stage 1</td>
+<td>Baseline Flux</td>
+<td><strong>0,178</strong></td>
+<td>0,081</td>
+<td>0,981</td>
+</tr>
+<tr>
+<td><strong>T_ref,out</strong></td>
+<td>Stage 2</td>
+<td>PhyResidual (Flux)</td>
+<td><strong>0,214</strong></td>
+<td>0,346</td>
+<td>0,996</td>
+</tr>
+<tr>
+<td><strong>Flux</strong></td>
+<td>Stage 2</td>
+<td>PhyResidual (Flux)</td>
+<td><strong>0,054</strong></td>
+<td><strong>0,072</strong></td>
+<td><strong>0,979</strong></td>
+</tr>
+<tr>
+<td><strong>Flux</strong></td>
+<td>0D</td>
+<td>—</td>
+<td>0,206</td>
+<td>—</td>
+<td>0,631</td>
+</tr>
+<tr>
+<td><strong>T_alim,out</strong></td>
+<td>0D</td>
+<td>—</td>
+<td>1,549</td>
+<td>—</td>
+<td><strong>-0,404</strong></td>
+</tr>
+<tr>
+<td><strong>T_ref,out</strong></td>
+<td>0D</td>
+<td>—</td>
+<td>0,851</td>
+<td>—</td>
+<td>0,948</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Nota:</strong> R² pode ser negativo quando o modelo é pior que a média (scikit-learn).</p>
+</blockquote>
+<hr />
+<h2>SLIDE 26 — Predição vs Experimental</h2>
+<p><em>(Overlay com modelos selecionados: Baseline Flux para T_alim, PhyResidual para T_ref e Flux. Quadrados cinza = modelo 0D)</em></p>
+<ul>
+<li><strong>T_alim,out:</strong> Baseline Flux (Stage 1)</li>
+<li><strong>T_ref,out:</strong> PhyResidual (Stage 2)</li>
+<li><strong>Flux:</strong> PhyResidual (Stage 2)</li>
+</ul>
+<hr />
+<h2>SLIDE 27 — Análise por Variável de Saída</h2>
+<table>
+<thead>
+<tr>
+<th>Variável</th>
+<th>Modelo</th>
+<th>Test RMSE</th>
+<th>vs 0D</th>
+<th>vs 2º melhor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T_alim,out</strong></td>
+<td>Baseline Flux</td>
+<td>0,178</td>
+<td>-89,0%</td>
+<td>-2,7% vs PhyResidual</td>
+</tr>
+<tr>
+<td><strong>T_ref,out</strong></td>
+<td>PhyResidual</td>
+<td>0,214</td>
+<td>-74,9%</td>
+<td>-2,3% vs Ridge</td>
+</tr>
+<tr>
+<td><strong>Flux</strong></td>
+<td>PhyResidual</td>
+<td>0,054</td>
+<td>-73,8%</td>
+<td>-18,2% vs Baseline</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>T_alim,out:</strong> modelo data-driven melhor — 0D tem R² = -0,404</li>
+<li><strong>T_ref,out:</strong> diferença marginal (2,3%); Ridge tem melhor CV (0,244 vs 0,346)</li>
+<li><strong>Flux:</strong> única variável com menor Test <strong>e</strong> CV (0,072) — PhyResidual corrigiu viés do 0D (R² 0,631 → 0,979)</li>
+</ul>
+<hr />
+<h2>SLIDE 28 — Comentários Finais</h2>
+<ol>
+<li><strong>Híbridos (PhyResidual)</strong> melhores em Test RMSE para Flux e T_ref — melhora de <strong>até 89%</strong> sobre o modelo 0D</li>
+<li><strong>Arquitetura residual</strong> atua como <strong>corretor de viés</strong> do modelo físico</li>
+<li><strong>CV:</strong> PhyResidual domina no Flux; lineares (OLS/Ridge) têm CV menor nas temperaturas — mas diferença no Test RMSE é pequena</li>
+<li><strong>Seleção por alvo</strong> não garantiu melhor performance para aquele alvo</li>
+<li>Procedimento <strong>extensível</strong> a outros processos com modelos de referência mais complexos</li>
+</ol>
+<hr />
+<h2>SLIDE 29 — Trabalhos Futuros</h2>
+<ol>
+<li><strong>Avaliar modelos</strong> em novas rodadas experimentais (regiões não contempladas no treino)</li>
+<li><strong>Substituir modelo 0D pelo 2D</strong> (GITT — Curcino, 2026) como referência física</li>
+<li><strong>Construir PINNs</strong> a partir das EDOs do modelo GITT:</li>
+<li>Modo <strong>surrogate</strong> (apenas física)</li>
+<li>Modo <strong>híbrido</strong> (física + dados na função de perda)</li>
+</ol>
+<hr />
+<h2>SLIDE 30 — Referências Bibliográficas</h2>
+<p><em>(Lista completa de referências)</em></p>
+<hr />
+<h2>Checklist de Alterações da Orientadora — Status</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Alteração</th>
+<th>Status</th>
+<th>Slide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Dados Brasil como CNI (fonte oficial)</td>
+<td>✅</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2</td>
+<td>"Vácuo parcial" + "reduz resistência à transferência de massa"</td>
+<td>✅</td>
+<td>5</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Motivação = o que você apresenta</td>
+<td>✅</td>
+<td>7</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Deixar claro dados em outras configurações</td>
+<td>✅</td>
+<td>8</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Separar lacunas de contribuições</td>
+<td>✅</td>
+<td>10</td>
+</tr>
+<tr>
+<td>6</td>
+<td>"Filtrar" → "membrana hidrofóbica porosa"</td>
+<td>✅</td>
+<td>11</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Vantagens atribuídas ao processo MD</td>
+<td>✅</td>
+<td>11</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Reduzir tempo slide 16 (não 5 min)</td>
+<td>✅</td>
+<td>16</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Explicar L1/L2 apontando na figura</td>
+<td>✅</td>
+<td>13</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Apontar nos slides o que está falando</td>
+<td>✅</td>
+<td>16</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Citada fonte dos dados (Lisboa et al.)</td>
+<td>✅</td>
+<td>18</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Legenda de cores (linear/rede/híbrido)</td>
+<td>✅</td>
+<td>26</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Não explicar figura rica em detalhes</td>
+<td>✅</td>
+<td>22</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Modelo 0D citado como referência</td>
+<td>✅</td>
+<td>23</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Tabelas consolidadas</td>
+<td>✅</td>
+<td>25</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Discussão cuidadosa do 0D</td>
+<td>✅</td>
+<td>27</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Gráficos para mostrar resultados</td>
+<td>✅</td>
+<td>26</td>
+</tr>
+<tr>
+<td>18</td>
+<td>R² negativo com referência</td>
+<td>✅</td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Notas de Tempo por Slide</h2>
+<table>
+<thead>
+<tr>
+<th>Slide</th>
+<th>Tempo</th>
+<th>Observação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1-2</td>
+<td>1 min</td>
+<td>Abertura</td>
+</tr>
+<tr>
+<td>3-4</td>
+<td>2 min</td>
+<td>Contexto água</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1 min</td>
+<td>V-AGMD</td>
+</tr>
+<tr>
+<td>6-7</td>
+<td>2 min</td>
+<td>Ilha + Objetivos</td>
+</tr>
+<tr>
+<td>8-10</td>
+<td>3 min</td>
+<td>Revisão</td>
+</tr>
+<tr>
+<td>11</td>
+<td>1 min</td>
+<td>Princípios MD</td>
+</tr>
+<tr>
+<td>12-16</td>
+<td>4 min</td>
+<td>Fundamentos ML</td>
+</tr>
+<tr>
+<td>17-21</td>
+<td>4 min</td>
+<td>Metodologia</td>
+</tr>
+<tr>
+<td>22-26</td>
+<td>5 min</td>
+<td>Resultados</td>
+</tr>
+<tr>
+<td>27-29</td>
+<td>3 min</td>
+<td>Conclusões</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>~26 min</strong></td>
+<td>+ perguntas</td>
+</tr>
+</tbody>
+</table></div>
+    <div style="text-align: center; margin-top: 50px; padding: 20px; color: #718096; font-size: 0.9em;">
+        <hr>
+        <p>Material gerado em: 10/08/2026 | TCC V-AGMD — Luiza Frota Costa</p>
+    </div>
+</body>
+</html>

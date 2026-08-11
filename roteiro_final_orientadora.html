@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>roteiro_final_orientadora</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 { color: #1a365d; border-bottom: 2px solid #1a365d; padding-bottom: 10px; }
+        h2 { color: #2c5282; margin-top: 30px; }
+        h3 { color: #2d3748; }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+            background: white;
+        }
+        th, td {
+            border: 1px solid #cbd5e0;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #2c5282;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #edf2f7;
+        }
+        blockquote {
+            background: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 10px 20px;
+            margin: 15px 0;
+        }
+        code {
+            background: #edf2f7;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #cbd5e0;
+            margin: 30px 0;
+        }
+        strong { color: #c53030; }
+    </style>
+</head>
+<body>
+<h1>Roteiro Consolidado — Apresentação TCC V-AGMD</h1>
+<h2>Versão Final — Alinhada com os Slides Atuais + Alterações da Orientadora (30/07/26)</h2>
+<hr />
+<h2>ESTRUTURA REAL DOS SLIDES (29 slides)</h2>
+<table>
+<thead>
+<tr>
+<th>Seção</th>
+<th>Slides</th>
+<th>Tempo Estimado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Introdução</td>
+<td>1-7</td>
+<td>~7 min</td>
+</tr>
+<tr>
+<td>Revisão</td>
+<td>8-10</td>
+<td>~4 min</td>
+</tr>
+<tr>
+<td>Fundamentação</td>
+<td>11-16</td>
+<td>~5 min</td>
+</tr>
+<tr>
+<td>Metodologia</td>
+<td>17-21</td>
+<td>~5 min</td>
+</tr>
+<tr>
+<td>Resultados</td>
+<td>22-26</td>
+<td>~6 min</td>
+</tr>
+<tr>
+<td>Conclusões</td>
+<td>27-29</td>
+<td>~3 min</td>
+</tr>
+<tr>
+<td>Referências</td>
+<td>30</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>~30 min</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>SLIDE 1 — Título</h2>
+<p>Boa tarde. Este é o meu projeto final de graduação, cujo título é <strong>"Modelagem Híbrida com Regularização Física e Seleção de Modelos para Predição de Desempenho em Destilação por Membranas"</strong>.</p>
+<hr />
+<h2>SLIDE 2 — Sumário</h2>
+<p>Este é o sumário do TCC: vamos começar com a <strong>introdução</strong>, depois <strong>revisão bibliográfica</strong>, <strong>fundamentação teórica</strong>, <strong>metodologia proposta</strong>, seguindo para <strong>resultados</strong>, <strong>conclusões</strong> e <strong>referências</strong>.</p>
+<hr />
+<h2>SLIDE 3 — A Crise Global da Água</h2>
+<p>A crise global da água é tanto de quantidade quanto de qualidade. <strong>4 bilhões</strong> de pessoas enfrentam escassez severa de água, sendo que <strong>2,2 bilhões</strong> não têm acesso a água potável segura. A demanda global deve superar a oferta em <strong>40% até 2030</strong>.</p>
+<blockquote>
+<p><strong>Fontes:</strong> Mekonnen &amp; Hoekstra (2016), WHO (2023), IDRA (2026)</p>
+</blockquote>
+<hr />
+<h2>SLIDE 4 — O Problema no Brasil</h2>
+<p>No Brasil, 2026 foi um ano desafiador, com chuvas abaixo da média. O <strong>Sistema Cantareira</strong> operou a aproximadamente <strong>30%</strong> da sua capacidade (ANA — Agência Nacional de Águas). No Nordeste, um cenário de <strong>4 meses de chuva para 8 meses de seca extrema</strong>.</p>
+<p>A dessalinização pode reduzir o custo da água em até <strong>10 vezes</strong> — de R$ 2,63 a R$ 4,21/m³, segundo estudo da <strong>CNI (Confederação Nacional da Indústria, 2026)</strong>. A maior planta do Brasil (ES) atende <strong>80 mil pessoas</strong>. Com <strong>8.500 km de costa</strong>, o potencial de expansão é enorme.</p>
+<blockquote>
+<p><strong>✅ ALTERAÇÃO IMPLEMENTADA:</strong> Dados referenciados como CNI (fonte oficial), não apenas "notícias".</p>
+</blockquote>
+<hr />
+<h2>SLIDE 5 — O V-AGMD no Contexto da Dessalinização</h2>
+<p>A dessalinização divide-se em duas grandes tecnologias: processos <strong>térmicos</strong> (destilação convencional) e processos de <strong>membrana</strong> (osmose inversa, MD).</p>
+<p>A <strong>Destilação por Membrana (MD)</strong> é um processo híbrido termo-membrana: uma membrana hidrofóbica separa o vapor d'água da salmoura aquecida.</p>
+<p>A configuração <strong>V-AGMD</strong> combina <strong>espaço de ar</strong> (isolamento térmico) com <strong>vácuo parcial</strong>, que reduz a <strong>resistência à transferência de massa do vapor</strong>, acelerando o transporte.</p>
+<blockquote>
+<p><strong>✅ ALTERAÇÃO IMPLEMENTADA:</strong> "Vácuo parcial" + "reduz resistência à transferência de massa do vapor" — não "vácuo de ar".</p>
+</blockquote>
+<hr />
+<h2>SLIDE 6 — Ilha de Policogeração Sustentável (LabMEMS/COPPE)</h2>
+<p>Este trabalho está inserido no projeto <strong>CT2 — Ilha de Policogeração Sustentável</strong>, da COPPE/UFRJ (2022). É um protótipo pioneiro que une <strong>geração de água potável</strong> com <strong>energia solar térmica</strong>.</p>
+<p>O sistema produz cerca de <strong>5 kWₑ</strong> (~25 residências) e mais <strong>8 kWₜ</strong> recuperáveis. O dessalinizador V-AGMD produz <strong>1.000 L/dia</strong> de água destilada (&gt;100 pessoas/dia).</p>
+<p>O foco são <strong>comunidades remotas</strong> (Semiárido, ilhas, O&amp;G), com potencial complementar ao <strong>Projeto Água Doce</strong> (programa federal para o Semiárido nordestino).</p>
+<hr />
+<h2>SLIDE 7 — Objetivos</h2>
+<p><strong>Objetivo geral:</strong> avaliar e selecionar modelos de regressão supervisionada para predição do desempenho do módulo V-AGMD (fluxo de permeado e temperaturas de saída), combinando aprendizado a partir de dados experimentais (174 pontos, 3 regimes de salinidade) com informação física proveniente de um modelo reduzido 0D já publicado pelo laboratório (LISBOA et al., 2024).</p>
+<blockquote>
+<p><strong>✅ ALTERAÇÃO IMPLEMENTADA:</strong> Motivação = o que você apresenta (prever desempenho).</p>
+</blockquote>
+<hr />
+<h2>SLIDE 8 — Abordagens de Modelagem em MD</h2>
+<p>Existem <strong>três principais abordagens</strong> de modelagem em destilação por membranas:</p>
+<table>
+<thead>
+<tr>
+<th>Abordagem</th>
+<th>Tecnologia</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Física</strong></td>
+<td>AGMD, 2D, <strong>V-AGMD</strong></td>
+<td>Modelos 0D, 1D, 2D</td>
+</tr>
+<tr>
+<td><strong>Dados</strong></td>
+<td><strong>AGMD</strong>, VMD</td>
+<td>Redes neurais e regressão</td>
+</tr>
+<tr>
+<td><strong>Híbridos</strong></td>
+<td>DCMD, <strong>V-AGMD</strong></td>
+<td>PINNs, modelos residuais, PhyLoss</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>✅ ALTERAÇÃO IMPLEMENTADA:</strong> Deixar claro que existem modelos com dados em outras configurações (V-AGMD, PGMD), não apenas "modelos de dados".</p>
+</blockquote>
+<hr />
+<h2>SLIDE 9 — Panorama de Publicações em MD</h2>
+<table>
+<thead>
+<tr>
+<th>Abordagem</th>
+<th>Nº</th>
+<th>Modelos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Física</strong></td>
+<td>4</td>
+<td>0D, 1D, 2D</td>
+</tr>
+<tr>
+<td><strong>Dados</strong></td>
+<td>5</td>
+<td>RL, RNA, MLP, RF</td>
+</tr>
+<tr>
+<td><strong>Híbrida</strong></td>
+<td>1</td>
+<td>PINN</td>
+</tr>
+<tr>
+<td><strong>Este trabalho</strong></td>
+<td>—</td>
+<td>RL, DT, GB, RF, MLP, Residual, PhyLoss</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Nota:</strong> Apenas 1 trabalho na literatura de MD explora abordagem híbrida (PINN em DCMD) — e este é o único focado em V-AGMD.</p>
+</blockquote>
+<hr />
+<h2>SLIDE 10 — Lacunas e Contribuições</h2>
+<p><strong>Lacunas na literatura:</strong></p>
+<ol>
+<li><strong>Ausência de validação cruzada em geral</strong> — partição única ignora grupos experimentais</li>
+<li><strong>Seleção por RMSE puro</strong> favorece superparametrização — ignora variabilidade estatística</li>
+<li><strong>Modelos híbridos em MD praticamente inexistentes</strong> — apenas Shahouni (2026) aplica PINN em DCMD; nenhum em V-AGMD</li>
+</ol>
+<p><strong>Contribuições deste trabalho:</strong></p>
+<ol>
+<li>Validação cruzada por grupos (regimes experimentais)</li>
+<li>Critério 1-SE + menor complexidade</li>
+<li>4 arquiteturas híbridas implementadas</li>
+</ol>
+<blockquote>
+<p><strong>✅ ALTERAÇÃO IMPLEMENTADA:</strong> Lacunas e contribuições agora separadas em colunas no mesmo slide (não há redundância).</p>
+</blockquote>
+<hr />
+<h2>SLIDE 11 — Princípios da Destilação por Membranas</h2>
+<p>A destilação por membranas é um processo térmico de separação com membrana <strong>hidrofóbica</strong> e <strong>porosa</strong>. A força motriz é o <strong>gradiente térmico</strong> (diferença de pressão parcial de vapor).</p>
+<p><strong>Mecanismo:</strong> evaporação na interface quente → difusão nos poros → condensação no lado frio.</p>
+<p><strong>Vantagens do processo MD:</strong>
+- Opera em temperaturas médias (60-80°C)
+- Compatível com calor residual e cogeração
+- Elevada tolerância à salinidade — adequada onde a osmose inversa é limitada</p>
+<blockquote>
+<p><strong>✅ ALTERAÇÕES IMPLEMENTADAS:</strong>
+- "Filtrar" → "membrana hidrofóbica e porosa"
+- Vantagens atribuídas ao <strong>processo MD</strong>, não à configuração específica</p>
+</blockquote>
+<hr />
+<h2>SLIDE 12 — Fundamentos de Aprendizado de Máquinas</h2>
+<table>
+<thead>
+<tr>
+<th>Conceito</th>
+<th>Definição</th>
+<th>Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Métricas</strong></td>
+<td>RMSE, R²</td>
+<td>RMSE: magnitude do erro; R²: variância explicada</td>
+</tr>
+<tr>
+<td><strong>Divisão dos dados</strong></td>
+<td>Hold-out (80/20)</td>
+<td>Evitar contaminação treino/teste</td>
+</tr>
+<tr>
+<td><strong>Validação Cruzada</strong></td>
+<td>Repetir divisão, agrupando por regimes</td>
+<td>Estimar estabilidade e extrapolação</td>
+</tr>
+<tr>
+<td><strong>Pré-processamento</strong></td>
+<td>Z-score</td>
+<td>Colocar variáveis em escala comparável</td>
+</tr>
+<tr>
+<td><strong>Correlação</strong></td>
+<td>Pearson (linear), Spearman (monotônica)</td>
+<td>Identificar relações entre variáveis</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>✅ ALTERAÇÃO IMPLEMENTADA:</strong> Tabela organizada com propósito de cada conceito.</p>
+</blockquote>
+<hr />
+<h2>SLIDE 13 — Famílias de Modelos I — Regressão Linear</h2>
+<p><strong>OLS:</strong> sem regularização — minimiza erro quadrado.</p>
+<p><strong>Ridge:</strong> penaliza L2 — encolhe coeficientes sem zerá-los.</p>
+<p><strong>Lasso:</strong> penaliza L1 — pode zerar coeficientes (seleção de features).</p>
+<p><strong>ElasticNet:</strong> combina L1 + L2.</p>
+<blockquote>
+<p><strong>✅ ALTERAÇÃO IMPLEMENTADA:</strong> Ao falar de L1/L2, apontar explicitamente na figura.</p>
+</blockquote>
+<hr />
+<h2>SLIDE 14 — Famílias de Modelos II — Árvores de Decisão</h2>
+<p><strong>Decision Tree:</strong> partições binárias recursivas — propensa a overfitting.</p>
+<p><strong>Random Forest:</strong> várias árvores em paralelo (bagging) — reduz variância.</p>
+<p><strong>Gradient Boosting:</strong> árvores em sequência — cada uma corrige resíduos da anterior.</p>
+<hr />
+<h2>SLIDE 15 — Famílias de Modelos III — Redes Neurais</h2>
+<p><strong>MLP:</strong> camadas fully connected, ativação não linear (ReLU/tanh), backpropagation.</p>
+<p><strong>Hiperparâmetros:</strong> camadas, neurônios, ativação, learning rate, L2, dropout.</p>
+<hr />
+<h2>SLIDE 16 — Famílias de Modelos IV — Arquiteturas Híbridas</h2>
+<p><strong>4 arquiteturas</strong> que incorporam o modelo físico 0D:</p>
+<ul>
+<li><strong>PhyInput:</strong> adiciona predições do 0D como features extras</li>
+<li><strong>PhyResidual:</strong> aprende o resíduo — saída = Y_físico + Δ</li>
+<li><strong>PhyHybrid:</strong> combina PhyInput + PhyResidual</li>
+<li><strong>PhyLoss:</strong> física na função de perda (regularização)</li>
+</ul>
+<blockquote>
+<p><strong>Ação:</strong> Apontar cada arquitetura na figura enquanto fala.</p>
+</blockquote>
+<hr />
+<h2>SLIDE 17 — Visão Geral dos Procedimentos</h2>
+<p><strong>Fluxo:</strong> Dados Experimentais → Preparação (Z-score) → Análise Exploratória → Validação e Seleção → Stage 0 (Clássicos) → Stage 1 (Redes Neurais) → Stage 2 (Híbridos) → Selecionado vs 0D</p>
+<hr />
+<h2>SLIDE 18 — Dados Experimentais</h2>
+<p><strong>Fonte:</strong> Tese de Curcino (2025) e Lisboa et al. (2024) — LabMEMS/COPPE</p>
+<ul>
+<li><strong>174 pontos</strong>, <strong>3 regimes de salinidade</strong> (10, 40, 70 g/L NaCl)</li>
+<li><strong>5 entradas:</strong> T_in_alim, T_in_ref, vazão_ref, P_vac, C_NaCl</li>
+<li><strong>3 saídas:</strong> Fluxo de permeado, T_out_alim, T_out_ref</li>
+</ul>
+<blockquote>
+<p><strong>✅ ALTERAÇÃO IMPLEMENTADA:</strong> Fonte dos dados citada explicitamente.</p>
+</blockquote>
+<hr />
+<h2>SLIDE 19 — Decisões da Preparação dos Dados</h2>
+<table>
+<thead>
+<tr>
+<th>Etapa</th>
+<th>Decisão</th>
+<th>Justificativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Escalonamento</strong></td>
+<td>Z-score</td>
+<td>Preserva distribuição original; mede em desvios-padrão</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>SLIDE 20 — Busca de Hiperparâmetros</h2>
+<p>Para cada família e cada <strong>variável de saída</strong>, ajuste independente:</p>
+<table>
+<thead>
+<tr>
+<th>Família</th>
+<th>Hiperparâmetros</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lineares</td>
+<td>α (Ridge/Lasso/ElasticNet), l1_ratio</td>
+</tr>
+<tr>
+<td>Árvores</td>
+<td>profundidade, n_estimadores, learning_rate</td>
+</tr>
+<tr>
+<td>Redes</td>
+<td>arquitetura, LR, L2, ativação</td>
+</tr>
+<tr>
+<td>Híbridos</td>
+<td>L2 congelado (da baseline), ω (PhyLoss)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Métodos:</strong> Random Search (redes neurais) vs GridSearchCV (demais).</p>
+<hr />
+<h2>SLIDE 21 — Fluxo de Validação Cruzada e Seleção</h2>
+<p><strong>GroupKFold</strong> por regimes → RMSE_CV médio com erro padrão → <strong>regra 1-SE</strong> → seleção do modelo mais simples dentro de 1 erro padrão do melhor.</p>
+<hr />
+<h2>SLIDE 22 — Análise Exploratória</h2>
+<ul>
+<li><strong>Temperaturas de saída:</strong> forte correlação linear com entradas térmicas (|r| &gt; 0,9)</li>
+<li><strong>Fluxo:</strong> correlações moderadas e distribuídas — justifica modelagem multivariada</li>
+<li><strong>Pearson ≈ Spearman:</strong> relações dominantes são aproximadamente lineares</li>
+</ul>
+<hr />
+<h2>SLIDE 23 — Modelo Físico 0D — Referência</h2>
+<p>O modelo 0D de <strong>Lisboa et al. (2024)</strong> serve como referência fenomenológica para as arquiteturas híbridas. <strong>Não é um modelo desenvolvido neste trabalho.</strong></p>
+<p><em>(Gráficos: predição do modelo 0D vs experimental para cada variável)</em></p>
+<blockquote>
+<p><strong>✅ ALTERAÇÃO IMPLEMENTADA:</strong> Citado explicitamente que o modelo 0D é de Lisboa et al. (2024), não é trabalho seu.</p>
+</blockquote>
+<hr />
+<h2>SLIDE 24 — Síntese dos Estágios de Modelagem</h2>
+<ul>
+<li><strong>Stage 0 (lineares e árvores):</strong> regressões lineares similares entre si; árvores sobreajustaram</li>
+<li><strong>Stage 1 (redes neurais):</strong> baselines MLP melhoraram Test RMSE</li>
+<li><strong>Stage 2 (híbridos):</strong> PhyResidual apresentou menores perdas, corrigindo viés do 0D</li>
+</ul>
+<hr />
+<h2>SLIDE 25 — Comparação Final — Consolidado</h2>
+<table>
+<thead>
+<tr>
+<th>Variável</th>
+<th>Estágio</th>
+<th>Modelo</th>
+<th>Test RMSE</th>
+<th>CV RMSE</th>
+<th>Test R²</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T_alim,out</strong></td>
+<td>Stage 1</td>
+<td>Baseline Flux</td>
+<td><strong>0,178</strong></td>
+<td>0,081</td>
+<td>0,981</td>
+</tr>
+<tr>
+<td><strong>T_ref,out</strong></td>
+<td>Stage 2</td>
+<td>PhyResidual (Flux)</td>
+<td><strong>0,214</strong></td>
+<td>0,346</td>
+<td>0,996</td>
+</tr>
+<tr>
+<td><strong>Flux</strong></td>
+<td>Stage 2</td>
+<td>PhyResidual (Flux)</td>
+<td><strong>0,054</strong></td>
+<td><strong>0,072</strong></td>
+<td><strong>0,979</strong></td>
+</tr>
+<tr>
+<td><strong>Flux</strong></td>
+<td>0D</td>
+<td>—</td>
+<td>0,206</td>
+<td>—</td>
+<td>0,631</td>
+</tr>
+<tr>
+<td><strong>T_alim,out</strong></td>
+<td>0D</td>
+<td>—</td>
+<td>1,549</td>
+<td>—</td>
+<td><strong>-0,404</strong></td>
+</tr>
+<tr>
+<td><strong>T_ref,out</strong></td>
+<td>0D</td>
+<td>—</td>
+<td>0,851</td>
+<td>—</td>
+<td>0,948</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Nota:</strong> R² pode ser negativo quando o modelo é pior que a média (scikit-learn).</p>
+</blockquote>
+<hr />
+<h2>SLIDE 26 — Predição vs Experimental</h2>
+<p><em>(Overlay com modelos selecionados: Baseline Flux para T_alim, PhyResidual para T_ref e Flux. Quadrados cinza = modelo 0D)</em></p>
+<ul>
+<li><strong>T_alim,out:</strong> Baseline Flux (Stage 1)</li>
+<li><strong>T_ref,out:</strong> PhyResidual (Stage 2)</li>
+<li><strong>Flux:</strong> PhyResidual (Stage 2)</li>
+</ul>
+<hr />
+<h2>SLIDE 27 — Análise por Variável de Saída</h2>
+<table>
+<thead>
+<tr>
+<th>Variável</th>
+<th>Modelo</th>
+<th>Test RMSE</th>
+<th>vs 0D</th>
+<th>vs 2º melhor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T_alim,out</strong></td>
+<td>Baseline Flux</td>
+<td>0,178</td>
+<td>-89,0%</td>
+<td>-2,7% vs PhyResidual</td>
+</tr>
+<tr>
+<td><strong>T_ref,out</strong></td>
+<td>PhyResidual</td>
+<td>0,214</td>
+<td>-74,9%</td>
+<td>-2,3% vs Ridge</td>
+</tr>
+<tr>
+<td><strong>Flux</strong></td>
+<td>PhyResidual</td>
+<td>0,054</td>
+<td>-73,8%</td>
+<td>-18,2% vs Baseline</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>T_alim,out:</strong> modelo data-driven melhor — 0D tem R² = -0,404</li>
+<li><strong>T_ref,out:</strong> diferença marginal (2,3%); Ridge tem melhor CV (0,244 vs 0,346)</li>
+<li><strong>Flux:</strong> única variável com menor Test <strong>e</strong> CV (0,072) — PhyResidual corrigiu viés do 0D (R² 0,631 → 0,979)</li>
+</ul>
+<hr />
+<h2>SLIDE 28 — Comentários Finais</h2>
+<ol>
+<li><strong>Híbridos (PhyResidual)</strong> melhores em Test RMSE para Flux e T_ref — melhora de <strong>até 89%</strong> sobre o modelo 0D</li>
+<li><strong>Arquitetura residual</strong> atua como <strong>corretor de viés</strong> do modelo físico</li>
+<li><strong>CV:</strong> PhyResidual domina no Flux; lineares (OLS/Ridge) têm CV menor nas temperaturas — mas diferença no Test RMSE é pequena</li>
+<li><strong>Seleção por alvo</strong> não garantiu melhor performance para aquele alvo</li>
+<li>Procedimento <strong>extensível</strong> a outros processos com modelos de referência mais complexos</li>
+</ol>
+<hr />
+<h2>SLIDE 29 — Trabalhos Futuros</h2>
+<ol>
+<li><strong>Avaliar modelos</strong> em novas rodadas experimentais (regiões não contempladas no treino)</li>
+<li><strong>Substituir modelo 0D pelo 2D</strong> (GITT — Curcino, 2026) como referência física</li>
+<li><strong>Construir PINNs</strong> a partir das EDOs do modelo GITT:</li>
+<li>Modo <strong>surrogate</strong> (apenas física)</li>
+<li>Modo <strong>híbrido</strong> (física + dados na função de perda)</li>
+</ol>
+<hr />
+<h2>SLIDE 30 — Referências Bibliográficas</h2>
+<p><em>(Lista completa de referências)</em></p>
+<hr />
+<h2>Checklist de Alterações da Orientadora — Status</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Alteração</th>
+<th>Status</th>
+<th>Slide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Dados Brasil como CNI (fonte oficial)</td>
+<td>✅</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2</td>
+<td>"Vácuo parcial" + "reduz resistência à transferência de massa"</td>
+<td>✅</td>
+<td>5</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Motivação = o que você apresenta</td>
+<td>✅</td>
+<td>7</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Deixar claro dados em outras configurações</td>
+<td>✅</td>
+<td>8</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Separar lacunas de contribuições</td>
+<td>✅</td>
+<td>10</td>
+</tr>
+<tr>
+<td>6</td>
+<td>"Filtrar" → "membrana hidrofóbica porosa"</td>
+<td>✅</td>
+<td>11</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Vantagens atribuídas ao processo MD</td>
+<td>✅</td>
+<td>11</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Reduzir tempo slide 16 (não 5 min)</td>
+<td>✅</td>
+<td>16</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Explicar L1/L2 apontando na figura</td>
+<td>✅</td>
+<td>13</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Apontar nos slides o que está falando</td>
+<td>✅</td>
+<td>16</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Citada fonte dos dados (Lisboa et al.)</td>
+<td>✅</td>
+<td>18</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Legenda de cores (linear/rede/híbrido)</td>
+<td>✅</td>
+<td>26</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Não explicar figura rica em detalhes</td>
+<td>✅</td>
+<td>22</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Modelo 0D citado como referência</td>
+<td>✅</td>
+<td>23</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Tabelas consolidadas</td>
+<td>✅</td>
+<td>25</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Discussão cuidadosa do 0D</td>
+<td>✅</td>
+<td>27</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Gráficos para mostrar resultados</td>
+<td>✅</td>
+<td>26</td>
+</tr>
+<tr>
+<td>18</td>
+<td>R² negativo com referência</td>
+<td>✅</td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Notas de Tempo por Slide</h2>
+<table>
+<thead>
+<tr>
+<th>Slide</th>
+<th>Tempo</th>
+<th>Observação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1-2</td>
+<td>1 min</td>
+<td>Abertura</td>
+</tr>
+<tr>
+<td>3-4</td>
+<td>2 min</td>
+<td>Contexto água</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1 min</td>
+<td>V-AGMD</td>
+</tr>
+<tr>
+<td>6-7</td>
+<td>2 min</td>
+<td>Ilha + Objetivos</td>
+</tr>
+<tr>
+<td>8-10</td>
+<td>3 min</td>
+<td>Revisão</td>
+</tr>
+<tr>
+<td>11</td>
+<td>1 min</td>
+<td>Princípios MD</td>
+</tr>
+<tr>
+<td>12-16</td>
+<td>4 min</td>
+<td>Fundamentos ML</td>
+</tr>
+<tr>
+<td>17-21</td>
+<td>4 min</td>
+<td>Metodologia</td>
+</tr>
+<tr>
+<td>22-26</td>
+<td>5 min</td>
+<td>Resultados</td>
+</tr>
+<tr>
+<td>27-29</td>
+<td>3 min</td>
+<td>Conclusões</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>~26 min</strong></td>
+<td>+ perguntas</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

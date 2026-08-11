@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>roteiro_familias_modelos</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 { color: #1a365d; border-bottom: 2px solid #1a365d; padding-bottom: 10px; }
+        h2 { color: #2c5282; margin-top: 30px; }
+        h3 { color: #2d3748; }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+            background: white;
+        }
+        th, td {
+            border: 1px solid #cbd5e0;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #2c5282;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #edf2f7;
+        }
+        blockquote {
+            background: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 10px 20px;
+            margin: 15px 0;
+        }
+        code {
+            background: #edf2f7;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #cbd5e0;
+            margin: 30px 0;
+        }
+        strong { color: #c53030; }
+    </style>
+</head>
+<body>
+<h1>Roteiro Detalhado — Slides de Famílias de Modelos</h1>
+<h2>Slides 13-16: Todas as Variações de Modelos Utilizadas</h2>
+<hr />
+<h2>Estrutura deste Roteiro</h2>
+<table>
+<thead>
+<tr>
+<th>Slide</th>
+<th>Tema</th>
+<th>Variações</th>
+<th>Tempo Base</th>
+<th>Tempo Expandido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>13</td>
+<td>Regressão Linear</td>
+<td>OLS, Ridge, Lasso, ElasticNet</td>
+<td>45s</td>
+<td>1min 30s</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Árvores de Decisão</td>
+<td>DT, RF, GB</td>
+<td>45s</td>
+<td>1min 30s</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Redes Neurais</td>
+<td>MLP</td>
+<td>45s</td>
+<td>1min 30s</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Arquiteturas Híbridas</td>
+<td>PhyInput, PhyResidual, PhyHybrid, PhyLoss</td>
+<td>30s</td>
+<td>1min 30s</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>12 variações</strong></td>
+<td><strong>~3min</strong></td>
+<td><strong>~6min</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1>SLIDE 13 — Famílias de Modelos I: Regressão Linear e Regularizadas</h1>
+<h2>Texto do Slide</h2>
+<blockquote>
+<p>Figura com 4 painéis: OLS, Ridge, Lasso, ElasticNet</p>
+</blockquote>
+<h2>Fala Base (45s)</h2>
+<p>"Lineares: OLS sem regularização, Ridge penaliza L2 — encolhe coeficientes, Lasso penaliza L1 — zera coeficientes, seleção de variáveis —, ElasticNet combina ambos."</p>
+<hr />
+<h2>Fala Expandida (1min 30s)</h2>
+<p>"Começando pelos <strong>modelos lineares</strong>. Todos partem da mesma ideia: encontrar os coeficientes β que minimizam o erro entre o valor real e o predito.</p>
+<p><strong>OLS — Ordinary Least Squares</strong> — <em>apontar o primeiro painel</em>
+É a regressão linear clássica. Minimiza a soma dos quadrados dos resíduos: Σ(yᵢ - ŷᵢ)². Não tem nenhuma restrição — qualquer ruído nos dados vira inclinação na reta. É o modelo mais simples, mas pode superajustar quando há muitas variáveis.</p>
+<p><strong>Ridge</strong> — <em>apontar o segundo painel, destacar o termo λΣβ²</em>
+Adiciona uma penalização <strong>L2</strong> — a soma dos quadrados dos coeficientes. O hiperparâmetro <strong>alpha (α)</strong> controla a força: α=0 volta ao OLS; α alto encolhe todos os coeficientes em direção a zero, sem zerá-los. Útil quando há multicolinearidade.</p>
+<p><strong>Lasso</strong> — <em>apontar o terceiro painel, destacar λΣ|β|</em>
+Usa penalização <strong>L1</strong> — a soma dos valores absolutos. A geometria do L1 faz com que coeficientes de variáveis irrelevantes sejam <strong>exatamente zero</strong> — é seleção automática de features.</p>
+<p><strong>ElasticNet</strong> — <em>apontar o quarto painel, mostrar os dois termos</em>
+Combina L1 + L2. O hiperparâmetro <strong>l1_ratio (ρ)</strong> controla a mistura: ρ=1 é Lasso puro, ρ=0 é Ridge puro. Herda a seleção do Lasso e a estabilidade do Ridge."</p>
+<hr />
+<h2>Detalhamento Técnico por Modelo</h2>
+<table>
+<thead>
+<tr>
+<th>Modelo</th>
+<th>Função de Custo</th>
+<th>Hiperparâmetros</th>
+<th>Valores Testados</th>
+<th>Quando Usar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OLS</strong></td>
+<td>Σ(yᵢ - ŷᵢ)²</td>
+<td>—</td>
+<td>—</td>
+<td>Baseline, poucas variáveis</td>
+</tr>
+<tr>
+<td><strong>Ridge</strong></td>
+<td>Σ(yᵢ - ŷᵢ)² + α·Σβⱼ²</td>
+<td>α</td>
+<td>[0.001, 0.01, 0.1, 1, 10, 100]</td>
+<td>Multicolinearidade</td>
+</tr>
+<tr>
+<td><strong>Lasso</strong></td>
+<td>Σ(yᵢ - ŷᵢ)² + α·Σ|βⱼ|</td>
+<td>α</td>
+<td>[0.001, 0.01, 0.1, 1, 10, 100]</td>
+<td>Seleção de features</td>
+</tr>
+<tr>
+<td><strong>ElasticNet</strong></td>
+<td>Σ(yᵢ - ŷᵢ)² + α·ρ·Σ|βⱼ| + α·(1-ρ)/2·Σβⱼ²</td>
+<td>α, l1_ratio</td>
+<td>α: [0.001-10], ρ: [0.1-0.9]</td>
+<td>Features correlacionadas + seleção</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Intuição Geométrica</h2>
+<ul>
+<li><strong>L2 (Ridge):</strong> Região de restrição circular — coeficientes encolhem suavemente</li>
+<li><strong>L1 (Lasso):</strong> Região de restrição em losango — coeficientes podem zerar nos vértices</li>
+</ul>
+<hr />
+<h1>SLIDE 14 — Famílias de Modelos II: Árvores de Decisão</h1>
+<h2>Texto do Slide</h2>
+<blockquote>
+<p>Figura com 3 painéis: Decision Tree, Random Forest, Gradient Boosting</p>
+</blockquote>
+<h2>Fala Base (45s)</h2>
+<p>"Árvores: DT overfitta, RF reduz variância com bagging, GB corrige resíduos sequencialmente."</p>
+<hr />
+<h2>Fala Expandida (1min 30s)</h2>
+<p>"<strong>Árvores de decisão</strong> são modelos não lineares que particionam o espaço em regiões.</p>
+<p><strong>Decision Tree</strong> — <em>apontar o primeiro painel, a estrutura de fluxograma</em>
+Faz perguntas binárias recursivas: 'se temperatura &gt; 70°C, vai para a esquerda...'. Cada nó — <em>apontar</em> — é uma pergunta, cada folha — <em>apontar</em> — é uma predição. O problema: se deixar crescer sem limite, ela <strong>decora</strong> os dados de treino — overfitting puro.</p>
+<p><strong>Random Forest</strong> — <em>apontar o segundo painel, as múltiplas árvores</em>
+Resolve o overfitting da DT treinando <strong>N árvores em paralelo</strong> — <em>apontar as setas do bootstrap</em>. Cada árvore vê: (1) um subconjunto aleatório dos dados — bootstrap —, (2) um subconjunto aleatório das features. A predição final é a <strong>média</strong> de todas. Isso cancela os erros individuais — reduz a variância.</p>
+<p><strong>Gradient Boosting</strong> — <em>apontar o terceiro painel, a sequência</em>
+Trabalha <strong>em sequência</strong>, não em paralelo. A primeira árvore faz uma predição ruim. A segunda aprende os <strong>resíduos</strong> — os erros — da primeira. A terceira corrige a combinação das duas... O <strong>learning rate</strong> controla quanto cada árvore contribui: taxa baixa precisa de mais árvores, mas generaliza melhor."</p>
+<hr />
+<h2>Detalhamento Técnico por Modelo</h2>
+<h3>Decision Tree</h3>
+<table>
+<thead>
+<tr>
+<th>Hiperparâmetro</th>
+<th>Descrição</th>
+<th>Valores Testados</th>
+<th>Efeito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>max_depth</code></td>
+<td>Profundidade máxima</td>
+<td>[3, 5, 7, 10, None]</td>
+<td>Limita complexidade</td>
+</tr>
+<tr>
+<td><code>min_samples_split</code></td>
+<td>Mínimo para dividir nó</td>
+<td>[2, 5, 10]</td>
+<td>Evita divisões espúrias</td>
+</tr>
+<tr>
+<td><code>min_samples_leaf</code></td>
+<td>Mínimo em folha</td>
+<td>[1, 2, 4]</td>
+<td>Controla granularidade</td>
+</tr>
+</tbody>
+</table>
+<h3>Random Forest</h3>
+<table>
+<thead>
+<tr>
+<th>Hiperparâmetro</th>
+<th>Descrição</th>
+<th>Valores Testados</th>
+<th>Efeito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>n_estimators</code></td>
+<td>Número de árvores</td>
+<td>[50, 100, 200, 300]</td>
+<td>Mais árvores = mais estável</td>
+</tr>
+<tr>
+<td><code>max_depth</code></td>
+<td>Profundidade de cada árvore</td>
+<td>[3, 5, 7, 10]</td>
+<td>Complexidade individual</td>
+</tr>
+<tr>
+<td><code>max_features</code></td>
+<td>Features por divisão</td>
+<td>['sqrt', 'log2']</td>
+<td>Diversidade entre árvores</td>
+</tr>
+</tbody>
+</table>
+<h3>Gradient Boosting</h3>
+<table>
+<thead>
+<tr>
+<th>Hiperparâmetro</th>
+<th>Descrição</th>
+<th>Valores Testados</th>
+<th>Efeito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>n_estimators</code></td>
+<td>Estágios de boosting</td>
+<td>[50, 100, 200]</td>
+<td>Mais estágios = mais capacidade</td>
+</tr>
+<tr>
+<td><code>learning_rate</code></td>
+<td>Taxa de aprendizado</td>
+<td>[0.01, 0.05, 0.1, 0.2]</td>
+<td>Contribuição de cada árvore</td>
+</tr>
+<tr>
+<td><code>max_depth</code></td>
+<td>Profundidade</td>
+<td>[3, 5, 7]</td>
+<td>Árvores rasas funcionam melhor</td>
+</tr>
+<tr>
+<td><code>subsample</code></td>
+<td>Fração de dados por árvore</td>
+<td>[0.8, 0.9, 1.0]</td>
+<td>&lt;1.0 = Stochastic GB</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Bagging vs Boosting</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Bagging (RF)</th>
+<th>Boosting (GB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Treinamento</strong></td>
+<td>Paralelo</td>
+<td>Sequencial</td>
+</tr>
+<tr>
+<td><strong>Objetivo</strong></td>
+<td>Reduzir variância</td>
+<td>Reduzir viés</td>
+</tr>
+<tr>
+<td><strong>Independência</strong></td>
+<td>Árvores independentes</td>
+<td>Árvores dependentes</td>
+</tr>
+<tr>
+<td><strong>Peso</strong></td>
+<td>Todas iguais</td>
+<td>Ponderada pelo erro</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1>SLIDE 15 — Famílias de Modelos III: Redes Neurais</h1>
+<h2>Texto do Slide</h2>
+<blockquote>
+<p>Figura: arquitetura MLP com camadas, neurônios, pesos, ativação</p>
+</blockquote>
+<h2>Fala Base (45s)</h2>
+<p>"MLP: fully connected, backpropagation, ativação não linear. Hiperparâmetros: camadas, neurônios, ativação, lr, L2, dropout."</p>
+<hr />
+<h2>Fala Expandida (1min 30s)</h2>
+<p>"A <strong>MLP</strong> — Multi-Layer Perceptron — é uma rede neural artificial.</p>
+<p><strong>Estrutura</strong> — <em>apontar cada elemento na figura</em>:
+- <strong>Camada de entrada</strong> — <em>apontar</em> — recebe as 5 variáveis operacionais
+- <strong>Camadas ocultas</strong> — <em>apontar</em> — processam a informação
+- <strong>Camada de saída</strong> — <em>apontar</em> — produz as 3 predições</p>
+<p><strong>Neurônio individual</strong> — <em>apontar um círculo</em>:
+Faz duas operações: (1) soma ponderada das entradas — <em>apontar os pesos w</em> —, (2) aplica <strong>função de ativação</strong> não linear — <em>apontar a curva</em>.</p>
+<p><strong>Ativações que testei</strong>:
+- <strong>ReLU</strong> — <em>apontar</em> — zera valores negativos. Simples, rápida, padrão em redes profundas.
+- <strong>tanh</strong> — <em>apontar</em> — comprime entre -1 e 1. Adequada para dados normalizados pelo Z-score.
+- <strong>logistic/sigmoid</strong> — <em>apontar</em> — comprime entre 0 e 1.</p>
+<p><strong>Aprendizado</strong> — <em>apontar as setas de ida e volta</em>:
+Backpropagation: calcula o erro na saída, propaga o gradiente para trás, ajusta os pesos na direção que reduz o erro. O <strong>learning rate</strong> controla o tamanho do passo."</p>
+<hr />
+<h2>Detalhamento Técnico — Hiperparâmetros MLP</h2>
+<table>
+<thead>
+<tr>
+<th>Hiperparâmetro</th>
+<th>Descrição</th>
+<th>Valores Testados</th>
+<th>Efeito Prático</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hidden_layer_sizes</code></td>
+<td>Neurônios por camada</td>
+<td>(64,), (128,), (256,), (128,64), (256,128), (256,128,64)</td>
+<td>Mais neurônios = mais capacidade</td>
+</tr>
+<tr>
+<td><code>activation</code></td>
+<td>Função de ativação</td>
+<td>relu, tanh, logistic</td>
+<td>ReLU: rápida; tanh: gradientes suaves</td>
+</tr>
+<tr>
+<td><code>alpha</code></td>
+<td>Regularização L2 nos pesos</td>
+<td>0.0001, 0.001, 0.01, 0.1</td>
+<td>Penaliza pesos grandes</td>
+</tr>
+<tr>
+<td><code>learning_rate_init</code></td>
+<td>Taxa de aprendizado</td>
+<td>0.0001, 0.001, 0.01</td>
+<td>Muito alto: diverge; baixo: lento</td>
+</tr>
+<tr>
+<td><code>batch_size</code></td>
+<td>Amostras por atualização</td>
+<td>16, 32, 64</td>
+<td>Menor: mais ruidoso</td>
+</tr>
+<tr>
+<td><code>max_iter</code></td>
+<td>Máximo de épocas</td>
+<td>500, 1000, 2000</td>
+<td>Com early stopping, raramente atinge</td>
+</tr>
+<tr>
+<td><code>early_stopping</code></td>
+<td>Parada antecipada</td>
+<td>True</td>
+<td>Interrompe se não melhora</td>
+</tr>
+<tr>
+<td><code>validation_fraction</code></td>
+<td>Dados para validação</td>
+<td>0.1, 0.2</td>
+<td>Usado pelo early stopping</td>
+</tr>
+<tr>
+<td><code>n_iter_no_change</code></td>
+<td>Paciência</td>
+<td>10, 20</td>
+<td>Épocas sem melhoria para parar</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Arquiteturas Testadas</h2>
+<table>
+<thead>
+<tr>
+<th>Arquitetura</th>
+<th>Camadas</th>
+<th>Neurônios</th>
+<th>Parâmetros Aprox.</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(64,)</code></td>
+<td>1</td>
+<td>64</td>
+<td>~400</td>
+<td>Simples demais</td>
+</tr>
+<tr>
+<td><code>(128,)</code></td>
+<td>1</td>
+<td>128</td>
+<td>~800</td>
+<td>Intermediário</td>
+</tr>
+<tr>
+<td><code>(256,)</code></td>
+<td>1</td>
+<td>256</td>
+<td>~1.600</td>
+<td><strong>Baseline selecionada</strong></td>
+</tr>
+<tr>
+<td><code>(128, 64)</code></td>
+<td>2</td>
+<td>192</td>
+<td>~10.000</td>
+<td>Mais profunda</td>
+</tr>
+<tr>
+<td><code>(256, 128)</code></td>
+<td>2</td>
+<td>384</td>
+<td>~35.000</td>
+<td>Complexa</td>
+</tr>
+<tr>
+<td><code>(256, 128, 64)</code></td>
+<td>3</td>
+<td>448</td>
+<td>~45.000</td>
+<td>Mais complexa</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Funções de Ativação</h2>
+<table>
+<thead>
+<tr>
+<th>Função</th>
+<th>Fórmula</th>
+<th>Intervalo</th>
+<th>Vantagem</th>
+<th>Desvantagem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ReLU</strong></td>
+<td>max(0, x)</td>
+<td>[0, ∞)</td>
+<td>Simples, rápida</td>
+<td>Neurônios "morrem"</td>
+</tr>
+<tr>
+<td><strong>tanh</strong></td>
+<td>(eˣ - e⁻ˣ)/(eˣ + e⁻ˣ)</td>
+<td>(-1, 1)</td>
+<td>Gradientes suaves</td>
+<td>Saturação</td>
+</tr>
+<tr>
+<td><strong>logistic</strong></td>
+<td>1/(1 + e⁻ˣ)</td>
+<td>(0, 1)</td>
+<td>Interpretável</td>
+<td>Saturação, não centrada</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1>SLIDE 16 — Famílias de Modelos IV: Arquiteturas Híbridas</h1>
+<h2>Texto do Slide</h2>
+<blockquote>
+<p>Figura com 4 painéis: PhyInput, PhyResidual, PhyHybrid, PhyLoss</p>
+</blockquote>
+<h2>Fala Base (30s)</h2>
+<p>"Híbridos: quatro arquiteturas que incorporam o modelo físico 0D."</p>
+<hr />
+<h2>Fala Expandida (1min 30s)</h2>
+<p>"As <strong>arquiteturas híbridas</strong> combinam o modelo físico 0D com redes neurais. São quatro formas diferentes de fazer essa incorporação.</p>
+<p><strong>PhyInput</strong> — <em>apontar o primeiro painel</em>
+Simplesmente adiciona as predições do modelo 0D como <strong>features extras</strong> de entrada. O vetor de entrada vira [X, Y_phy]. A rede pode usar a física se for útil, ou aprender a ignorá-la se não for.</p>
+<p><strong>PhyResidual</strong> — <em>apontar o segundo painel, destacar a soma Y_phy + ε</em>
+Aprende apenas o <strong>resíduo</strong> — o desvio entre o físico e o real. A saída é Y = Y_phy + ε. A rede não precisa aprender o comportamento inteiro do zero — só a correção. É análogo ao ResNet, mas a referência é um modelo físico externo, não uma camada anterior.</p>
+<p><strong>PhyHybrid</strong> — <em>apontar o terceiro painel</em>
+Combina as duas estratégias: recebe [X, Y_phy] como entrada <strong>E</strong> produz uma correção residual que é somada à física: Y = Y_phy + f(X, Y_phy). É a mais flexível, mas com mais parâmetros — risco de overfitting com 174 amostras.</p>
+<p><strong>PhyLoss</strong> — <em>apontar o quarto painel, a função de perda</em>
+Não altera a arquitetura. Modifica a <strong>função de perda</strong>: Loss = (1-ω)·Loss_dados + ω·Loss_física. O hiperparâmetro <strong>ω (omega)</strong> controla o compromisso: ω=0 é MLP pura, ω=1 é apenas física."</p>
+<hr />
+<h2>Detalhamento Técnico — Arquiteturas Híbridas</h2>
+<table>
+<thead>
+<tr>
+<th>Arquitetura</th>
+<th>Entrada</th>
+<th>Saída</th>
+<th>Função de Perda</th>
+<th>Hiperparâmetro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PhyInput</strong></td>
+<td>[X, Y_phy]</td>
+<td>ŷ = f(X, Y_phy)</td>
+<td>MSE(ŷ, y)</td>
+<td>L2 (congelado)</td>
+</tr>
+<tr>
+<td><strong>PhyResidual</strong></td>
+<td>X</td>
+<td>ŷ = Y_phy + f(X)</td>
+<td>MSE(ŷ, y)</td>
+<td>L2 (congelado)</td>
+</tr>
+<tr>
+<td><strong>PhyHybrid</strong></td>
+<td>[X, Y_phy]</td>
+<td>ŷ = Y_phy + f(X, Y_phy)</td>
+<td>MSE(ŷ, y)</td>
+<td>L2 (congelado)</td>
+</tr>
+<tr>
+<td><strong>PhyLoss</strong></td>
+<td>X</td>
+<td>ŷ = f(X)</td>
+<td>(1-ω)·MSE(ŷ,y) + ω·MSE(ŷ, Y_phy)</td>
+<td>ω: [0.0, 0.1, 0.3, 0.5, 0.7]</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Estratégia de Busca nos Híbridos</h2>
+<p><strong>L2 congelado:</strong> O valor de L2 foi fixado da baseline (Stage 1) para isolar o efeito da arquitetura híbrida.</p>
+<p><strong>Baseline compartilhada:</strong> Todas usam a mesma arquitetura da baseline Alim:
+- <code>hidden_layer_sizes=(256,)</code>
+- <code>activation='logistic'</code>
+- L2 da baseline</p>
+<p><strong>Ômega (ω) testado:</strong> [0.0, 0.1, 0.3, 0.5, 0.7]
+- ω=0: MLP pura (sem física)
+- ω=0.3: balanço dados/física
+- ω=1: apenas física</p>
+<hr />
+<h2>Analogia com ResNet</h2>
+<p>O <strong>PhyResidual</strong> é conceitualmente idêntico ao <strong>ResNet</strong> (He et al., 2015):</p>
+<table>
+<thead>
+<tr>
+<th>ResNet</th>
+<th>PhyResidual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Saída da camada anterior como referência</td>
+<td>Modelo físico 0D como referência</td>
+</tr>
+<tr>
+<td>Aprende F(x) = H(x) - x</td>
+<td>Aprende ε = Y - Y_phy</td>
+</tr>
+<tr>
+<td>Skip connection interna</td>
+<td>Skip connection externa (física)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1>CHECKLIST — O QUE APONTAR EM CADA SLIDE</h1>
+<h2>Slide 13 (Regressão)</h2>
+<ul>
+<li>[ ] Painel OLS: "sem regularização"</li>
+<li>[ ] Painel Ridge: termo λΣβ² na fórmula</li>
+<li>[ ] Painel Lasso: termo λΣ|β| na fórmula</li>
+<li>[ ] Painel ElasticNet: os dois termos juntos</li>
+</ul>
+<h2>Slide 14 (Árvores)</h2>
+<ul>
+<li>[ ] DT: nó raiz e folhas</li>
+<li>[ ] RF: múltiplas árvores + setas do bootstrap</li>
+<li>[ ] GB: sequência de árvores + setas de correção de resíduos</li>
+</ul>
+<h2>Slide 15 (Redes Neurais)</h2>
+<ul>
+<li>[ ] Camada de entrada (5 neurônios)</li>
+<li>[ ] Camadas ocultas</li>
+<li>[ ] Camada de saída (3 neurônios)</li>
+<li>[ ] Pesos (conexões)</li>
+<li>[ ] Função de ativação</li>
+<li>[ ] Setas de backpropagation</li>
+</ul>
+<h2>Slide 16 (Híbridos)</h2>
+<ul>
+<li>[ ] PhyInput: seta do modelo 0D entrando como feature</li>
+<li>[ ] PhyResidual: soma Y_phy + ε</li>
+<li>[ ] PhyHybrid: entrada expandida + soma residual</li>
+<li>[ ] PhyLoss: função de perda com os dois termos</li>
+</ul>
+<hr />
+<h1>RESUMO — TODAS AS VARIAÇÕES TESTADAS</h1>
+<h2>Modelos Lineares (4 variações)</h2>
+<ol>
+<li><strong>OLS</strong> — sem regularização</li>
+<li><strong>Ridge</strong> — L2</li>
+<li><strong>Lasso</strong> — L1</li>
+<li><strong>ElasticNet</strong> — L1 + L2</li>
+</ol>
+<h2>Árvores (3 variações)</h2>
+<ol>
+<li><strong>Decision Tree</strong> — árvore única</li>
+<li><strong>Random Forest</strong> — bagging (paralelo)</li>
+<li><strong>Gradient Boosting</strong> — boosting (sequencial)</li>
+</ol>
+<h2>Redes Neurais (6 arquiteturas × 3 ativações)</h2>
+<p>8-13. <strong>MLP</strong> com arquiteturas: (64,), (128,), (256,), (128,64), (256,128), (256,128,64)</p>
+<h2>Híbridos (4 arquiteturas)</h2>
+<ol>
+<li><strong>PhyInput</strong> — física como feature</li>
+<li><strong>PhyResidual</strong> — aprende resíduo</li>
+<li><strong>PhyHybrid</strong> — feature + resíduo</li>
+<li><strong>PhyLoss</strong> — física na função de perda</li>
+</ol>
+<hr />
+<p><strong>Total: 17 configurações de modelos testadas</strong></p>
+</body>
+</html>
