@@ -71,9 +71,9 @@
     \textbf{Etapa} & \textbf{Decisão} & \textbf{Justificativa} \\ \hline
     \rowcolor{gray!10}
     2.1 — Escalonamento & Z-score &
-    Preserva a distribuição original dos dados; mede cada ponto em desvios-padrão, evitando compressão artificial na presença de valores extremos \\
+    Preserva a distribuição original dos dados e coloca as variáveis em escala comparável \\
   \end{tabular}
-  \note{Escalonamento por Z-score: preserva distribuicao e evita compressao artificial. A validacao (GroupKFold) e apresentada em slide proprio. [~1 min]}
+  \note{Escalonamento por Z-score: preserva a distribuição original e coloca as variáveis em escala comparável. A validação (GroupKFold) é apresentada em slide próprio. [~1 min]}
 \end{slide}
 %========================================================================
 
@@ -81,12 +81,12 @@
   \centering
   \small
   \begin{Item}
-    \item Para cada família de modelos e cada \textbf{variável de saída} (target), foi realizado um ajuste independente de hiperparâmetros
-    \item \textbf{Variáveis ajustadas por família}: lineares ($\alpha$), árvores (profundidade, nº estimadores, learning rate), redes neurais (arquitetura, LR, L2, ativação), híbridos residuais (apenas L2)
+    \item Para cada arquitetura de modelos e cada \textbf{variável de saída} (target), foi realizado um ajuste independente de hiperparâmetros
+    \item \textbf{Variáveis ajustadas por arquitetura}: lineares ($\alpha$), árvores (profundidade, nº estimadores, learning rate), redes neurais (camadas, neurônios, LR, L2, ativação), híbridos (apenas L2)
     \item \textbf{Redes Neurais (MLP/Keras)}: \textbf{Random Search} (amostragem aleatória da grade) — maior espaço de busca
-    \item \textbf{Demais famílias}: \textbf{busca exaustiva} (GridSearchCV) — espaço menor de hiperparâmetros
+    \item \textbf{Demais arquiteturas}: \textbf{busca exaustiva} (GridSearchCV) — espaço menor de hiperparâmetros
   \end{Item}
-  \note{Busca por familia e por target. Variaveis: lineares (alpha), arvores (profundidade, estimadores, lr), redes (arquitetura, lr, l2, ativacao), hibridos (so L2). Redes usaram Random Search; demais usaram GridSearchCV. [~1,5 min]}
+  \note{Busca por arquitetura e por target. Variaveis: lineares (alpha), arvores (profundidade, estimadores, lr), redes (camadas, neuronios, lr, l2, ativacao), hibridos (so L2). Redes usaram Random Search; demais usaram GridSearchCV. [~1,5 min]}
 \end{slide}
 %========================================================================
 

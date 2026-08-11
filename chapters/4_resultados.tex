@@ -35,25 +35,12 @@
     \end{column}
   \end{columns}
   \vfill
-  {\scriptsize Predição do modelo 0D \textit{vs} experimental para cada variável de saída. Modelo 0D: \cite{Lisboa2024}}
-  \note{O modelo 0D de Lisboa et al. (2024) é a referência física — não é um modelo desenvolvido neste trabalho. As arquiteturas híbridas aprendem a corrigir sistematicamente suas predições a partir dos dados experimentais. [~30s]}
+  {\scriptsize Predição do modelo 0D \textit{vs} experimental para cada variável de saída. Modelo 0D: \cite{Lisboa2024}. Nota: R$^2$ pode assumir valores negativos quando o modelo é pior que a média dos dados (\cite{sklearn_r2}).}
+  \note{O modelo 0D de Lisboa et al. (2024) é a referência física — não é um modelo desenvolvido neste trabalho. As arquiteturas híbridas aprendem a corrigir sistematicamente suas predições a partir dos dados experimentais (R² pode ser negativo se pior que a média). [~30s]}
 \end{slide}
 %========================================================================
 
-% Tabelas detalhadas de cada familia movidas para o anexo (material suplementar)
-% Mantemos aqui apenas uma sintese textual e a tabela consolidada final.
 
-\begin{slide}{Síntese dos Estágios de Modelagem}
-  \centering
-  \small
-  \begin{Item}
-    \item \textbf{Stage 0 (regressões lineares e árvores de decisão)}: as regressões lineares (OLS, Ridge, Lasso, ElasticNet) apresentaram desempenho similar entre si; as árvores (DT, RF) sobreajustaram nos regimes de treino.
-    \item \textbf{Stage 1 (redes neurais)}: as baselines MLP melhoraram o Test RMSE em relação às regressões e árvores, com destaque para a arquitetura otimizada para o Flux.
-    \item \textbf{Stage 2 (híbridos)}: o PhyResidual apresentou as menores perdas, corrigindo o viés do modelo 0D.
-  \end{Item}
-  \note{Sintese dos tres estagios: regressoes lineares e arvores no Stage 0, redes neurais no Stage 1, hibridos no Stage 2. [~1 min]}
-\end{slide}
-%========================================================================
 
 \begin{slide}{Comparação Final — Consolidado por Variável de Saída}
   \centering
@@ -80,11 +67,9 @@
     \textbf{T$_{alim,out}$} & & --- & 1,549 & --- & $-$0,404 \\
     \rowcolor{gray!6}
     \textbf{T$_{ref,out}$} & & --- & 0,851 & --- & 0,948 \\
-    \bottomrule
+  \bottomrule
   \end{tabular}
-  \vfill
-  {\scriptsize Nota: R$^2$ pode assumir valores negativos quando o modelo é pior que a média dos dados (\cite{sklearn_r2}).}
-  \note{Test RMSE em negrito = menor erro por variável; CV RMSE em negrito = melhor generalização. O Flux foi a única saída onde o menor Test RMSE e o menor CV RMSE pertencem ao mesmo modelo. R² negativo no 0D: pior que a média. [~2 min]}
+  \note{Test RMSE em negrito = menor erro por variável; CV RMSE em negrito = melhor generalização. O Flux foi a única saída onde o menor Test RMSE e o menor CV RMSE pertencem ao mesmo modelo. [~2 min]}
 \end{slide}
 %========================================================================
 

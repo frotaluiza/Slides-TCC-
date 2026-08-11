@@ -16,7 +16,7 @@
   \begin{Item}[0.10]
     \item \textcolor{blue!70!black}{T$_{alim,out}$}: o modelo puramente \textit{data-driven} apresentou a melhor performance — o modelo 0D tem R$^2$ = $-0{,}404$ para esta variável, tornando a correção residual menos eficaz.
     \item \textcolor{orange!70!black}{T$_{ref,out}$}: diferença marginal (2,3\%) sobre Ridge; Ridge tem melhor CV (0,244 vs 0,346), indicando melhor extrapolação.
-    \item \textcolor{green!70!black}{Flux}: única variável onde o mesmo modelo apresentou o menor Test \textbf{e} o menor CV (0,072) — PhyResidual aprendeu a corrigir o viés do 0D (R$^2$ 0,631 $\rightarrow$ 0,979).
+    \item \textcolor{green!70!black}{Flux}: foi a melhor demonstração do benefício preditivo da implementação de estratégias híbridas, superando o seu próprio modelo de base (Baseline Flux) com uma melhoria de 18,2\% no Test RMSE.
   \end{Item}
   \note{Análise por variável: Tabela com quantitativas (RMSE, percentuais). Texto com qualitativas (data-driven vs híbrido, extrapolação, correção de viés). [~2 min]}
 \end{slide}
