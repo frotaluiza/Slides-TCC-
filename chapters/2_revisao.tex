@@ -4,7 +4,7 @@
   \small
   \centering
   \resizebox{\textwidth}{!}{
-    \begin{tabular}{p{0.18\linewidth} p{0.15\linewidth} p{0.32\linewidth} p{0.15\linewidth} p{0.15\linewidth}}
+    \begin{tabular}{p{0.18\linewidth} p{0.15\linewidth} p{0.32\linewidth} p{0.15\linewidth} p{0.17\linewidth}}
       \toprule
       \textbf{Abordagem} & \textbf{Tecnologia} & \textbf{Descrição} & \textbf{Vantagens} & \textbf{Limitações} \\
       \midrule
@@ -12,23 +12,23 @@
       & AGMD, 2D, \textbf{V-AGMD}
       & Modelos 0D, 1D, 2D
       & Interpretabilidade física
-      & Alto custo; simplificações \\
+      & Custo computacional cresce com a complexidade (0D $\rightarrow$ 1D $\rightarrow$ 2D) \\
       \midrule
       \textbf{Dados}
       & \textbf{AGMD}, VMD
-      & Redes neurais e regressão p/ predição de fluxo e temperaturas
+      & Técnicas de regressão (Ex: Redes Neurais) para predição de fluxo e temperaturas
       & Alta flexibilidade; aprox. não linear
-      & Generalização limitada \\
+      & Pouca interpretabilidade; generalizam bem com muitos dados e mal quando há escassez \\
       \midrule
       \textbf{Híbridos (físico + dados)}
       & DCMD, \textbf{V-AGMD}
-      & PINNs (Redes Neurais Integradas à Física), modelos residuais — a rede aprende o \textbf{resíduo} em relação ao modelo físico — e regularização por perda física (PhyLoss), que incorpora a física na função de perda
+      & Combinam modelos físicos reduzidos com técnicas de regressão
       & Combina física + dados; regulariza o espaço de busca
       & Complexidade de implementação \\
       \bottomrule
     \end{tabular}
   }
-  \note{A revisão mostra três grandes abordagens para modelagem em MD. Física: interpretável mas cara. Data-driven: flexível mas dependente dos dados. Híbridos: combinam o melhor dos dois mundos. [~1,5 min]}
+  \note{A revisão mostra três grandes abordagens para modelagem em MD. Física: interpretável mas cara — custo computacional cresce com a complexidade. Data-driven: flexível, mas com pouca interpretabilidade e generalização dependente do volume de dados. Híbridos: combinam o melhor dos dois mundos com maior complexidade de implementação. [~1,5 min]}
 \end{slide}
 %========================================================================
 
@@ -73,20 +73,23 @@
     \begin{column}{.5\linewidth}
       \textbf{Lacunas na literatura:}
       \begin{Item}
-        \item[\textbf{1.}] \textbf{Ausência de validação cruzada em geral} --- partição única ignora grupos experimentais, mascara sobreajuste e produz estimativas otimistas. Risco agravado pelo volume limitado de dados em escala piloto \cite{Vabalas2019}
-        \item[\textbf{2.}] \textbf{Seleção por RMSE puro favorece superparametrização} --- ignora variabilidade estatística. Critérios como a regra do \textit{one-standard-error} (\cite{Hastie2009, Yates2022}) identificam modelos equivalentes com menor complexidade
-        \item[\textbf{3.}] \textbf{Modelos híbridos (físico+ML) em MD são praticamente inexistentes} --- apenas Shahouni (2026) aplica PINN em DCMD; nenhum trabalho em V-AGMD
+        \item[\textbf{1.}] \textbf{Ausência de validação cruzada por grupos} --- partição única ignora grupos experimentais, mascara sobreajuste e produz estimativas otimistas. Risco agravado pelo volume limitado de dados em escala piloto \cite{Vabalas2019}
+        \item[\textbf{2.}] \textbf{Seleção por RMSE puro favorece superparametrização} --- ignora a variabilidade estatística entre partições. A regra do \textit{one-standard-error} (1-SE) \textit{(navalha de Occam)} \cite{Hastie2009, Yates2022} escolhe, dentro do conjunto de modelos estatisticamente equivalentes ao melhor (erro dentro de $\pm 1$ erro padrão), aquele com menor complexidade
+        \item[\textbf{3.}] \textbf{Modelos híbridos (físico+ML) em MD são praticamente inexistentes} --- apenas 1 trabalho aplica PINN em DCMD; nenhum trabalho em V-AGMD
       \end{Item}
     \end{column}
     \begin{column}{.5\linewidth}
       \textbf{Contribuições do trabalho:}
       \begin{Item}
-        \item Validação cruzada por grupos (regimes experimentais)
-        \item Critério 1-SE + menor complexidade (mais simples dentro de 1 erro padrão)
-        \item 4 arquiteturas híbridas implementadas
+        \item Validação cruzada por grupos (regimes de salinidade)
+        \item Critério 1-SE + menor complexidade na seleção \cite{Hastie2009, Yates2022}
+        \item Implementação de arquiteturas híbridas pré-existentes \cite{Rai2020} (4 variantes) aplicadas ao V-AGMD
+        \item Combinação de validação cruzada (1-SE) e arquiteturas híbridas como estratégia de redução de complexidade
       \end{Item}
     \end{column}
   \end{columns}
-  \note{Lacunas: 1) validação por partição única, sem CV agrupada — métricas otimistas para extrapolação, risco de sobreajuste. 2) seleção por RMSE puro ignora variabilidade — 1-SE como alternativa parcimoniosa: escolhe o modelo mais simples cujo erro está dentro de 1 erro padrão do melhor. 3) híbridos em MD praticamente inexistentes. [~2 min]}
+  \vfill
+  {\scriptsize Nota: o critério 1-SE e a hibridização são estratégias pré-existentes \cite{Hastie2009, Rai2020}; a contribuição do trabalho é a aplicação sistemática ao V-AGMD.}
+  \note{Lacunas: 1) validação por partição única, sem CV por grupos — métricas otimistas para extrapolação, risco de sobreajuste. 2) seleção por RMSE puro ignora variabilidade — 1-SE (navalha de Occam) como alternativa parcimoniosa: escolhe o modelo mais simples cujo erro está dentro de 1 erro padrão do melhor. 3) híbridos em MD praticamente inexistentes. Contribuições: aplicação sistemática de estratégias pré-existentes (CV por grupos, 1-SE, arquiteturas híbridas da literatura) ao V-AGMD. [~2 min]}
 \end{slide}
 %========================================================================

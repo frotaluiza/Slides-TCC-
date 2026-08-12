@@ -1,5 +1,47 @@
 \section{Material Suplementar}
 
+\begin{slide}{Apêndice — Distribuição de Dados por Regime}
+  \centering
+  \footnotesize
+  \begin{tabular}{lcc}
+    \toprule
+    \textbf{Regime de salinidade} & \textbf{C$_{NaCl}$ (g/L)} & \textbf{Nº de pontos} \\
+    \midrule
+    Regime 1 & 10 & 72 \\
+    Regime 2 & 40 & 57 \\
+    Regime 3 & 70 & 45 \\
+    \midrule
+    \textbf{Total} & --- & \textbf{174} \\
+    \bottomrule
+  \end{tabular}
+  \vfill
+  \begin{Item}[0.10]
+    \item Dataset total: 174 pontos experimentais, distribuídos em 3 regimes de salinidade (10, 40 e 70 g/L de NaCl)
+    \item Cada regime representa condições operacionais distintas do protótipo V-AGMD e constitui um grupo na validação cruzada \textit{GroupKFold}
+  \end{Item}
+  \vfill
+  {\scriptsize Fonte: arquivo \texttt{dados\_att\_com\_var.csv} (174 linhas $\times$ 14 colunas).}
+\end{slide}
+%========================================================================
+
+\begin{slide}{Apêndice — Fórmula do $R^2$}
+  \centering
+  \footnotesize
+  O coeficiente de determinação $R^2$ é definido como:
+  \[
+    R^2 \;=\; 1 \;-\; \frac{\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}{\sum_{i=1}^{n}(y_i - \bar{y})^2}
+    \;=\; 1 \;-\; \frac{SS_{\mathrm{res}}}{SS_{\mathrm{tot}}}
+  \]
+  \vfill
+  \begin{Item}[0.12]
+    \item Se $SS_{\mathrm{res}} > SS_{\mathrm{tot}}$ (modelo pior que prever sempre a média $\bar{y}$), então $R^2 < 0$
+    \item O valor mínimo é $-\infty$; na prática, valores muito negativos indicam que o modelo captura pouca informação dos dados
+    \item Métrica útil para detectar quando um modelo é pior do que a média \textit{baseline} \cite{sklearn_r2}
+  \end{Item}
+  \note{$R^2$ pode ser negativo quando o modelo é pior que a média. Útil para detectar modelos que não capturam a tendência dos dados. [~30s]}
+\end{slide}
+%========================================================================
+
 \begin{slide}{Resultados — Busca de Hiperparâmetros (Tabela Completa)}
   \centering
   \scriptsize
@@ -123,11 +165,6 @@
 \begin{slide}{Apêndice — Varredura de Hiperparâmetros (Learning Rate)}
   \centering
   \includegraphics[width=0.85\textwidth]{tcc_images/chap06/model_selection/sweep_lr_winners_n.png}
-\end{slide}
-%========================================================================
-\begin{slide}{Apêndice — Varredura de Hiperparâmetros (L2)}
-  \centering
-  \includegraphics[width=0.85\textwidth]{tcc_images/chap06/model_selection/sweep_l2_winners_n_v2.png}
 \end{slide}
 %========================================================================
 \begin{slide}{Apêndice — Comparação Stage 2 (RMSE)}

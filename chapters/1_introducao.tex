@@ -98,9 +98,13 @@
 \begin{slide}{Objetivos}
   \footnotesize
   \begin{myTitledBox}[Objetivos]
-    \textbf{Objetivo geral:} avaliar e selecionar modelos de regressão supervisionada para predição do desempenho do módulo V-AGMD (fluxo de permeado e temperaturas de saída), combinando aprendizado a partir de dados experimentais (174 pontos, 3 regimes de salinidade) com informação física proveniente de um modelo reduzido 0D já publicado pelo laboratório (LISBOA et al., 2024).
+    \textbf{Objetivo geral:} avaliar e selecionar modelos de regressão para predição do desempenho do módulo V-AGMD (fluxo de permeado e temperaturas de saída), combinando aprendizado a partir de dados experimentais (174 pontos, 3 regimes de salinidade) com informação física proveniente de um modelo reduzido 0D já publicado pelo laboratório~\cite{Lisboa2024}.
   \end{myTitledBox}
-  \note{Objetivo geral: avaliar e selecionar modelos de regressão supervisionada para predição do desempenho do V-AGMD, combinando dados experimentais (174 pontos, 3 regimes) com o modelo físico 0D do laboratório como referência. [~1 min]}
+  \vfill
+  \begin{Item}[0.10]
+    \item \textbf{Por que o modelo 0D?} Foi o modelo reduzido de equilíbrio disponível com maior familiaridade no laboratório a partir de artigos e trabalhos anteriores, além de oferecer a melhor relação custo computacional / fidelidade fenomenológica para servir como referência em arquiteturas híbridas.
+  \end{Item}
+  \note{Objetivo geral: avaliar e selecionar modelos de regressão para predição do desempenho do V-AGMD, combinando dados experimentais (174 pontos, 3 regimes) com o modelo físico 0D do laboratório \cite{Lisboa2024} como referência. Justificativa do 0D: familiaridade e custo computacional favorável. [~1 min]}
 \end{slide}
 %========================================================================
 
