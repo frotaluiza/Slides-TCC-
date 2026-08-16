@@ -52,6 +52,10 @@
       & GroupKFold: mantém dados do mesmo \textbf{grupo} na mesma partição (diferente do K-fold tradicional, que mistura grupos)
       & Avaliar capacidade de extrapolação para grupos não vistos no treino \\
       \midrule
+      \textbf{Seleção (1-SE)}
+      & Critério \textit{one-standard-error}: escolhe-se o modelo mais simples com erro dentro de $\pm 1$ erro padrão do melhor \cite{Hastie2009ESL}
+      & Reduzir sobreajuste no processo de seleção de hiperparâmetros \\
+      \midrule
       \textbf{Pré-processamento}
       & Z-score (padronização para média zero e variância unitária)
       & Colocar variáveis em escala comparável, evitando que magnitudes distintas dominem o ajuste \\
