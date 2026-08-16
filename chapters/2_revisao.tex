@@ -77,14 +77,14 @@
     \begin{column}{.5\linewidth}
       \textbf{Contribuições do trabalho:}
       \begin{Item}
-        \item Validação cruzada por grupos (regimes de salinidade)
-        \item Critério 1-SE + menor complexidade na seleção \cite{Hastie2009, Yates2022}
+        \item Validação cruzada (regimes de salinidade)
+        \item Critério 1-SE: estratégia de escolha de modelos menos complexos dentro de um desvio padrão do erro da validação cruzada \cite{Hastie2009ESL}
         \item Implementação de arquiteturas híbridas pré-existentes \cite{Rai2020} (4 variantes) aplicadas ao V-AGMD
       \end{Item}
     \end{column}
   \end{columns}
   \vfill
   {\scriptsize Nota: o critério 1-SE, a validação cruzada por grupos e a hibridização são estratégias pré-existentes \cite{Hastie2009, Yates2022, Rai2020}; a contribuição do trabalho é a aplicação sistemática ao V-AGMD.}
-  \note{Lacunas: 1) validação por partição única, sem CV por grupos — métricas otimistas para extrapolação, risco de sobreajuste. 2) seleção por RMSE puro ignora variabilidade — 1-SE (navalha de Occam, \cite{Hastie2009, Yates2022}) é estratégia estabelecida que escolhe o modelo mais simples dentro de 1 erro padrão do melhor. 3) híbridos em MD praticamente inexistentes. Contribuições: aplicação sistemática de estratégias pré-existentes (CV por grupos, 1-SE, arquiteturas híbridas da literatura) ao V-AGMD. [~2 min]}
+  \note{Lacunas: 1) validação por partição única, sem CV por grupos — métricas otimistas para extrapolação, risco de sobreajuste. 2) seleção por RMSE puro ignora variabilidade — 1-SE (navalha de Occam, \cite{Hastie2009, Yates2022}) é estratégia estabelecida que escolhe o modelo mais simples dentro de 1 erro padrão do melhor. 3) híbridos em MD praticamente inexistentes. Contribuições: aplicação sistemática de estratégias pré-existentes (validação cruzada, 1-SE, arquiteturas híbridas da literatura) ao V-AGMD. [~2 min]}
 \end{slide}
 %========================================================================
