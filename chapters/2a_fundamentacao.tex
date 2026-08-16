@@ -83,23 +83,11 @@
 \end{slide}
 %========================================================================
 \begin{slide}{Famílias de Modelos III — Redes Neurais}
-  \footnotesize
-  \begin{columns}
-    \begin{column}{.62\linewidth}
-      \begin{Item}[0.12]
-        \item \textbf{Neurônio}: a ativação de um neurônio é a combinação linear das entradas (com os coeficientes aprendidos na camada anterior) seguida de uma função de ativação não linear
-        \item \textbf{Camada}: conjunto de neurônios que recebem as saídas da camada anterior
-        \item \textbf{MLP} (\textit{Multi-Layer Perceptron}): camadas totalmente conectadas, com \textit{backpropagation} para ajuste dos coeficientes
-        \item \textbf{Hiperparâmetros}: nº camadas, nº neurônios, função de ativação, learning rate, regularização L2
-      \end{Item}
-    \end{column}
-    \begin{column}{.36\linewidth}
-      \centering
-      \includegraphics[width=\linewidth]{tcc_images/chap02a/redes_neurais.png}\\[4pt]
-      {\tiny Fonte: Autor}
-    \end{column}
-  \end{columns}
-  \note{MLP: cada neurônio faz combinação linear das entradas da camada anterior e aplica uma ativação não linear. Hiperparâmetros: camadas, neurônios, ativação, lr, L2. [~45s]}
+  \centering
+  \includegraphics[width=0.78\textwidth]{tcc_images/chap02a/redes_neurais.png}
+  \vfill
+  {\scriptsize Fonte: Autor}
+  \note{MLP: camadas totalmente conectadas, com backpropagation para ajuste dos coeficientes. Hiperparâmetros: camadas, neurônios, ativação, lr, L2. [~45s]}
 \end{slide}
 %========================================================================
 \begin{slide}{Famílias de Modelos IV — Arquiteturas Híbridas}

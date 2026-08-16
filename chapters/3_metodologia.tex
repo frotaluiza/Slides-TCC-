@@ -87,12 +87,11 @@
   \small
   \begin{Item}
     \item Para cada arquitetura de modelos e cada \textbf{variável de saída} (target), foi realizado um ajuste independente de hiperparâmetros
-    \item \textbf{Variáveis ajustadas por arquitetura}: lineares ($\alpha$), árvores (profundidade, nº estimadores, learning rate), redes neurais (camadas, neurônios, LR, L2, ativação), híbridos (L2, e \textbf{$\omega$} no PhyLoss --- peso da física na perda)
-    \item \textbf{No Stage 2}, a variação de $\omega$ (PhyLoss) controla \textbf{quanta influência a física tem sobre o ajuste}: $\omega=0$ recupera o modelo puramente data-driven; $\omega$ alto força aderência ao modelo 0D
+    \item \textbf{Variáveis ajustadas por arquitetura}: lineares ($\alpha$), árvores (profundidade, nº estimadores, learning rate), redes neurais (camadas, neurônios, LR, L2, ativação), híbridos (L2; arquitetura baseline fixa)
     \item \textbf{Redes Neurais (MLP/Keras)}: \textbf{Random Search} (amostragem aleatória da grade) — maior espaço de busca
     \item \textbf{Demais arquiteturas}: \textbf{busca exaustiva} (GridSearchCV) — espaço menor de hiperparâmetros
   \end{Item}
-  \note{Busca por arquitetura e por target. Variação no Stage 2: $\omega$ no PhyLoss controla o peso da física na função de perda ($\omega=0$ recupera o data-driven puro, $\omega$ alto força o ajuste ao 0D). Redes usaram Random Search; demais usaram GridSearchCV. [~1,5 min]}
+  \note{Busca por arquitetura e por target. Híbridos: busca restrita em L2 com arquitetura baseline fixa. Redes usaram Random Search; demais usaram GridSearchCV. Detalhamento dos resultados do $\omega$ do PhyLoss no Apêndice. [~1,5 min]}
 \end{slide}
 %========================================================================
 
