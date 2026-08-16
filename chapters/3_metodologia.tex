@@ -2,51 +2,9 @@
 
 \begin{slide}{Visão Geral dos Procedimentos}
   \centering
-  \resizebox{0.9\textwidth}{!}{%
-  \begin{tikzpicture}[
-      every node/.style={font=\footnotesize},
-      stage/.style={rectangle, rounded corners, draw=poliBlue, thick, align=center,
-                    minimum width=2cm, minimum height=0.65cm, fill=blue!6},
-      physstyle/.style={rectangle, rounded corners, draw=orange!80!black, thick, align=center,
-                    minimum width=2cm, minimum height=0.65cm, fill=orange!10},
-      arrow/.style={->, thick, >=stealth},
-      darrow/.style={->, thick, >=stealth, dashed},
-      detail/.style={rectangle, rounded corners, draw=black!40, thick, align=center, font=\tiny, minimum width=2.2cm, minimum height=0.4cm, fill=gray!6},
-    ]
-    % Row 1 - Pipeline de dados
-    \node[stage] (dados)      {Dados\\Experimentais};
-    \node[stage, right=0.35cm of dados] (prep)  {Preparação\\dos Dados};
-    \node[detail, below=0.1cm of prep, font=\tiny, draw=black!40, thick, minimum width=1.8cm, minimum height=0.35cm] {Z-score};
-    \node[stage, right=0.35cm of prep] (eda)    {Análise\\Exploratória};
-    \node[stage, right=0.35cm of eda] (sel) {Validação e\\Seleção};
-    \draw[arrow] (dados) -- (prep);
-    \draw[arrow] (prep) -- (eda);
-    \draw[arrow] (eda) -- (sel);
-
-    % Row 2 - Modelo físico (standalone, acima à esquerda)
-    \node[physstyle, below=1.0cm of prep] (fisico) {Modelo\\Físico 0D};
-
-    % Row 2 - Estágios (alinhados com sel)
-    \node[stage, below=1.0cm of sel] (s0)    {Stage 0\\Clássicos};
-    \node[stage, right=0.35cm of s0] (s1)    {Stage 1\\Redes Neurais};
-    \node[stage, right=0.35cm of s1] (s2)    {Stage 2\\Híbridos};
-    % Validação/Seleção -> todos os estágios
-    \draw[darrow] (sel.south) -- ++(0,-0.4) -| (s0.north);
-    \draw[darrow] (sel.south) -- ++(0,-0.4) -| (s1.north);
-    \draw[darrow] (sel.south) -- ++(0,-0.4) -| (s2.north);
-    % Modelo físico -> Stage 2
-    \draw[arrow] (fisico.east) -- ++(2.7cm,0) |- (s2.west);
-    % Stage 1 -> Stage 2 (rede -> híbrido)
-    \draw[arrow] (s1) -- (s2) node[midway, above, font=\tiny] {rede $\rightarrow$ híbrido};
-
-    % Row 3 - Avaliação
-    \node[stage, below=1.4cm of s1] (aval) {Avaliação};
-    \draw[arrow] (s0.south) |- (aval.west);
-    \draw[arrow] (s1) -- (aval);
-    \draw[arrow] (s2.south) |- (aval.east);
-  \end{tikzpicture}
-  }
-  \note{Visão geral dos procedimentos: dados $\rightarrow$ preparação (Z-score) $\rightarrow$ análise exploratória $\rightarrow$ validação e seleção (GroupKFold + 1-SE), que governa os 3 estágios. Modelo físico 0D alimenta apenas o Stage 2 (híbridos). Stage 1 $\rightarrow$ Stage 2 indica que o híbrido reusa a rede neural como base. Por fim, todos os 3 estágios convergem para a Avaliação. [~1,5 min]}
+  \includegraphics[width=0.9\textwidth]{tcc_images/chap04/diagrama_metodologia.png}
+  \vfill
+  {\scriptsize Fonte: Autor}
 \end{slide}
 \begin{slide}{Etapa 1: Dados Experimentais}
   \small
