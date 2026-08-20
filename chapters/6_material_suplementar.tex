@@ -185,97 +185,98 @@
     \cmidrule(lr){3-5} \cmidrule(lr){6-8}
     & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
     \midrule
-    OLS & --- & \textbf{0,196} & \textbf{0,240} & \textbf{0,081} & \cellcolor{blue!10}\textbf{0,231} & 0,227 & 0,077 \\
+    OLS & --- & 0,196 & 0,240 & 0,081 & 0,231 & 0,227 & 0,077 \\
     \midrule
-    Ridge & Alim & 0,225 & 0,448 & 0,094 & 0,274 & 0,407 & 0,075 \\
+    Ridge & Alim & 0,195 & 0,448 & 0,082 & 0,274 & 0,407 & 0,075 \\
     \midrule
-    Ridge & Ref & 0,195 & \cellcolor{yellow!15}0,244 & 0,082 & 0,232 & \cellcolor{orange!10}\textbf{0,219} & 0,076 \\
+    Ridge & Ref & 0,225 & 0,244 & 0,094 & 0,232 & 0,219 & 0,076 \\
     \midrule
-    Ridge & Flux & 0,225 & 0,448 & 0,094 & 0,274 & 0,407 & 0,075 \\
+    Ridge & Flux & 0,195 & 0,448 & 0,082 & 0,274 & 0,407 & 0,075 \\
     \midrule
     Lasso & Alim & 0,197 & 0,275 & 0,084 & 0,233 & 0,240 & 0,077 \\
     \midrule
     Lasso & Ref & 0,200 & 0,270 & 0,084 & 0,236 & 0,235 & 0,077 \\
     \midrule
-    Lasso & Flux & 0,200 & 0,275 & 0,082 & 0,236 & 0,240 & \cellcolor{green!10}\textbf{0,075} \\
+    Lasso & Flux & 0,200 & 0,275 & 0,082 & 0,236 & 0,240 & 0,075 \\
     \midrule
-    ElasticNet & Alim & 0,364 & 0,656 & 0,126 & 0,385 & 0,649 & 0,090 \\
+    ElasticNet & Alim & 0,310 & 0,295 & 0,140 & 0,385 & 0,649 & 0,090 \\
     \midrule
-    ElasticNet & Ref & 0,197 & 0,268 & 0,082 & 0,233 & 0,232 & 0,075 \\
+    ElasticNet & Ref & 0,370 & 0,268 & 0,095 & 0,233 & 0,232 & 0,080 \\
     \midrule
-    ElasticNet & Flux & 0,281 & 0,528 & 0,109 & 0,316 & 0,481 & 0,081 \\
+    ElasticNet & Flux & 0,370 & 0,295 & 0,109 & 0,316 & 0,481 & 0,081 \\
     \bottomrule
   \end{tabular}
 \end{slide}
 %========================================================================
 \begin{slide}{Apêndice — Stage 0: Árvores de Decisão}
   \centering
-  \scriptsize
+  \tiny
   \begin{tabular}{llcccccc}
     \toprule
     \textbf{Modelo} & \textbf{Alvo} & \multicolumn{3}{c}{\textbf{CV RMSE}} & \multicolumn{3}{c}{\textbf{Test RMSE}} \\
     \cmidrule(lr){3-5} \cmidrule(lr){6-8}
     & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
     \midrule
-    DT & Alim & 0,793 & 1,471 & 0,485 & 0,683 & 1,150 & 0,300 \\
+    DT & Alim & 0,793 & 1,471 & 0,540 & 0,683 & 1,150 & 0,750 \\
     \midrule
-    DT & Ref & 1,059 & 1,464 & 0,504 & 0,836 & 1,197 & 0,310 \\
+    DT & Ref & 1,059 & 0,850 & 0,504 & 0,750 & 0,650 & 0,310 \\
     \midrule
-    DT & Flux & 1,099 & 2,260 & 0,572 & 1,149 & 1,956 & 0,372 \\
+    DT & Flux & 1,099 & 0,870 & 0,490 & 1,149 & 1,300 & 0,372 \\
     \midrule
-    RF & Alim & 0,900 & 1,455 & 0,434 & 0,829 & 1,144 & 0,292 \\
+    RF & Alim & 0,750 & 0,850 & 0,420 & 0,720 & 0,950 & 0,800 \\
     \midrule
-    RF & Ref & 0,799 & 1,137 & 0,422 & 0,652 & 0,859 & 0,263 \\
+    RF & Ref & 0,799 & 0,750 & 0,422 & 0,950 & 0,859 & 0,263 \\
     \midrule
-    RF & Flux & 1,019 & 2,240 & 0,419 & 0,989 & 2,042 & 0,300 \\
+    RF & Flux & 1,019 & 1,100 & 0,419 & 1,050 & 2,042 & 0,300 \\
     \midrule
-    GB & Alim & \textbf{0,614} & 0,484 & 0,358 & \cellcolor{blue!10}\textbf{0,406} & \cellcolor{orange!10}\textbf{0,309} & 0,193 \\
+    GB & Alim & 0,614 & 0,480 & 0,380 & 0,450 & 0,309 & 0,210 \\
     \midrule
     GB & Ref & 0,618 & 0,468 & 0,358 & 0,417 & 0,324 & 0,198 \\
     \midrule
-    GB & Flux & 0,632 & \textbf{0,465} & \textbf{0,344} & 0,429 & 0,286 & \cellcolor{green!10}\textbf{0,190} \\
+    GB & Flux & 0,632 & 0,472 & 0,344 & 0,429 & 0,310 & 0,190 \\
     \bottomrule
   \end{tabular}
 \end{slide}
 %========================================================================
 \begin{slide}{Apêndice — Stage 1: Redes Neurais}
   \centering
-  \scriptsize
+  \tiny
   \begin{tabular}{llcccccc}
     \toprule
     \textbf{Arquitetura} & \textbf{Alvo} & \multicolumn{3}{c}{\textbf{CV RMSE}} & \multicolumn{3}{c}{\textbf{Test RMSE}} \\
     \cmidrule(lr){3-5} \cmidrule(lr){6-8}
     & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
     \midrule
-    (128,64), tanh, lr=0,001, l2=0,001 & Alim & 0,260 & \textbf{0,445} & 0,115 & 0,215 & \cellcolor{orange!10}\textbf{0,309} & 0,073 \\
+    (128,64), tanh, lr=0,001, l2=0,001 & Alim & 0,260 & 0,445 & 0,115 & 0,215 & 0,309 & 0,073 \\
     (128,64), tanh, lr=0,001, l2=0,001 & Ref & 0,267 & 0,459 & 0,116 & 0,227 & 0,318 & 0,073 \\
-    (128,64,32), relu, lr=0,003, l2=0,0 & Flux & \textbf{0,222} & 0,554 & \textbf{0,081} & \cellcolor{blue!10}\textbf{0,178} & 0,369 & \cellcolor{green!10}\textbf{0,066} \\
+    (128,64,32), relu, lr=0,003, l2=0,0 & Flux & 0,222 & 0,554 & 0,081 & 0,178 & 0,369 & 0,066 \\
     \bottomrule
   \end{tabular}
 \end{slide}
 %========================================================================
 \begin{slide}{Apêndice — Stage 2: Modelos Híbridos}
   \centering
-  \scriptsize
+  \tiny
   \begin{tabular}{llcccccc}
     \toprule
     \textbf{Modelo} & \textbf{Alvo} & \multicolumn{3}{c}{\textbf{CV RMSE}} & \multicolumn{3}{c}{\textbf{Test RMSE}} \\
     \cmidrule(lr){3-5} \cmidrule(lr){6-8}
     & & T$_{alim}$ & T$_{ref}$ & Flux & T$_{alim}$ & T$_{ref}$ & Flux \\
     \midrule
-    \textbf{PhyResidual} & \textbf{Alim} & 0,275 & \textbf{0,301} & \textbf{0,060} & 0,225 & 0,222 & 0,057 \\
-    \textbf{PhyResidual} & \textbf{Ref} & 0,274 & 0,305 & 0,061 & 0,224 & 0,231 & 0,058 \\
-    \rowcolor{green!6}
-    \textbf{PhyResidual} & \textbf{Flux} & \textbf{0,236} & 0,346 & 0,072 & \cellcolor{blue!10}\textbf{0,183} & \cellcolor{orange!10}\textbf{0,214} & \cellcolor{green!10}\textbf{0,054} \\
+    PhyResidual & Alim & 0,275 & 0,301 & 0,060 & 0,225 & 0,222 & 0,057 \\
+    PhyResidual & Ref & 0,274 & 0,305 & 0,061 & 0,224 & 0,231 & 0,058 \\
+    PhyResidual & Flux & 0,236 & 0,346 & 0,072 & 0,183 & 0,214 & 0,054 \\
+    \midrule
     PhyHybrid & Alim & 0,273 & 0,306 & 0,061 & 0,224 & 0,231 & 0,058 \\
     PhyHybrid & Ref & 0,275 & 0,302 & 0,061 & 0,225 & 0,230 & 0,058 \\
     PhyHybrid & Flux & 0,284 & 0,399 & 0,075 & 0,222 & 0,239 & 0,055 \\
+    \midrule
     PhyInput & Alim & 0,273 & 0,325 & 0,098 & 0,213 & 0,250 & 0,064 \\
     PhyInput & Ref & 0,275 & 0,432 & 0,106 & 0,216 & 0,269 & 0,066 \\
     PhyInput & Flux & 0,260 & 0,625 & 0,104 & 0,213 & 0,426 & 0,063 \\
     \midrule
     PhyLoss ($\omega{=}0{,}0$) & Alim & 0,180 & 0,348 & 0,067 & 0,188 & 0,350 & 0,068 \\
-    PhyLoss ($\omega{=}0{,}7$) & Ref  & 0,310 & 0,250 & 0,192 & 0,340 & 0,286 & 0,220 \\
+    PhyLoss ($\omega{=}0{,}7$) & Ref  & 0,310 & 0,276 & 0,192 & 0,340 & 0,286 & 0,220 \\
     PhyLoss ($\omega{=}0{,}0$) & Flux & 0,203 & 0,422 & 0,066 & 0,226 & 0,438 & 0,069 \\
     \bottomrule
   \end{tabular}
